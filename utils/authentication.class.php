@@ -57,20 +57,29 @@
 
 
                 if( $_SESSION['role'] == Config::$_ADMIN_ ){
-                     $user = new Admin( $_SESSION['employeeID']);
+                     $user = new Admin( $_SESSION['employeeID'] );
+                     $_SESSION['user'] = $user;
                      echo json_encode($user);
                 }
                 else if( $_SESSION['role'] == Config::$_HOD_ ){
-                    return $user = new HOD( $_SESSION['employeeID']);
+                    $user = new HOD( $_SESSION['employeeID']);
+                    $_SESSION['user'] = $user;
+                    echo json_encode($user);
                 }
                 else if( $_SESSION['role'] == Config::$_PRINCIPAL_ ){
-                    return $user = new Principal( $_SESSION['employeeID']);
+                    $user = new Principal( $_SESSION['employeeID']);
+                    $_SESSION['user'] = $user;
+                    echo json_encode($user);
                 }
                 else if( $_SESSION['role'] == Config::$_FACULTY_ ){
-                    return $user = new Faculty( $_SESSION['employeeID']);
+                    $user = new Faculty( $_SESSION['employeeID']);
+                    $_SESSION['user'] = $user;
+                    echo json_encode($user);
                 }
                 else{
-                    return $user = new Staff( $_SESSION['employeeID']);
+                    $user = new Staff( $_SESSION['employeeID'] );
+                    $_SESSION['user'] = $user;
+                    echo json_encode($user);
                 }
 
 
