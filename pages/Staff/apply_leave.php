@@ -7,10 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-<?php 
-include "../../includes/Staff/sidenavbar.php";
-?>
-    
-
+    <!-- Application Form  -->
 </body>
 </html>
