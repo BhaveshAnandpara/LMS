@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+
+    /* Font Size */
+    --title : 1.5rem;
+
+    /* Fonts */
+    --Poppins : 'Poppins', sans-serif;
+    --Josefin : 'Josefin Sans', sans-serif;
+
+    /* Colors */
+    --primary-color : rgb(39, 81, 154);
+    --black-color : rgb(37, 37, 37);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--Poppins) ;
+    overflow-x: hidden;
+}
+
+.horizontal_navbar {
+    width: 100%;
+    height: 78px;
+    background: #191728;
+
+            /* old color */ 
+
+    /* background: #11101D;  */
+    border-left: 1px solid wheat;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.Heading_Heder {
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+}
+
+.user_name {
+    margin-right: 30px;
+}
+
+table {
+    overflow-x: scroll;
+}
+
+.notification-icon{
+    margin-right:40px;
+    color: white;
+    }
+    .notification-icon .fa-sharp{
+    font-size: 25px;
+    color: white;        }
+    
+    .notification-content {
+      display: none;
+      position: absolute;
+      top: 80px;
+      right: 10px;
+      background-color: #f9f9f9;
+      width: 400px;
+      padding: 18px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }

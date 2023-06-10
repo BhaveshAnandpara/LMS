@@ -32,7 +32,7 @@
 
             // Error Handling
             if ( !$result ) {
-                echo("Error description: " . mysqli_error($con));
+                echo("Error description: " . mysqli_error($conn));
                 return false;
             }
 

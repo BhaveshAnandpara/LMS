@@ -43,6 +43,11 @@
 
 <body>
 
+<?php 
+include "../../includes/Staff/sidenavbar.php";
+?>
+    
+
     <section class="home-section">
 
         <div class="container bg-white rounded-lg shadow-lg mt-3">
