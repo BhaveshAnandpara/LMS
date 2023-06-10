@@ -59,10 +59,6 @@
                         <small class="text-muted" style="font-size: smaller;">Recent update Date</small>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <?php } ?>
-=======
->>>>>>> 764052f79e670b7ab0accac1d8b6da2e2c1db2d3
             </div>
         </div>
 
