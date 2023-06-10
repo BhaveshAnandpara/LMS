@@ -6,6 +6,7 @@
 
     Class Admin{
 
+        public $employeeId;
         public $email;
         public $fullName;
         public $deptID;
@@ -38,6 +39,7 @@
 
             $row = mysqli_fetch_assoc($result); // Response
 
+            $this->employeeId = $row['employeeID'];
             $this->email = $row['email'];
             $this->fullName = $row['fullName'];
             $this->deptID = $row['deptID'];
@@ -49,6 +51,8 @@
 
         }
 
+
+        // ------------------------------------ Dashboard ------------------------------------ //
 
          /*
         @function "getTotalEmployee"
@@ -197,7 +201,31 @@
 
         }
         
+        /*
+        @function "getNotifications"
+        @description "getNotifications
+                        --> get all notifications
+                        
+         */
         
+         public function getNotifications(){
+
+            $employeeID = $this->employeeId;
+
+
+            // SQL Query to get the count of all inactive employees
+            $sql = "SELECT * from notifications where employeeID='$employeeID' ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( !$result ) echo("Error description: " . mysqli_error($con));
+
+            $rows = mysqli_fetch_array($result); // Response
+
+            return $rows;
+
+        }
+
 
     }
 
