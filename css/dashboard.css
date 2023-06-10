@@ -1,0 +1,28 @@
+.home-section{
+
+    padding: 24px 50px;
+    background: #e0e0e0;
+
+}
+
+.no-desc{
+    display: none;
+}
+
+.header-body .row{
+    gap: 30px;
+    justify-content: center;
+}
+
+.card-body{
+
+    padding: 3rem 3rem;
+
+}
+
+
+.card-width{
+
+    flex: 0 0 60%;
+    max-width: 30%;
+}
