@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
   include "../../utils/Staff/staff.class.php";
     //start session
@@ -5,6 +6,8 @@
     //Get the User Object
     $user =  $_SESSION['user'];
 ?>
+=======
+>>>>>>> 764052f79e670b7ab0accac1d8b6da2e2c1db2d3
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +39,7 @@
         <div class="text container">Dashboard</div>
         <div class="container bg-white rounded-lg shadow-lg mt-3 dash_table">
             <div class="row p-3 rounded-lg shadow-lg d-flex justify-content-sm-center  " style="transition: all all 0.5s ease; border-right:6px solid #11101D">
-            <?php while($user-> getLeaveTypes()){?>   
-            <div class="col-md-3 col-sm-12  rounded-lg m-3 bg-white shadow-lg fit-content" style="border-right:6px solid #11101D ">
+                <div class="col-md-3 col-sm-12  rounded-lg m-3 bg-white shadow-lg fit-content" style="border-right:6px solid #11101D ">
                     <!-- Div for leave type and Leave Balance      -->
                     <div class="row p-2 pr-0 ">
                         <div class="col-12  ">
@@ -57,7 +59,10 @@
                         <small class="text-muted" style="font-size: smaller;">Recent update Date</small>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <?php } ?>
+=======
+>>>>>>> 764052f79e670b7ab0accac1d8b6da2e2c1db2d3
             </div>
         </div>
 
