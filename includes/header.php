@@ -18,7 +18,7 @@
 
     <!-- Div For toggleNotification -->
 
-    <div id="notification" class="notification-content">
+    <div id="notification" class="notification-content shadow-lg">
 
         <h3 mb-2 >Notifications</h3>
 
@@ -54,7 +54,9 @@
     <script>
         function toggleNotification() {
             var notification = document.getElementById("notification");
+            var container = document.querySelector(".container")
             notification.style.display = (notification.style.display === "block") ? "none" : "block";
+            container.style.filter = (container.style.filter === "blur(5px)") ? "none" : "blur(5px)";
         }
     </script>
 </body>
