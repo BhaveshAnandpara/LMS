@@ -27,6 +27,7 @@
             //Get Notifications
             $notifications = $user->getNotifications();
 
+
             while($row = mysqli_fetch_assoc($notifications)){
 
                 //Get the Difference of Time and Show that

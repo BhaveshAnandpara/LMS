@@ -47,6 +47,50 @@
 
         }
 
+        /*
+                @function "getNotifications"
+                @description "getNotifications --> get all notifications
+                        
+         */
+        
+        public function getNotifications(){
+
+            $employeeID = $this->employeeId;
+
+
+            // SQL Query to get the count of all inactive employees
+            $sql = "SELECT * from notifications where employeeID='$employeeID' Order By dateTime DESC";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( !$result ) echo("Error description: " . mysqli_error($con));
+
+            return $result;
+
+        }
+
+        
+        /*
+                @function "getNotifications"
+                @description "getNotifications --> get all notifications
+                        
+         */
+        
+         public function getCurrentBalance(){
+
+            $employeeID = $this->employeeId;
+
+
+            // SQL Query to get the count of all inactive employees
+            $sql = "SELECT * from leavebalance inner join leavetransactions on leavebalance.lastUpdatedOn = leavetransactions.transactionID where employeeID='$employeeID'";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( !$result ) echo("Error description: " . mysqli_error($con));
+
+            return $result;
+
+        }
 
     }
 
