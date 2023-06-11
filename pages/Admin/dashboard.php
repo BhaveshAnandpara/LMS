@@ -67,12 +67,14 @@
 
             
 
-            <div class="row p-3 rounded-lg shadow-lg d-flex justify-content-sm-center  "
-                style="transition: all all 0.5s ease; border-right:6px solid #11101D">
+            <div class="row p-4 rounded-lg shadow-lg d-flex justify-content-sm-center  " style="transition: all all 0.5s ease; border-right:6px solid #11101D">
 
+                <div class="col-md-12 col-sm-12 py-3" >
+                    <h3> Current Statistics </h3>
+                </div>
 
                 <!-- Card -->
-                <div class="col-md-3 col-sm-12 py-4   rounded-lg m-3 bg-white shadow-lg fit-content"
+                <div class="col-md-3 col-sm-12 py-4   rounded-lg m-4 bg-white shadow-lg fit-content"
                     style="border-right:6px solid #11101D ">
 
                     <!-- Div for leave type and Leave Balance      -->
@@ -93,7 +95,7 @@
                 </div>
 
                 <!-- Card -->
-                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-3 bg-white shadow-lg fit-content"
+                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-4 bg-white shadow-lg fit-content"
                     style="border-right:6px solid #11101D ">
 
                     <!-- Div for leave type and Leave Balance      -->
@@ -114,7 +116,7 @@
                 </div>
 
                 <!-- Card -->
-                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-3 bg-white shadow-lg fit-content"
+                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-4 bg-white shadow-lg fit-content"
                     style="border-right:6px solid #11101D ">
 
                     <!-- Div for leave type and Leave Balance      -->
@@ -135,7 +137,7 @@
                 </div>
 
                 <!-- Card -->
-                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-3 bg-white shadow-lg fit-content"
+                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-4 bg-white shadow-lg fit-content"
                     style="border-right:6px solid #11101D ">
 
                     <!-- Div for leave type and Leave Balance      -->
@@ -156,7 +158,7 @@
                 </div>
 
                 <!-- Card -->
-                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-3 bg-white shadow-lg fit-content"
+                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-4 bg-white shadow-lg fit-content"
                     style="border-right:6px solid #11101D ">
 
                     <!-- Div for leave type and Leave Balance      -->
@@ -177,7 +179,7 @@
                 </div>
 
                 <!-- Card -->
-                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-3 bg-white shadow-lg fit-content"
+                <div class="col-md-3 col-sm-12 py-4  rounded-lg m-4 bg-white shadow-lg fit-content"
                     style="border-right:6px solid #11101D ">
 
                     <!-- Div for leave type and Leave Balance      -->
