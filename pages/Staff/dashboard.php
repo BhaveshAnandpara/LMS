@@ -12,6 +12,7 @@
 
     //include Config Class
     require('../../utils/Config/Config.class.php');
+    require('../../utils/Utils.class.php');
 
     //start session
     session_start();
@@ -84,12 +85,7 @@
 
                     while( $row = mysqli_fetch_assoc($data) ){
 
-                        //Get the Difference of Time and Show that
-                        $diff = round(abs( time() -  strtotime($row['date'])) / 60 , 0);
-                        $time = 0;
-                        if( $diff < 60 ) $time = $diff. " Mins Ago";
-                        else if( $diff >= 60 && $diff < (24*60 ) ) $time = round( $diff/60 , 0 ). " Hrs Ago";
-                        else $time = round($diff/ 3600 , 0 ). " Days Ago";
+                    $time = Utils::getTimeDiff( $row['date'] );
 
                     echo
                         "<div class='col-md-3 col-sm-12 py-2   rounded-lg m-4 bg-white shadow-lg fit-content'
