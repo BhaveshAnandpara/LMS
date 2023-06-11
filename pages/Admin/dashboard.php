@@ -202,54 +202,6 @@
 
         </div>
 
-        <!-- Table  for latest Leave Request -->
-        <div class="content mt-3 rounded-lg dash_table" style="margin: auto;">
-            <div class="container clg-12  bg-white rounded-lg  "
-                style="transition: all all 0.5s ease; border-right:6px solid #11101D">
-                <div class="page-title p-4">
-                    <h3> Latest Leave Application </h3>
-                </div>
-                <div class="box box-primary">
-                    <div class="box-body">
-                        <table width="100%" class="table table-hover" id="dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>Leave Type</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Reason</th>
-                                    <th>Posting Date</th>
-                                    <th>Action</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>Ganesh Golhar</td>
-                                    <td>29/06/2023</td>
-                                    <td>30/06/2023</td>
-                                    <td>31/06/2023</td>
-                                    <td>Sick</td>
-                                    <td class="text-end">
-                                        <a href="" class="btn btn-outline-info btn-rounded"><i
-                                                class="fas fa-pen"></i></a>
-                                        <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                                class="fas fa-trash"></i></a>
-                                    </td>
-                                    <td>Pending</td>
-                                </tr>
-                            </tbody>
-                            <!-- for  Delete button  -->
-                            <!-- write code Here -->
-
-                            <!-- for  Edit button  -->
-                            <!-- write code Here -->
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
 </body>

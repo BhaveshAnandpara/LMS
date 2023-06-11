@@ -214,15 +214,13 @@
 
 
             // SQL Query to get the count of all inactive employees
-            $sql = "SELECT * from notifications where employeeID='$employeeID' ";
+            $sql = "SELECT * from notifications where employeeID='$employeeID' Order By dateTime DESC";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
             if( !$result ) echo("Error description: " . mysqli_error($con));
 
-            $rows = mysqli_fetch_array($result); // Response
-
-            return $rows;
+            return $result;
 
         }
 
