@@ -106,15 +106,26 @@
 
                         <?php
 
+                            $null_cycle_date = "No Date";
                             $masterData = $user->getMasterData(); // Returns Array of Tuples in Database
 
                             foreach($masterData as $row ){
+
+                                if ($row['cycleDate'] == '0000-00-00') $cycle_date = $null_cycle_date;
+                                else $cycle_date = date( 'd-m-Y' , strtotime($row['cycleDate']) );
+
+                                if (  empty( $row['leaveInterval'] ) ) $row['leaveInterval'] = 0;
+                                if (  empty( $row['increment'] ) ) $row['increment'] = 0;
+                                if (  empty( $row['carryForwardInto'] ) ) $row['carryForwardInto'] = "No Carry Forwards";
+                                if (  empty( $row['balanceLimit'] ) ) $row['balanceLimit'] = 0;
+                                if (  empty( $row['applyLimit'] ) ) $row['applyLimit'] = "No Limiting ";
+                                if (  empty( $row['waitingTime'] ) ) $row['waitingTime'] = 0;
 
                                 echo "<tr>";
                                 echo "<td>" . $row['leaveID'] . "</td>";
                                 echo "<td>" . $row['leaveType'] . "</td>";
                                 echo "<td>" . $row['leaveDesc'] . "</td>";
-                                echo "<td>" . date( 'd-m-Y' , strtotime($row['cycleDate']) ) . "</td>";
+                                echo "<td>" . $cycle_date . "</td>";
                                 echo "<td>" . $row['leaveInterval'] . " Month</td>";
                                 echo "<td>" . $row['increment'] . " Leaves</td>";
                                 echo "<td>" . $row['carryForwardInto'] . "</td>";
