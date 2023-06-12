@@ -227,6 +227,21 @@
         }
 
 
+        // ------------------------------------ Manage Master Data ------------------------------------ //
+
+        public function getMasterData(){
+
+            // SQL Query to get masterdata Info
+            $sql = "SELECT A.leaveID , A.leaveType , A.leaveDesc , A.cycleDate , A.leaveInterval , A.increment ,B.leaveType as carryForwardInto , A.balanceLimit , A.applyLimit , A.waitingTime , A.status from masterdata as A , masterdata as B where A.carryForwardInto = B.leaveID ";
+            
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+
+
     }
 
 
