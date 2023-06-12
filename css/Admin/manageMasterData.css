@@ -1,0 +1,37 @@
+
+
+
+.container {
+
+    max-width: none !important;
+    width: 100% !important;
+    height: max-content;
+    min-height: calc(100vh - 85px);
+    overflow: scroll;
+
+}
+
+.container::-webkit-scrollbar{
+    display: none;
+}
+
+.table-container{
+
+    width: max-content;
+
+}
+
+.tablecontent {
+    width: 100%;
+}
+
+.tablecontent th {
+    padding: 12px;
+    background-color: #11101D;
+    color: white;
+}
+
+.tablecontent td {
+    text-align: center;
+    padding: 5px;
+}
