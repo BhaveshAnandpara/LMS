@@ -12,6 +12,7 @@
 
     //include Config Class
     require('../../utils/Config/Config.class.php');
+    require('../../utils/Utils.class.php');
 
     //start session
     session_start();
