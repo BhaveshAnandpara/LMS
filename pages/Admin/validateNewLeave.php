@@ -92,7 +92,7 @@
             echo $time;
 
             //Send Notification to Admin
-            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$user->employeeId', 'New Leave Type Added Sucessfully.<a href=./manageMasterData.php > View Details </a>', '$time' );";
+            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$user->employeeId', '$leaveName Added Sucessfully.<a href=./manageMasterData.php > View Details </a>', '$time' );";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
@@ -100,7 +100,9 @@
                 echo "Error Occured During Insertion of Notification";
             }else{
 
-                header('location : ./addLeave.php');
+                echo "<script>
+                        window.location.href = './addLeave.php'
+                    </script>";
                 exit(0);
 
             }
