@@ -129,3 +129,30 @@ table {
     font-style: italic;
 }
 
+.AddBtn {
+    background-color: #11101D;
+    padding: 4px 10px;
+    font-size: 20px;
+    border: 0;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submitbtn {
+    background-color: #11101D;
+    padding: 8px 10px !important;
+    color: white;
+    margin-left: 0 !important;
+    margin-top: 25px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.submitbtn:hover {
+    transform: scale(1.02);
+}

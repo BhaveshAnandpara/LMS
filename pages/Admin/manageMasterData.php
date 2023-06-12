@@ -4,6 +4,7 @@
 ?>
 
 
+
 <!-- Include this to use User object -->
 <?php
 
@@ -79,7 +80,7 @@
                     <h3> Manage Master Data </h3>
                 </div>
 
-                <a href="../../pages/Admin/MasterData/addLeave.php" class="my-3" ><button class="addUser"> + </button></a>
+                <a href="../../pages/Admin/addLeave.php" class="my-3" ><button class="AddBtn"> + </button></a>
 
                 <table class="tablecontent">
 
