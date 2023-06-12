@@ -16,9 +16,25 @@
 
         }
 
+        public static function getLeaveTypes(){
+
+            $sql = "Select * from masterdata";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+
+            return $result ;
+
+        }
+
+        public static function alert( $msg ){
+
+            return "<script> alert('" .$msg. "') </script>";
+
+        }
+
     
     }
 
 
 ?>
-

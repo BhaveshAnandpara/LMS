@@ -37,7 +37,7 @@
             </li>
 
             <li>
-                <a href="../../pages/SuperAdmin/super_admin_dashboard.php">
+                <a href="../../pages/Admin/dashboard.php">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                 </a>
@@ -45,7 +45,7 @@
             </li>
 
             <li>
-                <a href="../../pages/SuperAdmin/manageMasterData.php">
+                <a href="../../pages/Admin/manageMasterData.php">
                     <i class="fa-solid fa-server"></i>
                     <span class="links_name">Manage Master Data</span>
                 </a>
@@ -53,7 +53,7 @@
             </li>
 
             <li>
-                <a href="../../pages/SuperAdmin/manageDepartment.php">
+                <a href="../../pages/Admin/manageDepartment.php">
                     <i class="fa-solid fa-building-user"></i>
                     <span class="links_name">Manage Department</span>
                 </a>
@@ -61,7 +61,7 @@
             </li>
 
             <li>
-                <a href="../../pages/SuperAdmin/manageEmployees.php">
+                <a href="../../pages/Admin/manageEmployees.php">
                     <i class="fa-solid fa-users"></i>
                     <span class="links_name">Manage Employees</span>
                 </a>
@@ -71,7 +71,7 @@
 
 
             <li>
-                <a href="../../pages/SuperAdmin/manageLeaves.php">
+                <a href="../../pages/Admin/manageLeaves.php">
                     <i class="fas fa-sticky-note"></i>
                     <span class="links_name">Manage Leaves</span>
                 </a>
@@ -79,7 +79,7 @@
             </li>
 
             <li>
-                <a href="../../pages/SuperAdmin/manageHolidays.php">
+                <a href="../../pages/Admin/manageHolidays.php">
                     <i class="fas fa-calendar"></i>
                     <span class="links_name">Manage Holidays</span>
                 </a>
