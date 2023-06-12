@@ -1,11 +1,4 @@
 
-<?php
-  include "../../utils/Staff/staff.class.php";
-    //start session
-    session_start();
-    //Get the User Object
-    $user =  $_SESSION['user'];
-?>
 
 <?php 
     //  Creates database connection 

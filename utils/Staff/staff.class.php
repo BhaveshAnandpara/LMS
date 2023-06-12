@@ -63,7 +63,7 @@
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
-            if( !$result ) echo("Error description: " . mysqli_error($con));
+            if( !$result ) echo("Error description: " . mysqli_error($conn));
 
             return $result;
 
@@ -86,7 +86,7 @@
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
-            if( !$result ) echo("Error description: " . mysqli_error($con));
+            if( !$result ) echo("Error description: " . mysqli_error($conn));
 
             return $result;
 
