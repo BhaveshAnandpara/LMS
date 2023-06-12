@@ -235,17 +235,6 @@
   width: 50px;
   background: none;
 }
-.home-section , .emp-home-section{
-  position: relative;
-  background: #E4E9F7;
-  min-height: 100vh;
-  top: 0;
-  left: 78px;
-  width: calc(100% - 78px);
-  transition: all 0.5s ease;
-  padding-bottom: 7px;
-  z-index: 2;
-}
 
 .emp-home-section{
 
