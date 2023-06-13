@@ -19,6 +19,9 @@
 
         //Leave Status
         public static $_MASTERADTA_STATUS  = array('ACTIVE' => "ACTIVE", 'INACTIVE' => "INACTIVE" );
+
+        //Transaction Status
+        public static $_TRANSACTION_STATUS  = array('PENDING' => "PENDING", 'SUCCESSFULL' => "SUCCESSFULL", 'FAILED' => "FAILED" );
     
 
     }
