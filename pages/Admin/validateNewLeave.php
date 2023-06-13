@@ -26,9 +26,17 @@
 
 <?php
 
+try{
+
     //Check Whether Name and Desc is empty or not
-    if ( empty($_POST['leaveName']) ) echo Utils::alert("Leave Name cannot be Empty");
-    else if ( empty($_POST['leaveDesc']) ) echo Utils::alert("Leave Description cannot be Empty");
+    if ( empty($_POST['leaveName']) ) {
+        echo Utils::alert("Leave Name cannot be Empty");
+        throw new Exception("Leave Name cannot be Empty");
+    }
+    else if ( empty($_POST['leaveDesc']) ) {
+        echo Utils::alert("Leave Description cannot be Empty");
+        throw new Exception("Leave Description cannot be Empty");
+    }
 
     //Get the Data
     $leaveName =  $_POST['leaveName'] ;
@@ -39,7 +47,7 @@
     $balanceLimit =  $_POST['balanceLimit'] ;
     $applyLimit =  $_POST['applyLimit'] ;
     $waitingTime =  $_POST['waitingTime'];  
-    $carryForwardInto =  $_POST['carryForwardInto'];
+    $carryForwardInto =  $_POST['carryForwardInto']; //Gives undefined if not selected but whatever
 
     //If Null Assign NULL Values
     if( empty($cycleDate) ) $cycleDate = "NULL";
@@ -50,7 +58,6 @@
     if( empty($waitingTime) ) $waitingTime = "NULL";
     if( empty($carryForwardInto) ) $carryForwardInto = "NULL";
 
-    try{
 
     // ----------------------------------- Validate Leave Name ----------------------------------- //
     
@@ -73,24 +80,32 @@
         
     }
     
+    $MasterData_ACTIVE = Config::$_MASTERADTA_STATUS['ACTIVE'];
     
-    //Query to insert data
-    $sql = "INSERT INTO masterdata (`leaveID`, `leaveType`, `leaveDesc`, `cycleDate`, `leaveInterval`, `increment`, `carryForwardInto`, `balanceLimit`, `applyLimit`, `waitingTime`, `status`) VALUES (NULL, '$leaveName', '$leaveDesc', '$cycleDate', $leaveInterval, $leaveIncrement, $carryForwardInto , $balanceLimit , $applyLimit , $waitingTime,'ACTIVE')";    
+    //Query to insert leave data into masterdata
+    $sql = "INSERT INTO masterdata (`leaveID`, `leaveType`, `leaveDesc`, `cycleDate`, `leaveInterval`, `increment`, `carryForwardInto`, `balanceLimit`, `applyLimit`, `waitingTime`, `status`) VALUES (NULL, '$leaveName', '$leaveDesc', '$cycleDate', $leaveInterval, $leaveIncrement, $carryForwardInto , $balanceLimit , $applyLimit , $waitingTime,'$MasterData_ACTIVE')";    
     
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
-        Utils::alert("Error Occured");
+        Utils::alert("Opertaion Failed");
         throw new Exception("Error Occured During Query Insertion");
     }
     else{
 
         echo Utils::alert("Leave Added Successfully");
 
-
-
-            //------------------------------Start Leave transactions To add new Leave type for employees------------------------------//
+            //------------------------------ Main Logic  ------------------------------//
             
+
+            //DECLARATIONS OF CONSTANTS
+            
+            $transaction_PENDING = Config::$_TRANSACTION_STATUS['PENDING'];
+            $transaction_FAILED = Config::$_TRANSACTION_STATUS['FAILED'];
+            $transaction_SUCCESSFULL = Config::$_TRANSACTION_STATUS['SUCCESSFULL'];
+            $employee_ACTIVE = Config::$_EMPLOYEE_STATUS['ACTIVE'];
+            $ADMIN = Config::$_ADMIN_;
+
             // 1. Get LeaveID
             $sql = "Select * from masterdata where leaveType='$leaveName'";
             $conn = sql_conn();
@@ -100,31 +115,34 @@
             
 
             // 2. Get Every Employee
-            $sql = "Select * from employees where status='ACTIVE'";
+            $sql = "Select * from employees where status='$employee_ACTIVE' Except ( Select * from employees where role='$ADMIN' and status='$employee_ACTIVE' )";
             $conn = sql_conn();
             $employeeResult =  mysqli_query( $conn , $sql);
 
             if( !$employeeResult ) echo "Error Occured";
 
-            //Insert Balance for all Employees
 
+            
+            $time = date( 'Y-m-d H:i:s' , time());
+            
+            //Insert Balance for all Employees
             while( $row = mysqli_fetch_assoc($employeeResult) ){
 
                 $employeeID = $row['employeeID'];
 
                 // 3. Start Transaction
-                $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $employeeID , $leaveID , current_timestamp(), '$leaveName Added', 'PENDING', '0' );";
+                $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $employeeID , $leaveID , current_timestamp(), '$leaveName Added', '$transaction_PENDING', '0' );";
                 $conn = sql_conn();
                 $result =  mysqli_query( $conn , $sql);
 
-                if( !$result ){
+                if( !$result ){ //If transaction fails
 
-                    echo Utils::alert($row['fullName']." Error Occured during Transaction ");
+                    echo Utils::alert(" Error Occured during ". $row['fullName']. "Transaction ");
 
                 }
 
                  // 4. Get Transaction ID
-                $sql = "Select * from leavetransactions where applicantID=$employeeID and leaveID=$leaveID and status = 'PENDING'";
+                $sql = "Select * from leavetransactions where applicantID=$employeeID and leaveID=$leaveID and status = '$transaction_PENDING'";
                 $conn = sql_conn();
                 $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
 
@@ -140,7 +158,7 @@
                 if( !$insertBalance ) {
 
                     //Set transaction as Failed
-                    $sql = "Update leavetransactions set status='FAILED' where applicantID=$employeeID and leaveID=$leaveID and status = 'PENDING'";
+                    $sql = "Update leavetransactions set status='$transaction_FAILED' where applicantID=$employeeID and leaveID=$leaveID and status = '$transaction_PENDING'";
                     $conn = sql_conn();
                     $result = mysqli_query( $conn , $sql);
                     echo "Error Occured during Adding New Balances";
@@ -149,29 +167,25 @@
                 else{
                     
                     // 6.Set transaction as Successfull
-                    $sql = "Update leavetransactions set status='SUCCESSFULL' where applicantID=$employeeID and leaveID=$leaveID and status = 'PENDING'";
+                    $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$employeeID and leaveID=$leaveID and status = '$transaction_PENDING'";
                     $conn = sql_conn();
                     $result = mysqli_query( $conn , $sql);
 
-                    // 7. Send Notification to Admin
+                    // 7. Send Notification to Employee
                     $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$employeeID', '$leaveName Added.<a href=./dashboard.php > Check Balance </a>', '$time' );";
                     $conn = sql_conn();
                     $result =  mysqli_query( $conn , $sql);
 
                     if( !$result ){
-                        echo "Error Occured During Insertion of Notification";
+                        echo "Error Occured During Insertion of ". $row['fullName'] ."  Notification";
                     }
 
                 }
 
 
             }
-
         
 
-            $time = date( 'Y-m-d H:i:s' , time());
-
-            echo $time;
 
             //Send Notification to Admin
             $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$user->employeeId', '$leaveName Added Sucessfully.<a href=./manageMasterData.php > View Details </a>', '$time' );";
@@ -182,9 +196,9 @@
                 echo "Error Occured During Insertion of Notification";
             }else{
 
-                // echo "<script>
-                //         window.location.href = './addLeave.php'
-                //     </script>";
+                echo "<script>
+                        window.location.href = './addLeave.php'
+                    </script>";
                 exit(0);
 
             }
@@ -200,9 +214,9 @@ catch(Exception $e){
 
     echo $e;
 
-    // echo "<script>
-    //     window.location.href = './addLeave.php'
-    // </script>";
+    echo "<script>
+        window.location.href = './addLeave.php'
+    </script>";
     
 }
 
