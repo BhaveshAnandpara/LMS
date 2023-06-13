@@ -49,6 +49,7 @@ try{
     $waitingTime =  $_POST['waitingTime'];  
     $carryForwardInto =  $_POST['carryForwardInto']; //Gives undefined if not selected but whatever
 
+
     //If Null Assign NULL Values
     if( empty($cycleDate) ) $cycleDate = "NULL";
     if( empty($leaveInterval) ) $leaveInterval = "NULL";
@@ -84,11 +85,13 @@ try{
     
     //Query to insert leave data into masterdata
     $sql = "INSERT INTO masterdata (`leaveID`, `leaveType`, `leaveDesc`, `cycleDate`, `leaveInterval`, `increment`, `carryForwardInto`, `balanceLimit`, `applyLimit`, `waitingTime`, `status`) VALUES (NULL, '$leaveName', '$leaveDesc', '$cycleDate', $leaveInterval, $leaveIncrement, $carryForwardInto , $balanceLimit , $applyLimit , $waitingTime,'$MasterData_ACTIVE')";    
+
     
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
         Utils::alert("Opertaion Failed");
+
         throw new Exception("Error Occured During Query Insertion");
     }
     else{
@@ -185,6 +188,7 @@ try{
 
             }
         
+
 
 
             //Send Notification to Admin
