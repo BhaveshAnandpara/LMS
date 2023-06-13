@@ -117,8 +117,10 @@
                                 if (  empty( $row['leaveInterval'] ) ) $row['leaveInterval'] = 0;
                                 if (  empty( $row['increment'] ) ) $row['increment'] = 0;
                                 if (  empty( $row['carryForwardInto'] ) ) $row['carryForwardInto'] = "No Carry Forwards";
-                                if (  empty( $row['balanceLimit'] ) ) $row['balanceLimit'] = 0;
-                                if (  empty( $row['applyLimit'] ) ) $row['applyLimit'] = "No Limiting ";
+                                if (  empty( $row['balanceLimit'] ) ) $row['balanceLimit'] = "No Limit";
+                                else{ $row['balanceLimit'] = $row['balanceLimit']. " Leaves" ;}
+                                if (  empty( $row['applyLimit'] ) ) $row['applyLimit'] = "No Limit ";
+                                else{ $row['applyLimit'] = $row['applyLimit']. " Leaves" ;}
                                 if (  empty( $row['waitingTime'] ) ) $row['waitingTime'] = 0;
 
                                 echo "<tr>";
@@ -129,8 +131,8 @@
                                 echo "<td>" . $row['leaveInterval'] . " Month</td>";
                                 echo "<td>" . $row['increment'] . " Leaves</td>";
                                 echo "<td>" . $row['carryForwardInto'] . "</td>";
-                                echo "<td>" . $row['balanceLimit'] . " Leaves </td>";
-                                echo "<td>" . $row['applyLimit'] . " Leaves </td>";
+                                echo "<td>" . $row['balanceLimit'] . " </td>";
+                                echo "<td>" . $row['applyLimit'] . " </td>";
                                 echo "<td>" . $row['waitingTime'] . " Days </td>";
                                 echo "<td>" . $row['status'] . " </td>";
                                 echo "<td><a href='../../pages/Admin/editLeave.php?leaveId=$row[leaveID]' name='edit'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";

@@ -102,7 +102,7 @@
 
                     <!-- Cycle Date -->
                     <div class="form-group col-md-4">
-                        <input type="text"date value="<?php echo $leaveDetails['cycleDate'] ?>"
+                        <input type="text" onfocus="(this.type='date')"  value="<?php echo $leaveDetails['cycleDate'] ?>"
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark "
                             placeholder="Cycle Date" name="cycleDate">
                     </div>
