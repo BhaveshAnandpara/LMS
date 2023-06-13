@@ -133,7 +133,7 @@
                                 echo "<td>" . $row['applyLimit'] . " Leaves </td>";
                                 echo "<td>" . $row['waitingTime'] . " Days </td>";
                                 echo "<td>" . $row['status'] . " </td>";
-                                echo "<td><a href='../../pages/SuperAdmin/masterData_edit.php?leaveId=$row[leaveID]' name='edit'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
+                                echo "<td><a href='../../pages/Admin/editLeave.php?leaveId=$row[leaveID]' name='edit'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
                                 echo "<td><a href='../../utils/deleteLeaveId.php?leaveId=$row[leaveID]' name='delete'><i class='fa-solid fa-trash delete'></i></a></td>";
                                 echo "</tr>";
                             }
