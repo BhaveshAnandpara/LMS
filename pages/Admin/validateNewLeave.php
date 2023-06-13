@@ -86,7 +86,89 @@
     else{
 
         echo Utils::alert("Leave Added Successfully");
+
+
+
+            //------------------------------Start Leave transactions To add new Leave type for employees------------------------------//
+            
+            // 1. Get LeaveID
+            $sql = "Select * from masterdata where leaveType='$leaveName'";
+            $conn = sql_conn();
+            $result =  mysqli_fetch_assoc( mysqli_query( $conn , $sql) );
+            
+            $leaveID = $result['leaveID'];
+            
+
+            // 2. Get Every Employee
+            $sql = "Select * from employees where status='ACTIVE'";
+            $conn = sql_conn();
+            $employeeResult =  mysqli_query( $conn , $sql);
+
+            if( !$employeeResult ) echo "Error Occured";
+
+            //Insert Balance for all Employees
+
+            while( $row = mysqli_fetch_assoc($employeeResult) ){
+
+                $employeeID = $row['employeeID'];
+
+                // 3. Start Transaction
+                $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $employeeID , $leaveID , current_timestamp(), '$leaveName Added', 'PENDING', '0' );";
+                $conn = sql_conn();
+                $result =  mysqli_query( $conn , $sql);
+
+                if( !$result ){
+
+                    echo Utils::alert($row['fullName']." Error Occured during Transaction ");
+
+                }
+
+                 // 4. Get Transaction ID
+                $sql = "Select * from leavetransactions where applicantID=$employeeID and leaveID=$leaveID and status = 'PENDING'";
+                $conn = sql_conn();
+                $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
+
+                $transactionID = $result['transactionID'];
+                
+                // 5. Insert Balance
+                $sql = "INSERT INTO leavebalance (`employeeID`, `leaveID`, `leaveType`, `balance`, `leaveCounter`, `lastUpdatedOn`) VALUES ( $employeeID , $leaveID , '$leaveName' , '0', '0', $transactionID )";
+
+                $conn = sql_conn();
+                $insertBalance = mysqli_query( $conn , $sql);
+
+                //Error Handling
+                if( !$insertBalance ) {
+
+                    //Set transaction as Failed
+                    $sql = "Update leavetransactions set status='FAILED' where applicantID=$employeeID and leaveID=$leaveID and status = 'PENDING'";
+                    $conn = sql_conn();
+                    $result = mysqli_query( $conn , $sql);
+                    echo "Error Occured during Adding New Balances";
+                    
+                }
+                else{
+                    
+                    // 6.Set transaction as Successfull
+                    $sql = "Update leavetransactions set status='SUCCESSFULL' where applicantID=$employeeID and leaveID=$leaveID and status = 'PENDING'";
+                    $conn = sql_conn();
+                    $result = mysqli_query( $conn , $sql);
+
+                    // 7. Send Notification to Admin
+                    $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$employeeID', '$leaveName Added.<a href=./dashboard.php > Check Balance </a>', '$time' );";
+                    $conn = sql_conn();
+                    $result =  mysqli_query( $conn , $sql);
+
+                    if( !$result ){
+                        echo "Error Occured During Insertion of Notification";
+                    }
+
+                }
+
+
+            }
+
         
+
             $time = date( 'Y-m-d H:i:s' , time());
 
             echo $time;
@@ -100,9 +182,9 @@
                 echo "Error Occured During Insertion of Notification";
             }else{
 
-                echo "<script>
-                        window.location.href = './addLeave.php'
-                    </script>";
+                // echo "<script>
+                //         window.location.href = './addLeave.php'
+                //     </script>";
                 exit(0);
 
             }
@@ -118,9 +200,9 @@ catch(Exception $e){
 
     echo $e;
 
-    echo "<script>
-        window.location.href = './addLeave.php'
-    </script>";
+    // echo "<script>
+    //     window.location.href = './addLeave.php'
+    // </script>";
     
 }
 
