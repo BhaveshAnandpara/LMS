@@ -154,6 +154,7 @@
                                 echo "<td class='$statusStyle' >" . $row['status'] . " </td>";
                                 echo "<td><a href='../../pages/Admin/editLeave.php?leaveId=$row[leaveID]' name='edit'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
                                 echo "<td><a href='../../pages/Admin/validateLeaveStatus.php?leaveId=$row[leaveID]&status=$statusBtnValue' name='delete'> <button class='submitbtn m-0 w-100' > ". $statusBtnValue ." </button> </a></td>";
+
                                 echo "</tr>";
                             }
 
