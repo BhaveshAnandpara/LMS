@@ -110,7 +110,7 @@
                             <th>WAITING TIME</th>
                             <th>STATUS</th>
                             <th>EDIT</th>
-                            <th>INACTIVE</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -124,6 +124,9 @@
                             foreach($masterData as $row ){
 
                                 $statusBtnValue = leaveStatusButton( $row['status'] );
+                                $statusStyle = "text-black";
+
+                                if( $row['status'] == Config::$_MASTERADTA_STATUS['INACTIVE'] ) $statusStyle = "text-black-50";
 
                                 if ($row['cycleDate'] == '0000-00-00') $cycle_date = $null_cycle_date;
                                 else $cycle_date = date( 'd-m-Y' , strtotime($row['cycleDate']) );
@@ -138,17 +141,17 @@
                                 if (  empty( $row['waitingTime'] ) ) $row['waitingTime'] = 0;
 
                                 echo "<tr>";
-                                echo "<td>" . $row['leaveID'] . "</td>";
-                                echo "<td>" . $row['leaveType'] . "</td>";
-                                echo "<td>" . $row['leaveDesc'] . "</td>";
-                                echo "<td>" . $cycle_date . "</td>";
-                                echo "<td>" . $row['leaveInterval'] . " Month</td>";
-                                echo "<td>" . $row['increment'] . " Leaves</td>";
-                                echo "<td>" . $row['carryForwardInto'] . "</td>";
-                                echo "<td>" . $row['balanceLimit'] . " </td>";
-                                echo "<td>" . $row['applyLimit'] . " </td>";
-                                echo "<td>" . $row['waitingTime'] . " Days </td>";
-                                echo "<td>" . $row['status'] . " </td>";
+                                echo "<td class='$statusStyle' >" . $row['leaveID'] . "</td>";
+                                echo "<td class='$statusStyle' >" . $row['leaveType'] . "</td>";
+                                echo "<td class='$statusStyle' >" . $row['leaveDesc'] . "</td>";
+                                echo "<td class='$statusStyle' >" . $cycle_date . "</td>";
+                                echo "<td class='$statusStyle' >" . $row['leaveInterval'] . " Month</td>";
+                                echo "<td class='$statusStyle' >" . $row['increment'] . " Leaves</td>";
+                                echo "<td class='$statusStyle' >" . $row['carryForwardInto'] . "</td>";
+                                echo "<td class='$statusStyle' >" . $row['balanceLimit'] . " </td>";
+                                echo "<td class='$statusStyle' >" . $row['applyLimit'] . " </td>";
+                                echo "<td class='$statusStyle' >" . $row['waitingTime'] . " Days </td>";
+                                echo "<td class='$statusStyle' >" . $row['status'] . " </td>";
                                 echo "<td><a href='../../pages/Admin/editLeave.php?leaveId=$row[leaveID]' name='edit'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
                                 echo "<td><a href='../../pages/Admin/validateLeaveStatus.php?leaveId=$row[leaveID]&status=$statusBtnValue' name='delete'> <button class='submitbtn m-0 w-100' > ". $statusBtnValue ." </button> </a></td>";
                                 echo "</tr>";
