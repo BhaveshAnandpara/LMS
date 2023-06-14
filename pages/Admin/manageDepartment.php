@@ -112,7 +112,7 @@
                                 echo "<td  >" . $row['deptName'] . "</td>";
                                 echo "<td  >" . $row['deptAlias'] . "</td>";
                                 echo "<td  >" . $row['deptHOD'] . " </td>";
-                                echo "<td><a href='../../pages/Admin/editLeave.php?deptID=$row[deptID]'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
+                                echo "<td><a href='../../pages/Admin/editDept.php?deptID=$row[deptID]'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
                                 echo "<td><a href='../../pages/Admin/deleteDept.php?deptID=$row[deptID]'> <i class='fa-solid fa-trash edit'></i> </a></td>";
                                 echo "</tr>";
                             }

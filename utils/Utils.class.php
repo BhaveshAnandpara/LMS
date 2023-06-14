@@ -38,6 +38,7 @@
 
         }
 
+
         public static function getAllEmployees(  ){
 
             $sql = "Select * from employees";
@@ -45,6 +46,16 @@
             $result =  mysqli_query( $conn , $sql);
             return $result ;
 
+
+        }
+
+        public static function getDeptDetails( $deptID ){
+
+            $sql = "Select * from departments where deptID=$deptID";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
 
         }
 
