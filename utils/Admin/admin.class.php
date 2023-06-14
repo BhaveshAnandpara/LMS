@@ -228,6 +228,13 @@
 
         // ------------------------------------ Manage Master Data ------------------------------------ //
 
+
+        /*
+        @function "getMasterData"
+        @description "getMasterData
+                        --> get all leave types and data
+                        
+         */
         public function getMasterData(){
 
             // SQL Query to get masterdata Info
@@ -240,6 +247,25 @@
             $result =  mysqli_query( $conn , $sql);
 
             return $result ;
+
+        }
+
+         /*
+        @function "setLeaveInactive"
+        @description "setLeaveInactive
+                        --> Set Leave as Inactive
+                        
+         */
+        public function setLeaveInactive($leaveID , $status ){
+
+            // SQL Query to get masterdata Info
+            $sql = " Update masterdata set status='$status' where leaveID=$leaveID ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( $result ) return true;
+            else return false;
+
 
         }
 

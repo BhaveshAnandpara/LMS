@@ -23,6 +23,18 @@
 
 ?>
 
+
+<?php
+
+    function leaveStatusButton( $status ){
+
+        if( $status == Config::$_MASTERADTA_STATUS['ACTIVE'] ) return Config::$_MASTERADTA_STATUS['INACTIVE'];
+        return Config::$_MASTERADTA_STATUS['ACTIVE'];
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -111,6 +123,8 @@
 
                             foreach($masterData as $row ){
 
+                                $statusBtnValue = leaveStatusButton( $row['status'] );
+
                                 if ($row['cycleDate'] == '0000-00-00') $cycle_date = $null_cycle_date;
                                 else $cycle_date = date( 'd-m-Y' , strtotime($row['cycleDate']) );
 
@@ -136,7 +150,7 @@
                                 echo "<td>" . $row['waitingTime'] . " Days </td>";
                                 echo "<td>" . $row['status'] . " </td>";
                                 echo "<td><a href='../../pages/Admin/editLeave.php?leaveId=$row[leaveID]' name='edit'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
-                                echo "<td><a href='../../utils/deleteLeaveId.php?leaveId=$row[leaveID]' name='delete'><i class='fa-solid fa-trash delete'></i></a></td>";
+                                echo "<td><a href='../../pages/Admin/validateLeaveStatus.php?leaveId=$row[leaveID]&status=$statusBtnValue' name='delete'> <button class='submitbtn m-0 w-100' > ". $statusBtnValue ." </button> </a></td>";
                                 echo "</tr>";
                             }
 
