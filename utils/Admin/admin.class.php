@@ -281,7 +281,7 @@
         public function getDepartments(){
 
             // SQL Query to get departments Info
-            $sql =  "SELECT * from departments";
+            $sql =  "SELECT dept.deptID , dept.deptName , dept.deptAlias , emp.fullName from departments as dept left join employees as emp on dept.deptHOD = emp.employeeID ORDER BY deptName ";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 

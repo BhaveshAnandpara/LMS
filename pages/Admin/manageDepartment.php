@@ -105,13 +105,13 @@
                             foreach($depts as $row ){
 
                                 if (  empty( $row['deptAlias'] ) ) $row['deptAlias'] = "No Alias";
-                                if (  empty( $row['deptHOD'] ) ) $row['deptHOD'] = "No HOD";
+                                if (  empty( $row['fullName'] ) ) $row['fullName'] = "No HOD";
 
                                 echo "<tr>";
                                 echo "<td  >" . $row['deptID'] . "</td>";
                                 echo "<td  >" . $row['deptName'] . "</td>";
                                 echo "<td  >" . $row['deptAlias'] . "</td>";
-                                echo "<td  >" . $row['deptHOD'] . " </td>";
+                                echo "<td  >" . $row['fullName'] . " </td>";
                                 echo "<td><a href='../../pages/Admin/editDept.php?deptID=$row[deptID]'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
                                 echo "<td><a href='../../pages/Admin/deleteDept.php?deptID=$row[deptID]'> <i class='fa-solid fa-trash edit'></i> </a></td>";
                                 echo "</tr>";
