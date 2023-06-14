@@ -75,8 +75,6 @@ try{
     
     //Query to insert dept data into departments
     $sql = "INSERT INTO `departments` (`deptID`, `deptName`, `deptAlias`, `deptHOD`) VALUES (NULL, '$deptName', '$deptAlias', $deptHOD);";
-
-    
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
@@ -87,30 +85,43 @@ try{
 
         echo Utils::alert("Department Added Successfully");
 
-        $time = date( 'Y-m-d H:i:s' , time());
 
+        $time = date( 'Y-m-d H:i:s' , time());
 
         if( $deptHOD != "NULL" ) {
 
+            //Set Faculty Role as HOD
+            
+            //1.Query to get DeptID
+            $sql = "Select * from departments where deptName='$deptName' ";
+            $deptresult = mysqli_fetch_assoc( mysqli_query( $conn , $sql) );
+            
+            $deptID = $deptresult['deptID'];
+            
+            $newRole = Config::$_HOD_;
 
-        // 1. Send Notification to Employee
-        $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$deptHOD', 'You have been Assigned new role : HOD of $deptName', '$time' );";
-        $conn = sql_conn();
-        $result =  mysqli_query( $conn , $sql);
-        if( !$result ){
-            echo "Error Occured During Insertion of ". $deptHOD ."  Notification";
+            //2. Query to set faculty as HOD
+            $sql =  "UPDATE employees SET `deptID` = '$deptID' , `role` = '$newRole' where employeeID=$deptHOD"; 
+            $result =  mysqli_query( $conn , $sql);
+
+            //3. Send Notification to Employee
+            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$deptHOD', 'You have been Assigned new role : HOD of $deptName', '$time' );";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+            if( !$result ){
+                echo "Error Occured During Insertion of ". $deptHOD ."  Notification";
+            }
+
+
+            //4. Send Notification to Admin
+            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$user->employeeId', '$deptName has been assigned a new HOD.<a href=./manageDepartment.php > View Details </a>', '$time' );";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+            if( !$result ){
+                echo "Error Occured During Insertion of Notification";
+            }
+
         }
-
-
-        //Send Notification to Admin
-        $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$user->employeeId', '$deptName has been assigned a new HOD.<a href=./manageDepartment.php > View Details </a>', '$time' );";
-        $conn = sql_conn();
-        $result =  mysqli_query( $conn , $sql);
-        if( !$result ){
-            echo "Error Occured During Insertion of Notification";
-        }
-
-    }
 
     echo "<script>
         window.location.href = './manageDepartment.php'
