@@ -270,6 +270,54 @@
         }
 
 
+        // ------------------------------------ Manage Departments ------------------------------------ //
+
+        /*
+        @function "getDepartments"
+        @description "getDepartments
+                        --> get all departments
+                        
+         */
+        public function getDepartments(){
+
+            // SQL Query to get departments Info
+            $sql =  "SELECT * from departments";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+
+        /*
+        @function "deleteDept"
+        @description "deleteDept
+                        --> delete department
+                        
+         */
+        public function deleteDept($deptID ){
+
+            // SQL Query to get masterdata Info
+            $sql = "Select COUNT(employeeID) from employees where deptID=$deptID";
+            $conn = sql_conn();
+            $result =  mysqli_fetch_assoc( mysqli_query( $conn , $sql) );
+
+            $count = $result['COUNT(employeeID)'];
+
+            if( $count > 0 ) return "Please Migrate all Employees to another department before removing department !!";
+
+            // SQL Query to get masterdata Info
+            $sql = "delete from departments where deptID=$deptID";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( $result ) return "Department Removed Successfully";
+            else return "Operation Failed";
+
+
+        }
+
+
     }
 
 
