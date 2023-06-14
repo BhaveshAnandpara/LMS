@@ -17,6 +17,9 @@
         //Employee Status
         public static $_EMPLOYEE_STATUS  = array('ACTIVE' => "ACTIVE", 'INACTIVE' => "INACTIVE" );
 
+        //Department Status
+        public static $_DEPT_STATUS  = array('ACTIVE' => "ACTIVE", 'INACTIVE' => "INACTIVE" );
+
         //Leave Status
         public static $_MASTERADTA_STATUS  = array('ACTIVE' => "ACTIVE", 'INACTIVE' => "INACTIVE" );
 
