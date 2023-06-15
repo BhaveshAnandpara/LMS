@@ -13,7 +13,33 @@
     --primary-color: rgb(39, 81, 154);
     --black-color: rgb(37, 37, 37);
 
+    /* font size  */
+    --font-size-small: 9px;
+    --font-size-normal: 18px;
+    --font-size-medium: 22px;
+    --font-size-large: 28px;
+    --font-size-heading : 36px;
+
+
 }
+  /* define class for size  */
+.small-text {
+    font-size: var(--font-size-small);
+  }
+  .normal-text {
+    font-size: var(--font-size-normal);
+  }
+  .medium-text {
+    font-size: var(--font-size-medium);
+  }
+  .large-text {
+    font-size: var(--font-size-large);
+  }
+  .heading-test {
+    font-size: var(--font-size-heading);
+  }
+  
+  
 
 * {
     margin: 0;
