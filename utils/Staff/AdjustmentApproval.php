@@ -26,4 +26,5 @@ else if ($flag == 2) {
     $query = "UPDATE taskadjustments SET status = 'REJECT' WHERE taskAdjustmentID =$adjustmentId";
     $conn = sql_conn();
     $result = mysqli_query($conn, $query);
+    header("location: http://localhost/LMS/pages/Staff/adjustment_request.php");
 }
