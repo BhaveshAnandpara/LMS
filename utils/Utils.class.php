@@ -59,12 +59,22 @@
             masterdata 
             LEFT JOIN
             leavebalance on masterdata.leaveID = leavebalance.leaveID and employees.employeeID = leavebalance.employeeID where employees.employeeID = $empID";
-            
+
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
             return $result ;
 
         }
+
+        public static function getAllDepts(  ){
+
+            $sql = "Select * from departments";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }        
 
 
         public static function getDeptDetails( $deptID ){
