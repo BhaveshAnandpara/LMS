@@ -22,6 +22,7 @@
 
     //Get the User Object
     $user =  $_SESSION['user'];
+    $empID = $_GET['empID']
 
 ?>
 
@@ -71,25 +72,30 @@
             include "../../includes/header.php";
         ?>
 
+        <?php 
+            $empDetails = mysqli_fetch_assoc( Utils::getEmpDetails($empID) );
+        ?>
 
         <div class="container">
 
-            <form class=" bg-white shadow pl-5 pr-5 pb-3 pt-5 mt-5 rounded-lg" action="validateNewEmp.php" method="POST">
+            <?php $actionUrl = "validateEditEmp.php?empID=".$empID."" ?>
 
-                <h4 class="pb-3 pt-2" style="color: #11101D;">Add New Employee</h4>
+            <form class=" bg-white shadow pl-5 pr-5 pb-3 pt-5 mt-5 rounded-lg" action='<?php echo $actionUrl?>'  method="POST">
+
+                <h4 class="pb-3 pt-2" style="color: #11101D;">Edit Employee Details</h4>
 
                 <div class="form-row">
 
                     <!-- Emp Email -->
                     <div class="form-group col-md-6">
-                        <input type="email" maxLength="100"
+                        <input type="email" maxLength="100" value="<?php echo $empDetails['email'] ?>" disabled
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark "
                             placeholder=" Employee Email" name="empEmail">
                     </div>
 
                     <!-- Employee Name -->
                     <div class="form-group col-md-3">
-                        <input type="text" maxLength="200"
+                        <input type="text" maxLength="200" value="<?php echo $empDetails['fullName'] ?>"
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark "
                             placeholder=" Employee Name " name="empName">
                     </div>
@@ -101,13 +107,23 @@
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark ">
                             <option value="NULL" selected disabled hidden>No Department</option>
 
+
                             <!-- Showing Departments as Options -->
                             <?php
                                 $depts = Utils::getAllDepts();
 
                                 while( $row = mysqli_fetch_assoc($depts) ){
 
-                                    echo "<option value='" .$row['deptID']. "'>". $row['deptName'] ."</option>";
+                                    if( $row['deptID'] == $empDetails['deptID'] ){
+
+                                        echo "<option value='" .$row['deptID']. "' selected >". $row['deptName'] ."</option>";;
+                                        
+                                    }else{
+                                        
+                                        echo "<option value='" .$row['deptID']. "'>". $row['deptName'] ."</option>";
+                                    }
+
+                                    
                                 
                                 }
 
@@ -118,8 +134,8 @@
                     </div>
 
                     <!-- Joining Date -->
-                    <div class="form-group col-md-4">
-                        <input type="text" onfocus="(this.type='date')"
+                    <div class="form-group col-md-4"> 
+                        <input type="text" onfocus="(this.type='date')" value="<?php echo $empDetails['joiningDate'] ?>" disabled
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark "
                             placeholder="Joining Date" name="joiningDate">
                     </div>
@@ -127,7 +143,7 @@
                     <!-- Type -->
                     <div class="form-group col-md-4">
 
-                        <select name="type"
+                        <select name="type" 
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark ">
 
                             <!-- Showing Emp Types as Options -->
@@ -136,7 +152,15 @@
                                 $types = Config::$_EMPLOYEE_TYPE;
 
                                 foreach ($types as $key => $value) {
-                                    echo "<option value='" .$key. "'>". $value ."</option>";
+
+                                    if( $value == $empDetails['type'] ){
+
+                                        echo "<option value='" .$key. "' selected >". $value ."</option>";
+                                        
+                                    }else{
+                                        
+                                        echo "<option value='" .$key. "'>". $value ."</option>";
+                                    }
                                 }
 
                             ?>
@@ -157,7 +181,16 @@
                                 $roles = Config::$_EMPLOYEE_ROLE;
 
                                 foreach ($roles as $key => $value) {
-                                    echo "<option value='" .$key. "'>". $value ."</option>";
+
+                                    if( $value == $empDetails['role'] ){
+
+                                        echo "<option value='" .$key. "' selected >". $value ."</option>";
+                                        
+                                    }else{
+                                        
+                                        echo "<option value='" .$key. "'>". $value ."</option>";
+                                    }
+                                    
                                 }
 
                             ?>
@@ -168,19 +201,34 @@
 
                     <!-- Checkbox -->
                     <div class="form-group d-flex justify-content-center align-items-center mx-3 col-md-1">
-                        <input type="checkbox" class="mr-3" placeholder="Enter Apply Limit" id="status" name="status">
+
+                        <?php
+                        
+                                if( $empDetails['status'] == Config::$_EMPLOYEE_STATUS['ACTIVE'] ){
+
+                                    echo "<input type='checkbox' disabled class='mr-3' placeholder='Enter Apply Limit' id='status' name='status' >";
+                                    
+                                }else{
+                                    
+                                    echo "<input type='checkbox' checked disabled class='mr-3' placeholder='Enter Apply Limit' id='status' name='status' >";
+
+                                }
+                        
+                        ?>
+
+                        
                         <label class="m-0" for="inactive"> INACTIVE </label>
                     </div>
 
                     <!-- Inactive Date -->
                     <div class="form-group col-md-4 ml-3 ">
-                        <input type="text" onfocus="(this.type='date')" disabled
+                        <input type="text" onfocus="(this.type='date')" disabled  value="<?php echo $empDetails['deactivationDate'] ?>"
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark  "
                             placeholder="Inactivation Date " id="inactiveDate" name="inactiveDate">
                     </div>
 
                     
-                    <div class="form-group col-md-12"> <input type="submit" name="addLeaveSubmit" class="submitbtn"> </div>
+                    <div class="form-group col-md-12"> <input type="submit" value="Update" name="addLeaveSubmit" class="submitbtn"> </div>
 
                 </div>
 
@@ -190,31 +238,6 @@
 
 
     </section>
-
-    <script>
-
-        let status = false
-        let opacity = 1.0
-
-        document.getElementById( 'inactiveDate' ).style.opacity = opacity/2
-        
-        document.getElementById( 'status' ).addEventListener( 'click' , (e)=>{
-            
-            document.getElementById( 'inactiveDate' ).disabled = status
-
-            if( !status ){
-                document.getElementById( 'inactiveDate' ).style.opacity = opacity
-            }else{
-                document.getElementById( 'inactiveDate' ).style.opacity = opacity/2
-            }
-
-            status = !status
-
-        } )
-
-
-    </script>
-
 </body>
 
 </html>

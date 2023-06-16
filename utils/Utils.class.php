@@ -87,6 +87,17 @@
 
         }
 
+        
+        public static function getEmpDetails( $empID ){
+
+            $sql = "Select * from employees where employeeID=$empID";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+
 
         public static function alert( $msg ){
 
