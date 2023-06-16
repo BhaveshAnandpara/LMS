@@ -74,7 +74,7 @@
 
         <div class="container">
 
-            <form class=" bg-white shadow pl-5 pr-5 pb-3 pt-5 mt-5 rounded-lg" action="validateNewLeave.php" method="POST">
+            <form class=" bg-white shadow pl-5 pr-5 pb-3 pt-5 mt-5 rounded-lg" action="validateNewEmp.php" method="POST">
 
                 <h4 class="pb-3 pt-2" style="color: #11101D;">Add New Employee</h4>
 
