@@ -23,6 +23,17 @@
 
 ?>
 
+<?php
+
+    function empStatusButton( $status ){
+
+        if( $status == Config::$_EMPLOYEE_STATUS['ACTIVE'] ) return Config::$_EMPLOYEE_STATUS['INACTIVE'];
+        return Config::$_EMPLOYEE_STATUS['ACTIVE'];
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,9 +113,10 @@
 
                             ?>
 
+                                <th>STATUS</th>
                                 <th>EDIT</th>
                                 <th>VIEW</th>
-                                <th>INACTIVE</th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -114,30 +126,41 @@
 
                             $employees = Utils::getAllEmployees(); // Returns Array of Tuples in Database
 
+                            
                             foreach($employees as $row ){
+                                
+                                $statusBtnValue = empStatusButton( $row['status'] );
 
+                                $statusStyle = "text-black";
                                 $employeeID = $row['employeeID'];
-
+                                if( $row['status'] == Config::$_EMPLOYEE_STATUS['INACTIVE'] ) $statusStyle = "text-black-50";
+                                
                                 echo "<tr>";
-                                echo "<td  >" . $row['employeeID'] . "</td>";
-                                echo "<td  >" . $row['fullName'] . "</td>";
-                                echo "<td  >" . $row['email'] . "</td>";
-                                echo "<td  >" . $row['deptName'] . " </td>";
-                                echo "<td  >" . $row['role'] . " </td>";
-
+                                echo "<td class='$statusStyle' >" . $row['employeeID'] . "</td>";
+                                echo "<td class='$statusStyle' >" . $row['fullName'] . "</td>";
+                                echo "<td class='$statusStyle' >" . $row['email'] . "</td>";
+                                echo "<td class='$statusStyle' >" . $row['deptName'] . " </td>";
+                                echo "<td class='$statusStyle' >" . $row['role'] . " </td>";
+                                
                                 //  To print all available balance of all Leave Types
                                 $leaveBalances = Utils::getLeaveBalanceOfEmployee($row['employeeID']  );
-
                                 
-                                while( $row = mysqli_fetch_assoc( $leaveBalances ) ){
+                                
+                                while( $leaveRow = mysqli_fetch_assoc( $leaveBalances ) ){
                                     
-                                    if( empty($row['balance']) ) $row['balance'] = "NULL";
-                                    echo "<td>". ($row['balance']) ."</td>";
+                                    if( empty($leaveRow['balance']) ) $leaveRow['balance'] = "NULL";
+                                    echo "<td class='$statusStyle' >". ($leaveRow['balance']) ."</td>";
                                 }
+
+                                echo "<td class='$statusStyle'  class='font-weight-bold' >" . $row['status'] . " </td>";
                                         
-                                echo "<td><a href='../../pages/Admin/editEmp.php?empID=$employeeID '><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
-                                echo "<td><a href='../../pages/Admin/viewEmp.php?empID=$employeeID'><i class='fa-solid fa-eye edit'></i></a></td>";
-                                echo "<td><a href='../../pages/Admin/deleteEmp.php?empID=$employeeID'> <i class='fa-solid fa-trash edit'></i> </a></td>";
+                                if( $row['status'] == Config::$_EMPLOYEE_STATUS['ACTIVE'] ){
+                                    echo "<td  ><a href='../../pages/Admin/editEmp.php?empID=$employeeID '><i class='fa-solid fa-pen-to-square edit $statusStyle'></i></a></td>";
+                                }else{
+                                    echo "<td class='$statusStyle' ></td>";
+                                }
+                                echo "<td ><a href='../../pages/Admin/viewEmp.php?empID=$employeeID'><i class='fa-solid fa-eye edit $statusStyle'></i></a></td>";
+                                echo "<td><a href='../../pages/Admin/validateEmpStatus.php?empId=$employeeID&status=$statusBtnValue' name='delete'> <button class='submitbtn m-0 w-100' > ". $statusBtnValue ." </button> </a></td>";
                                 echo "</tr>";
                             }
 

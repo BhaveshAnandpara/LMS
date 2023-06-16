@@ -42,7 +42,7 @@
 
         public static function getAllEmployees(  ){
 
-            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID";
+            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID ORDER BY Status";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
             return $result ;
@@ -65,6 +65,7 @@
             return $result ;
 
         }
+        
 
         public static function getAllDepts(  ){
 
