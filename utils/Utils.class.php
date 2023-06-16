@@ -16,9 +16,10 @@
 
         }
 
+
         public static function getLeaveTypes(){
 
-            $sql = "Select * from masterdata";
+            $sql = "Select * from masterdata ORDER BY leaveID ";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
@@ -41,13 +42,30 @@
 
         public static function getAllEmployees(  ){
 
-            $sql = "Select * from employees";
+            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
             return $result ;
 
 
         }
+
+
+        public static function getLeaveBalanceOfEmployee( $empID ){
+
+
+            $sql = "SELECT employees.employeeID , masterdata.leaveType , leavebalance.balance from employees 
+            JOIN
+            masterdata 
+            LEFT JOIN
+            leavebalance on masterdata.leaveID = leavebalance.leaveID and employees.employeeID = leavebalance.employeeID where employees.employeeID = $empID";
+            
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+            return $result ;
+
+        }
+
 
         public static function getDeptDetails( $deptID ){
 
