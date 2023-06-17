@@ -239,7 +239,7 @@
                                 }else{
                                     echo "<td class='$statusStyle' ></td>";
                                 }
-                                echo "<td ><a href='../../pages/Admin/viewEmp.php?empID=$employeeID'><i class='fa-solid fa-eye edit $statusStyle'></i></a></td>";
+                                echo "<td ><a href='../../pages/Admin/viewDetailedEmp.php?empID=$employeeID'><i class='fa-solid fa-eye edit $statusStyle'></i></a></td>";
                                 echo "<td><a href='../../pages/Admin/validateEmpStatus.php?empID=$employeeID&status=$statusBtnValue' name='delete'> <button class='submitbtn m-0 w-100' > ". $statusBtnValue ." </button> </a></td>";
                                 echo "</tr>";
                             }

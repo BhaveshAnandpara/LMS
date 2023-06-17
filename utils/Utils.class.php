@@ -54,11 +54,14 @@
         public static function getLeaveBalanceOfEmployee( $empID ){
 
 
-            $sql = "SELECT employees.employeeID , masterdata.leaveType , leavebalance.balance from employees 
+            $sql = "SELECT employees.employeeID , masterdata.leaveID , masterdata.leaveType , leavebalance.balance , leavebalance.leaveCounter , leavetransactions.date , leavetransactions.reason from employees 
             JOIN
             masterdata 
             LEFT JOIN
-            leavebalance on masterdata.leaveID = leavebalance.leaveID and employees.employeeID = leavebalance.employeeID where employees.employeeID = $empID";
+            leavebalance on masterdata.leaveID = leavebalance.leaveID and employees.employeeID = leavebalance.employeeID 
+            LEFT JOIN
+            leavetransactions on leavebalance.leaveID = leavetransactions.leaveID
+            where employees.employeeID = $empID";
 
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
@@ -66,6 +69,15 @@
 
         }
         
+        public static function getEmpLeaveCounter( $empID ){
+
+            $sql = "SELECT SUM( leaveCounter ) as count from leavebalance where employeeID=$empID ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
 
         public static function getAllDepts(  ){
 
@@ -91,13 +103,16 @@
         
         public static function getEmpDetails( $empID ){
 
-            $sql = "Select * from employees where employeeID=$empID";
+            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID where employeeID=$empID";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
             return $result ;
 
         }
+
+
+
 
 
         public static function alert( $msg ){

@@ -171,3 +171,7 @@ table {
 #filter-btn{
     cursor: pointer;
 }
+
+.clickable{
+    cursor: pointer;
+}
