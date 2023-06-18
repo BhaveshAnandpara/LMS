@@ -289,6 +289,46 @@
 
         }
 
+         /*
+        @function "setLeaveInactive"
+        @description "setLeaveInactive
+                        --> Set Leave as Inactive
+                        
+         */
+        public function setLeaveInactive($leaveID , $status ){
+
+            // SQL Query to get masterdata Info
+            $sql = " Update masterdata set status='$status' where leaveID=$leaveID ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( $result ) return true;
+            else return false;
+
+
+        }
+
+
+        // ------------------------------------ Manage Departments ------------------------------------ //
+
+        /*
+        @function "getDepartments"
+        @description "getDepartments
+                        --> get all departments
+                        
+         */
+        public function getDepartments(){
+
+            // SQL Query to get departments Info
+            $sql =  "SELECT dept.deptID , dept.deptName , dept.deptAlias , emp.fullName from departments as dept left join employees as emp on dept.deptHOD = emp.employeeID ORDER BY deptName ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+
+
         /*
         @function "deleteDept"
         @description "deleteDept

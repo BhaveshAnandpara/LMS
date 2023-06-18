@@ -156,3 +156,22 @@ table {
 .submitbtn:hover {
     transform: scale(1.02);
 }
+
+#employeeTable_filter{
+
+    display: none ;
+
+}
+#searchInput{
+
+    border: 1px solid #66656f !important;
+
+}
+
+#filter-btn{
+    cursor: pointer;
+}
+
+.clickable{
+    cursor: pointer;
+}

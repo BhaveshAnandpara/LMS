@@ -57,7 +57,8 @@ try{
     $deptName = trim(ucwords(strtolower($deptName))); // lowercase -> captitalized -> trim spaces
 
 
-    //Check if leave Exists
+    //Check if department Exists
+
     $sql = "Select deptName from departments EXCEPT ( Select deptName from departments where deptID=$deptID )";
     $conn = sql_conn();
     $deptNameResult =  mysqli_query( $conn , $sql);
@@ -65,13 +66,59 @@ try{
 
     while( $row = mysqli_fetch_assoc($deptNameResult) ){
         
-
         if( $row['deptName'] == $deptName ){
             echo Utils::alert("Department Name Already Exits");
             throw new Exception("Department Name Already Exits");
         }
         
         
+    }
+
+
+
+    //Updating Current HOD role to faculty
+    if( $deptHOD != "NULL" ){
+
+        //Check if HOD exists
+
+            //Check if departmentHOD Exists
+            $sql = "Select deptHOD from departments where deptID=$deptID";
+            $conn = sql_conn();
+            $currDept = mysqli_fetch_assoc( mysqli_query( $conn , $sql) );
+
+            if( !empty($currDept['deptHOD']) ){
+
+                $hod = $currDept['deptHOD'];
+
+                echo 
+                "<script>
+                    let ans = false
+                     if (confirm( 'Are you Sure ! Current HOD will be demoted to FACULTY' ) == true ) ans = true
+                </script>";
+
+                echo $ans = "<script>document.write(ans)</script>";
+
+                if( $ans == true ){
+
+                
+                $employee_FACULTY = Config::$_EMPLOYEE_ROLE['FACULTY'];
+
+                //Query to update currentHOD to faculty
+                $sql = "UPDATE employees SET `role`='$employee_FACULTY' where employeeID=$hod"; 
+                $result =  mysqli_query( $conn , $sql);
+
+                if( !$result ) {
+                    Utils::alert("Opertaion Failed");
+                    throw new Exception("Error Occured During Query Updation");
+                }
+
+
+                }
+
+
+
+            }
+
     }
 
 
