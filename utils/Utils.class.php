@@ -123,6 +123,31 @@
 
         }
 
+        public static function getUpcomingHolidays( ){
+
+            $time =  date( 'Y-m-d' , time() ) ;
+
+            $sql = "Select * from holidays where holidays.date >= '$time' ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+
+        public static function getElapsedHolidays( ){
+
+            $time =  date( 'Y-m-d' , time() ) ;
+
+            $sql = "Select * from holidays where holidays.date < '$time' ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+        
+
 
         public static function alert( $msg ){
 
