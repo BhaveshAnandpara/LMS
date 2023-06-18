@@ -105,7 +105,7 @@
                                 echo "<tr>";
                                 echo "<td  >" . date( 'd-m-Y' , strtotime($row['date']) ) . "</td>";
                                 echo "<td  >" . $row['holidayName'] . "</td>";
-                                echo "<td><a href='../../pages/Admin/editHoliday.php?date=$row[date]'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
+                                echo "<td><a href='../../pages/Admin/editHoliday.php?date=$row[date]&name=$row[holidayName]'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
                                 echo "</tr>";
                             }
 
@@ -123,7 +123,6 @@
                             <tr>
                                 <th>HOLIDAY DATE</th>
                                 <th>HOLIDAY NAME</th>
-                                <th>EDIT</th>
                             </tr>
                         </thead>
 
@@ -138,7 +137,6 @@
                                     echo "<tr>";
                                     echo "<td  >" . date( 'd-m-Y' , strtotime($row['date']) ) . "</td>";
                                     echo "<td  >" . $row['holidayName'] . "</td>";
-                                    echo "<td><a href='../../pages/Admin/editHoliday.php?date=$row[date]'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
                                     echo "</tr>";
                                 }
                             
