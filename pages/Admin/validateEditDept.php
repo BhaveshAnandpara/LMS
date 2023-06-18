@@ -58,6 +58,7 @@ try{
 
 
     //Check if department Exists
+
     $sql = "Select deptName from departments EXCEPT ( Select deptName from departments where deptID=$deptID )";
     $conn = sql_conn();
     $deptNameResult =  mysqli_query( $conn , $sql);
@@ -72,6 +73,7 @@ try{
         
         
     }
+
 
 
     //Updating Current HOD role to faculty
@@ -118,6 +120,7 @@ try{
             }
 
     }
+
 
     //Query to insert Department data into masterdata
     $sql = "UPDATE departments SET `deptName`='$deptName', `deptAlias` = '$deptAlias', `deptHOD` = $deptHOD where deptID=$deptID";    
