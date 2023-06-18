@@ -11,6 +11,12 @@
 
 }
 
+.manageLeaveContainer{
+
+    width: 50% !important;
+
+}
+
 .container::-webkit-scrollbar{
     display: none;
 }
@@ -36,4 +42,10 @@
 .tablecontent td {
     text-align: center;
     padding: 5px;
+}
+
+.manage-leaves-reason{
+
+    word-wrap: break-word;
+
 }

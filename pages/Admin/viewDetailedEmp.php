@@ -239,9 +239,9 @@
                                     echo "<td  >" . $row['leaveType'] . "</td>";
                                     echo "<td  >" . $row['balance'] . "</td>";
                                     echo "<td  >" . $row['leaveCounter'] . " </td>";
-                                    echo "<td  >" . date( 'm-d-Y' , strtotime($row['date']) )  . " </td>";
+                                    echo "<td  >" . date( 'd-m-Y' , strtotime($row['date']) )  . " </td>";
                                     echo "<td  >" . $row['reason']  . " </td>";
-                                    echo "<td  > <button class='submitbtn clickable my-0 mx-2' > Manage </button> </td>";
+                                    echo "<td  > <a href='../../pages/Admin/manageEmpBalance.php?empID=$empID&leaveID=$row[leaveID]'> <button class='submitbtn clickable my-0 mx-2' > Manage </button> </a></td>";
                                 }
                             
                             ?>
