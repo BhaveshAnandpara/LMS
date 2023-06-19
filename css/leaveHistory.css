@@ -1,0 +1,19 @@
+/* to make scrollable div  */
+.historycontent {
+    overflow-x: scroll;
+    white-space: nowrap;
+  
+}
+/* to add animation in scroll  */
+.box-primary{
+    animation: scroll 10s linear 1; /* Animation properties */
+}
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(2); /* Start from initial position */
+    }
+    50% {
+      transform: translateX(-40%); /* Scroll to the left */
+    }
+  }
