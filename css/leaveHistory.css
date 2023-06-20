@@ -2,6 +2,7 @@
 .historycontent {
     overflow-x: scroll;
     white-space: nowrap;
+    width: 100%;
   
 }
 /* to add animation in scroll  */
@@ -14,6 +15,6 @@
       transform: translateX(2); /* Start from initial position */
     }
     50% {
-      transform: translateX(-40%); /* Scroll to the left */
+      transform: translateX(-60%); /* Scroll to the left */
     }
   }

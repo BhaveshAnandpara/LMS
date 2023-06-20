@@ -1,0 +1,33 @@
+.collapse-btn {
+    cursor: pointer;
+}
+.collapse-btn-adjustment {
+    cursor: pointer;
+}
+.collapse-btn-leaveType {
+    cursor: pointer;
+}
+.collapse-btn-leaveTypeandBalance{
+    cursor: pointer;
+
+}
+
+.collapse-containt {
+    display: block;
+    margin-top: 10px;
+}
+
+.collapse-containt-privious {
+    display: none;
+    margin-top: 10px;
+}
+
+
+.collapse-containt-adjustment {
+    display: block;
+    margin-top: 10px;
+}
+.collapse-containt-privious-adjustment {
+    display: none;
+    margin-top: 10px;
+}
