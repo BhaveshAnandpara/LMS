@@ -14,6 +14,9 @@ session_start();
 
 //Get the User Object
 $user =  $_SESSION['user'];
+//Get current Date
+
+
 
 ?>
 <!DOCTYPE html>
@@ -53,6 +56,7 @@ $user =  $_SESSION['user'];
         <!-- Including Header file -->
         <?php
         include "../../includes/header.php";
+
         ?>
 
         <!-- Table  for Leave History -->
@@ -67,10 +71,8 @@ $user =  $_SESSION['user'];
                         <table width="100%" class="table table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Leave Type</th>
+                                    <!-- <th>Leave Type</th> -->
                                     <th>Application Date</th>
-                                    <th>Adjust With</th>
-                                    <th>Subject</th>
                                     <th>From</th>
                                     <th>To</th>
                                     <th>Total Days</th>
@@ -78,32 +80,32 @@ $user =  $_SESSION['user'];
                                     <th>Action</th>
                                     <th>Hod Approval</th>
                                     <th>Principal Approval</th>
+                                    <th>Leave Status</th>
+
 
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <?php
+                                // function to find leave history 
                                 $data =  $user->appliedLeaveHistory();
 
                                 while ($row = mysqli_fetch_assoc($data)) { ?>
                                     <tr>
-                                        <?php $employeedata = $user->findEmployeeDetailsUsingId($row['applicantID']);
-                                        $employeeRow = mysqli_fetch_assoc($employeedata) ?>
-                                        <td> <?php echo $row["leaveType"]; ?></td>
                                         <td><?php echo $row["dateTime"]; ?></td>
-                                        <td> <?php echo $employeeRow["fullName"] ?></td>
-                                        <td><?php echo $row["subject"]; ?></td>
                                         <td><?php echo $row["startDate"]; ?></td>
                                         <td><?php echo $row["endDate"]; ?></td>
                                         <td><?php echo $row["totalDays"]; ?></td>
                                         <td><?php echo $row["reason"]; ?></td>
                                         <td class="text-end">
-                                            <a href="" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
-                                            <a href="" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></a>
+                                            <a href="leaveDetails.php?applicationID=<?php echo $row["applicationID"]; ?>&employeeID=<?php echo $row["employeeID"] ?>" class="btn btn-outline-info btn-rounded" data-toggle="tooltip" data-placement="bottom" title="View Details"><i class="fas fa-eye"></i></a>
+                                            <a href="../../utils/Staff/leaveEdit.php?id=<?php echo $row["applicationID"];   ?>" class="btn btn-outline-primary btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Edit Leave"><i class="fas fa-pen"></i></a>
+                                            <a href="../../utils/Staff/leaveWithdrown.php?id=<?php echo $row["applicationID"];   ?>" class="btn btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title=" Leave Withdrow "><i class="fas fa-trash"></i></a>
                                         </td>
                                         <td><?php echo $row["hodApproval"]; ?></td>
                                         <td><?php echo $row["principalApproval"]; ?></td>
+                                        <td><?php echo $row["status"]; ?></td>
 
                                     </tr>
                                 <?php } ?>
@@ -113,19 +115,20 @@ $user =  $_SESSION['user'];
                 </div>
             </div>
         </div>
+    </section>
 
-        <script>
-            // script for filter 
-            $(document).ready(function() {
-                // Initialize DataTable
-                var table = $('#dataTables-example').DataTable();
+    <script>
+        // script for filter 
+        $(document).ready(function() {
+            // Initialize DataTable
+            var table = $('#dataTables-example').DataTable();
 
-                // Add event listener for the search input
-                $('#searchInput').on('keyup', function() {
-                    table.search(this.value).draw();
-                });
+            // Add event listener for the search input
+            $('#searchInput').on('keyup', function() {
+                table.search(this.value).draw();
             });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
