@@ -19,7 +19,7 @@
 
         public static function getLeaveTypes(){
 
-            $sql = "Select * from masterdata";
+            $sql = "Select * from masterdata ORDER BY leaveID ";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
@@ -42,13 +42,67 @@
 
         public static function getAllEmployees(  ){
 
-            $sql = "Select * from employees";
+            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID ORDER BY Status";
+
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
             return $result ;
 
 
         }
+
+
+        public static function getLeaveBalanceOfEmployee( $empID ){
+
+
+            $sql = "SELECT employees.employeeID , masterdata.leaveID , masterdata.leaveType , leavebalance.balance , leavebalance.leaveCounter , leavetransactions.date , leavetransactions.reason from 
+			employees 
+            JOIN
+            masterdata 
+            LEFT JOIN
+            leavebalance on masterdata.leaveID = leavebalance.leaveID and employees.employeeID = leavebalance.employeeID 
+            LEFT JOIN
+            leavetransactions on leavebalance.lastUpdatedOn = leavetransactions.transactionID
+            where employees.employeeID = $empID";
+
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+            return $result ;
+
+        }
+
+        public static function getLeaveDetailsOfEmployee( $empID , $leaveID ){
+
+
+            $sql = "SELECT  employees.fullName ,  leavebalance.leaveID , leavebalance.leaveType , leavebalance.balance , leavebalance.leaveCounter , leavetransactions.reason , leavetransactions.date from leavebalance inner join employees on employees.employeeID = leavebalance.employeeID inner join leavetransactions on leavebalance.lastUpdatedOn = leavetransactions.transactionID where leavebalance.employeeID=$empID and leavebalance.leaveID =$leaveID;";
+
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+            return $result ;
+
+        }
+        
+        public static function getEmpLeaveCounter( $empID ){
+
+            $sql = "SELECT SUM( leaveCounter ) as count from leavebalance where employeeID=$empID ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+
+        public static function getAllDepts(  ){
+
+            $sql = "Select * from departments";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }        
+
+
 
         public static function getDeptDetails( $deptID ){
 
@@ -60,6 +114,41 @@
 
         }
 
+        
+        public static function getEmpDetails( $empID ){
+
+            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID where employeeID=$empID";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+
+        public static function getUpcomingHolidays( ){
+
+            $time =  date( 'Y-m-d' , time() ) ;
+
+            $sql = "Select * from holidays where holidays.date >= '$time' ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+
+        public static function getElapsedHolidays( ){
+
+            $time =  date( 'Y-m-d' , time() ) ;
+
+            $sql = "Select * from holidays where holidays.date < '$time' ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            return $result ;
+
+        }
+        
 
         public static function alert( $msg ){
 

@@ -39,6 +39,40 @@ $user =  $_SESSION['user'];
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../js/collapseDiv.js"></script>
 
+    <!-- DataTables library to implement optimal search functinality ---- light weight library -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+
+    <!-- style for collapse  -->
+    <style>
+        .collapse-btn {
+            cursor: pointer;
+        }
+
+        .collapse-containt {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .collapse-containt-privious {
+            display: none;
+            margin-top: 10px;
+        }
+        .collapse-btn-adjustment {
+            cursor: pointer;
+        }
+        .collapse-containt-adjustment {
+            display: block;
+            margin-top: 10px;
+        }
+        .collapse-containt-privious-adjustment {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
 
     <!-- DataTables library to implement optimal search functinality ---- light weight library -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
@@ -55,10 +89,10 @@ $user =  $_SESSION['user'];
         <?php
         include "../../includes/header.php";
         ?>
+
         <!-- Div  for Lecture Adjustment Request -->
-        <div class="content mt-3 rounded-lg dash_table  " style="margin: auto;">
-        <div class="container clg-12  bg-white rounded-lg " style="transition: all all 0.5s ease; border-right:6px solid #11101D">
-            <div class="historycontent">
+        <div class="content mt-3 rounded-lg dash_table " style="margin: auto;">
+            <div class="container clg-12  bg-white rounded-lg historycontent " style="transition: all all 0.5s ease; border-right:6px solid #11101D">
                 <div class="page-title p-4 collapse-btn"> <!--the class  collapse-btn are use for open or close div  -->
                     <h3> Lecture Adjustment Request </h3>
                 </div>
@@ -77,6 +111,7 @@ $user =  $_SESSION['user'];
                                     <th>Semister</th>
                                     <th>Subject</th>
                                     <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>

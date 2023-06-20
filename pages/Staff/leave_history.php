@@ -73,6 +73,8 @@ $user =  $_SESSION['user'];
                                 <tr>
                                     <!-- <th>Leave Type</th> -->
                                     <th>Application Date</th>
+                                    <th>Adjust With</th>
+                                    <th>Subject</th>
                                     <th>From</th>
                                     <th>To</th>
                                     <th>Total Days</th>

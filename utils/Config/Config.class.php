@@ -10,7 +10,10 @@
         public static $_PRINCIPAL_ = "PRINCIPAL";
         public static $_FACULTY_ = "FACULTY";
         
-        
+
+        //Employee Type
+        public static $_EMPLOYEE_ROLE  = array( 'FACULTY' => "FACULTY" ,'ADMIN' => "ADMIN", 'HOD' => "HOD" , 'PRINCIPAL' => "PRINCIPAL" );
+
         //Employee Type
         public static $_EMPLOYEE_TYPE  = array('TEACHING_STAFF' => "TEACHING_STAFF", 'NON_TEACHING_STAFF' => "NON_TEACHING_STAFF" );
 

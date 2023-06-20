@@ -21,11 +21,14 @@ class Staff
          */
     public function __construct($employeeID)
     {
+
         //Establish Connection
         $conn = sql_conn();
+
         //Run a Query
         $getUserInfo = "Select * from employees where employeeID = $employeeID";
         $result =  mysqli_query($conn, $getUserInfo);
+
         // Error Handling
         if (!$result) {
             echo ("Error description: " . mysqli_error($conn));
@@ -77,6 +80,8 @@ class Staff
     {
 
         $employeeID = $this->employeeId;
+
+
         // SQL Query to get the count of all inactive employees
         $sql = "SELECT * from leavebalance inner join leavetransactions on leavebalance.lastUpdatedOn = leavetransactions.transactionID where employeeID='$employeeID'";
         $conn = sql_conn();
