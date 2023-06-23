@@ -1,3 +1,17 @@
+.container > div:nth-child(1) {
+
+  width: max-content;
+
+}
+
+.reason{
+
+  max-width: 500px;
+  word-wrap: break-word;
+
+}
+
+
 /* to make scrollable div  */
 .historycontent {
     overflow-x: scroll;

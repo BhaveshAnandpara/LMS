@@ -96,13 +96,13 @@ class Staff
 
     // ------------------------------------ Leave History ------------------------------------ //
 
-    public function recentlyAppliedLeave()
+    public function recentlyAppliedLeave( $limit )
     {
         $employeeID = $this->employeeId;
 
         // SQL Query to get the leave history of login employee
         
-        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID";
+        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID ORDER BY applications.dateTime DESC LIMIT $limit";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
@@ -135,6 +135,40 @@ class Staff
 
         return $ans;
 
+    }
+
+    public function incomingApplications( )
+    {
+        $employeeID = $this->employeeId;
+
+        // SQL Query to get the leave history of login employee
+        
+        $curr = date( 'Y-m-d' , time() );
+
+        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.extension , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID and applications.startDate >= '$curr' ORDER BY applications.dateTime DESC";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+    }
+
+    public function elapsedApplications( )
+    {
+        $employeeID = $this->employeeId;
+
+        // SQL Query to get the leave history of login employee
+        
+        $curr = date( 'Y-m-d' , time() );
+
+        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.extension , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID and applications.startDate < '$curr' ORDER BY applications.dateTime DESC";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
     }
 
 

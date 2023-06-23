@@ -146,7 +146,7 @@
                     <tbody id="tbody">
 
                         <?php
-                                $data =  $user->recentlyAppliedLeave();
+                                $data =  $user->recentlyAppliedLeave(5);
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 

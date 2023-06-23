@@ -55,6 +55,7 @@ body {
     overflow-x: hidden;
 }
 
+
 .home-section {
 
     position: relative;
@@ -183,9 +184,9 @@ table {
     transform: scale(1.02);
 }
 
-#employeeTable_filter{
+#employeeTable_filter , #elapsedApp_filter{
 
-    display: none ;
+    display: none ; 
 
 }
 #searchInput{
@@ -200,4 +201,25 @@ table {
 
 .clickable{
     cursor: pointer;
+}
+
+.APPROVED{
+
+    color: rgb(36, 124, 36);
+    font-weight: 800;
+
+}
+
+.PENDING{
+
+    color: rgb(255, 166, 32);
+    font-weight: 800;
+
+}
+
+.REJECTED{
+
+    color: rgb(212, 76, 76);
+    font-weight: 800;
+
 }
