@@ -1,5 +1,3 @@
-
-
 <?php 
     //  Creates database connection 
     require "../../includes/db.conn.php";
@@ -37,6 +35,9 @@
 
     <!-- all common CSS link  -->
     <link rel="stylesheet" href="../../css/common.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/dashboard.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/Admin/manageMasterData.css?v=<?php echo time(); ?>">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- all common Script  -->
@@ -66,60 +67,145 @@
         ?>
 
         <!-- Below code for dashboard -->
-        <div class="container bg-white rounded-lg shadow-lg mt-3 dash_table">
+        <div class="container">
+
+            <!-- Current Balance -->
 
 
-
-            <div class="row p-4 rounded-lg shadow-lg d-flex justify-content-sm-center  "
+            <div class="row p-4 bg-white rounded-lg shadow-lg d-flex justify-content-sm-center  pl-5 pr-5 pb-3 pt-4 my-5 ml-2 "
                 style="transition: all all 0.5s ease; border-right:6px solid #11101D">
 
                 <div class="col-md-12 col-sm-12 py-3">
                     <h3> Current Balance </h3>
                 </div>
 
-                <!----------------------------------- Balance cards ----------------------------------->
-
 
 
                 <?php
-                
-                    $data =  $user->getCurrentBalance() ;
+                    
+                        $data =  $user->getCurrentBalance() ;
 
-                    while( $row = mysqli_fetch_assoc($data) ){
+                        while( $row = mysqli_fetch_assoc($data) ){
 
-                    $time = Utils::getTimeDiff( $row['date'] );
+                        $time = Utils::getTimeDiff( $row['date'] );
 
-                    echo
-                        "<div class='col-md-3 col-sm-12 py-2   rounded-lg m-4 bg-white shadow-lg fit-content'
+
+                        echo
+
+                        // <!-- Card -->
+                            "<div class='col-md-3 col-sm-12 py-4   rounded-lg m-4 bg-white shadow-lg fit-content'
                             style='border-right:6px solid #11101D '>
+        
+                            <!-- Div for leave type and Leave Balance      -->
                             <div class='row p-2 pr-0 '>
                                 <div class='col-12  '>
                                     <div class='row pb-1 pl-2 d-flex justify-content-sm-center'>
-                                        <h5>" . $row['leaveType'] . "</h5>
+                                        <!-- PHP CODE HERE -->
+                                        <h5>" .$row['leaveType']. "</h5>
                                     </div>
                                     <div class='row d-flex justify-content-sm-center '>
-                                        <h3>" .$row['balance']. "</h3>
+                                        <!-- PHP CODE HERE -->
+                                        <h3> " .$row['balance']. " </h3>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class='row border-top p-2'>
-                                <small class='text-muted' style='font-size: smaller;'>Updated on " . $time . "</small>
                             </div>
                         </div>";
-
-
-                    } 
-                ?>
-
-                
+                            
+                        } 
+                    ?>
 
             </div>
 
 
+            <!-- Recently Applied Leaves -->
+
+            <div class=" row p-4 bg-white  rounded-lg shadow-lg d-flex justify-content-sm-center  pl-5 pr-5 pb-3 pt-4 my-5 ml-2 "
+                style="transition: all all 0.5s ease; border-right:6px solid #11101D">
+
+                <div class="col-md-12 col-sm-12 py-3">
+                    <h3> Recently Applied Leaves</h3>
+                </div>
 
 
+                <table class="tablecontent">
 
+                    <thead>
+                        <tr>
+                            <th>LEAVE TYPE</th>
+                            <th>APPLICATION DATE</th>
+                            <th>FROM</th>
+                            <th>TO</th>
+                            <th>TOTAL DAYS</th>
+                            <th>HOD APPROVAL</th>
+                            <th>PRINCIPAL APPROVAL</th>
+                            <th>STATUS</th>
+                            <th>VIEW</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody">
+
+                        <?php
+                                $data =  $user->recentlyAppliedLeave();
+                                
+                                while ($row = mysqli_fetch_assoc($data)) { 
+                                
+                              
+                                $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
+                                    
+                        ?>
+                        <tr>
+                            <?php
+
+                            $hod_status;
+                            $principal_status;
+
+                            if( empty($row["hodApproval"]) ) {
+                                $hod_status = Config::$_HOD_STATUS['PENDING'];
+                            }else{
+
+                                if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'] ){
+                                    $hod_status = Config::$_HOD_STATUS['APPROVED'];
+                                }
+                                else{
+                                    $hod_status = Config::$_HOD_STATUS['REJECTED'];
+                                }
+
+                            }
+
+
+                            if( empty($row["principalApproval"]) ) {
+                                $principal_status = Config::$_PRINCIPAL_STATUS['PENDING'];
+                            }else{
+
+                                if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_PRINCIPAL'] ){
+                                    $principal_status = Config::$_PRINCIPAL_STATUS['APPROVED'];
+                                }
+                                else{
+                                    $principal_status = Config::$_PRINCIPAL_STATUS['REJECTED'];
+                                }
+
+                            }
+                            
+                            ?>
+
+                            <td><?php echo $leaveTypes ?></td>
+                            <td><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
+                            <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
+                            <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
+                            <td><?php echo $row["totalDays"] ?></td>
+                            <td class="<?php echo $hod_status ?>" ><?php echo $hod_status ?></td>
+                            <td class="<?php echo $principal_status ?>" ><?php echo $principal_status ?></td>
+                            <td class="font-weight-bold" ><?php echo $row['status'] ?></td>
+                            <td class="text-end"> <a href="" ><i class="fas fa-eye"></i></a> </td>
+
+                        </tr>
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+
+            </div>
 
         </div>
 

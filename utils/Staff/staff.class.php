@@ -95,10 +95,55 @@ class Staff
 
 
     // ------------------------------------ Leave History ------------------------------------ //
+
+    public function recentlyAppliedLeave()
+    {
+        $employeeID = $this->employeeId;
+
+        // SQL Query to get the leave history of login employee
+        
+        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+    }
+
+    public function getAppLeaveTypes( $appID )
+    {
+
+        // SQL Query to get the leave history of login employee
+
+        $sql = "SELECT leavetype.leaveType from leavetype where applicationID=$appID";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        $ans = "";
+
+        while( $row = mysqli_fetch_assoc($result) ){
+
+            $ans = $ans. " + " .$row['leaveType'];
+
+        }
+
+        $ans = substr( $ans , 2 )."";
+
+        return $ans;
+
+    }
+
+
     public function appliedLeaveHistory()
     {
         $employeeID = $this->employeeId;
+
         // SQL Query to get the leave history of login employee
+        
         $sql = "SELECT * From applications inner join lectureadjustments on applications.applicationID = lectureadjustments.applicationID inner join leavetype on lectureadjustments.applicationID = leavetype.applicationID where employeeID='$employeeID'";
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);

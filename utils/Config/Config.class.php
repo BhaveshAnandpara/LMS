@@ -28,6 +28,15 @@
 
         //Transaction Status
         public static $_TRANSACTION_STATUS  = array('PENDING' => "PENDING", 'SUCCESSFULL' => "SUCCESSFULL", 'FAILED' => "FAILED" );
+
+        //HOD  Status
+        public static $_HOD_STATUS  = array('PENDING' => "PENDING", 'APPROVED' => "APPROVED", 'REJECTED' => "REJECTED" );
+
+        //Principal  Status
+        public static $_PRINCIPAL_STATUS  = array('PENDING' => "PENDING", 'APPROVED' => "APPROVED", 'REJECTED' => "REJECTED" );
+
+        //Application  Status
+        public static $_APPLICATION_STATUS  = array('PENDING' => "PENDING", 'APPROVED_BY_HOD' => "APPROVED_BY_HOD", 'REJECTED_BY_HOD' => "REJECTED_BY_HOD", 'APPROVED_BY_PRINCIPAL' => "APPROVED_BY_PRINCIPAL", 'REJECTED_BY_PRINCIPAL' => "REJECTED_BY_PRINCIPAL", 'SANCTIONED' => "SANCTIONED", );
     
 
     }
