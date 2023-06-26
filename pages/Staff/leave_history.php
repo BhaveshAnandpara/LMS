@@ -98,8 +98,10 @@ $user =  $_SESSION['user'];
                             <th>HOD APPROVAL</th>
                             <th>PRINCIPAL APPROVAL</th>
                             <th>STATUS</th>
-                            <th>EDIT</th>
                             <th>VIEW</th>
+                            <th>WITHDRAW</th>
+                            <th>EDIT</th>
+                            <th>EXTEND</th>
                         </tr>
                     </thead>
 
@@ -167,6 +169,21 @@ $user =  $_SESSION['user'];
                                 }else{
                                     $extension = "false";
                                 }
+
+                                //For Actions
+
+                                $editIcon=""  ; $extendIcon="" ;
+
+                                if(  $row['status'] == Config::$_APPLICATION_STATUS['PENDING'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'] ||$row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_PRINCIPAL']   ){
+
+                                        $extendIcon = "text-black-50 pointer-events-none";
+
+                                }else{
+
+                                        $editIcon = "text-black-50 pointer-events-none";
+
+                                }
+
                                 
                             ?>
 
@@ -182,6 +199,9 @@ $user =  $_SESSION['user'];
                             <td class="<?php echo $principal_status ?>"><?php echo $principal_status ?></td>
                             <td class="font-weight-bold"><?php echo $row['status'] ?></td>
                             <td class="text-end"> <a href=""><i class="fas fa-eye"></i></a> </td>
+                            <td class="text-end"> <a href=""><i class="fa-sharp fa-solid fa-arrow-rotate-left"></i></a> </td>
+                            <td class="text-end"> <a class="<?php echo $editIcon ?>" href=""><i class="fa-solid fa-file-pen"></i></a> </td>
+                            <td class="text-end"> <a class="<?php echo $extendIcon ?>" href=""><i class="fa-sharp fa-solid fa-link"></i></a> </td>
 
                         </tr>
                         <?php } ?>
@@ -190,7 +210,7 @@ $user =  $_SESSION['user'];
                 </table>
 
                 <br>
-                <p class=" w-100 mt-2 clickable " id="elapsed-btn">Elapsed Applications <i
+                <p class=" w-100 mt-5 clickable " id="elapsed-btn">Elapsed Applications <i
                         class="fa-solid fa-caret-down"></i> </p>
                 <br>
 
@@ -267,7 +287,6 @@ $user =  $_SESSION['user'];
                                 <th>HOD APPROVAL</th>
                                 <th>PRINCIPAL APPROVAL</th>
                                 <th>STATUS</th>
-                                <th>EDIT</th>
                                 <th>VIEW</th>
                             </tr>
                         </thead>
@@ -275,7 +294,9 @@ $user =  $_SESSION['user'];
                         <tbody id="tbody">
 
                             <?php
+
                                 $data =  $user->elapsedApplications( );
+                                $statusStyle = "";
 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 
@@ -324,18 +345,17 @@ $user =  $_SESSION['user'];
 
                         ?>
 
-                                <td><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
-                                <td><?php echo $leaveTypes ?></td>
-                                <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
-                                <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
-                                <td><?php echo $row["totalDays"] ?></td>
-                                <td><?php echo $extension ?></td>
-                                <td class="reason" ><?php echo $row["reason"] ?></td>
-                                <td class="<?php echo $hod_status ?>"><?php echo $hod_status ?></td>
-                                <td class="<?php echo $principal_status ?>"><?php echo $principal_status ?></td>
-                                <td class="font-weight-bold"><?php echo $row['status'] ?></td>
-                                <td class="text-end"> <a href=""><i class="fas fa-eye"></i></a> </td>
-                                <td class="text-end"> <a href=""><i class="fas fa-eye"></i></a> </td>
+                                <td  ><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
+                                <td  ><?php echo $leaveTypes ?></td>
+                                <td  ><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
+                                <td  ><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
+                                <td  ><?php echo $row["totalDays"] ?></td>
+                                <td  ><?php echo $extension ?></td>
+                                <td  class="reason " ><?php echo $row["reason"] ?></td>
+                                <td  class="<?php echo $hod_status ?> "><?php echo $hod_status ?></td>
+                                <td  class="<?php echo $principal_status ?> "><?php echo $principal_status ?></td>
+                                <td  class="font-weight-bold "><?php echo $row['status'] ?></td>
+                                <td  class="text-end "> <a href=""><i class="fas fa-eye"></i></a> </td>
 
                             </tr>
                             <?php } ?>

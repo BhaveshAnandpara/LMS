@@ -55,6 +55,10 @@ body {
     overflow-x: hidden;
 }
 
+.pointer-events-none{
+    pointer-events: none;
+}
+
 
 .home-section {
 

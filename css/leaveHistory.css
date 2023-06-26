@@ -6,9 +6,14 @@
 
 .reason{
 
-  max-width: 500px;
+  max-width: 200px;
   word-wrap: break-word;
+  text-align: left !important;
 
+}
+
+#elapsedApp{
+  opacity: 0.6;
 }
 
 
