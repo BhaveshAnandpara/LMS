@@ -15,6 +15,7 @@ session_start();
 //Get the User Object
 $user =  $_SESSION['user'];
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -172,17 +173,28 @@ $user =  $_SESSION['user'];
 
                                 //For Actions
 
-                                $editIcon=""  ; $extendIcon="" ;
+                                $editIcon=""  ; $extendIcon="" ; $withdrawnIcon="" ;
 
-                                if(  $row['status'] == Config::$_APPLICATION_STATUS['PENDING'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'] ||$row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_PRINCIPAL']   ){
+                                if( $row['status'] == Config::$_APPLICATION_STATUS['WITHDRAWN'] ){
+
+                                    $extendIcon = "text-black-50 pointer-events-none";
+                                    $editIcon = "text-black-50 pointer-events-none";
+                                    $withdrawnIcon = "text-black-50 pointer-events-none";
+
+
+                                }
+                                else if(  $row['status'] == Config::$_APPLICATION_STATUS['PENDING'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_PRINCIPAL'] ){
 
                                         $extendIcon = "text-black-50 pointer-events-none";
 
-                                }else{
+                                }else{ 
 
                                         $editIcon = "text-black-50 pointer-events-none";
 
                                 }
+
+
+
 
                                 
                             ?>
@@ -199,7 +211,7 @@ $user =  $_SESSION['user'];
                             <td class="<?php echo $principal_status ?>"><?php echo $principal_status ?></td>
                             <td class="font-weight-bold"><?php echo $row['status'] ?></td>
                             <td class="text-end"> <a href=""><i class="fas fa-eye"></i></a> </td>
-                            <td class="text-end"> <a href=""><i class="fa-sharp fa-solid fa-arrow-rotate-left"></i></a> </td>
+                            <td class="text-end"> <a class="<?php echo $withdrawnIcon ?>"  href='./withdrawLeave.php?appID=<?php echo $row['applicationID'] ?>&empID=<?php echo $user->employeeId ?>&status=<?php echo $row['status'] ?>' ><i class="fa-sharp fa-solid fa-arrow-rotate-left"></i></a> </td>
                             <td class="text-end"> <a class="<?php echo $editIcon ?>" href=""><i class="fa-solid fa-file-pen"></i></a> </td>
                             <td class="text-end"> <a class="<?php echo $extendIcon ?>" href=""><i class="fa-sharp fa-solid fa-link"></i></a> </td>
 

@@ -79,11 +79,11 @@
                     <h3> Current Balance </h3>
                 </div>
 
-
-
                 <?php
                     
                         $data =  $user->getCurrentBalance() ;
+
+                        print_r($data);
 
                         while( $row = mysqli_fetch_assoc($data) ){
 

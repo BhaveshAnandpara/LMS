@@ -27,7 +27,7 @@
         public static $_MASTERADTA_STATUS  = array('ACTIVE' => "ACTIVE", 'INACTIVE' => "INACTIVE" );
 
         //Transaction Status
-        public static $_TRANSACTION_STATUS  = array('PENDING' => "PENDING", 'SUCCESSFULL' => "SUCCESSFULL", 'FAILED' => "FAILED" );
+        public static $_TRANSACTION_STATUS  = array('PENDING' => "INITIATED", 'SUCCESSFULL' => "SUCCESSFULL", 'FAILED' => "FAILED" );
 
         //HOD  Status
         public static $_HOD_STATUS  = array('PENDING' => "PENDING", 'APPROVED' => "APPROVED", 'REJECTED' => "REJECTED" );
@@ -36,8 +36,10 @@
         public static $_PRINCIPAL_STATUS  = array('PENDING' => "PENDING", 'APPROVED' => "APPROVED", 'REJECTED' => "REJECTED" );
 
         //Application  Status
-        public static $_APPLICATION_STATUS  = array('PENDING' => "PENDING", 'APPROVED_BY_HOD' => "APPROVED_BY_HOD", 'REJECTED_BY_HOD' => "REJECTED_BY_HOD", 'APPROVED_BY_PRINCIPAL' => "APPROVED_BY_PRINCIPAL", 'REJECTED_BY_PRINCIPAL' => "REJECTED_BY_PRINCIPAL", 'SANCTIONED' => "SANCTIONED", );
-    
+        public static $_APPLICATION_STATUS  = array('PENDING' => "PENDING", 'APPROVED_BY_HOD' => "APPROVED_BY_HOD", 'REJECTED_BY_HOD' => "REJECTED_BY_HOD", 'APPROVED_BY_PRINCIPAL' => "APPROVED_BY_PRINCIPAL", 'REJECTED_BY_PRINCIPAL' => "REJECTED_BY_PRINCIPAL", 'SANCTIONED' => "SANCTIONED", 'WITHDRAWN' => "WITHDRAWN", 'DEDUCTED_FROM_EL' => "DEDUCTED_FROM_EL", 'LEAVE_WITHOUT_PAY' => "LEAVE_WITHOUT_PAY"   );
+
+        //Application  Status
+        public static $_ADJUSTMENT_STATUS  = array('PENDING' => "PENDING", 'ACCEPTED' => "ACCEPTED", 'REJECTED' => "REJECTED" , 'WITHDRAWN' => "WITHDRAWN", );
 
     }
 
