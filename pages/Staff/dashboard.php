@@ -83,8 +83,6 @@
                     
                         $data =  $user->getCurrentBalance() ;
 
-                        print_r($data);
-
                         while( $row = mysqli_fetch_assoc($data) ){
 
                         $time = Utils::getTimeDiff( $row['date'] );
