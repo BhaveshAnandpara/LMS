@@ -51,11 +51,11 @@
         <span class="tooltip">Leave History</span>
       </li>
       <li>
-        <a href="../../pages/Staff/adjustment_request.php">
+        <a href="../../pages/Staff/manageAdjustments.php">
           <i class="fa-solid fa-code-pull-request"></i>
-          <span class="links_name">Adjustment Request</span>
+          <span class="links_name">Manage Adjustments</span>
         </a>
-        <span class="tooltip">Adjustment Request</span>
+        <span class="tooltip">Manage Adjustments</span>
       </li>
       <!-- code for Log Out  -->
       <li class="profile">

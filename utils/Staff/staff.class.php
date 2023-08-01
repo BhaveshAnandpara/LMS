@@ -198,12 +198,14 @@ class Staff
 
         return $result;
     }
+    
     // This Function is Used To Find pending lecture adjustment request of login employee
     public function lectureAdjustmentRequst()
     {
         $employeeID = $this->employeeId;
         // SQL Query to get the lecture adjustment of login employee
-        $sql = "SELECT * From applications inner join lectureadjustments on applications.applicationID = lectureadjustments.applicationID inner join leavetype on lectureadjustments.applicationID = leavetype.applicationID where adjustedWith='$employeeID' and lectureadjustments.status ='PENDING'";
+        $sql = "SELECT * from lectureadjustments inner join employees on lectureadjustments.applicantID = employees.employeeID Where lectureadjustments.adjustedWith = '$employeeID' and lectureadjustments.status ='PENDING';
+        ";
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
         if (!$result) echo ("Error description: " . mysqli_error($conn));
@@ -228,7 +230,7 @@ class Staff
     {
         $employeeID = $this->employeeId;
         // SQL Query to get the task adjustemnt of login employee
-        $sql = "SELECT * From applications inner join taskadjustments on applications.applicationID = taskadjustments.applicationID inner join leavetype on taskadjustments.applicationID = leavetype.applicationID where adjustedWith='$employeeID'and taskadjustments.status ='PENDING'";
+        $sql = "SELECT * from taskadjustments inner join employees on taskadjustments.applicantID = employees.employeeID Where taskadjustments.adjustedWith = '$employeeID' and taskadjustments.status ='PENDING'";
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
         if (!$result) echo ("Error description: " . mysqli_error($conn));
