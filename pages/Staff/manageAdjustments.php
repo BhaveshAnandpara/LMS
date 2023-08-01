@@ -111,6 +111,7 @@ $user =  $_SESSION['user'];
                                     <tr>
                                         <th>APPLICANT NAME</th>
                                         <th>APPLICANT EMAIL</th>
+                                        <th>DATE</th>
                                         <th>START TIME</th>
                                         <th>END TIME</th>
                                         <th>SEMESTER</th>
@@ -127,15 +128,22 @@ $user =  $_SESSION['user'];
                                         $lecAdjData =  $user->lectureAdjustmentRequst(); 
                                         while($row =  mysqli_fetch_assoc($lecAdjData) ){
                                         
+
                                             echo "<tr>";
                                             echo "<td  >" . $row['fullName'] . "</td>";
                                             echo "<td  >" . $row['email'] . "</td>";
+                                            echo "<td  >" . date( 'd-m-Y' , strtotime($row['date']) )  . "</td>";
                                             echo "<td  >" . $row['startTime'] . "</td>";
                                             echo "<td  >" . $row['endTime'] . " </td>";
                                             echo "<td  >" . $row['semester']  . " </td>";
                                             echo "<td  >" . $row['subject']  . " </td>";
-                                            echo "<td  > <a href='../../pages/'> <button class='submitbtn clickable my-0 mx-2' > Accept </button> </a></td>";
-                                            echo "<td  > <a href='../../pages/'> <button class='submitbtn clickable my-0 mx-2' > Reject </button> </a></td>";
+                                            
+                                            if( $row['status']  === Config::$_ADJUSTMENT_STATUS['PENDING'] ){
+                                                echo "<td  > <a href='../../pages/'> <button class='submitbtn clickable my-0 mx-2' > Accept </button> </a></td>";
+                                                echo "<td  > <a href='../../pages/'> <button class='submitbtn clickable my-0 mx-2' > Reject </button> </a></td>";
+                                            }else{
+                                                echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
+                                            }
                                         }
                                     
                                     ?>
