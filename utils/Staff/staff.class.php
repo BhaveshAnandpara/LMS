@@ -210,7 +210,7 @@ class Staff
 
         // SQL Query to get the lecture adjustment of login employee
 
-        $sql = "SELECT lectureadjustments.date , lectureadjustments.startTime , lectureadjustments.endTime, lectureadjustments.semester, lectureadjustments.date, lectureadjustments.subject , lectureadjustments.status , employees.fullName , employees.email , employees.employeeID from lectureadjustments inner join employees on lectureadjustments.applicantID = employees.employeeID Where lectureadjustments.adjustedWith = '$employeeID' and lectureadjustments.date >= $curr  ORDER BY lectureadjustments.status ;
+        $sql = "SELECT lectureadjustments.lecAdjustmentID, lectureadjustments.applicantID , lectureadjustments.date , lectureadjustments.startTime , lectureadjustments.endTime, lectureadjustments.semester, lectureadjustments.date, lectureadjustments.subject , lectureadjustments.status , employees.fullName , employees.email , employees.employeeID from lectureadjustments inner join employees on lectureadjustments.applicantID = employees.employeeID Where lectureadjustments.adjustedWith = '$employeeID' and lectureadjustments.date >= $curr  ORDER BY lectureadjustments.status ;
         ";
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
@@ -245,7 +245,7 @@ class Staff
 
         // SQL Query to get the task adjustemnt of login employee
 
-        $sql = "SELECT taskadjustments.startDate , taskadjustments.endDate, taskadjustments.task, taskadjustments.status , employees.fullName , employees.email , employees.employeeID from taskadjustments inner join employees on taskadjustments.applicantID = employees.employeeID Where taskadjustments.adjustedWith = '$employeeID' and taskadjustments.startDate >= $curr ORDER BY taskadjustments.status ";
+        $sql = "SELECT taskadjustments.taskAdjustmentID , taskadjustments.applicantID , taskadjustments.startDate , taskadjustments.endDate, taskadjustments.task, taskadjustments.status , employees.fullName , employees.email , employees.employeeID from taskadjustments inner join employees on taskadjustments.applicantID = employees.employeeID Where taskadjustments.adjustedWith = '$employeeID' and taskadjustments.startDate >= $curr ORDER BY taskadjustments.status ";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);

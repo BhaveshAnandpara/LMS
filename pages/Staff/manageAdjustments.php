@@ -139,8 +139,8 @@ $user =  $_SESSION['user'];
                                             echo "<td  >" . $row['subject']  . " </td>";
                                             
                                             if( $row['status']  === Config::$_ADJUSTMENT_STATUS['PENDING'] ){
-                                                echo "<td  > <a href='../../pages/'> <button class='submitbtn clickable my-0 mx-2' > Accept </button> </a></td>";
-                                                echo "<td  > <a href='../../pages/'> <button class='submitbtn clickable my-0 mx-2' > Reject </button> </a></td>";
+                                                echo "<td  > <a href='../../pages/Staff/validateAdjAction.php?applicantID=" .$row['applicantID']. "&adjID=" .$row['lecAdjustmentID']. "&type=lec&action=" .Config::$_ADJUSTMENT_STATUS['ACCEPTED']. "'> <button class='submitbtn clickable my-0 mx-2' > Accept </button> </a></td>";
+                                                echo "<td  > <a href='../../pages/Staff/validateAdjAction.php?applicantID=" .$row['applicantID']. "&adjID=" .$row['lecAdjustmentID']. "&type=lec&action=" .Config::$_ADJUSTMENT_STATUS['REJECTED']. "'> <button class='submitbtn clickable my-0 mx-2' > Reject </button> </a></td>";
                                             }else{
                                                 echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
                                             }
@@ -283,8 +283,12 @@ $user =  $_SESSION['user'];
                                             echo "<td  >" . $row['startDate'] . "</td>";
                                             echo "<td  >" . $row['endDate'] . " </td>";
                                             echo "<td  >" . $row['task']  . " </td>";
-                                            echo "<td  > <a href='../../pages/'> <button class='submitbtn clickable my-0 mx-2' > Accept </button> </a></td>";
-                                            echo "<td  > <a href='../../pages/'> <button class='submitbtn clickable my-0 mx-2' > Reject </button> </a></td>";
+                                            if( $row['status']  === Config::$_ADJUSTMENT_STATUS['PENDING'] ){
+                                                echo "<td  > <a href='../../pages/Staff/validateAdjAction.php?applicantID=" .$row['applicantID']. "&adjID=" .$row['taskAdjustmentID']. "&type=task&action=" .Config::$_ADJUSTMENT_STATUS['ACCEPTED']. "'> <button class='submitbtn clickable my-0 mx-2' > Accept </button> </a></td>";
+                                                echo "<td  > <a href='../../pages/Staff/validateAdjAction.php?applicantID=" .$row['applicantID']. "&adjID=" .$row['taskAdjustmentID']. "&type=task&action=" .Config::$_ADJUSTMENT_STATUS['REJECTED']. "'> <button class='submitbtn clickable my-0 mx-2' > Reject </button> </a></td>";
+                                            }else{
+                                                echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
+                                            }
                                         }
                                     
                                     ?>
