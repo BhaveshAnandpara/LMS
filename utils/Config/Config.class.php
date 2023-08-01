@@ -10,6 +10,8 @@
         public static $_PRINCIPAL_ = "PRINCIPAL";
         public static $_FACULTY_ = "FACULTY";
         
+        //Semesters
+        public static $_SEMESTERS  = array('1 Sem' => "1", '2 Sem' => "2", '3 Sem' => "3" , '4 Sem' => "4", '5 Sem' => "5", '6 Sem' => "6",  '7 Sem' => "7",  '8 Sem' => "8" );
 
         //Employee Type
         public static $_EMPLOYEE_ROLE  = array( 'FACULTY' => "FACULTY" ,'ADMIN' => "ADMIN", 'HOD' => "HOD" , 'PRINCIPAL' => "PRINCIPAL" );
@@ -38,8 +40,10 @@
         //Application  Status
         public static $_APPLICATION_STATUS  = array('PENDING' => "PENDING", 'APPROVED_BY_HOD' => "APPROVED_BY_HOD", 'REJECTED_BY_HOD' => "REJECTED_BY_HOD", 'APPROVED_BY_PRINCIPAL' => "APPROVED_BY_PRINCIPAL", 'REJECTED_BY_PRINCIPAL' => "REJECTED_BY_PRINCIPAL", 'SANCTIONED' => "SANCTIONED", 'WITHDRAWN' => "WITHDRAWN", 'DEDUCTED_FROM_EL' => "DEDUCTED_FROM_EL", 'LEAVE_WITHOUT_PAY' => "LEAVE_WITHOUT_PAY"   );
 
-        //Application  Status
+        //Adjustment  Status
         public static $_ADJUSTMENT_STATUS  = array('PENDING' => "PENDING", 'ACCEPTED' => "ACCEPTED", 'REJECTED' => "REJECTED" , 'WITHDRAWN' => "WITHDRAWN", );
+
+
 
     }
 

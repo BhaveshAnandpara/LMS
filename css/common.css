@@ -188,7 +188,7 @@ table {
     transform: scale(1.02);
 }
 
-#employeeTable_filter , #elapsedApp_filter{
+#employeeTable_filter , #elapsedApp_filter , #lec-elapsedApp_filter , #task-elapsedApp_filter{
 
     display: none ; 
 

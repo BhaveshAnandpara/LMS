@@ -111,6 +111,7 @@ class Staff
         return $result;
     }
 
+
     public function getAppLeaveTypes( $appID )
     {
 
@@ -137,6 +138,7 @@ class Staff
 
     }
 
+
     public function incomingApplications( )
     {
         $employeeID = $this->employeeId;
@@ -153,6 +155,7 @@ class Staff
 
         return $result;
     }
+
 
     public function elapsedApplications( )
     {
@@ -212,12 +215,18 @@ class Staff
 
         return $result;
     }
+
     // This Function is Used To Find previous lecture adjustment request of login employee -->inshort(Accepted and Reejected request)
-    public function PreviouslectureAdjustmentRequst()
+    
+    public function elapsedLecAdjustments()
     {
         $employeeID = $this->employeeId;
+        $curr = date( 'Y-m-d' , time() );
+
         // SQL Query to get the lecture adjustemnt of login employee
-        $sql = "SELECT * From applications inner join lectureadjustments on applications.applicationID = lectureadjustments.applicationID inner join leavetype on lectureadjustments.applicationID = leavetype.applicationID where adjustedWith='$employeeID'and (lectureadjustments.status ='ACCEPT' OR lectureadjustments.status ='REJECT') ";
+
+        $sql = "SELECT lectureadjustments.date , lectureadjustments.startTime , lectureadjustments.endTime, lectureadjustments.semester, lectureadjustments.subject , lectureadjustments.status , employees.fullName , employees.email , employees.employeeID  from lectureadjustments left join employees on lectureadjustments.applicantID = employees.employeeID Where lectureadjustments.adjustedWith = '$employeeID' and lectureadjustments.date > $curr ";
+
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
         if (!$result) echo ("Error description: " . mysqli_error($conn));
@@ -236,12 +245,16 @@ class Staff
         if (!$result) echo ("Error description: " . mysqli_error($conn));
         return $result;
     }
+
     // This Function is Used To Find previous Task adjustment request of login employee -->inshort(Accepted and Reejected request)
-    public function PreviousTaskAdjustmentRequst()
-    {
+    
+    public function elapsedTaskAdjustments(){
         $employeeID = $this->employeeId;
+        $curr = date( 'Y-m-d' , time() );
+
         // SQL Query to get the task adjustemnt of login employee
-        $sql = "SELECT * From applications inner join taskadjustments on applications.applicationID = taskadjustments.applicationID inner join leavetype on taskadjustments.applicationID = leavetype.applicationID where adjustedWith='$employeeID'and (taskadjustments.status ='ACCEPT' OR taskadjustments.status ='REJECT')";
+        $sql = "SELECT taskadjustments.startDate , taskadjustments.endDate, taskadjustments.task, taskadjustments.status , employees.fullName , employees.email , employees.employeeID from taskadjustments left join employees on taskadjustments.applicantID = employees.employeeID Where taskadjustments.adjustedWith = '$employeeID' and taskadjustments.endDate > $curr";
+
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
         if (!$result) echo ("Error description: " . mysqli_error($conn));
