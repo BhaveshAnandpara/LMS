@@ -52,6 +52,16 @@
 
         }
 
+        public static function getAllActiveEmployees(  ){
+
+            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID where employees.status='ACTIVE' ORDER BY Status";
+
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+            return $result ;
+
+
+        }
 
         public static function getLeaveBalanceOfEmployee( $empID ){
 
@@ -103,8 +113,6 @@
 
         }        
 
-
-
         public static function getDeptDetails( $deptID ){
 
             $sql = "Select * from departments where deptID=$deptID";
@@ -114,8 +122,7 @@
             return $result ;
 
         }
-
-        
+      
         public static function getEmpDetails( $empID ){
 
             $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID where employeeID=$empID";
@@ -148,8 +155,7 @@
 
             return $result ;
 
-        }
-        
+        }    
 
         public static function alert( $msg ){
 
