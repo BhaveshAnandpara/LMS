@@ -27,8 +27,22 @@
 <?php
 
     $leaveTypes = Utils::getLeaveTypes();
+    $leaveTypesArr = array();
+    
+    while( $rows = mysqli_fetch_assoc( $leaveTypes ) ){
+        $leaveTypesArr[] =  $rows ;
+    }
+
+    $leaveTypes = Utils::getLeaveTypes();
 
 ?>
+
+<script>
+
+    var leaveTypeDeatils = <?php echo json_encode( $leaveTypesArr ); ?>;
+
+</script>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -489,7 +503,7 @@
 
             //* ------------------------- Leave Types Box --------------------------------
 
-            leaveTypes = [] // array to avoid duplicate leave types
+            leaveTypes = {} // array to avoid duplicate leave types
 
             //Logic to add new Blank rows
             $('#addleaveTypeRowBtn').click(()=>{ 
@@ -508,14 +522,31 @@
                         if( childrens[i].name === "leaveID" ){
 
                             //If leave type is already selected
-                            if( leaveTypes.includes( childrens[i].value ) ){
+                            if( leaveTypes[ childrens[i].value + '' ] != undefined ){
+
                                 alert( 'Cannot Choose Same Leave Type Again !' ) 
+                                delete leaveTypes[ childrens[i].value + '' ]
                                 return;
+
                             }else{
-                                leaveTypes.push( childrens[i].value )
+
+                                leaveTypes[ childrens[i].value + '' ] = {}
+                                leaveTypes[ childrens[i].value + '' ][ childrens[i].name + '' ] = childrens[i].value
+                                
                             }
                         }
+                        
+                        leaveTypes[ childrens[0].value + '' ][ childrens[i].name + '' ] = childrens[i].value
 
+                }
+
+                let validate = calculateTotalDays( leaveTypes )
+
+                if( !validate.isValid ){ 
+
+                    alert( validate.msg )
+                    return;
+                
                 }
 
                 //Clone the HTML structure of row
@@ -552,8 +583,6 @@
 
             //to remove for first child
             $('#leavetyperemove-0').click((e)=>{
-
-
                 removeLeaveTypeRow(e)
             })
 
@@ -568,19 +597,69 @@
                 console.log(id);
                 
                 let value =  document.getElementById(`leaveType-${id}`).value 
-
-                var index = leaveTypes.indexOf(value);
-                if (index !== -1) {
-                    leaveTypes.splice(index, 1);
-                }
+                delete leaveTypes[value+'']
                 
+
                 $(`#leavetypeItem-${id}`).remove()
 
 
             }
 
 
-        
+            //Calculate Total Days
+            function calculateTotalDays( leavedata ) {
+                
+                
+                for (const key in leavedata) {
+                    
+                    //Define all data
+                    let appliedLeaveData = leavedata[key]
+                    let validationsRequired 
+                    
+                    //define data from db
+                    for( let i = 0 ; i < leaveTypeDeatils.length ; i=i+1 ) {
+
+                        if( leaveTypeDeatils[i].leaveID === key ){
+                            validationsRequired  = leaveTypeDeatils[i];
+                            break;
+                        }
+                    }
+
+                    console.log(appliedLeaveData);
+                    console.log(validationsRequired);
+
+                    let currTime = new Date()
+                    currTime.setHours(5);
+                    currTime.setMinutes(30);
+                    currTime.setSeconds(00);
+                    currTime.setMilliseconds(00);
+
+                    let fromDate =  new Date( appliedLeaveData.fromDate ) 
+                    let toDate = new Date( appliedLeaveData.toDate )
+                    
+                    //Validate Waiting Time
+                    if(  fromDate.getTime() < ( currTime.getTime() + parseInt( validationsRequired.waitingTime ) * (24*60*60*1000) )  ) return { msg : `${validationsRequired.leaveType} needs to apply atleast ${validationsRequired.waitingTime} Days prior !`  , isValid: false }
+                    
+                    //ToDate Should be greater or equal to fromDate
+                    if( toDate.getTime() < fromDate.getTime() ) return { msg : "toDate cannot be less than fromDate !" , isValid: false }
+
+
+                    //calculate difference between days
+                    let diffBtnDates = Math.floor(( toDate.getTime() - fromDate.getTime() ) / (24*60*60*1000))
+                    
+                    //validate Apply Limit
+                    if( diffBtnDates > parseInt(validationsRequired.applyLimit) ) return { msg : `${validationsRequired.leaveType} has apply limit of ${validationsRequired.applyLimit}` , isValid: false }
+
+
+                    return { isValid : true }
+
+                }
+
+
+
+            }
+
+
         })
 
 
