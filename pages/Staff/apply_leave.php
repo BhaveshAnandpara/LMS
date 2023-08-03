@@ -253,16 +253,100 @@
                 <!-- Total Days -->
                 <div class="form-row">
 
-                    <!-- Input Email -->
-                    <div class="form-group col-md-12 mt-3">
+                    <div class="form-group col-md-12 mt-3 md-0">
                         
-                        <p  class="form-control border-top-0 border-right-0 border-left-0 border border-dark bg-white" id="totalDays" name="totalDays"> Total Days </p>
+                        <p class="form-control border bg-white mb-0" id="totalDays" name="totalDays"> Total Days </p>
 
                     </div>
 
+                </div>
+
+                <!-- Reason -->
+                <div class="form-row">
+                    <div class="form-group col-md-12 pt-2">
+
+                        <textarea type="text" name="reason"  placeholder="Reason" class="form-control border border-dark" id="reason"></textarea>
+
+                    </div>
+                </div>
+
+                <!-- Lecture Adjustments -->
+                <div class="form-row border py-1 px-3 rounded">
+
+                    <h6 class="pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="lecAdj" name="lecAdj" type="checkbox"  > Lecture Adjustments ( Optional )</h6>
+
+                    <!-- Container for all lecAdj Rows -->
+                    <div class="lecAdjContainer col-md-12  ">
+
+                        <!-- lecAdj Row ( Each lecAdj ) -->
+                        <div id="lecAdjItem-0" class="lecAdjItem border pb-2 pt-3 px-4  form-row flex justify-content-between align-items-end mb-3">
+
+                            <div class="form-row col-md-10 justify-content-between mb-2 pt-3">
+
+                                    <!-- Adjust With Email -->
+                                    <select  id="lecAdjEmail-0" name="lecAdjEmail" class=" lecAdjEmail  border-top-0 border-right-0 border-left-0 border border-dark mb-4 col-md-5" data-toggle="tooltip" data-placement="top" title="Select Adjusted With"  >
+
+                                        <option value="" > Adjust With </option>
+
+                                        <?php
+
+                                            $emps = Utils::getAllActiveEmployees();
+
+                                            while( $row = mysqli_fetch_assoc( $emps ) ){
+
+                                            echo "<option value='" .$row['employeeID']. "' > ".$row['fullName']." </option>";
+
+                                            }
+                                        
+                                        ?>
+
+                                        
+
+                                    </select>
+
+                                    <!-- Semester -->
+                                    <select  id="lecAdjSem-0" name="lecAdjSem" class=" lecAdjSem  border-top-0 border-right-0 border-left-0 border border-dark mb-4 col-md-3" data-toggle="tooltip" data-placement="top" title="Semester"  >
+
+                                        <option value="0" > Select Semester </option>
+                                        <option value="1" > 1st Sem </option>
+                                        <option value="2" > 2nd Sem </option>
+                                        <option value="3" > 3rd Sem </option>
+                                        <option value="4" > 4th Sem </option>
+                                        <option value="5" > 5th Sem </option>
+                                        <option value="6" > 6th Sem </option>
+                                        <option value="7" > 7th Sem </option>
+                                        <option value="8" > 8th Sem </option>
+
+                                    </select>
+
+                                    <!-- Subject -->
+                                    <input type="text"  name="sub" data-toggle="tooltip" data-placement="top" title="Subject" placeholder="Subject" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-4 col-md-3" id="sub-0" >
+
+
+                                    <!-- lec Date -->
+                                    <input type="text"  name="lecDate" data-toggle="tooltip" data-placement="top" title="Lecture Date" placeholder="Lecture Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-2 col-md-5" id="lecDate-0" >
+
+                                    <!-- Lec Start Time -->
+                                    <input type="text"  name="lecStartTime" data-toggle="tooltip" data-placement="top" title="Lecture Start Time" placeholder="Lecture Start Time" onfocus="(this.type='time')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-2 col-md-3" id="lecStartTime-0" >
+
+                                    <!-- Lec End Time -->
+                                    <input type="text"  name="lecEndTime" data-toggle="tooltip" data-placement="top" title="Lecture End Time" placeholder="Lecture End Time" onfocus="(this.type='time')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-2 col-md-3" id="lecEndTime-0" >
+
+                            </div>
+
+                            <button id="lecAdjRemove-0"  class=" lecAdjRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <!-- Add Row Button -->
+                    <button id="lecAdjRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
 
 
                 </div>
+
 
                 <div class="form-row">
 
@@ -318,12 +402,6 @@
 
                 </div>
 
-                <!-- reason -->
-                <div class="form-group col-md-12  p-0">
-
-                    <input type="text" name="reason"  placeholder="Reason" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="reason">
-
-                </div>
 
                 <!-- Lecture Adjustment Section -->
 
@@ -441,6 +519,7 @@
 
     </section>
 
+
     <script>
 
         $(document).ready(function() {
@@ -506,6 +585,84 @@
 
                 let id = (e.target.id).split('-')[1]
                 $(`#approvalItem-${id}`).remove()
+
+            }
+
+            //* ------------------------- Lecture Adjustment Box --------------------------------
+
+            //Additional Approvals Container
+            $('.lecAdjContainer').hide()
+            $('#lecAdjRowBtn').hide()
+        
+            $('#lecAdj').click(()=>{
+
+                $('#lecAdjRowBtn').toggle()
+                $('.lecAdjContainer').toggle()
+
+            })
+            
+            //Logic to add new Blank rows
+            $('#lecAdjRowBtn').click(()=>{ 
+                
+                
+                let prevValue = $('.lecAdjItem:last')[0]
+                let children = $('.lecAdjItem:last')[0].children[0].children
+                let totalChildren = children.length
+
+                for( let i = 0 ; i < totalChildren - 1 ; i++  ){
+
+                        if( children[i].value === "" ) return
+
+                }
+
+                //Clone the HTML structure of row
+                let lecAdjItem = $('.lecAdjItem:last').clone()
+                let lecAdjNo = (lecAdjItem[0].id).split('-')[1] //get the no. of row
+
+                lecAdjItem.attr('id', `lecAdjItem-${parseInt(lecAdjNo) + 1}`); //update the no.of row
+                
+                $('.lecAdjContainer').append( lecAdjItem ) //append the new row
+                
+                let len = lecAdjItem[0].children[0].children.length //get all elements in row like select and buttons
+                
+                //for every element
+                for( let i = 0 ; i < len ; i++ ){
+                    
+                    let id = (lecAdjItem[0].children[0].children[i].id).toString()
+                    let newId = (id.replace( lecAdjNo , `${parseInt(lecAdjNo) + 1}` )) //change the id according to no.
+                    
+                    lecAdjItem[0].children[0].children[i].id = newId;
+                    
+                    //for remove button add onclick function
+                    if( i == len-1 ){
+                        lecAdjItem[0].children[1].onclick =  (e)=>removeLecAdjRow(e) ;
+                    }
+
+                }
+                
+                
+                id = (lecAdjItem[0].children[1].id).toString()
+                newId = (id.replace( lecAdjNo , `${parseInt(lecAdjNo) + 1}` )) //change the id according to no.
+                
+                lecAdjItem[0].children[1].id = newId;
+
+            })
+
+            //to remove for first child
+            $('#lecAdjRemove-0').click((e)=>{
+                removeLecAdjRow(e)
+            })
+
+            //Function to remove approval rows
+            function removeLecAdjRow(e){
+
+                console.log(e.target.id);
+                let len = $('.lecAdjItem').length
+                
+                if( len == 1 )return 
+
+                let id = (e.target.id).split('-')[1]
+                $(`#lecAdjItem-${id}`).remove()
 
             }
 

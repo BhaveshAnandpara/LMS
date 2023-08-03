@@ -54,7 +54,7 @@
 
         public static function getAllActiveEmployees(  ){
 
-            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID where employees.status='ACTIVE' ORDER BY Status";
+            $sql = "Select * from employees inner join departments on employees.deptID = departments.deptID where employees.status='ACTIVE' ORDER BY employees.fullName";
 
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
