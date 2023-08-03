@@ -26,20 +26,31 @@
 <!-- Load all the necessary information -->
 <?php
 
+    //Get Data of Leave types from DB
     $leaveTypes = Utils::getLeaveTypes();
     $leaveTypesArr = array();
     
     while( $rows = mysqli_fetch_assoc( $leaveTypes ) ){
         $leaveTypesArr[] =  $rows ;
     }
-
+    
+    //Get Data of employee balance from DB  
+    $employeeBalance = Utils::getLeaveBalanceOfEmployee( $user->employeeId );
+    $employeeBalanceArr = array();
+    
+    while( $rows = mysqli_fetch_assoc( $employeeBalance ) ){
+        $employeeBalanceArr[] =  $rows ;
+    }
+    
     $leaveTypes = Utils::getLeaveTypes();
+    $employeeBalance = Utils::getLeaveBalanceOfEmployee( $user->employeeId );
 
 ?>
 
 <script>
 
     var leaveTypeDeatils = <?php echo json_encode( $leaveTypesArr ); ?>;
+    var employeeBalance = <?php echo json_encode( $employeeBalanceArr ); ?>;
 
 </script>
 
@@ -184,7 +195,7 @@
                         <div id="leavetypeItem-0" class="leavetypeItem  form-row flex justify-content-between align-items-end mu-2 mb-3">
 
                             <!-- Leave Type -->
-                            <select  id="leaveType-0" name="leaveID" class=" leaveType  border-top-0 border-right-0 border-left-0 border border-dark col-md-3" data-toggle="tooltip" data-placement="top" title="Select Leave Type"  >
+                            <select  id="leaveType-0" name="leaveID" class=" leaveType  border-top-0 border-right-0 border-left-0 border border-dark col-md-3" data-toggle="tooltip" data-placement="top" title="Select Leave Type"   >
 
 
                                 <?php
@@ -202,10 +213,10 @@
                             </select>
 
                             <!-- From Date -->
-                            <input type="text"  name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="fromDate-0"  min="<?php echo date('Y-m-d') ?>"  >
+                            <input type="text"  name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="fromDate-0"  min="<?php echo date('Y-m-d') ?>"    >
 
                             <!-- From Date Type -->
-                            <select  id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-1" data-toggle="tooltip" data-placement="top" title="Select From Date Type"  >
+                            <select  id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-1" data-toggle="tooltip" data-placement="top" title="Select From Date Type"   >
 
                                 <option value='FULL' disable> FULL </option>
                                 <option value='HALF' disable> HALF </option>
@@ -213,10 +224,10 @@
                             </select>
 
                             <!-- To Date -->
-                            <input type="text"  name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="toDate-0"  min="<?php echo date('Y-m-d') ?>"  >
+                            <input type="text"  name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="toDate-0"  min="<?php echo date('Y-m-d') ?>"    >
 
                             <!-- From Date Type -->
-                            <select  id="toDateType-0" name="toDateType" class=" toDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-1" data-toggle="tooltip" data-placement="top" title="Select To Date Type"  >
+                            <select  id="toDateType-0" name="toDateType" class=" toDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-1" data-toggle="tooltip" data-placement="top" title="Select To Date Type"    >
 
                                 <option value='FULL' disable> FULL </option>
                                 <option value='HALF' disable> HALF </option>
@@ -232,7 +243,9 @@
                     
                     <!-- Add Row Button -->
                     <button id="addleaveTypeRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
-
+                    
+                    <!-- Save Button -->
+                    <button id="saveleaveTypeBtn" class=" btn mb-3 ml-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Save Details' > Save Details </button>
 
                 </div>
             
@@ -486,7 +499,6 @@
                 removeApprovalRow(e)
             })
 
-
             //Function to remove approval rows
             function removeApprovalRow(e){
 
@@ -495,7 +507,6 @@
                 if( len == 1 )return 
 
                 let id = (e.target.id).split('-')[1]
-                console.log(id);
                 $(`#approvalItem-${id}`).remove()
 
             }
@@ -504,117 +515,172 @@
             //* ------------------------- Leave Types Box --------------------------------
 
             leaveTypes = {} // array to avoid duplicate leave types
+            leaveTypes['final'] = {} //final object will have first fromDate to last toDate
 
-            //Logic to add new Blank rows
+            var isSafeToAddNewLeaveTypeRow = false //if false meanse the currrent data is not validated hence don't allow adding another row
+
+            console.log(leaveTypes);
+
+            //Add new Row
             $('#addleaveTypeRowBtn').click(()=>{ 
-
-                let prevValue = $('.leavetypeItem:last ')[0]
-                let childrens = prevValue.children 
-
-                //For every element in row
-                for( let i = 0 ; i < childrens.length - 1 ; i++ ){
-
-                        //If input is blank
-                        if ( childrens[i].value === "" ){
-                            return
-                        }
-
-                        if( childrens[i].name === "leaveID" ){
-
-                            //If leave type is already selected
-                            if( leaveTypes[ childrens[i].value + '' ] != undefined ){
-
-                                alert( 'Cannot Choose Same Leave Type Again !' ) 
-                                delete leaveTypes[ childrens[i].value + '' ]
-                                return;
-
-                            }else{
-
-                                leaveTypes[ childrens[i].value + '' ] = {}
-                                leaveTypes[ childrens[i].value + '' ][ childrens[i].name + '' ] = childrens[i].value
-                                
-                            }
-                        }
-                        
-                        leaveTypes[ childrens[0].value + '' ][ childrens[i].name + '' ] = childrens[i].value
-
-                }
-
-                let validate = calculateTotalDays( leaveTypes )
-
-                if( !validate.isValid ){ 
-
-                    alert( validate.msg )
-                    return;
-                
-                }
-
-                //Clone the HTML structure of row
-                let leavetypeItem = $('.leavetypeItem:last').clone()
-                let leaveTypeNo = (leavetypeItem[0].id).split('-')[1] //get the no. of row
-
-                leavetypeItem.attr('id', `leavetypeItem-${parseInt(leaveTypeNo) + 1}`); //update the no.of row
-                
-                $('.leavetypesContainer').append( leavetypeItem ) //append the new row
-                
-                let len = leavetypeItem[0].children.length //get all elements in row like select and buttons
-                
-                //for every element
-                for( let i = 0 ; i < len ; i = i+1 ){
-              
-                    if( leavetypeItem[0].children[i].name === "fromDate" || leavetypeItem[0].children[i].name === "toDate" )  leavetypeItem[0].children[i].value  = ""
-
-                    let id = (leavetypeItem[0].children[i].id).toString()
-                    let newId = (id.replace( leaveTypeNo , `${parseInt(leaveTypeNo) + 1}` )) //change the id according to no.
-
-                    leavetypeItem[0].children[i].id = newId;
-                    
-                    //for remove button add onclick function
-                    if( i == len-1 ){
-                        leavetypeItem[0].children[i].onclick =  (e)=>removeLeaveTypeRow(e) ;
-                    }
-
-                }
-
-
-
+                addLeaveTypeNewRow( )
             })
 
+            //Validate data
+            $('#leaveType-0 , #fromDate-0 , #fromDateType-0 ,  #toDate-0 ,  #toDateType-0').change((e)=>{
+                handleLeaveDataChange(e)
+            })
 
             //to remove for first child
             $('#leavetyperemove-0').click((e)=>{
                 removeLeaveTypeRow(e)
             })
 
-            //to remove the leave type rows
+            //Fucntion to Validate the current data and configure final object
+            function handleLeaveDataChange(e){
+                
+                console.log(leaveTypes);
+
+                //get the id of row
+                let id = e.target.id
+                id = parseInt(id.split('-')[1])
+                
+                let prevValue = $( `#leavetypeItem-${id}` )[0]
+                let childrens = prevValue.children 
+                
+                //For every element in row
+                for( let i = 0 ; i < childrens.length - 1 ; i++ ){
+                    
+                    //If input is blank
+                    if ( childrens[i].value === "" ){
+                        return
+                    }
+                    
+                }
+
+                
+                let lastRow = $('.leavetypeItem:last ')[0]
+                let childrensOfLastRow = lastRow.children
+
+                //If some leave type for the rowNo already exist then remove that
+                for (const key in leaveTypes) {
+                    
+                    if( leaveTypes[key].rowNo === id ){
+                        delete leaveTypes[key];
+                        break;
+                    }
+
+                }
+                
+
+                //Check if there is already some data for specific leavetype
+                if( leaveTypes[ childrensOfLastRow[0].value + '' ] != undefined && leaveTypes[ childrensOfLastRow[0].value + '' ].rowNo !== id ) {
+
+                    alert( "Cannot Select Leave Type more than Once !" )
+                    return;
+                }
+
+                //create a object for that specefic leave type
+                leaveTypes[ childrensOfLastRow[0].value + '' ] = {  }
+                leaveTypes[ childrensOfLastRow[0].value + '' ].rowNo = id;
+
+                
+                //For every element in row i.e , select , inputs,
+                for( let i = 0 ; i < childrensOfLastRow.length - 1 ; i++ ){
+
+                        //If input is blank
+                        if ( childrensOfLastRow[i].value === "" ){
+                            return
+                        }
+
+                        if( childrensOfLastRow[i].name === "leaveID" ){
+
+                                //create new object for new leave type
+                                leaveTypes[ childrensOfLastRow[i].value + '' ][ childrensOfLastRow[i].name + '' ] = childrensOfLastRow[i].value
+                                
+                        }
+                        
+                        //Add all the data in leave type specific object
+                        leaveTypes[ childrensOfLastRow[0].value + '' ][ childrensOfLastRow[i].name + '' ] = childrensOfLastRow[i].value
+
+                }
+
+
+                //reset final object
+                leaveTypes['final'] = {}
+
+                let validate = validateLeaveData( leaveTypes ) //Validate Data and configure final dates
+
+                //If validations fails
+                if( !validate.isValid ){ 
+
+                    alert( validate.msg )
+                    isSafeToAddNewLeaveTypeRow = false //don't allow to add new Row
+                    return;
+                
+                }
+
+                //Validations were fine hence allow to add new Row
+                isSafeToAddNewLeaveTypeRow = true
+                
+            }
+
+
+            //Fucntion to remove leave type Row
             function removeLeaveTypeRow(e){
 
                 let len = $('.leavetypeItem').length
+                if( len == 1 )return //there must be atleast 1 row
                 
-                if( len == 1 )return 
-
                 let id = (e.target.id).split('-')[1]
-                console.log(id);
-                
-                let value =  document.getElementById(`leaveType-${id}`).value 
-                delete leaveTypes[value+'']
                 
 
+                //Remove the leave type specific object
+                for (const key in leaveTypes) {
+                    
+                    if( leaveTypes[key].rowNo === parseInt(id) ){
+                        delete leaveTypes[key];
+                        break;
+                    }
+
+                }
+                
+                //Remove Row
                 $(`#leavetypeItem-${id}`).remove()
 
+
+                //reset final object
+                leaveTypes['final'] = {}
+
+                let validate = validateLeaveData( leaveTypes ) //Validate Data and configure final dates
+
+                //If validations fails
+                if( !validate.isValid ){ 
+
+                    alert( validate.msg )
+                    isSafeToAddNewLeaveTypeRow = false //don't allow to add new Row
+                    return;
+                
+                }
+
+                //Validations were fine hence allow to add new Row
+                isSafeToAddNewLeaveTypeRow = true
 
             }
 
 
-            //Calculate Total Days
-            function calculateTotalDays( leavedata ) {
-                
-                
+            //Validate Current data and return response
+            function validateLeaveData( leavedata ) {
+
+                //For every leave in leave data
                 for (const key in leavedata) {
                     
+                    if( key === 'final') continue
+
                     //Define all data
                     let appliedLeaveData = leavedata[key]
-                    let validationsRequired 
+                    let validationsRequired //LeaveType data from DB
+                    let balances //Employee Balance data from DB
                     
                     //define data from db
                     for( let i = 0 ; i < leaveTypeDeatils.length ; i=i+1 ) {
@@ -625,19 +691,31 @@
                         }
                     }
 
-                    console.log(appliedLeaveData);
-                    console.log(validationsRequired);
+                    //define data from db
+                    for( let i = 0 ; i < employeeBalance.length ; i=i+1 ) {
 
+                        if( employeeBalance[i].leaveID === key ){
+                            balances = employeeBalance[i];
+                            break;
+                        }
+                    }
+
+                    //The Time according to UTC is 5:30:00 ahead for india
                     let currTime = new Date()
-                    currTime.setHours(5);
-                    currTime.setMinutes(30);
-                    currTime.setSeconds(00);
-                    currTime.setMilliseconds(00);
+                    currTime.setHours(5 , 30 , 0 ,0)
 
                     let fromDate =  new Date( appliedLeaveData.fromDate ) 
+                    fromDate.setHours(5 , 30 , 0 ,0)
                     let toDate = new Date( appliedLeaveData.toDate )
+                    toDate.setHours(5 , 30 , 0 ,0)
                     
-                    //Validate Waiting Time
+                    let finalEndDate = new Date(leavedata.final.endDate)
+                    finalEndDate.setHours(5 , 30 , 0 ,0)
+
+                    //Validate dates sequence from above rows ( from Date of row cannot be less than toDate of prev row )
+                    if( leavedata.final.endDate != undefined && ( finalEndDate.getTime() >= fromDate.getTime() )  )return { msg : `fromDate cannot be less than or equals to previous endDate!`  , isValid: false }
+
+                    //Validate Waiting Time 
                     if(  fromDate.getTime() < ( currTime.getTime() + parseInt( validationsRequired.waitingTime ) * (24*60*60*1000) )  ) return { msg : `${validationsRequired.leaveType} needs to apply atleast ${validationsRequired.waitingTime} Days prior !`  , isValid: false }
                     
                     //ToDate Should be greater or equal to fromDate
@@ -650,15 +728,69 @@
                     //validate Apply Limit
                     if( diffBtnDates > parseInt(validationsRequired.applyLimit) ) return { msg : `${validationsRequired.leaveType} has apply limit of ${validationsRequired.applyLimit}` , isValid: false }
 
+                    //Check for insuffcient Balance
+                    if( parseInt(balances.balance) < diffBtnDates )return { msg : `Insuffcient balance , Current ${balances.leaveType}s :  ${balances.balance} ` , isValid: false }
 
-                    return { isValid : true }
+                    //Add totalDays to leave type specefic object
+                    leavedata[key].totalDays = diffBtnDates;
+    
+
+                    //update final object
+                    if( leavedata.final.startDate === undefined ){
+
+                        leavedata.final.startDate = appliedLeaveData.fromDate
+                        leavedata.final.startDateType = appliedLeaveData.fromDateType;
+
+                    }
+
+                    leavedata.final.endDate = appliedLeaveData.toDate;
+                    leavedata.final.endDateType = appliedLeaveData.toDateType;
+    
+                }
+                
+                return { msg : "Validations Successfull" ,isValid : true }
+            }
+
+
+            //  Add new Row
+            function addLeaveTypeNewRow(){
+
+                if( !isSafeToAddNewLeaveTypeRow ) return //If it is not safe then don't add row and return
+
+                //Clone the HTML structure of row
+                let leavetypeItem = $('.leavetypeItem:last').clone() //clone of last row
+                let leaveTypeNo = (leavetypeItem[0].id).split('-')[1] //get the no. of last row
+
+                leavetypeItem.attr('id', `leavetypeItem-${parseInt(leaveTypeNo) + 1}`); //update the no.of cloned row
+                
+                $('.leavetypesContainer').append( leavetypeItem ) //append the new row
+                
+                let len = leavetypeItem[0].children.length //get all elements in row like select and buttons
+                
+                //for every element
+                for( let i = 0 ; i < len ; i = i+1 ){
+              
+                    //Set Dates input as blank for cloned row
+                    if( leavetypeItem[0].children[i].name === "fromDate" || leavetypeItem[0].children[i].name === "toDate" )  leavetypeItem[0].children[i].value  = ""
+
+                    let id = (leavetypeItem[0].children[i].id).toString()
+                    let newId = (id.replace( leaveTypeNo , `${parseInt(leaveTypeNo) + 1}` )) //change the id according to no.
+
+                    leavetypeItem[0].children[i].id = newId;
+                    
+                    //for remove button add onclick function
+                    if( i == len-1 ){
+                        leavetypeItem[0].children[i].onclick =  (e)=>removeLeaveTypeRow(e) ;
+                    }else{
+                        leavetypeItem[0].children[i].onchange =  (e)=>handleLeaveDataChange(e) ;
+                    }
 
                 }
 
 
 
             }
-
+            
 
         })
 
