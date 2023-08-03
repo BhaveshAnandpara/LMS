@@ -233,6 +233,10 @@ try{
 
                 }
 
+                
+                echo "<script>
+                    window.location.href = './addEmp.php'
+                </script>";
 
 
             
@@ -244,9 +248,9 @@ catch(Exception $e){
 
     echo $e;
 
-    // echo "<script>
-    //     window.location.href = './addEmp.php'
-    // </script>";
+    echo "<script>
+        window.location.href = './addEmp.php'
+    </script>";
     
 }
 

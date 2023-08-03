@@ -96,7 +96,7 @@ try{
     }
     else{
 
-        echo Utils::alert("Leave Added Successfully");
+            echo Utils::alert("Leave Added Successfully");
 
             //------------------------------ Main Logic  ------------------------------//
             
@@ -123,7 +123,6 @@ try{
             $employeeResult =  mysqli_query( $conn , $sql);
 
             if( !$employeeResult ) echo "Error Occured";
-
 
             
             $time = date( 'Y-m-d H:i:s' , time());

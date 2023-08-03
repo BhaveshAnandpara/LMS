@@ -73,7 +73,6 @@
 
         <?php 
             $leaveDetails = mysqli_fetch_assoc( Utils::getLeaveDetailsOfEmployee($empID , $leaveID) );
-            print_r( $leaveDetails);
         ?>
 
         <div class=" manageLeaveContainer container ">

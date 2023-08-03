@@ -163,6 +163,12 @@
 
         }
 
+        public static function confirm( $msg ){
+
+            return "<script> confirm('" .$msg. "') </script>";
+
+        }
+
     
     }
 
