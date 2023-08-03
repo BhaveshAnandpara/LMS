@@ -195,7 +195,7 @@
                         <div id="leavetypeItem-0" class="leavetypeItem  form-row flex justify-content-between align-items-end mu-2 mb-3">
 
                             <!-- Leave Type -->
-                            <select  id="leaveType-0" name="leaveID" class=" leaveType  border-top-0 border-right-0 border-left-0 border border-dark col-md-3" data-toggle="tooltip" data-placement="top" title="Select Leave Type"   >
+                            <select  id="leaveType-0" name="leaveID" class=" leaveType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select Leave Type"   >
 
 
                                 <?php
@@ -216,10 +216,11 @@
                             <input type="text"  name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="fromDate-0"  min="<?php echo date('Y-m-d') ?>"    >
 
                             <!-- From Date Type -->
-                            <select  id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-1" data-toggle="tooltip" data-placement="top" title="Select From Date Type"   >
+                            <select  id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select From Date Type"   >
 
                                 <option value='FULL' disable> FULL </option>
-                                <option value='HALF' disable> HALF </option>
+                                <option value='FIRST HALF' disable> FIRST HALF </option>
+                                <option value='SECOND HALF' disable> SECOND HALF </option>
 
                             </select>
 
@@ -227,10 +228,11 @@
                             <input type="text"  name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="toDate-0"  min="<?php echo date('Y-m-d') ?>"    >
 
                             <!-- From Date Type -->
-                            <select  id="toDateType-0" name="toDateType" class=" toDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-1" data-toggle="tooltip" data-placement="top" title="Select To Date Type"    >
+                            <select  id="toDateType-0" name="toDateType" class=" toDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select To Date Type"    >
 
                                 <option value='FULL' disable> FULL </option>
-                                <option value='HALF' disable> HALF </option>
+                                <option value='FIRST HALF' disable> FIRST HALF </option>
+                                <option value='SECOND HALF' disable> SECOND HALF </option>
 
                             </select>
                             
@@ -245,20 +247,16 @@
                     <button id="addleaveTypeRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
                     
                     <!-- Save Button -->
-                    <button id="saveleaveTypeBtn" class=" btn mb-3 ml-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Save Details' > Save Details </button>
 
                 </div>
             
+                <!-- Total Days -->
                 <div class="form-row">
 
-                    <div class="form-group col-md-6">
-
-                        <!-- Leave type -->
-
-                        <select required id="leaveType" name="leaveType" class="form-control border-top-0 border-right-0 border-left-0 border border-dark" data-toggle="tooltip" data-placement="top" title="Select Leave Type" name="leaveType">
-
-
-                        </select>
+                    <!-- Input Email -->
+                    <div class="form-group col-md-12 mt-3">
+                        
+                        <p  class="form-control border-top-0 border-right-0 border-left-0 border border-dark bg-white" id="totalDays" name="totalDays"> Total Days </p>
 
                     </div>
 
@@ -747,7 +745,8 @@
                     leavedata.final.endDateType = appliedLeaveData.toDateType;
     
                 }
-                
+
+                calculateTotalDays( leavedata )
                 return { msg : "Validations Successfull" ,isValid : true }
             }
 
@@ -792,7 +791,39 @@
             }
             
 
+
+            //* ------------------------- Calculate Total Days --------------------------------
+
+            function calculateTotalDays( leavedata ){
+
+                console.log(leavedata);
+                let data = leavedata.final
+
+                let startDate = new Date( data.startDate )
+                startDate.setHours(5,30,0,0)
+
+                let startDateType = new Date( data.startDateType )
+                startDateType.setHours(5,30,0,0)
+
+                let endDate = new Date(data.endDate)
+                endDate.setHours(5,30,0,0)
+
+                let endDateType = new Date (data.endDateType)
+                endDateType.setHours(5,30,0,0)
+
+                //Sandwich Leaves
+                if( endDateType === 'SECOND HALF' ){
+
+
+
+                }
+
+
+            }
+
         })
+
+        
 
 
     </script>
