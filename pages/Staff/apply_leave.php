@@ -347,6 +347,65 @@
 
                 </div>
 
+                <!-- Task Adjustments -->
+                <div class="form-row border py-1 px-3 rounded">
+
+                    <h6 class="pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="taskAdj" name="taskAdj" type="checkbox"  > Task Adjustments ( Optional )</h6>
+
+                    <!-- Container for all taskAdj Rows -->
+                    <div class="taskAdjContainer col-md-12  ">
+
+                        <!-- taskAdj Row ( Each taskAdj ) -->
+                        <div id="taskAdjItem-0" class="taskAdjItem border pb-2 pt-3 px-4  form-row flex justify-content-between align-items-center mb-3">
+
+                            <div class="form-row col-md-10 justify-content-between mb-2 pt-3">
+
+                                    <!-- Adjust With Email -->
+                                    <select  id="taskAdjEmail-0" name="taskAdjEmail" class=" taskAdjEmail  border-top-0 border-right-0 border-left-0 border border-dark mb-4 col-md-4" data-toggle="tooltip" data-placement="top" title="Select Adjusted With"  >
+
+                                        <option value="" > Adjust With </option>
+
+                                        <?php
+
+                                            $emps = Utils::getAllActiveEmployees();
+
+                                            while( $row = mysqli_fetch_assoc( $emps ) ){
+
+                                            echo "<option value='" .$row['employeeID']. "' > ".$row['fullName']." </option>";
+
+                                            }
+                                        
+                                        ?>
+
+                                        
+
+                                    </select>
+
+                                    <!-- from Date -->
+                                    <input type="text"  name="taskFromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-4 col-md-3" id="taskFromDate-0" >
+
+                                    <!-- To Date -->
+                                    <input type="text"  name="taskToDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-4 col-md-4" id="taskToDate-0" >
+                                    
+                                    
+                                    <!-- Task -->
+                                    <textarea  name="task" data-toggle="tooltip" data-placement="top" title="Task" placeholder="Task" class=" border border-dark mb-4 col-md-12 pt-2" id="task-0" ></textarea>
+
+                            </div>
+
+                            <button id="lecAdjRemove-0"  class=" lecAdjRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <!-- Add Row Button -->
+                    <button id="taskAdjRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
+
+
+                </div>
+
 
                 <div class="form-row">
 
@@ -628,6 +687,7 @@
                 //for every element
                 for( let i = 0 ; i < len ; i++ ){
                     
+                    lecAdjItem[0].children[0].children[i].value = ""
                     let id = (lecAdjItem[0].children[0].children[i].id).toString()
                     let newId = (id.replace( lecAdjNo , `${parseInt(lecAdjNo) + 1}` )) //change the id according to no.
                     
@@ -666,6 +726,83 @@
 
             }
 
+            //* ------------------------- Task Adjustment Box --------------------------------
+
+            //Additional Approvals Container
+            $('.taskAdjContainer').hide()
+            $('#taskAdjRowBtn').hide()
+        
+            $('#taskAdj').click(()=>{
+
+                $('#taskAdjRowBtn').toggle()
+                $('.taskAdjContainer').toggle()
+
+            })
+            
+            //Logic to add new Blank rows
+            $('#taskAdjRowBtn').click(()=>{ 
+                
+                
+                let taskChildren = $('.taskAdjItem:last')[0].children[0].children
+                let totalTaskChildren = taskChildren.length
+
+                for( let i = 0 ; i < totalTaskChildren - 1 ; i++  ){
+
+                        if( taskChildren[i].value === "" ) return
+
+                }
+
+                //Clone the HTML structure of row
+                let taskAdjItem = $('.taskAdjItem:last').clone()
+                let taskAdjNo = (taskAdjItem[0].id).split('-')[1] //get the no. of row
+
+                taskAdjItem.attr('id', `taskAdjItem-${parseInt(taskAdjNo) + 1}`); //update the no.of row
+                
+                $('.taskAdjContainer').append( taskAdjItem ) //append the new row
+                
+                let len = taskAdjItem[0].children[0].children.length //get all elements in row like select and buttons
+                
+                //for every element
+                for( let i = 0 ; i < len ; i++ ){
+                    
+                    taskAdjItem[0].children[0].children[i].value = ""
+                    let id = (taskAdjItem[0].children[0].children[i].id).toString()
+                    let newId = (id.replace( taskAdjNo , `${parseInt(taskAdjNo) + 1}` )) //change the id according to no.
+                    
+                    taskAdjItem[0].children[0].children[i].id = newId;
+                    
+                    //for remove button add onclick function
+                    if( i == len-1 ){
+                        taskAdjItem[0].children[1].onclick =  (e)=>removeTaskAdjRow(e) ;
+                    }
+
+                }
+                
+                
+                id = (taskAdjItem[0].children[1].id).toString()
+                newId = (id.replace( taskAdjNo , `${parseInt(taskAdjNo) + 1}` )) //change the id according to no.
+                
+                taskAdjItem[0].children[1].id = newId;
+
+            })
+
+            //to remove for first child
+            $('#taskAdjRemove-0').click((e)=>{
+                removeTaskAdjRow(e)
+            })
+
+            //Function to remove approval rows
+            function removeTaskAdjRow(e){
+
+                console.log(e.target.id);
+                let len = $('.taskAdjItem').length
+                
+                if( len == 1 )return 
+
+                let id = (e.target.id).split('-')[1]
+                $(`#taskAdjItem-${id}`).remove()
+
+            }
 
             //* ------------------------- Leave Types Box --------------------------------
 
