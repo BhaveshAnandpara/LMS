@@ -138,51 +138,6 @@
 
                 </div>
 
-                <!-- Additional Approvals -->
-                <div class="form-row border py-1 px-3 rounded">
-
-                    <h6 class="pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="addApproval" name="addApproval" type="checkbox"  > Additional Approvals ( Optional )</h6>
-
-                    <!-- Container for all Approval Rows -->
-                    <div class="approvalsContainer col-md-12">
-
-                        <!-- Approval Row ( Each Approval ) -->
-                        <div id="approvalItem-0" class="approvalItem  form-row flex justify-content-between align-items-end mu-2 mb-3">
-
-                            <!-- Approver Email -->
-                            <select  id="approvalEmail-0" name="approvalEmail" class=" approvalEmail  border-top-0 border-right-0 border-left-0 border border-dark col-md-9" data-toggle="tooltip" data-placement="top" title="Select Approver Email"  >
-
-
-                                <?php
-
-                                    $emps = Utils::getAllActiveEmployees();
-
-                                    while( $row = mysqli_fetch_assoc( $emps ) ){
-
-                                    echo "<option value='" .$row['email']. "' disable> ".$row['fullName']." </option>";
-
-                                    }
-                                
-                                ?>
-
-                                
-
-                            </select>
-                            
-                            <button id="remove-0"  class=" approvalRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
-                            
-                        </div>
-                        
-                        
-                    </div>
-                    
-                    <!-- Add Row Button -->
-                    <button id="addApprovalRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
-
-
-                </div>
-
-
                 <!-- Leave Type Box -->
                 <div class="form-row border py-1 px-3 mt-2 rounded">
 
@@ -236,7 +191,7 @@
 
                             </select>
                             
-                            <button id="leavetyperemove-0"  class=" leavetypeRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
+                            <button type="button" id="leavetyperemove-0"  class=" leavetypeRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
                             
                         </div>
                         
@@ -244,10 +199,8 @@
                     </div>
                     
                     <!-- Add Row Button -->
-                    <button id="addleaveTypeRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
+                    <button type="button" id="addleaveTypeRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
                     
-                    <!-- Save Button -->
-
                 </div>
             
                 <!-- Total Days -->
@@ -271,9 +224,9 @@
                 </div>
 
                 <!-- Lecture Adjustments -->
-                <div class="form-row border py-1 px-3 rounded">
+                <div class="form-row border py-1 px-3 mb-4 rounded">
 
-                    <h6 class="pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="lecAdj" name="lecAdj" type="checkbox"  > Lecture Adjustments ( Optional )</h6>
+                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="lecAdj" name="lecAdj" class="pe-auto" type="checkbox"  > Lecture Adjustments ( Optional )</h6>
 
                     <!-- Container for all lecAdj Rows -->
                     <div class="lecAdjContainer col-md-12  ">
@@ -334,7 +287,7 @@
 
                             </div>
 
-                            <button id="lecAdjRemove-0"  class=" lecAdjRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
+                            <button type="button" id="lecAdjRemove-0"  class=" lecAdjRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
                             
                         </div>
                         
@@ -342,15 +295,15 @@
                     </div>
                     
                     <!-- Add Row Button -->
-                    <button id="lecAdjRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
+                    <button type="button" id="lecAdjRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
 
 
                 </div>
 
                 <!-- Task Adjustments -->
-                <div class="form-row border py-1 px-3 rounded">
+                <div class="form-row border py-1 px-3 mb-4 rounded">
 
-                    <h6 class="pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="taskAdj" name="taskAdj" type="checkbox"  > Task Adjustments ( Optional )</h6>
+                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="taskAdj" class="pe-auto" name="taskAdj" type="checkbox"  > Task Adjustments ( Optional )</h6>
 
                     <!-- Container for all taskAdj Rows -->
                     <div class="taskAdjContainer col-md-12  ">
@@ -393,7 +346,7 @@
 
                             </div>
 
-                            <button id="lecAdjRemove-0"  class=" lecAdjRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
+                            <button type="button" id="lecAdjRemove-0"  class=" lecAdjRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
                             
                         </div>
                         
@@ -401,172 +354,53 @@
                     </div>
                     
                     <!-- Add Row Button -->
-                    <button id="taskAdjRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
+                    <button type="button" id="taskAdjRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
 
 
                 </div>
 
-
-                <div class="form-row">
-
-                    <div class="form-group col-md-3">
-
-                        <!-- //Get from date -->
-                        <input type="text" required name="fromDate" data-toggle="tooltip" data-placement="top" title="Start Leave Date" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="fromDateId" min="<?php echo date('Y-m-d') ?>" >
-
-                    </div>
-
-                    <div class="form-group col-md-2">
-
-                        <!-- //Get from date type-->
-
-                        <select required id="fromType" name="fromType"  class="form-control border-top-0 border-right-0 border-left-0 border border-dark">
-
-                            <option value="" selected disable>Day Type</option>
-                            <option value="First Half">First Half</option>
-                            <option value="Second Half">Second Half</option>
-                            <option value="Full">Full</option>
-
-                        </select>
                 
-                    </div>
+                <!-- Additional Approvals -->
+                <div class="form-row border py-1 px-3 mb-4 rounded">
 
-                    <div class="form-group col-md-3">
+                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="addApproval" name="addApproval" class="pe-auto" type="checkbox"  > Additional Approvals ( Optional )</h6>
 
-                        <!-- //Get to date -->
-                        <input type="text" required name="toDate" data-toggle="tooltip" data-placement="top" title="End Leave Date" placeholder="To" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="toDateId" placeholder="To" min="<?php echo date('Y-m-d') ?>"  >
+                    <!-- Container for all Approval Rows -->
+                    <div class="approvalsContainer col-md-12">
 
-                    </div>
+                        <!-- Approval Row ( Each Approval ) -->
+                        <div id="approvalItem-0" class="approvalItem  form-row flex justify-content-between align-items-end mu-2 mb-3">
 
-                    <div class="form-group col-md-2">
-
-                        <!-- //Get to date type -->
-                        <select required id="toType" name="toType" class="form-control border-top-0 border-right-0 border-left-0 border border-dark">
-
-                            <option value="" selected disable>Day Type</option>
-                            <option value="First Half">First Half</option>
-                            <option value="Second Half">Second Half</option>
-                            <option value="Full">Full</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="form-group col-md-2">
-
-                        <!-- //total days -->
-                        <input type="decimal" name="totalDays" placeholder="Total Days" data-toggle="tooltip" data-placement="top" title="Total Leave Days" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="totalDaysId">
-
-                    </div>
-
-                </div>
+                            <!-- Approver Email -->
+                            <select  id="approvalEmail-0" name="approvalEmail" class=" approvalEmail  border-top-0 border-right-0 border-left-0 border border-dark col-md-9" data-toggle="tooltip" data-placement="top" title="Select Approver Email"  >
 
 
-                <!-- Lecture Adjustment Section -->
+                                <?php
 
-                <div id="dynamicadd-lec" >
-            
-                    <!-- //To get this value in php using $_POST -->
-                    <input type="hidden" id="totalLec" name="totalLec" value=0 />
+                                    $emps = Utils::getAllActiveEmployees();
 
-                    <div class="form-row" id='lecContainer' >
+                                    while( $row = mysqli_fetch_assoc( $emps ) ){
 
-                        <div class="form-group col-md-3">
+                                    echo "<option value='" .$row['email']. "' disable> ".$row['fullName']." </option>";
 
-                            <!-- //First Lecture Adjustment -->
-                            <select id="lec-adjustedWith-$0" name="lec-adjustedWith-$0" class="form-control border-top-0 border-right-0 border-left-0 border border-dark">
+                                    }
+                                
+                                ?>
 
-                                <option selected disable>Lecture Adjust With.. </option>
+                                
 
                             </select>
-
+                            
+                            <button type="button" id="remove-0"  class=" approvalRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
+                            
                         </div>
-
-                        <!-- date -->
-                        <div class="form-group col-md-2">
-                        <input type="text" name="lec-date-$0" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Lecture Date" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="lec-date-$0">
-                        </div>
-
-                        <!-- start Time -->
-                        <div class="form-group col-md-2">
-                        <input type="text" name="lec-startTime-$0" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="start Time" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="lec-startTime-$0">
-                        </div>
-
-                        <!-- start Time -->
-                        <div class="form-group col-md-2">
-                        <input type="time " name="lec-endTime-$0" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="End Time" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="lec-endTime-$0">
-                        </div>
-
-                        <!-- Semester -->
-                        <div class="form-group col-md-1">
-                        <input type="text" name="lec-sem-$0" placeholder="Sem" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="lec-sem-$0" >
-                        </div>
-
-                        <!-- Subject -->
-                        <div class="form-group col-md-1">
-                        <input type="text" name="lec-sub-$0" placeholder="Subject" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="lec-sub-$0">
-                        </div>
-
-                        <div class="form-group col-sm-12 col-md-1">
-                        <button class=" btn" id="lec-add" name="btn[]" style="background-color: #11101D; color:white">Add</button>
-                        </div>
-
+                        
+                        
                     </div>
-
-                </div>
-
-                <!-- Task Adjustment -->
-
-                <div id="dynamicadd-task" >
-
-                    <!-- //To get this value in php using $_POST -->
-                    <input type="hidden" id="totalTask" name="totalTask" value=0 />
-
-                    <div class="form-row" id="taskContainer" >
-
-                        <div class="form-group col-md-3">
-
-                            <!-- //Adjusted With -->
-                            <select id="task-adjustedWith-$0" name="task-adjustedWith-$0" class="form-control border-top-0 border-right-0 border-left-0 border border-dark"> </select>
-
-                         </div>
-
-                         
-                        <!-- task Name -->
-                        <div class="form-group col-md-2">
-
-                            <input type="text" name="task-name-$0" placeholder="Task Name" id='task-name-$0' class="form-control border-top-0 border-right-0 border-left-0  border border-dark">
-
-                        </div>
                     
-                        <!-- Date -->
-                        <div class="form-group col-md-2">
+                    <!-- Add Row Button -->
+                    <button type="button" id="addApprovalRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
 
-                            <input type="text" name="task-date-$0" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Date" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="task-date-$0">
-
-                        </div>
-
-                        <!-- start Time -->
-                        <div class="form-group col-md-2">
-
-                            <input type="time " name="task-startTime-$0" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="Start Time" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="task-startTime-$0">
-
-                        </div>
-
-                        <!-- End Time -->
-                        <div class="form-group col-md-2">
-
-                            <input type="time " name="task-endTime-$0" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="End Time" class="form-control border-top-0 border-right-0 border-left-0  border border-dark" id="task-endTime-$0">
-
-                        </div>
-
-                        <div class="form-group col-sm-12 col-md-1">
-
-                            <button class=" btn" id="task-add" name="btn1[]" style="background-color: #11101D; color:white">Add</button>
-
-                        </div>
-
-                    </div>
 
                 </div>
 
