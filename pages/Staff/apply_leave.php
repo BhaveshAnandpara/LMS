@@ -41,9 +41,18 @@
     while( $rows = mysqli_fetch_assoc( $employeeBalance ) ){
         $employeeBalanceArr[] =  $rows ;
     }
+
+    //Get Holidays Data
+    $holidays = Utils::getUpcomingHolidays( );
+    $holidaysArr = array();
+    
+    while( $rows = mysqli_fetch_assoc( $holidays ) ){
+        $holidaysArr[] =  $rows ;
+    }
     
     $leaveTypes = Utils::getLeaveTypes();
     $employeeBalance = Utils::getLeaveBalanceOfEmployee( $user->employeeId );
+    $holidays = Utils::getUpcomingHolidays( );
 
 ?>
 
@@ -51,6 +60,22 @@
 
     var leaveTypeDeatils = <?php echo json_encode( $leaveTypesArr ); ?>;
     var employeeBalance = <?php echo json_encode( $employeeBalanceArr ); ?>;
+
+    var holidays = <?php echo json_encode( $holidaysArr ); ?>;
+
+    holiDaysDate = []
+
+    //Get all the holidays in array
+    holidays.forEach( holiday => {
+        holiDaysDate.push( new Date(holiday.date).toISOString().slice(0, 10))
+    });
+
+    var leaveNames = []
+
+    leaveTypeDeatils.forEach( leaveDetail => {
+        leaveNames[leaveDetail.leaveID + ''] = leaveDetail.leaveType
+    });
+
 
 </script>
 
@@ -168,7 +193,7 @@
                             </select>
 
                             <!-- From Date -->
-                            <input type="text"  name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="fromDate-0"  min="<?php echo date('Y-m-d') ?>"    >
+                            <input type="date"  name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date"  class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="fromDate-0"  min="<?php echo date('Y-m-d') ?>"    >
 
                             <!-- From Date Type -->
                             <select  id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select From Date Type"   >
@@ -180,7 +205,7 @@
                             </select>
 
                             <!-- To Date -->
-                            <input type="text"  name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="toDate-0"  min="<?php echo date('Y-m-d') ?>"    >
+                            <input type="date"  name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date"  class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="toDate-0"  min="<?php echo date('Y-m-d') ?>"    >
 
                             <!-- From Date Type -->
                             <select  id="toDateType-0" name="toDateType" class=" toDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select To Date Type"    >
@@ -208,7 +233,7 @@
 
                     <div class="form-group col-md-12 mt-3 md-0">
                         
-                        <p class="form-control border bg-white mb-0" id="totalDays" name="totalDays"> Total Days </p>
+                        <p class="form-control border h-100 bg-white mb-0" id="totalDays" name="totalDays"> Total Days </p>
 
                     </div>
 
@@ -550,7 +575,6 @@
             //Function to remove approval rows
             function removeLecAdjRow(e){
 
-                console.log(e.target.id);
                 let len = $('.lecAdjItem').length
                 
                 if( len == 1 )return 
@@ -628,7 +652,6 @@
             //Function to remove approval rows
             function removeTaskAdjRow(e){
 
-                console.log(e.target.id);
                 let len = $('.taskAdjItem').length
                 
                 if( len == 1 )return 
@@ -665,7 +688,6 @@
             //Fucntion to Validate the current data and configure final object
             function handleLeaveDataChange(e){
                 
-                console.log(leaveTypes);
 
                 //get the id of row
                 let id = e.target.id
@@ -849,7 +871,7 @@
 
 
                     //calculate difference between days
-                    let diffBtnDates = Math.floor(( toDate.getTime() - fromDate.getTime() ) / (24*60*60*1000))
+                    let diffBtnDates = (Math.floor(( toDate.getTime() - fromDate.getTime() ) / (24*60*60*1000)) )+ 1
                     
                     //validate Apply Limit
                     if( diffBtnDates > parseInt(validationsRequired.applyLimit) ) return { msg : `${validationsRequired.leaveType} has apply limit of ${validationsRequired.applyLimit}` , isValid: false }
@@ -897,8 +919,21 @@
                 //for every element
                 for( let i = 0 ; i < len ; i = i+1 ){
               
+                    //if form Date set it to immediate next date to toDate from prev row
+                    if( leavetypeItem[0].children[i].name === "fromDate" ){
+
+                        let tom = new Date ( leavetypeItem[0].children[i+2].value )
+                        tom.setDate( tom.getDate() + 1)
+                        
+                        leavetypeItem[0].children[i].value = tom.toISOString().slice(0, 10)
+                        leavetypeItem[0].children[i].max = tom.toISOString().slice(0, 10)
+
+
+                    }
+
                     //Set Dates input as blank for cloned row
-                    if( leavetypeItem[0].children[i].name === "fromDate" || leavetypeItem[0].children[i].name === "toDate" )  leavetypeItem[0].children[i].value  = ""
+                    if(  leavetypeItem[0].children[i].name === "toDate" )  leavetypeItem[0].children[i].value  = ""
+
 
                     let id = (leavetypeItem[0].children[i].id).toString()
                     let newId = (id.replace( leaveTypeNo , `${parseInt(leaveTypeNo) + 1}` )) //change the id according to no.
@@ -914,37 +949,99 @@
 
                 }
 
-
-
             }
             
-
 
             //* ------------------------- Calculate Total Days --------------------------------
 
             function calculateTotalDays( leavedata ){
 
-                console.log(leavedata);
-                let data = leavedata.final
+                let leaveTypesLen = (Object.keys(leavedata).length) - 1 //No of Leave Type selected
+                let idx = 1;
 
-                let startDate = new Date( data.startDate )
-                startDate.setHours(5,30,0,0)
+                let calculations = "" //text for total days input
+                
+                //for every leave type user selected
+                for (const key in leavedata) {
+                    
+                    if( key === 'final' ) continue
 
-                let startDateType = new Date( data.startDateType )
-                startDateType.setHours(5,30,0,0)
+                    let holidayLeaves = 0;
 
-                let endDate = new Date(data.endDate)
-                endDate.setHours(5,30,0,0)
+                    let startDate = new Date( leavedata[key].fromDate )
+                    startDate.setHours(5,30,0,0)
+                    
+                    let startDateType = leavedata[key].fromDateType 
+                    
+                    let endDate = new Date(leavedata[key].toDate)
+                    endDate.setHours(5,30,0,0)
+                    
+                    let endDateType = leavedata[key].toDateType
 
-                let endDateType = new Date (data.endDateType)
-                endDateType.setHours(5,30,0,0)
 
-                //Sandwich Leaves
-                if( endDateType === 'SECOND HALF' ){
+                    let totalDays = (endDate.getTime() - startDate.getTime()) /( 24*60*60*1000 ) + 1 //total difference between fromDate and startDate
+                    let leaveName = leaveNames[key] //name of the leave type
+
+                    calculations += `Total ${ leaveName } = <b>${totalDays} Days </b> </br>Holidays =  `
+
+                    let leftHolidays = 0 // holidays counting from left side ( fromDate )
+
+                    //Decrement total days if the startingDate ends starts some holiday
+                    while( idx == 1 ){
+
+                        //if there is holiday then check for next day
+                        if( holiDaysDate.includes( startDate.toISOString().slice(0, 10) ) || startDate.getDay() == 0 ){
+
+                            calculations += `<b>${ startDate.toISOString().slice(0, 10) }</b> |`
+                            startDate.setDate( startDate.getDate() + 1 );
+                            leftHolidays++;
+
+                        }
+                        else{
+                            break;
+                        }
+                        
+                    }
+
+                    //If dateType is half then reduce it by 0.5
+                    if( idx === 1 && startDateType !== 'FULL' && leftHolidays === 0 && leaveName !== 'Earned Leave') totalDays -= 0.5
 
 
+                    let rightHolidays = 0 // holidays counting from right side ( toDate )
+                    //Decrement total days if the endingDate ends with some holiday
+                    while( startDate !== endDate && idx === leaveTypesLen ){
+                        
+                        if( holiDaysDate.includes( endDate.toISOString().slice(0, 10) ) || endDate.getDay() == 0 ){
+                            
+                            calculations += `<b>${ endDate.toISOString().slice(0, 10) }</b> |`
+                            endDate.setDate( endDate.getDate() - 1 );
+                            rightHolidays++;
+                        }
+                        else{
+                            break;
+                        }
+                        
+                    }
 
+
+                    //If dateType is half then reduce it by 0.5
+                    if( startDate !== endDate && idx === leaveTypesLen && endDateType !== 'FULL' && rightHolidays === 0  && leaveName !== 'Earned Leave' ) totalDays -= 0.5
+
+                    //total holidays through application
+                    holidayLeaves = leftHolidays + rightHolidays
+
+                    if( holidayLeaves === 0 ) calculations += "<b>No Holiday Leaves !!</b>"
+                    if( holidayLeaves > totalDays ) totalDays = 0;
+
+                    calculations += `</br>Total Holiday Leaves = <b>${holidayLeaves}</b></br>`
+                    calculations += `Total Leaves to be deducted from ${leaveNames[key]} = <b>${(totalDays - holidayLeaves)}</b></br></br>`
+
+                    idx++;
+                    
                 }
+
+                
+                $('#totalDays').html(calculations)
 
 
             }
