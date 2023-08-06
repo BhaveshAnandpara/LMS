@@ -688,7 +688,6 @@
             //Fucntion to Validate the current data and configure final object
             function handleLeaveDataChange(e){
                 
-
                 //get the id of row
                 let id = e.target.id
                 id = parseInt(id.split('-')[1])
@@ -707,7 +706,7 @@
                 }
 
                 
-                let lastRow = $('.leavetypeItem:last ')[0]
+                let lastRow = $(`#leavetypeItem-${id}`)[0]
                 let childrensOfLastRow = lastRow.children
 
                 //If some leave type for the rowNo already exist then remove that
@@ -720,17 +719,18 @@
 
                 }
                 
+                console.log(leaveTypes);
+                console.log(  $(`#leaveType-${id}`)[0].value );
 
                 //Check if there is already some data for specific leavetype
-                if( leaveTypes[ childrensOfLastRow[0].value + '' ] != undefined && leaveTypes[ childrensOfLastRow[0].value + '' ].rowNo !== id ) {
-
+                if( leaveTypes[ $(`#leaveType-${id}`)[0].value + '' ] != undefined && leaveTypes[ $(`#leaveType-${id}`)[0].value + '' ].rowNo !== id ) {
                     alert( "Cannot Select Leave Type more than Once !" )
                     return;
                 }
 
                 //create a object for that specefic leave type
-                leaveTypes[ childrensOfLastRow[0].value + '' ] = {  }
-                leaveTypes[ childrensOfLastRow[0].value + '' ].rowNo = id;
+                leaveTypes[ $(`#leaveType-${id}`)[0].value + '' ] = {  }
+                leaveTypes[ $(`#leaveType-${id}`)[0].value + '' ].rowNo = id;
 
                 
                 //For every element in row i.e , select , inputs,
@@ -813,6 +813,8 @@
 
                 //Validations were fine hence allow to add new Row
                 isSafeToAddNewLeaveTypeRow = true
+
+                calculateTotalDays()
 
             }
 
