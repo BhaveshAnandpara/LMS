@@ -58,6 +58,7 @@
 
 <script>
 
+    var user = <?php echo json_encode( $user ); ?>;
     var leaveTypeDeatils = <?php echo json_encode( $leaveTypesArr ); ?>;
     var employeeBalance = <?php echo json_encode( $employeeBalanceArr ); ?>;
 
@@ -107,6 +108,7 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/65712a75e6.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -128,7 +130,7 @@
         <div class="container">
 
             <!-- Current Balance -->
-            <form action="../../utils/insertLeave.php" method="POST" class="bg-white shadow pl-5 pr-5  pb-5 pt-2 mt-5 rounded-lg " style="border-right:6px solid #11101D;">
+            <form  method="POST" class="bg-white shadow pl-5 pr-5  pb-5 pt-2 mt-5 rounded-lg " style="border-right:6px solid #11101D;">
 
                 <h4 class="pb-3 pt-2" style="color: #11101D;">Apply for Leave</h4>
                 
@@ -192,7 +194,7 @@
 
                             </select>
 
-                            <!-- From Date -->
+                            <!-- From Date --> 
                             <input type="date"  name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date"  class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="fromDate-0"  min="<?php echo date('Y-m-d') ?>"    >
 
                             <!-- From Date Type -->
@@ -406,7 +408,7 @@
 
                                     while( $row = mysqli_fetch_assoc( $emps ) ){
 
-                                    echo "<option value='" .$row['email']. "' disable> ".$row['fullName']." </option>";
+                                    echo "<option value='" .$row['employeeID']. "' disable> ".$row['fullName']." </option>";
 
                                     }
                                 
@@ -429,7 +431,34 @@
 
                 </div>
 
-                <button type="submit" name="submit" class="btn mt-2" style="background-color: #11101D; color: white;">Apply</button>
+                <!-- Attach Files-->
+                <div class="form-row border py-1 px-3 mb-4 rounded">
+
+                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="files" name="files" class="pe-auto" type="checkbox"  > Attach Files ( Optional )</h6>
+
+                    <!-- Container for all Files Rows -->
+                    <div class="filesContainer col-md-12">
+
+                        <!-- Files Row ( Each Files ) -->
+                        <div id="filesItem-0" class="filesItem  form-row flex justify-content-between align-items-end mu-2 mb-3">
+
+                            <!-- Files -->
+                            <input type="file" id="file-0" class="file"  >
+
+                            <button type="button" id="fileRemove-0"  class=" filesRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <!-- Add Row Button -->
+                    <button type="button" id="filesRowBtn" class=" btn mb-3" style="background-color: #11101D; color:white" data-toggle="tooltip" data-placement="top" title='Add Row' > Add Row </button>
+
+
+                </div>
+
+                <button id="leaveApplyBtn" name="submit" class="btn mt-2" style="background-color: #11101D; color: white;">Apply</button>
 
             </form>
 
@@ -522,7 +551,7 @@
             //Logic to add new Blank rows
             $('#lecAdjRowBtn').click(()=>{ 
                 
-                
+                // leaveTypes
                 let prevValue = $('.lecAdjItem:last')[0]
                 let children = $('.lecAdjItem:last')[0].children[0].children
                 let totalChildren = children.length
@@ -546,6 +575,14 @@
                 //for every element
                 for( let i = 0 ; i < len ; i++ ){
                     
+
+                    if( lecAdjItem[0].children[0].children[i].name === "lecDate" ){
+
+                        lecAdjItem[0].children[0].children[i].max = new Date( leaveTypes.final.endDate  ).toISOString().slice(0, 10)
+                        lecAdjItem[0].children[0].children[i].min = new Date( leaveTypes.final.startDate  ).toISOString().slice(0, 10)
+
+                    }
+
                     lecAdjItem[0].children[0].children[i].value = ""
                     let id = (lecAdjItem[0].children[0].children[i].id).toString()
                     let newId = (id.replace( lecAdjNo , `${parseInt(lecAdjNo) + 1}` )) //change the id according to no.
@@ -661,14 +698,81 @@
 
             }
 
-            //* ------------------------- Leave Types Box --------------------------------
+
+            //* ------------------------- Attach Files --------------------------------
+
+            //Additional Approvals Container
+            $('.filesContainer').hide()
+            $('#filesRowBtn').hide()
+        
+            $('#files').click(()=>{
+
+                $('#filesRowBtn').toggle()
+                $('.filesContainer').toggle()
+
+            })
+            
+            //Logic to add new Blank rows
+            $('#filesRowBtn').click(()=>{ 
+
+                let prevValue = $('.filesItem:last > input')[0].value 
+
+                if( prevValue === "" ) return
+
+                //Clone the HTML structure of row
+                let FilesItem = $('.filesItem:last').clone()
+                let FilesNo = (FilesItem[0].id).split('-')[1] //get the no. of row
+
+                FilesItem.attr('id', `filesItem-${parseInt(FilesNo) + 1}`); //update the no.of row
+                
+                $('.filesContainer').append( FilesItem ) //append the new row
+                
+                let len = FilesItem[0].children.length //get all elements in row like select and buttons
+                
+                //for every element
+                for( let i = 0 ; i < len ; i = i+1 ){
+              
+                    FilesItem[0].children[i].value = ""
+
+                    let id = (FilesItem[0].children[i].id).toString()
+                    let newId = (id.replace( FilesNo , `${parseInt(FilesNo) + 1}` )) //change the id according to no.
+
+                    FilesItem[0].children[i].id = newId;
+                    
+                    //for remove button add onclick function
+                    if( i == len-1 ){
+                        FilesItem[0].children[i].onclick =  (e)=>removeFilesRow(e) ;
+                    }
+
+                }
+
+            })
+
+            //to remove for first child
+            $('#fileRemove-0').click((e)=>{
+                removeFilesRow(e)
+            })
+
+            //Function to remove files rows
+            function removeFilesRow(e){
+
+                let len = $('.filesItem').length
+                
+                if( len == 1 )return 
+
+                let id = (e.target.id).split('-')[1]
+                $(`#filesItem-${id}`).remove()
+
+            }
+
+
+            //* ------------------------- Leave Types box --------------------------------
 
             leaveTypes = {} // array to avoid duplicate leave types
             leaveTypes['final'] = {} //final object will have first fromDate to last toDate
 
             var isSafeToAddNewLeaveTypeRow = false //if false meanse the currrent data is not validated hence don't allow adding another row
 
-            console.log(leaveTypes);
 
             //Add new Row
             $('#addleaveTypeRowBtn').click(()=>{ 
@@ -718,9 +822,6 @@
                     }
 
                 }
-                
-                console.log(leaveTypes);
-                console.log(  $(`#leaveType-${id}`)[0].value );
 
                 //Check if there is already some data for specific leavetype
                 if( leaveTypes[ $(`#leaveType-${id}`)[0].value + '' ] != undefined && leaveTypes[ $(`#leaveType-${id}`)[0].value + '' ].rowNo !== id ) {
@@ -745,6 +846,8 @@
 
                                 //create new object for new leave type
                                 leaveTypes[ childrensOfLastRow[i].value + '' ][ childrensOfLastRow[i].name + '' ] = childrensOfLastRow[i].value
+
+                                leaveTypes[ childrensOfLastRow[i].value + '' ][ 'leaveType' ] = childrensOfLastRow[i].options[ childrensOfLastRow[i].value -1 ].text
                                 
                         }
                         
@@ -770,6 +873,7 @@
 
                 //Validations were fine hence allow to add new Row
                 isSafeToAddNewLeaveTypeRow = true
+
                 
             }
 
@@ -782,7 +886,6 @@
                 
                 let id = (e.target.id).split('-')[1]
                 
-
                 //Remove the leave type specific object
                 for (const key in leaveTypes) {
                     
@@ -899,6 +1002,7 @@
                 }
 
                 calculateTotalDays( leavedata )
+
                 return { msg : "Validations Successfull" ,isValid : true }
             }
 
@@ -1038,12 +1142,205 @@
                     calculations += `</br>Total Holiday Leaves = <b>${holidayLeaves}</b></br>`
                     calculations += `Total Leaves to be deducted from ${leaveNames[key]} = <b>${(totalDays - holidayLeaves)}</b></br></br>`
 
+                    leaveTypes[key].totalDays = (totalDays - holidayLeaves);
+                    
+                    leavedata.final.totalDays = leavedata.final.totalDays != undefined ? leavedata.final.totalDays + (totalDays - holidayLeaves) : (totalDays - holidayLeaves);
+
+
                     idx++;
                     
                 }
 
                 
                 $('#totalDays').html(calculations)
+
+
+            }
+
+            //* ------------------------- API Call --------------------------------
+
+            
+            $('#leaveApplyBtn').click((e)=>{
+
+                e.preventDefault()
+                handleApply()
+
+            })
+
+
+            function handleApply() {
+
+                let lecAdjs =  [] ; 
+                let taskAdjs =  [] ; 
+                let AddApp =  [] ; 
+                let files =  [] ; 
+                let reason
+
+                var body = new FormData();
+
+
+                if ( Object.keys(leaveTypes).length <= 1 ){
+                    alert('You Need to Select atleast one Leave Type to Apply !!')
+                    return;
+                }
+
+
+                //Validating Reason
+                if( $('#reason')[0].value === "" ) {
+                    alert('reason cannot be empty !!')
+                    return;
+                }else{
+                    reason = $('#reason')[0].value
+                }
+
+
+                let len = $('.lecAdjContainer')[0].children.length
+
+                // validate and store Lecture Adjustment Details
+                if( $('#lecAdj')[0].checked  ){
+
+                    // Get Lec Adjustments Details
+                    for( let i = 0 ; i < len ; i++){
+
+                        let container = $('.lecAdjContainer')[0].children[i].children[0]
+                        let isValidated = true
+                        let lecAdjDetails = {}
+
+                        for( let j = 0 ; j < container.children.length ; j++ ){
+
+                            //Validate Lecture Details
+                            if( container.children[j].value === "" ){
+                                isValidated = false;
+                                alert( 'Inputs in Lecture Adjustment cannot be Empty' )
+                                break;
+                            }
+                            
+                            if( container.children[j].name === 'lecDate' ){
+
+
+                                if( new Date( container.children[j].value ) < new Date( leaveTypes.final.startDate ) || new Date( container.children[j].value ) > new Date( leaveTypes.final.endDate ) ) {
+                                    isValidated = false;
+                                    alert( 'Lec Date in Lecture Adjustments should be between startDate and endDate of Application' )
+                                    break;
+                                }
+
+                            }
+
+                            lecAdjDetails[ container.children[j].name + '' ] = container.children[j].value
+
+                        }
+
+                        if( isValidated ) lecAdjs.push(lecAdjDetails);
+                        else return
+
+                    }
+
+                }
+
+
+                let totalTasks = $('.taskAdjContainer')[0].children.length
+
+                // validate and store task Adjustment Details
+                if( $('#taskAdj')[0].checked ){
+
+                    // Get task Adjustments Details
+                    for( let i = 0 ; i < totalTasks ; i++){
+
+                        let container = $('.taskAdjContainer')[0].children[i].children[0]
+                        let isValidated = true
+                        let taskAdjDetails = {}
+
+                        for( let j = 0 ; j < container.children.length ; j++ ){
+
+                            if( container.children[j].value === "" ){
+                                isValidated = false;
+                                alert( 'Inputs in Task Adjustment cannot be Empty' )
+                                break;
+                            }
+
+                            if( container.children[j].name === 'taskFromDate' || container.children[j].name === 'taskToDate'  ){
+                                
+                                if( (new Date( container.children[j].value ) < new Date( leaveTypes.final.startDate )) || (new Date( container.children[j].value ) > new Date( leaveTypes.final.endDate )) ) {
+                                    isValidated = false;
+                                    alert( 'Dates in Task Adjustments should be between startDate and endDate of Application !' )
+                                    break;
+                                }
+
+                            }
+
+                            taskAdjDetails[ container.children[j].name + '' ] = container.children[j].value
+
+                        }
+
+                        if( isValidated ) taskAdjs.push(taskAdjDetails);
+                        else return
+
+
+                    }
+
+                }
+
+                let totalApp = $('.approvalsContainer')[0].children.length
+
+                // validate and store Additonal Approval Details
+                if( $('#addApproval')[0].checked ){
+
+                    // Get Additional Approvals Details
+                    for( let i = 0 ; i < totalApp ; i++){
+
+                        let container = $('.approvalsContainer')[0].children[i]
+
+                        if( !AddApp.includes( container.children[0].value ) ) AddApp.push( container.children[0].value )
+
+                    }
+
+                }
+
+                let totalFiles = $('.filesContainer')[0].children.length
+
+                // validate and store Files Details
+                if( $('#files')[0].checked ){
+
+                    // Get Files Details
+                    for( let i = 0 ; i < totalFiles ; i++){
+
+                        let container = $('.filesContainer')[0].children[i]
+
+                        if( !files.includes( container.children[0].value ) ) {
+
+                            body.append( 'files[]' ,  container.children[0].files[0] )
+                            files.push( container.children[0].files[0] )
+                        }
+                        
+                    }
+
+                }
+
+                body.append('user', JSON.stringify( user) );
+                body.append('applicationDate', JSON.stringify( new Date().toISOString().slice(0, 10) ) ) ;
+                body.append('leaveTypes', JSON.stringify( leaveTypes) );
+                body.append('reason', JSON.stringify( reason) );
+                body.append('lecAdjs', JSON.stringify( lecAdjs) );
+                body.append('taskAdjs', JSON.stringify( taskAdjs) );
+                body.append('AddApp', JSON.stringify( AddApp) );
+
+
+
+                // Fire off the request to /form.php
+                request = $.ajax({
+                    url: "./validateApplyLeave.php",
+                    type: "post",
+                    data: body,
+                    processData: false,
+                    contentType: false, 
+                    success: function(response) {
+                        alert(response);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                        alert('Error occured during Applying Leave')
+                    }
+                });
 
 
             }
