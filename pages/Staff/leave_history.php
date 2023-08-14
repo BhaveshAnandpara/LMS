@@ -135,32 +135,28 @@ $user =  $_SESSION['user'];
                                 $hod_status;
                                 $principal_status;
 
-                                if( empty($row["hodApproval"]) ) {
+                                if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'] ){
+                                    $hod_status = Config::$_HOD_STATUS['APPROVED'];
+                                }
+                                else if( $row["status"] == Config::$_APPLICATION_STATUS['PENDING'] ){
                                     $hod_status = Config::$_HOD_STATUS['PENDING'];
-                                }else{
-
-                                    if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'] ){
-                                        $hod_status = Config::$_HOD_STATUS['APPROVED'];
-                                    }
-                                    else{
-                                        $hod_status = Config::$_HOD_STATUS['REJECTED'];
-                                    }
-
+                                }
+                                else{
+                                    $hod_status = Config::$_HOD_STATUS['REJECTED'];
                                 }
 
 
-                                if( empty($row["principalApproval"]) ) {
-                                    $principal_status = Config::$_PRINCIPAL_STATUS['PENDING'];
-                                }else{
-
-                                    if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_PRINCIPAL'] ){
-                                        $principal_status = Config::$_PRINCIPAL_STATUS['APPROVED'];
-                                    }
-                                    else{
-                                        $principal_status = Config::$_PRINCIPAL_STATUS['REJECTED'];
-                                    }
-
+                                if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_PRINCIPAL'] ){
+                                    $principal_status = Config::$_PRINCIPAL_STATUS['APPROVED'];
                                 }
+                                else if( $row["status"] == Config::$_APPLICATION_STATUS['PENDING'] ){
+                                    $principal_status = Config::$_HOD_STATUS['PENDING'];
+                                }
+                                else{
+                                    $principal_status = Config::$_PRINCIPAL_STATUS['REJECTED'];
+                                }
+
+                                
 
                                 // For Extension
 

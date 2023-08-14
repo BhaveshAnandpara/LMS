@@ -21,9 +21,7 @@
 
 <?php
     
-
-    
-    $total = 0;
+    $total = 0; //Total files
     
     if( isset($_FILES['files']) ){
    
@@ -210,6 +208,7 @@
 
     }
 
+
     //7. Add Files
 
     if( $total > 0  ){
@@ -225,21 +224,63 @@
                 //Setup our new file path
                 $newFilePath = "../../uploadFiles/" . $files['files']['name'][$i];
 
+
                 //Upload the file into the temp dir
                 if( move_uploaded_file($tmpFilePath, $newFilePath) ){
 
                     $name = $files['files']['name'][$i];
 
-                    $uploadFile =  "INSERT INTO `files` (`applicationID`, `file`) VALUES ( $applicationID, '$name' )";
-                    print_r( $uploadFile );
 
+                    try{
+                    
+                    require '../../vendor/autoload.php';
+
+
+                        // Looing for .env at the root directory
+                        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '\..\..');
+                        $dotenv->load();
+                    
+
+                    //! Use Env file for this before pushing
+                    //Add Image to AWS Bucket
+                    $s3 = new Aws\S3\S3Client([
+                        'region'  => 'ap-south-1',
+                        'version' => 'latest',
+                        'credentials' => [
+                            'key'    => $_ENV['ACCESS_KEY'],
+                            'secret' => $_ENV['SECRET_KEY'],
+                        ]
+                    ]);		
+            
+                    $result = $s3->putObject([
+                        'Bucket' => $_ENV['BUCKET_NAME'],
+                        'Key'    => $name,
+                        'SourceFile' => $newFilePath
+                    ]);
+            
+
+                    unlink($newFilePath);
+
+                    $fileUrl = $result['ObjectURL'];
+                    
+                    $uploadFile =  "INSERT INTO `files` (`applicationID`, `file`) VALUES ( $applicationID, '$fileUrl' )";
+                    
                     $result =  mysqli_query( $conn , $uploadFile);
                 
                     if( !$result ) {
                 
-                        throw new Exception("Error Occured During File Upload");
+                        throw new Exception("Error Occured During Saving File URL ");
                         return;
                     }
+
+                }catch(Exception $e){
+
+                    // print_r($e);
+                    echo "Error";
+
+
+                }
+
 
                 }
             }
