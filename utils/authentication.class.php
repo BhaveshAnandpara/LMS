@@ -17,7 +17,7 @@
     }
     
     //For Faculties and HOD we have defined class in same Staff.class.php file
-    else if( $class == Config::$_HOD_ || $class == Config::$_FACULTY_ ){
+    else if( $class == Config::$_HOD_ || $class == "Faculty"){
         $class = "Staff";
     }
 
@@ -55,6 +55,7 @@
 
             if( $this->isValidUser($conn , $email) ){
 
+ 
 
                 if( $_SESSION['role'] == Config::$_ADMIN_ ){
                      $user = new Admin( $_SESSION['employeeID'] );

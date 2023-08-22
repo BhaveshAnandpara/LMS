@@ -1,0 +1,38 @@
+.container > div:nth-child(1) {
+
+  width: max-content;
+
+}
+
+.reason{
+
+  max-width: 200px;
+  word-wrap: break-word;
+  text-align: left !important;
+
+}
+
+#elapsedApp{
+  opacity: 0.6;
+}
+
+
+/* to make scrollable div  */
+.historycontent {
+    overflow-x: scroll;
+    white-space: nowrap;
+  
+}
+/* to add animation in scroll  */
+.box-primary{
+    animation: scroll 10s linear 1; /* Animation properties */
+}
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(2); /* Start from initial position */
+    }
+    50% {
+      transform: translateX(-40%); /* Scroll to the left */
+    }
+  }

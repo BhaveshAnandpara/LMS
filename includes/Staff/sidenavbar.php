@@ -51,11 +51,19 @@
         <span class="tooltip">Leave History</span>
       </li>
       <li>
+<<<<<<< HEAD
         <a href="../../pages/Staff/adjustment_request.php">
           <i class="fa-solid fa-code-pull-request"></i>
           <span class="links_name">Adjustment Request</span>
         </a>
         <span class="tooltip">Adjustment Request</span>
+=======
+        <a href="../../pages/Staff/manageAdjustments.php">
+          <i class="fa-solid fa-code-pull-request"></i>
+          <span class="links_name">Manage Adjustments</span>
+        </a>
+        <span class="tooltip">Manage Adjustments</span>
+>>>>>>> upstream/main
       </li>
       <!-- code for Log Out  -->
       <li class="profile">
