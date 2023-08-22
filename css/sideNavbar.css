@@ -147,10 +147,6 @@
 }
 .sidebar li a{
   display: flex;
-<<<<<<< HEAD
-  height: 100%;
-=======
->>>>>>> upstream/main
   width: 100%;
   border-radius: 12px;
   align-items: center;
@@ -238,20 +234,6 @@
   width: 50px;
   background: none;
 }
-<<<<<<< HEAD
-.home-section , .emp-home-section{
-  position: relative;
-  background: #E4E9F7;
-  min-height: 100vh;
-  top: 0;
-  left: 78px;
-  width: calc(100% - 78px);
-  transition: all 0.5s ease;
-  padding-bottom: 7px;
-  z-index: 2;
-}
-=======
->>>>>>> upstream/main
 
 .emp-home-section{
 

@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-<<<<<<< HEAD
-:root{
-
-    /* Font Size */
-    --title : 1.5rem;
-
-    /* Fonts */
-    --Poppins : 'Poppins', sans-serif;
-    --Josefin : 'Josefin Sans', sans-serif;
-
-    /* Colors */
-    --primary-color : rgb(39, 81, 154);
-    --black-color : rgb(37, 37, 37);
-
-}
-=======
 :root {
 
     /* Font Size */
@@ -56,7 +40,6 @@
   }
   
   
->>>>>>> upstream/main
 
 * {
     margin: 0;
@@ -64,16 +47,6 @@
     box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--Poppins) ;
-    overflow-x: hidden;
-}
-
-=======
 body {
     margin: 0;
     padding: 0;
@@ -105,17 +78,12 @@ body {
 
 }
 
->>>>>>> upstream/main
 .horizontal_navbar {
     width: 100%;
     height: 78px;
     background: #191728;
 
-<<<<<<< HEAD
-            /* old color */ 
-=======
     /* old color */
->>>>>>> upstream/main
 
     /* background: #11101D;  */
     border-left: 1px solid wheat;
@@ -144,27 +112,6 @@ table {
     overflow-x: scroll;
 }
 
-<<<<<<< HEAD
-.notification-icon{
-    margin-right:40px;
-    color: white;
-    }
-    .notification-icon .fa-sharp{
-    font-size: 25px;
-    color: white;        }
-    
-    .notification-content {
-      display: none;
-      position: absolute;
-      top: 80px;
-      right: 10px;
-      background-color: #f9f9f9;
-      width: 400px;
-      padding: 18px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-=======
 .notification-icon {
     margin-right: 40px;
     color: white;
@@ -280,4 +227,3 @@ table {
     font-weight: 800;
 
 }
->>>>>>> upstream/main
