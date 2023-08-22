@@ -49,8 +49,14 @@ try{
 
     $leaveDetails = mysqli_fetch_assoc( Utils::getLeaveDetailsOfEmployee($empID , $leaveID) );
 
-    if( $action == 'debit' ) $updatdeBalance = $leaveDetails['balance'] - $amount;
-    if( $action == 'credit' ) $updatdeBalance = $leaveDetails['balance'] + $amount;
+    $balance = 0;
+
+    if( $leaveDetails['balance'] != NULL ){
+        $balance += $leaveDetails['balance'];
+    }
+
+    if( $action == 'debit' ) $updatdeBalance = $balance - $amount;
+    if( $action == 'credit' ) $updatdeBalance = $balance + $amount;
 
 
     echo 

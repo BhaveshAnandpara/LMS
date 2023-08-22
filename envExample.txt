@@ -1,0 +1,6 @@
+
+#AWS Configration
+
+ACCESS_KEY = "--access key--"
+SECRET_KEY = "--secret key--"
+BUCKET_NAME = "--bucket name--"

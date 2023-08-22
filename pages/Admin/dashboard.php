@@ -55,11 +55,6 @@
      include "../../includes/Admin/sidenavbar.php";
     ?>
 
-<?php 
-include "../../includes/Staff/sidenavbar.php";
-?>
-    
-
     <section class="home-section">
 
         <!--Including header -->
