@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+
+    /* Font Size */
+    --title: 1.5rem;
+
+    /* Fonts */
+    --Poppins: 'Poppins', sans-serif;
+    --Josefin: 'Josefin Sans', sans-serif;
+
+    /* Colors */
+    --primary-color: rgb(39, 81, 154);
+    --black-color: rgb(37, 37, 37);
+
+    /* font size  */
+    --font-size-small: 9px;
+    --font-size-normal: 18px;
+    --font-size-medium: 22px;
+    --font-size-large: 28px;
+    --font-size-heading : 36px;
+
+
+}
+  /* define class for size  */
+.small-text {
+    font-size: var(--font-size-small);
+  }
+  .normal-text {
+    font-size: var(--font-size-normal);
+  }
+  .medium-text {
+    font-size: var(--font-size-medium);
+  }
+  .large-text {
+    font-size: var(--font-size-large);
+  }
+  .heading-test {
+    font-size: var(--font-size-heading);
+  }
+  
+  
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--Poppins);
+    overflow-x: hidden;
+}
+
+.pointer-events-none{
+    pointer-events: none;
+}
+
+
+.home-section {
+
+    position: relative;
+    background: #E4E9F7;
+    height: max-content;
+    top: 0;
+    left: 78px;
+    transition: all 0.5s ease;
+    padding-bottom: 7px;
+    z-index: 2;
+    width: calc(100% - 78px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+
+.horizontal_navbar {
+    width: 100%;
+    height: 78px;
+    background: #191728;
+
+    /* old color */
+
+    /* background: #11101D;  */
+    border-left: 1px solid wheat;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.Heading_Heder {
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+}
+
+.user_name {
+    margin-right: 30px;
+}
+
+table {
+    overflow-x: scroll;
+}
+
+.notification-icon {
+    margin-right: 40px;
+    color: white;
+}
+
+.notification-icon .fa-sharp {
+    font-size: 25px;
+    color: white;
+}
+
+.notification-content {
+    display: none;
+    position: absolute;
+    top:90px;
+    right: 20px;
+    background-color: #f9f9f9;
+    width: max-content;
+    padding: 24px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.8s linear;
+    z-index: 10;
+}
+
+.notification-item{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(209, 209, 209);
+
+}
+
+.notification-item > span:nth-child(1) {
+
+    margin: 15px 0px;
+    margin-right: 24px;
+    font-weight: 500;
+    max-width: 30vw;
+
+}
+
+.notification-time {
+    color: #323040;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.AddBtn {
+    background-color: #11101D;
+    padding: 4px 10px;
+    font-size: 20px;
+    border: 0;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submitbtn {
+    background-color: #11101D;
+    padding: 8px 10px !important;
+    color: white;
+    margin-left: 0 !important;
+    margin-top: 25px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.submitbtn:hover {
+    transform: scale(1.02);
+}
+
+#employeeTable_filter , #elapsedApp_filter , #lec-elapsedApp_filter , #task-elapsedApp_filter{
+
+    display: none ; 
+
+}
+#searchInput{
+
+    border: 1px solid #66656f !important;
+
+}
+
+#filter-btn{
+    cursor: pointer;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.APPROVED , .ACCEPTED{
+
+    color: rgb(36, 124, 36);
+    font-weight: 800;
+
+}
+
+.PENDING{
+
+    color: rgb(255, 166, 32);
+    font-weight: 800;
+
+}
+
+.REJECTED{
+
+    color: rgb(212, 76, 76);
+    font-weight: 800;
+
+}
