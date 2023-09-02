@@ -96,12 +96,12 @@ class Staff
 
     // ------------------------------------ Leave History ------------------------------------ //
 
-    public function recentlyAppliedLeave( $limit )
+    public function recentlyAppliedLeave($limit)
     {
         $employeeID = $this->employeeId;
 
         // SQL Query to get the leave history of login employee
-        
+
         $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID ORDER BY applications.dateTime DESC LIMIT $limit";
 
         $conn = sql_conn();
@@ -112,7 +112,7 @@ class Staff
     }
 
 
-    public function getAppLeaveTypes( $appID )
+    public function getAppLeaveTypes($appID)
     {
 
         // SQL Query to get the leave history of login employee
@@ -126,26 +126,24 @@ class Staff
 
         $ans = "";
 
-        while( $row = mysqli_fetch_assoc($result) ){
+        while ($row = mysqli_fetch_assoc($result)) {
 
-            $ans = $ans. " + " .$row['leaveType'];
-
+            $ans = $ans . " + " . $row['leaveType'];
         }
 
-        $ans = substr( $ans , 2 )."";
+        $ans = substr($ans, 2) . "";
 
         return $ans;
-
     }
 
 
-    public function incomingApplications( )
+    public function incomingApplications()
     {
         $employeeID = $this->employeeId;
 
         // SQL Query to get the leave history of login employee
-        
-        $curr = date( 'Y-m-d' , time() );
+
+        $curr = date('Y-m-d', time());
 
         $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.extension , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID and applications.startDate >= '$curr' ORDER BY applications.dateTime DESC";
 
@@ -157,13 +155,13 @@ class Staff
     }
 
 
-    public function elapsedApplications( )
+    public function elapsedApplications()
     {
         $employeeID = $this->employeeId;
 
         // SQL Query to get the leave history of login employee
-        
-        $curr = date( 'Y-m-d' , time() );
+
+        $curr = date('Y-m-d', time());
 
         $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.extension , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID and applications.startDate < '$curr' ORDER BY applications.dateTime DESC";
 
@@ -180,7 +178,7 @@ class Staff
         $employeeID = $this->employeeId;
 
         // SQL Query to get the leave history of login employee
-        
+
         $sql = "SELECT * From applications inner join lectureadjustments on applications.applicationID = lectureadjustments.applicationID inner join leavetype on lectureadjustments.applicationID = leavetype.applicationID where employeeID='$employeeID'";
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
@@ -201,12 +199,12 @@ class Staff
 
         return $result;
     }
-    
+
     // This Function is Used To Find pending lecture adjustment request of login employee
     public function lectureAdjustmentRequst()
     {
         $employeeID = $this->employeeId;
-        $curr = date( 'Y-m-d' , time() );
+        $curr = date('Y-m-d', time());
 
         // SQL Query to get the lecture adjustment of login employee
 
@@ -220,11 +218,11 @@ class Staff
     }
 
     // This Function is Used To Find previous lecture adjustment request of login employee -->inshort(Accepted and Reejected request)
-    
+
     public function elapsedLecAdjustments()
     {
         $employeeID = $this->employeeId;
-        $curr = date( 'Y-m-d' , time() );
+        $curr = date('Y-m-d', time());
 
         // SQL Query to get the lecture adjustemnt of login employee
 
@@ -241,7 +239,7 @@ class Staff
     public function taskAdjustmentRequst()
     {
         $employeeID = $this->employeeId;
-        $curr = date( 'Y-m-d' , time() );
+        $curr = date('Y-m-d', time());
 
         // SQL Query to get the task adjustemnt of login employee
 
@@ -254,10 +252,11 @@ class Staff
     }
 
     // This Function is Used To Find previous Task adjustment request of login employee -->inshort(Accepted and Reejected request)
-    
-    public function elapsedTaskAdjustments(){
+
+    public function elapsedTaskAdjustments()
+    {
         $employeeID = $this->employeeId;
-        $curr = date( 'Y-m-d' , time() );
+        $curr = date('Y-m-d', time());
 
         // SQL Query to get the task adjustemnt of login employee
         $sql = "SELECT taskadjustments.startDate , taskadjustments.endDate, taskadjustments.task, taskadjustments.status , employees.fullName , employees.email , employees.employeeID from taskadjustments left join employees on taskadjustments.applicantID = employees.employeeID Where taskadjustments.adjustedWith = '$employeeID' and taskadjustments.endDate < $curr";
@@ -265,6 +264,78 @@ class Staff
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
         if (!$result) echo ("Error description: " . mysqli_error($conn));
+        return $result;
+    }
+
+    // to get view details for particuler application using application id (view details)
+    public function viewDetailApplication($applications)
+    {
+        $employeeID = $this->employeeId;
+        $curr = date('Y-m-d', time());
+
+        // SQL Query to get the task adjustemnt of perticuler application 
+        $sql = "SELECT * from applications inner join leavetype on applications.applicationID = leavetype.applicationID Where applications.applicationID = '$applications'";
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+        return $result;
+    }
+
+    // to get lecture adjustment for particuler application details (view details)
+    public function getlectureAdjustment($applicationId)
+    {
+        $employeeID = $this->employeeId;
+
+        // SQL Query to get the lecture  adjustemnet of perticuler application 
+        $curr = date('Y-m-d', time());
+
+        $sql = "SELECT * 
+        FROM lectureadjustments 
+        WHERE lectureadjustments.applilcationID = $applicationId;
+        ";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+    }
+
+    // to get task adjustment for particuler application details (view details)
+
+    public function getTaskAdjustment($applicationId)
+    {
+        $employeeID = $this->employeeId;
+
+        // SQL Query to get the task adjustemnet of perticuler application 
+
+        $sql = "SELECT * 
+        FROM taskadjustments 
+        WHERE taskadjustments.applilcationID = $applicationId;
+        ";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+    }
+
+    // to get additional approval details for perticuler application 
+    public function getAdditioinalApproval($applicationId)
+    {
+        $employeeID = $this->employeeId;
+
+        // to get additinal approval 
+        $sql = "SELECT * 
+        FROM approvals 
+        WHERE approvals.applicationID = $applicationId;
+        ";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
         return $result;
     }
 }
