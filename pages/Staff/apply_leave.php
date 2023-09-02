@@ -466,7 +466,6 @@
 
     </section>
 
-
     <script>
 
         $(document).ready(function() {
