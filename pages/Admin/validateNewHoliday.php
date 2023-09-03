@@ -67,14 +67,14 @@ try{
 
     if( !$result ){
 
-        echo Utils::alert("Errro Occured");
+        echo Utils::alert("Error Occured");
         
     }
     
     echo Utils::alert("Holiday Added");
 
     echo "<script>
-        window.location.href = './addHoliday.php'
+        window.location.href = './manageHolidays.php'
     </script>";
 
 

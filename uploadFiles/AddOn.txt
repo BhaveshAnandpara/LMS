@@ -1,0 +1,17 @@
+MCQs::
+
+Relational Database Design:
+Data Stores, Data Modellings and design, enhanced database design, case study, PL/SQL.
+
+MongoDb: 
+NoSQL: MongoDb, Kassandra, etc. Query on MongoDb (Syntax, CRUD Operations, Intro).
+
+Data Mining: 
+Task Premitive, Issues, Questions on Weka.
+
+Data Warehouse:
+Data Warehousing, Data Marts, OLAP, OLTP, ROLAP, MOLAP
+Who is the father of Data Warehouse abd its four charateristics.
+
+Business Intelligence:
+What is BI, Identify the BI tools(Tableau, Power BI, ClickSens, etc.), Tableau questions (like filters are used for..., how many options are available in marks shell, number of shells in tableau, what are the calculation fields in tableau, etc), Data Visualization Intro, Dimensions / Measures, Blue and Green Pills in tableau, Dashboard in tableau, Difference bet. normal report and dashboard, Stories in tableau, Interactive dashboards. 
