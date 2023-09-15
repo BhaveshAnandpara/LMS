@@ -338,6 +338,24 @@ class Staff
 
         return $result;
     }
+
+    // to get file details of that applications
+    public function getFileDetails($applicationId)
+    {
+        $employeeID = $this->employeeId;
+
+        // to get additinal approval 
+        $sql = "SELECT * 
+        FROM files 
+        WHERE files.applicationID = $applicationId;
+        ";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+    }
 }
 ?>
 

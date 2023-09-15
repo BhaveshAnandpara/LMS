@@ -279,11 +279,16 @@ $data =  $user->viewDetailApplication($applicationId);
                             </tr>
                         </thead>
                         <tbody id="tbody">
+                        <?php
+                            // to get additional informatin details 
+                            $data =  $user->getFileDetails($applicationId);
+                            while ($row = mysqli_fetch_assoc($data)) { ?>
                             <tr>
                                 <td> medical recipt </td>
                                 <td>
-                                    <a href="<?php echo "hello" ?>" class="btn btn-success" download>Download</a>
+                                <a href="<?php echo $row['file']; ?>" class="btn btn-success">View Document</a>
                                 </td>
+                                <?php  } ?>
                         </tbody>
                     </table>
                 </div>
