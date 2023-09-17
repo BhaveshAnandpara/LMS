@@ -115,7 +115,7 @@
 <body>
     <!--Including sidenavbar -->
     <?php
-     include "../../includes/Staff/sidenavbar.php";
+     include "../../includes/HOD/sidenavbar.php";
     ?>
 
     <section class="home-section">

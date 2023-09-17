@@ -231,39 +231,9 @@
                     $name = $files['files']['name'][$i];
 
 
-                    try{
+                try{
                     
-                    require '../../vendor/autoload.php';
-
-
-                        // Looing for .env at the root directory
-                        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '\..\..');
-                        $dotenv->load();
-                    
-
-                    //! Use Env file for this before pushing
-                    //Add Image to AWS Bucket
-                    $s3 = new Aws\S3\S3Client([
-                        'region'  => 'ap-south-1',
-                        'version' => 'latest',
-                        'credentials' => [
-                            'key'    => $_ENV['ACCESS_KEY'],
-                            'secret' => $_ENV['SECRET_KEY'],
-                        ]
-                    ]);		
-            
-                    $result = $s3->putObject([
-                        'Bucket' => $_ENV['BUCKET_NAME'],
-                        'Key'    => $name,
-                        'SourceFile' => $newFilePath
-                    ]);
-            
-
-                    unlink($newFilePath);
-
-                    $fileUrl = $result['ObjectURL'];
-                    
-                    $uploadFile =  "INSERT INTO `files` (`applicationID`, `file`) VALUES ( $applicationID, '$fileUrl' )";
+                    $uploadFile =  "INSERT INTO `files` (`applicationID`, `file`) VALUES ( $applicationID, '$newFilePath' )";
                     
                     $result =  mysqli_query( $conn , $uploadFile);
                 

@@ -72,159 +72,17 @@ $user =  $_SESSION['user'];
         ?>
 
         <div class="container">
-
             <!-- Leave History -->
-
-
             <div class=" row p-4 bg-white  rounded-lg shadow-lg d-flex justify-content-sm-center  pl-5 pr-5 pb-3 pt-4 my-5 ml-2 "
                 style="transition: all all 0.5s ease; border-right:6px solid #11101D">
 
                 <div class="col-md-12 col-sm-12 py-3">
-                    <h3> Leave History</h3>
+                    <h3> Elapsed Applications</h3>
                 </div>
 
                 <!-- Incoming Applications -->
-
-                <table id="incomingApp" class="tablecontent">
-
-                    <thead>
-                        <tr>
-                            <th>APPLICATION DATE</th>
-                            <th>LEAVE TYPE</th>
-                            <th>FROM</th>
-                            <th>TO</th>
-                            <th>TOTAL DAYS</th>
-                            <th>EXTENDED</th>
-                            <th>REASON</th>
-                            <th>HOD APPROVAL</th>
-                            <th>PRINCIPAL APPROVAL</th>
-                            <th>STATUS</th>
-                            <th>VIEW</th>
-                            <th>WITHDRAW</th>
-                            <th>EDIT</th>
-                            <th>EXTEND</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="tbody">
-
-                        <?php
-                                $data =  $user->incomingApplications();
-
-
-                                //If there are no Applications
-                                if( mysqli_num_rows($data) == 0 ) {
-
-                                    echo 
-                                    " <tr> <td> <p class='my-3' > No Data Available </p> </td> </tr>";
-
-                                }
-
-
-                                while ($row = mysqli_fetch_assoc($data)) { 
-                                
-                                    
-                                $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
-                                    
-                        ?>
-
-                        <tr>
-                            <!-- //Checks for HOD and Principal Status -->
-                            <?php
-
-                                $hod_status;
-                                $principal_status;
-
-                                if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'] ){
-                                    $hod_status = Config::$_HOD_STATUS['APPROVED'];
-                                }
-                                else if( $row["status"] == Config::$_APPLICATION_STATUS['PENDING'] ){
-                                    $hod_status = Config::$_HOD_STATUS['PENDING'];
-                                }
-                                else{
-                                    $hod_status = Config::$_HOD_STATUS['REJECTED'];
-                                }
-
-
-                                if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_PRINCIPAL'] ){
-                                    $principal_status = Config::$_PRINCIPAL_STATUS['APPROVED'];
-                                }
-                                else if( $row["status"] == Config::$_APPLICATION_STATUS['PENDING'] ){
-                                    $principal_status = Config::$_HOD_STATUS['PENDING'];
-                                }
-                                else{
-                                    $principal_status = Config::$_PRINCIPAL_STATUS['REJECTED'];
-                                }
-
-                                
-
-                                // For Extension
-
-                                
-                                if( !empty( $row['extension'] ) ){
-                                    $extension = "true";
-                                }else{
-                                    $extension = "false";
-                                }
-
-                                //For Actions
-
-                                $editIcon=""  ; $extendIcon="" ; $withdrawnIcon="" ;
-
-                                if( $row['status'] == Config::$_APPLICATION_STATUS['WITHDRAWN'] ){
-
-                                    $extendIcon = "text-black-50 pointer-events-none";
-                                    $editIcon = "text-black-50 pointer-events-none";
-                                    $withdrawnIcon = "text-black-50 pointer-events-none";
-
-
-                                }
-                                else if(  $row['status'] == Config::$_APPLICATION_STATUS['PENDING'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_PRINCIPAL'] ){
-
-                                        $extendIcon = "text-black-50 pointer-events-none";
-
-                                }else{ 
-
-                                        $editIcon = "text-black-50 pointer-events-none";
-
-                                }
-
-
-
-
-                                
-                            ?>
-
-
-                            <td><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
-                            <td><?php echo $leaveTypes ?></td>
-                            <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
-                            <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
-                            <td><?php echo $row["totalDays"] ?></td>
-                            <td><?php echo $extension ?></td>
-                            <td class="reason" ><?php echo $row["reason"] ?></td>
-                            <td class="<?php echo $hod_status ?>"><?php echo $hod_status ?></td>
-                            <td class="<?php echo $principal_status ?>"><?php echo $principal_status ?></td>
-                            <td class="font-weight-bold"><?php echo $row['status'] ?></td>
-                            <td class="text-end"> <a href=""><i class="fas fa-eye"></i></a> </td>
-                            <td class="text-end"> <a class="<?php echo $withdrawnIcon ?>"  href='./withdrawLeave.php?appID=<?php echo $row['applicationID'] ?>&empID=<?php echo $user->employeeId ?>&status=<?php echo $row['status'] ?>' ><i class="fa-sharp fa-solid fa-arrow-rotate-left"></i></a> </td>
-                            <td class="text-end"> <a class="<?php echo $editIcon ?>" href=""><i class="fa-solid fa-file-pen"></i></a> </td>
-                            <td class="text-end"> <a class="<?php echo $extendIcon ?>" href=""><i class="fa-sharp fa-solid fa-link"></i></a> </td>
-
-                        </tr>
-                        <?php } ?>
-
-                    </tbody>
-                </table>
-
                 <br>
-                <p class=" w-100 mt-5 clickable " id="elapsed-btn">Elapsed Applications <i
-                        class="fa-solid fa-caret-down"></i> </p>
-                <br>
-
-                <div class="w-100" id="elapsed">
-
-
+                <div class="w-100">
                     <input type="text" class="form-control bg-white p-4 my-3 " id="searchInput" placeholder="Search...">
 
                     <!-- //Filters -->
@@ -248,7 +106,6 @@ $user =  $_SESSION['user'];
 
                         </div>
 
-
                         <!-- Extension Filter -->
                         <div class="my-2 col-md-5 ">
 
@@ -256,7 +113,6 @@ $user =  $_SESSION['user'];
                             <label class=' mr-4 ml-2 ' > Extension </label>
 
                         </div>
-
                         <!-- Status Filter -->
                         <div class="my-2 col-md-6 ">
                             <!-- Showing Status as Options -->
@@ -268,15 +124,8 @@ $user =  $_SESSION['user'];
                                         echo "<input type='checkbox' class='check-inp inp-status' checked value='$key' >";
                                         echo "<label class=' mr-4 ml-2 ' >$value</label>";
                                 }
-                            
                             ?>
-
                         </div>
-
-
-
-
-
                     </div>
 
                     <!-- Elapsed Applications -->
@@ -290,10 +139,6 @@ $user =  $_SESSION['user'];
                                 <th>FROM</th>
                                 <th>TO</th>
                                 <th>TOTAL DAYS</th>
-                                <th>EXTENDED</th>
-                                <th>REASON</th>
-                                <th>HOD APPROVAL</th>
-                                <th>PRINCIPAL APPROVAL</th>
                                 <th>STATUS</th>
                                 <th>VIEW</th>
                             </tr>
@@ -350,54 +195,27 @@ $user =  $_SESSION['user'];
                                 $extension = "false";
                             }
                             else $extension = "true";
-
                         ?>
-
                                 <td  ><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
                                 <td  ><?php echo $leaveTypes ?></td>
                                 <td  ><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
                                 <td  ><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
                                 <td  ><?php echo $row["totalDays"] ?></td>
-                                <td  ><?php echo $extension ?></td>
-                                <td  class="reason " ><?php echo $row["reason"] ?></td>
-                                <td  class="<?php echo $hod_status ?> "><?php echo $hod_status ?></td>
-                                <td  class="<?php echo $principal_status ?> "><?php echo $principal_status ?></td>
                                 <td  class="font-weight-bold "><?php echo $row['status'] ?></td>
-                                <td  class="text-end "> <a href=""><i class="fas fa-eye"></i></a> </td>
+                                <td  class="text-end "> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?> &reason=<?php echo $row["reason"]; ?>"><i class="fas fa-eye"></i></a> </td>
 
                             </tr>
                             <?php } ?>
-
                         </tbody>
                     </table>
-
                 </div>
-
-
             </div>
-
-
-
         </div>
-
-
     </section>
 
-
     <script>
-
     // script for filter 
     $(document).ready(function() {
-
-        $('#elapsed').hide()
-
-        //Dropdown Toggle
-        $('#elapsed-btn').click(() => {
-
-            $('#elapsed').toggle()
-
-        })
-
         // Initialize DataTable
         var table = $('#elapsedApp').DataTable(
             {

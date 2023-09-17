@@ -30,32 +30,39 @@
         <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="../../pages/Staff/dashboard.php">
+        <a href="../../pages/HOD/dashboard.php">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
         <span class="tooltip">Dashboard</span>
       </li>
       <li>
-        <a href="../../pages/Staff/apply_leave.php">
+        <a href="../../pages/HOD/my_team.php">
+          <i class="fas fa-sticky-note"></i>
+          <span class="links_name">My Team</span>
+        </a>
+        <span class="tooltip">My Team</span>
+      </li>
+      <li>
+        <a href="../../pages/HOD/apply_leave.php">
           <i class="fas fa-sticky-note"></i>
           <span class="links_name">Apply Leave</span>
         </a>
         <span class="tooltip">Apply Leave</span>
       </li>
       <li>
-        <a href="../../pages/Staff/leave_history.php">
+        <a href="../../pages/HOD/leave_history.php">
           <i class="fa-solid fa-building-user"></i>
           <span class="links_name">Leave History</span>
         </a>
         <span class="tooltip">Leave History</span>
       </li>
       <li>
-        <a href="../../pages/Staff/manageAdjustments.php">
+        <a href="../../pages/HOD/leave_request.php">
           <i class="fa-solid fa-code-pull-request"></i>
-          <span class="links_name">Manage Adjustments</span>
+          <span class="links_name">Leave Requests</span>
         </a>
-        <span class="tooltip">Manage Adjustments</span>
+        <span class="tooltip">Leave Requests</span>
       </li>
       <!-- code for Log Out  -->
       <li class="profile">
