@@ -18,18 +18,18 @@
     //start session
     session_start();
 
-    //Get the User Object
     $user =  $_SESSION['user'];
     $type = $_GET['type'];
     $action = $_GET['action'];
-    $adjID = $_GET['adjID'];
-    $applicantID = $_GET['applicantID'];
-
 ?>
 
 <?php
 
     if( $type === 'lec' ){
+
+        //Get the User Object
+        $adjID = $_GET['adjID'];
+        $applicantID = $_GET['applicantID'];
 
         //Update the status of Adjustment
         $query = "UPDATE lectureadjustments SET status='$action' WHERE lecAdjustmentID = $adjID";
@@ -66,6 +66,10 @@
 
     else if( $type === 'task' ){
 
+        //Get the User Object
+        $adjID = $_GET['adjID'];
+        $applicantID = $_GET['applicantID'];
+
          //Update the status of Adjustment
          $query = "UPDATE taskadjustments SET status='$action' WHERE taskAdjustmentID = $adjID";
          $conn = sql_conn();
@@ -97,6 +101,19 @@
             echo "Error Occured During Insertion of ". $applicantID ."  Notification";
          }
  
+
+    }
+
+    else if( $type === 'approval' ){
+
+        //Get the User Object
+        $applicationID = $_GET['applicationID'];
+        $approverId = $_GET['approverId'];
+
+        //Update the status of Adjustment
+        $query = "UPDATE approvals SET status='$action' WHERE applicationID = $applicationID and approverId = $approverId ";
+        $conn = sql_conn();
+        $result = mysqli_query($conn, $query);
 
     }
 

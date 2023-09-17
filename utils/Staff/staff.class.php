@@ -251,6 +251,40 @@ class Staff
         return $result;
     }
 
+    // SQL Query to get the Approvals of login employee
+    public function approvalRequst()
+    {
+        $employeeID = $this->employeeId;
+        $curr = date('Y-m-d', time());
+
+        // SQL Query to get the task adjustemnt of login employee
+
+        $sql = "SELECT employees.fullName , employees.email , applications.startDate , applications.endDate , applications.reason , approvals.status , approvals.applicationID , approvals.approverId from approvals inner join applications on approvals.applicationID = applications.applicationID and approvals.approverId = '$employeeID' inner join employees on applications.employeeID = employees.employeeID and applications.endDate > '$curr' ";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+        return $result;
+    }
+
+    public function elapsedapprovalRequst(){
+
+        $employeeID = $this->employeeId;
+        $curr = date('Y-m-d', time());
+
+        // SQL Query to get the Additional Approvals of login employee
+
+        $sql = "SELECT employees.fullName , employees.email , applications.startDate , applications.endDate , applications.reason , approvals.status , approvals.applicationID , approvals.approverId from approvals inner join applications on approvals.applicationID = applications.applicationID and approvals.approverId = '$employeeID' inner join employees on applications.employeeID = employees.employeeID and applications.endDate < '$curr' ";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+
+
+    }
+
     // This Function is Used To Find previous Task adjustment request of login employee -->inshort(Accepted and Reejected request)
     
     public function elapsedTaskAdjustments(){

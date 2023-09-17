@@ -247,11 +247,9 @@ $user =  $_SESSION['user'];
 
             <!------------------------------ Task Adjustments ------------------------------>
 
-            <div class=" bg-white shadow pl-5 pr-5 pb-5 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
-                method="POST">
+            <div class=" bg-white shadow pl-5 pr-5 pb-5 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl?>' method="POST">
 
-                <h4 class="pb-3 pt-2  " style="color: #11101D;"> Task Adjustments Requests<i id="task-adj"
-                        class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
+                <h4 class="pb-3 pt-2  " style="color: #11101D;"> Task Adjustments Requests<i id="task-adj" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
 
                         <div class="form-row" id="task-adj-container">
 
@@ -330,17 +328,139 @@ $user =  $_SESSION['user'];
 
                                 </div>
 
-                            <!-- Elapsed Requests  -->
+                                <!-- Elapsed Requests  -->
 
-                            <table id="task-elapsedApp" class="tablecontent ">
+                                <table id="task-elapsedApp" class="tablecontent ">
+
+                                    <thead>
+                                        <tr>
+                                        <th>APPLICANT NAME</th>
+                                        <th>APPLICANT EMAIL</th>
+                                        <th>START DATE</th>
+                                        <th>END DATE</th>
+                                        <th>TASK</th>
+                                        <th>STATUS</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="tbody">
+
+                                        <?php
+
+                                            $taskAdjData =  $user->elapsedTaskAdjustments(); 
+                                            while($row =  mysqli_fetch_assoc($taskAdjData) ){
+                                            
+                                                echo "<tr>";
+                                                echo "<td  >" . $row['fullName'] . "</td>";
+                                                echo "<td  >" . $row['email'] . "</td>";
+                                                echo "<td  >" . $row['startDate'] . "</td>";
+                                                echo "<td  >" . $row['endDate'] . " </td>";
+                                                echo "<td  >" . $row['task']  . " </td>";
+                                                echo "<td  >" . $row['status']  . " </td>";
+                                            }
+                                        
+                                        ?>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+    
+            </div>
+
+            <!------------------------------ Additional Approvals ------------------------------>
+
+            <div class=" bg-white shadow pl-5 pr-5 pb-5 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
+                method="POST">
+
+                <h4 class="pb-3 pt-2  " style="color: #11101D;"> Approval Requests<i id="add-app"
+                        class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
+
+                        <div class="form-row" id="add-app-container">
+
+                            <table class="tablecontent" id="add-app-table">
 
                                 <thead>
                                     <tr>
-                                    <th>APPLICANT NAME</th>
+                                        <th>APPLICANT EMAIL</th>
+                                        <th>START DATE</th>
+                                        <th>END DATE</th>
+                                        <th>REASON</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tbody">
+
+                                    <?php
+
+                                        $addApp =  $user->approvalRequst(); 
+                                        while($row =  mysqli_fetch_assoc($addApp) ){
+                                        
+                                            
+                                            echo "<tr>";
+                                            echo "<td  >" . $row['email'] . "</td>";
+                                            echo "<td  >" . $row['startDate'] . "</td>";
+                                            echo "<td  >" . $row['endDate'] . " </td>";
+                                            echo "<td  >" . $row['reason']  . " </td>";
+                                            if( $row['status']  === Config::$_ADJUSTMENT_STATUS['PENDING'] ){
+                                                echo "<td  > <a href='../../pages/Staff/validateAdjAction.php?applicationID=" .$row['applicationID']. "&approverId=" .$row['approverId']. "&type=approval&action=" .Config::$_ADJUSTMENT_STATUS['ACCEPTED']. "'> <button class='submitbtn clickable my-0 mx-2' > Accept </button> </a></td>";
+                                                echo "<td  > <a href='../../pages/Staff/validateAdjAction.php?applicationID=" .$row['applicationID']. "&approverId=" .$row['approverId']. "&type=approval&action=" .Config::$_ADJUSTMENT_STATUS['REJECTED']. "'> <button class='submitbtn clickable my-0 mx-2' > Reject </button> </a></td>";
+                                            }else{
+                                                echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
+                                            }
+                                        }
+                                    
+                                    ?>
+                                </tbody>
+                            </table>
+                                    
+                                    
+                        </div>
+
+                            <p class=" w-100 mt-3 clickable " id="addApp-elapsed-btn">Elapsed Approvals<i class="fa-solid fa-caret-down ml-2"></i> </p>
+
+                            <br>
+
+                            <div class="w-100" id="addApp-elapsed">
+
+                                <input type="text" class="form-control bg-white p-4 my-3 " id="addApp-searchInput" placeholder="Search...">
+
+                                <!-- //Filters -->
+                                <div class="col-md-12 col-sm-12 py-3 border my-3 " id='filter-box'>
+
+                                    <!-- Status -->
+                                    <div class="my-2 col-md-12 ">
+
+                                        <!-- Showing Status as Options -->
+                                        <?php
+
+                                            $status = Config::$_ADJUSTMENT_STATUS;
+
+                                            foreach($status as $key => $value) {
+                                                echo "<input type='checkbox' class=' addApp-check-inp addApp-inp-status' checked value='$key' >";
+                                                echo "<label class=' mr-4 ml-2  ' >$value</label>";
+                                            }
+
+
+                                        ?>
+
+                                    </div>
+
+
+                                </div>
+
+                            <!-- Elapsed Requests  -->
+
+                            <table id="addApp-elapsedApp" class="tablecontent ">
+
+                                <thead>
+                                    <tr>
                                     <th>APPLICANT EMAIL</th>
                                     <th>START DATE</th>
                                     <th>END DATE</th>
-                                    <th>TASK</th>
+                                    <th>REASON</th>
                                     <th>STATUS</th>
                                     </tr>
                                 </thead>
@@ -349,15 +469,14 @@ $user =  $_SESSION['user'];
 
                                     <?php
 
-                                        $taskAdjData =  $user->elapsedTaskAdjustments(); 
-                                        while($row =  mysqli_fetch_assoc($taskAdjData) ){
+                                        $elapsedApprovals =  $user->elapsedapprovalRequst(); 
+                                        while($row =  mysqli_fetch_assoc($elapsedApprovals) ){
                                         
                                             echo "<tr>";
-                                            echo "<td  >" . $row['fullName'] . "</td>";
                                             echo "<td  >" . $row['email'] . "</td>";
                                             echo "<td  >" . $row['startDate'] . "</td>";
                                             echo "<td  >" . $row['endDate'] . " </td>";
-                                            echo "<td  >" . $row['task']  . " </td>";
+                                            echo "<td  >" . $row['reason']  . " </td>";
                                             echo "<td  >" . $row['status']  . " </td>";
                                         }
                                     
@@ -365,10 +484,10 @@ $user =  $_SESSION['user'];
                                 </tbody>
 
                             </table>
+
+                        </div>
     
             </div>
-
-
 
             
     </section>
@@ -395,7 +514,9 @@ $user =  $_SESSION['user'];
                 })
 
 
+
                 //Task Adjustments
+
                 $('#task-elapsed').hide()
 
                 $('#task-elapsed-btn').click(() => {
@@ -407,6 +528,22 @@ $user =  $_SESSION['user'];
                 $('#task-adj').click(() => {
                 
                     $('#task-adj-container').toggle();
+                
+                })
+
+                //Additonal Approvals
+
+                $('#addApp-elapsed').hide()
+
+                $('#addApp-elapsed-btn').click(() => {
+                    $('#addApp-elapsed').toggle()
+                })
+
+                $('#add-app-container').hide()
+
+                $('#add-app').click(() => {
+                
+                    $('#add-app-container').toggle();
                 
                 })
 
@@ -429,6 +566,16 @@ $user =  $_SESSION['user'];
                             info: true
                         }
                 );
+
+                // Initialize DataTable
+                var apptable = $('#addApp-elapsedApp').DataTable(
+                        {
+                            paging: false,
+                            ordering: false,
+                            info: true
+                        }
+                );
+
 
                 $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
 
@@ -473,6 +620,38 @@ $user =  $_SESSION['user'];
                         //Filter Logic
                         if( status.includes( tableStatus ) && sem.includes( tableSem ) ) return true;
                         else return false;
+
+                    }
+                    else if( data.length === 5 ){
+
+
+                        //* Additional Approvals
+
+                        //Take all Types of Filters
+                        let addAppstatusInps = document.querySelectorAll('.addApp-inp-status')
+
+                        //Create Arrays
+                        let addAppstatus = []
+
+                        //For Status
+                        addAppstatusInps.forEach(element => {
+
+                            if (element.checked) {
+
+                                addAppstatus.push(element.value);
+                            }
+
+                        });
+
+                        let addApptableStatus = data[4];
+
+                        console.log(addApptableStatus);
+
+                        //Filter Logic
+                        if( addAppstatus.includes( addApptableStatus ) ) return true;
+                        else return false;
+
+
 
                     }
                     else{
@@ -530,6 +709,17 @@ $user =  $_SESSION['user'];
                     // Add event listener for the search input
                     $('#task-searchInput').on('keyup', function() {
                         tasktable.search(this.value).draw();
+                    });
+
+                    //On Filter Change load the table
+                    $('.addApp-check-inp').change(() => {
+                        apptable.draw();
+                    })
+
+
+                    // Add event listener for the search input
+                    $('#addApp-searchInput').on('keyup', function() {
+                        apptable.search(this.value).draw();
                     });
 
             })
