@@ -98,12 +98,15 @@ $holidays = Utils::getUpcomingHolidays();
 
     <!-- all common Script  -->
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include Bootstrap JavaScript (if you're using Bootstrap) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
     <script src="https://kit.fontawesome.com/65712a75e6.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
 </head>
 
@@ -453,19 +456,6 @@ $holidays = Utils::getUpcomingHolidays();
                 <!-- <button id="leaveApplyBtn" name="submit" class="btn mt-2" style="background-color: #11101D; color: white; " onclick="openModal('Your leave application has been <span style=\'color: green;\'>successfully processed</span>.','<span style=\'color: green;\'>Application Processed</span>')" data-toggle="modal" data-target="#exampleModal">Apply</button> -->
                 <button id="leaveApplyBtn" name="submit" class="btn mt-2" style="background-color: #11101D; color: white; " data-toggle="modal" data-target="#exampleModal">Apply</button>
                 
-                <!-- javascript to ssend custumize mesage on model -->
-                <script>
-                    // JavaScript function to open the modal with a given message
-                    // function openModal(message,title) {
-                    //     // Update the modal body with the provided message
-                    //     document.querySelector(".modal-body").innerHTML = message;
-                    //     document.querySelector(".modal-title").innerHTML = title;
-
-                    //     // Show the modal
-                    //     $("#myModal").modal();
-                    // }
-                </script>
-
 
             </form>
 
@@ -475,7 +465,7 @@ $holidays = Utils::getUpcomingHolidays();
     <!-- Modal -->
 
     <?php
-    include "../../includes/model.php";
+        include "../../includes/model.php";
     ?>
 
     <script>
@@ -835,11 +825,12 @@ $holidays = Utils::getUpcomingHolidays();
 
                 //Check if there is already some data for specific leavetype
                 if (leaveTypes[$(`#leaveType-${id}`)[0].value + ''] != undefined && leaveTypes[$(`#leaveType-${id}`)[0].value + ''].rowNo !== id) {
+                    
                     // alert("Cannot Select Leave Type more than Once !")
                     let message = "Cannot Select Leave Type more than Once !!!"
                     document.querySelector('.modal-body').innerHTML = message;
-                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                $('#myModal').modal();
+                    document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                    $('#myModal').modal();
                     return;
                 }
 
@@ -879,11 +870,14 @@ $holidays = Utils::getUpcomingHolidays();
                 //If validations fails
                 if (!validate.isValid) {
 
-                    // alert()
+                    // alert( validate.msg )
+                    
                     let message = validate.msg;
                     document.querySelector('.modal-body').innerHTML = message;
-                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                $('#myModal').modal();
+                    document.querySelector('.modal-title').innerHTML = "<span>ALERT</span>";
+
+                    $('#myModal').modal();
+
                     isSafeToAddNewLeaveTypeRow = false //don't allow to add new Row
                     return;
 
@@ -922,15 +916,16 @@ $holidays = Utils::getUpcomingHolidays();
                 leaveTypes['final'] = {}
 
                 let validate = validateLeaveData(leaveTypes) //Validate Data and configure final dates
-              console.log(validate)
+                console.log(validate)
+
                 //If validations fails
                 if (!validate.isValid) {
 
-                    alert( validate.msg )
-                //     let message = validate.msg;
-                //     document.querySelector('.modal-body').innerHTML = message;
-                // document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                // $('#myModal').modal();
+                    // alert( validate.msg )
+                    // let message = validate.msg;
+                    document.querySelector('.modal-body').innerHTML = validate.msg;
+                    document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                    $('#myModal').modal('show');
                     isSafeToAddNewLeaveTypeRow = false //don't allow to add new Row
                     return;
 
@@ -1218,6 +1213,7 @@ $holidays = Utils::getUpcomingHolidays();
 
 
                 if (Object.keys(leaveTypes).length <= 1) {
+
                     // alert('You Need to Select atleast one Leave Type to Apply !!');
                     let message = "You Need to Select atleast one Leave Type to Apply !!"
                     document.querySelector('.modal-body').innerHTML = message;
@@ -1256,8 +1252,11 @@ $holidays = Utils::getUpcomingHolidays();
 
                             //Validate Lecture Details
                             if (container.children[j].value === "") {
+
                                 isValidated = false;
+
                                 // alert('Inputs in Lecture Adjustment cannot be Empty')
+
                                 let message = "Inputs in Lecture Adjustment cannot be Empty !!"
                     document.querySelector('.modal-body').innerHTML = message;
                 document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
@@ -1396,20 +1395,26 @@ $holidays = Utils::getUpcomingHolidays();
                     processData: false,
                     contentType: false,
                     success: function(response) {
+
                         console.log(response);
                         let message = response;
-                    document.querySelector('.modal-body').innerHTML = message;
-                document.querySelector('.modal-title').innerHTML = "<span style=\'color: green;\'>Application Submitted</span>";
-                $('#myModal').modal();
+
+                        document.querySelector('.modal-body').innerHTML = message;
+                        document.querySelector('.modal-title').innerHTML = "<span style=\'color: green;\'>Application Submitted</span>";
+
+                        $('#myModal').modal();
                         // alert(response);
                     },
+
                     error: function(jqXHR, textStatus, errorThrown) {
+
                         console.log(textStatus, errorThrown);
                         // alert('Error occured during Applying Leave')
                         let message = "Error occured during Applying Leave !!"
-                    document.querySelector('.modal-body').innerHTML = message;
-                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                $('#myModal').modal();
+                        document.querySelector('.modal-body').innerHTML = message;
+                        document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+
+                        $('#myModal').modal();
                     }
                 });
 
