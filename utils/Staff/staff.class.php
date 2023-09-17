@@ -111,6 +111,17 @@ class Staff
         return $result;
     }
 
+    public function viewDetailApplication( $id ){
+
+        $sql = "SELECT * FROM `applications` WHERE `applicationID` = $id";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+
+    }
 
     public function getAppLeaveTypes($appID)
     {

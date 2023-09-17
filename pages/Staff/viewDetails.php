@@ -1,23 +1,24 @@
 <?php
-//  Creates database connection 
-require "../../includes/db.conn.php";
+    //  Creates database connection 
+    require "../../includes/db.conn.php";
 ?>
+
 <!-- Include this to use User object -->
 <?php
-//include class definition
-require('../../utils/Staff/Staff.class.php');
-//include Config Class
-require('../../utils/Config/Config.class.php');
-require('../../utils/Utils.class.php');
-//start session
-session_start();
-//Get the User Object
-$user =  $_SESSION['user'];
-// to get application idand reason
-$applicationId = $_GET['id'];
-$reason = $_GET['reason'];;  // Declare the variable 
-$data =  $user->viewDetailApplication($applicationId);
+    //include class definition
+    require('../../utils/Staff/Staff.class.php');
+    //include Config Class
+    require('../../utils/Config/Config.class.php');
+    require('../../utils/Utils.class.php');
+    //start session
+    session_start();
+    //Get the User Object
+    $user =  $_SESSION['user'];
+    // to get application idand reason
+    $applicationId = $_GET['id'];
+    $data =  mysqli_fetch_assoc( $user->viewDetailApplication($applicationId) );
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,18 +50,20 @@ $data =  $user->viewDetailApplication($applicationId);
         include "../../includes/header.php";
         ?>
         <div class="container mb-5">
+
             <!------------------------------ Basic Info ------------------------------>
             <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg" method="POST">
+
                 <h4 class="pb-3 pt-2  " style="color: #11101D;">Basic Information <i id="basic-info" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
                 <div class="form-row" id="basic-info-container">
+
                     <!-- //ROW -->
                     <div class="form-group col-md-6">
                         <div class="col-sm-3 d-inline">
-                            <h6 class="mb-0 d-inline ">Employee ID</h6>
+                            <h6 class="mb-0 d-inline ">Applicant ID</h6>
                         </div>
                         <div class="col-sm-3 d-inline text-secondary">
-                            <!-- <?php echo $empDetails['employeeID'] ?> -->
-                            <?php echo $user->email  ?>
+                            <?php echo $user->employeeId  ?>
                         </div>
                     </div>
 
@@ -68,10 +71,22 @@ $data =  $user->viewDetailApplication($applicationId);
 
                     <div class="form-group col-md-6">
                         <div class="col-sm-3 d-inline">
-                            <h6 class="mb-0 d-inline ">Employee Name</h6>
+                            <h6 class="mb-0 d-inline ">Applicant Name</h6>
                         </div>
                         <div class="col-sm-3 d-inline text-secondary">
                             <?php echo $user->fullName ?>
+                        </div>
+                    </div>
+
+
+                    <!-- //ROW -->
+
+                    <div class="form-group col-md-6">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">Applicant Email</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            <?php echo $user->email ?>
                         </div>
                     </div>
 
@@ -93,75 +108,215 @@ $data =  $user->viewDetailApplication($applicationId);
 
                     <div class="form-group col-md-6">
                         <div class="col-sm-3 d-inline">
-                            <h6 class="mb-0 d-inline ">Leave Reason</h6>
+                            <h6 class="mb-0 d-inline ">Application Date</h6>
                         </div>
                         <div class="col-sm-3 d-inline text-secondary">
-                            <?php echo $reason ?>
+                            <?php echo date( 'd-m-Y' , strtotime($data['startDate']) )  ?> - <?php echo date( 'd-m-Y' , strtotime($data['endDate']) ) ?>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!------------------------------ Leave Types ------------------------------>
-            <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl ?>' method="POST">
-                <h4 class="pb-3 pt-2  " style="color: #11101D;">Leave Types <i id="leave-balance" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
+
+            <!------------------------------ Leave Balance ------------------------------>
+            <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
+                method="POST">
+
+
+                <h4 class="pb-3 pt-2  " style="color: #11101D;">Leave Balance <i id="leave-balance"
+                        class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
+
                 <div class="form-row" id="leave-balance-container">
+
                     <table class="tablecontent" id="leave-balance-table">
+
                         <thead>
                             <tr>
-                                <th>Leave Type</th>
-                                <th>Start Date</th>
-                                <th>Day Type</th>
-                                <th>End Date</th>
-                                <th>Day Type</th>
-                                <th></th>
+                                <th>LEAVE ID</th>
+                                <th>LEAVE NAME</th>
+                                <th>BALANCE</th>
+                                <th>COUNTER</th>
+                                <th>LAST UPDATE ON</th>
+                                <th>REASON</th>
                             </tr>
                         </thead>
-                        <tbody id="tbody">
-                            <?php
-                           // to get a application details of perticuler application
-                            while ($row = mysqli_fetch_assoc($data)) {
-                                echo "<tr>";
-                                echo "<td  >" . $row['leaveType'] . "</td>";
-                                echo "<td  >" . $row['startDate'] . "</td>";
-                                echo "<td  >" . $row['startDateType'] . "</td>";
-                                echo "<td  >" . $row['endDate'] . " </td>";
 
-                                echo "<td  >" . $row['endDateType']  . " </td>";
-                            }
+                        <tbody id="tbody">
+
+                            <?php
+
+                                $leavebalanceDetails =  Utils::getLeaveBalanceOfEmployee($user->employeeId); 
+
+                                while($row =  mysqli_fetch_assoc($leavebalanceDetails) ){
+
+                                    echo "<tr>";
+                                    echo "<td  >" . $row['leaveID'] . "</td>";
+                                    echo "<td  >" . $row['leaveType'] . "</td>";
+                                    echo "<td  >" . $row['balance'] . "</td>";
+                                    echo "<td  >" . $row['leaveCounter'] . " </td>";
+                                    echo "<td  >" . date( 'd-m-Y' , strtotime($row['date']) )  . " </td>";
+                                    echo "<td  >" . $row['reason']  . " </td>";
+                                }
+                            
                             ?>
                         </tbody>
                     </table>
+
+
                 </div>
+
             </div>
 
-            <!------------------------------ Leave Totals Days ------------------------------>
+
+            <!------------------------------ Application Details ------------------------------>
 
             <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg" method="POST">
-                <h4 class="pb-3 pt-2  " style="color: #11101D;">total Days <i id="leave-total" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
-                <div class="form-row" id="leave-total-container">
-                        <?php
-                          $total = 0;
-                        $data =  $user->viewDetailApplication($applicationId);
-                        while ($row = mysqli_fetch_assoc($data)) { 
-                          
+                <h4 class="pb-3 pt-2  " style="color: #11101D;">Application Details <i id="app-detail" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
+
+                <div class="form-row" id="app-detail-container">
+
+                    <!-- //ROW -->
+                    <div class="form-group col-md-6">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">Start Date</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            <?php echo  date( 'd-m-Y' , strtotime($data['startDate']) ) ?>
+                        </div>
+                    </div>
+
+                    <!-- //ROW -->
+                    <div class="form-group col-md-6">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">Start Date Type</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            <?php echo $data['startDateType'] ?>
+                        </div>
+                    </div>
+
+                    <!-- //ROW -->
+                    <div class="form-group col-md-6">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">End Date</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            <?php echo  date( 'd-m-Y' , strtotime($data['endDate']) ) ?>
+                        </div>
+                    </div>
+
+                    <!-- //ROW -->
+                    <div class="form-group col-md-6">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">End Date Type</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            <?php echo $data['endDateType'] ?>
+                        </div>
+                    </div>
+
+                    <!-- //ROW -->
+                    <div class="form-group col-md-6">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">Total Days</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            <?php echo $data['totalDays'] ?> Days
+                        </div>
+                    </div>
+
+                    <!-- //ROW -->
+                    <div class="form-group col-md-6">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">Leave Type</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            <?php echo $leaveType = $user->getAppLeaveTypes( $data['applicationID'] ) ?>
+                        </div>
+                    </div>
+
+                    <!-- //ROW -->
+                    <div class="form-group col-md-12">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">Reason</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            <?php echo $data['reason'] ?>
+                        </div>
+                    </div>
+
+                    <!-- //ROW -->
+                    <div class="form-group col-md-12">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-0 d-inline ">Application Status</h6>
+                        </div>
+                        <div class="col-sm-3 bold d-inline text-secondary">
+                            <span class=<?php echo $data['status'] ?> >  <?php echo $data['status'] ?> </span>
+                        </div>
+                    </div>
+
+                    <!-- //Approver table -->
+                    <div class="form-group col-md-12">
+                        <div class="col-sm-3 d-inline">
+                            <h6 class="mb-3 d-inline ">Additional Approvals</h6>
+                        </div>
+                        <div class="col-sm-3 d-inline text-secondary">
+                            
+                    <!-- table here -->
+                    <table class="tablecontent" id="add-app-table">
+
+                        <thead>
+                            <tr>
+                                <th>APPROVER ID</th>
+                                <th>APPROVER EMAIL</th>
+                                <th>APPROVER NAME</th>
+                                <th>APPROVER DEPARTMENT</th>
+                                <th>APPROVER ROLE</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbody">
+
+                            <?php
+
+                                $additionalApp =  $user->approvalRequst(); 
+
+                                while($row =  mysqli_fetch_assoc($additionalApp) ){
+
+                                    $approverInfo = mysqli_fetch_assoc (Utils::getEmpDetails( $row['approverId'] ) );
+
+                                    echo "<tr>";
+                                    echo "<td  >" . $row['approverId'] . "</td>";
+                                    echo "<td  >" . $row['email'] . "</td>";
+                                    echo "<td  >" . $row['fullName'] . "</td>";
+                                    echo "<td  >" . $approverInfo['deptName'] . "</td>";
+                                    echo "<td  >" . $approverInfo['role'] . " </td>";
+                                    echo "<td  >" . $row['status'] . " </td>";
+                                }
+                            
                             ?>
-                        <p class="form-control border-0  h-100 bg-white mb-0" id="totalDays" name="totalDays">
-                            <?php echo "Total Leaves  deducted from " . $row['leaveType'] . "  :  " . $row['totalDays']; ?>
-                            </p> <?php $total =number_format($total) + number_format($row['totalDays']); } ?> 
-                            <p class="form-control border-0  h-100 bg-white mb-0" id="totalDays" name="totalDays">
-                            <?php echo "Overall Leaves deducted from Your Account <strong>" . number_format($total) . "</strong>"; ?>
-                            </p>
+                        </tbody>
+                    </table>
+
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <!------------------------------ Adjustment Details ------------------------------>
 
             <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg" method="POST">
+
                 <h4 class="pb-3 pt-2  " style="color: #11101D;">Adjustment Details<i id="leave-adjustment" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
                 <!-- main div for adjustment  -->
+
                 <div id="leave-adjustment-container">
+
                     <!-- Lecture Adjustment Details -->
+
                     <div class="form-row">
                         <h5 class="pb-3 pt-2  " style="color: #11101D;">Lecture Adjustment Details </h5>
                         <table class="tablecontent" id="leave-balance-table">
@@ -178,12 +333,18 @@ $data =  $user->viewDetailApplication($applicationId);
                             </thead>
                             <tbody id="tbody">
                                 <?php
+
                                 // get lecture adjustment details of that perticuler application 
-                                $data =  $user->getlectureAdjustment($applicationId);
+
+                                $data =  $user->lectureAdjustmentRequst($applicationId);
+
                                 while ($row = mysqli_fetch_assoc($data)) {
+
                                     // to get name of adjusted employee 
                                     $userData =  $user->findEmployeeDetailsUsingId($row['adjustedWith']);
+
                                     $rowemp = mysqli_fetch_assoc($userData);
+
                                     echo "<tr>";
                                     echo "<td  >" . $rowemp['fullName'] . "</td>";
                                     echo "<td  >" . $row['semester'] . "</td>";
@@ -197,9 +358,13 @@ $data =  $user->viewDetailApplication($applicationId);
                             </tbody>
                         </table>
                     </div>
+
                     <!-- Task Adjustment Details  -->
+
                     <div class="form-row mt-2">
+
                         <h5 class="pb-3 pt-2 mt-2 " style="color: #11101D;">Task Adjustment Details </h5>
+
                         <table class="tablecontent" id="leave-balance-table">
                             <thead>
                                 <tr>
@@ -213,7 +378,7 @@ $data =  $user->viewDetailApplication($applicationId);
                             <tbody id="tbody">
                                 <?php
                                  // to get task adjustment details 
-                                $data =  $user->getTaskAdjustment($applicationId);
+                                $data =  $user->taskAdjustmentRequst($applicationId);
                                 while ($row = mysqli_fetch_assoc($data)) {
                                     // to get name of task adjusted employee 
                                     $userData =  $user->findEmployeeDetailsUsingId($row['adjustedWith']);
@@ -238,35 +403,7 @@ $data =  $user->viewDetailApplication($applicationId);
                 </div>
             </div>
 
-            <!------------------------------ Aditional Approval details ------------------------------>
 
-            <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg" method="POST">
-                <h4 class="pb-3 pt-2  " style="color: #11101D;">Aditional Approval <i id="additional-approval" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
-                <div class="form-row" id="additional-approval-container">
-                    <table class="tablecontent">
-                        <thead>
-                            <tr>
-                                <th>Approver Details</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody">
-                            <?php
-                            // to get additional informatin details 
-                            $data =  $user->getAdditioinalApproval($applicationId);
-                            while ($row = mysqli_fetch_assoc($data)) {
-                                // to get employee details
-                                $userData =  $user->findEmployeeDetailsUsingId($row['approverId']);
-                                $rowemp = mysqli_fetch_assoc($userData);
-                                echo "<tr>";
-                                echo "<td  >" . $rowemp['fullName'] . "</td>";
-
-                                echo "<td  >" . $row['status'] . " </td>";
-                            }  ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
             <!------------------------------ file details ------------------------------>
             <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg" method="POST">
                 <h4 class="pb-3 pt-2  " style="color: #11101D;">Uploaded Documents <i id="file-details" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
@@ -284,7 +421,7 @@ $data =  $user->viewDetailApplication($applicationId);
                             $data =  $user->getFileDetails($applicationId);
                             while ($row = mysqli_fetch_assoc($data)) { ?>
                             <tr>
-                                <td> medical recipt </td>
+                                <td> <?php echo  substr( $row['file'] , 18 , strlen($row['file']) )  ?> </td>
                                 <td>
                                 <a href="<?php echo $row['file']; ?>" class="btn btn-success">View Document</a>
                                 </td>
@@ -301,10 +438,11 @@ $data =  $user->viewDetailApplication($applicationId);
     <script>
         // script for filter 
         $(document).ready(function() {
+
         // to hide container 
             $('#basic-info-container').hide()
             $('#leave-balance-container').hide()
-            $('#leave-total-container').hide()
+            $('#app-detail-container').hide()
             $('#leave-adjustment-container').hide()
             $('#additional-approval-container').hide()
             $('#file-details-container').hide()
@@ -324,9 +462,9 @@ $data =  $user->viewDetailApplication($applicationId);
             })
 
             // function to toggle total days div
-            $('#leave-total').click(() => {
+            $('#app-detail').click(() => {
 
-                $('#leave-total-container').toggle();
+                $('#app-detail-container').toggle();
             })
 
             // function to toggle adjustment details div
