@@ -117,6 +117,7 @@
                     //Starting the Session
                     session_start();
                     $_SESSION['role'] = $row['role'];
+                    $_SESSION['fullName'] = $row['fullName'];
                     $_SESSION['employeeID'] = $row['employeeID'];
                     $_SESSION['email'] = $row['email'];
                     

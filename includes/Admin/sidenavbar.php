@@ -3,8 +3,8 @@
 
 <head>
 
-  <title> Responsive Sidebar Menu </title>
-  
+    <title> Responsive Sidebar Menu </title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -27,7 +27,7 @@
             <i class='bx bx-menu' id="btn"></i>
 
         </div>
-        
+
         <ul class="nav-list">
 
             <li>
@@ -91,12 +91,11 @@
                     <!-- <img src="assets/ganesh.jpg" alt="profileImg"> -->
                     <img src="../../assets/ganesh.jpg" alt="profileImg">
                     <div class="name_job">
-                        <div class="name"><?php echo $_SESSION['fullname']?></div>
-                        <div class="job">ID: <?php echo $_SESSION['id']?></div>
+                        <div class="name"><?php echo $_SESSION['fullName'] ?></div>
+                        <div class="job">ID: <?php echo $_SESSION['employeeID'] ?></div>
                     </div>
                 </div>
-                <a href="../logout.php" class="logouthyperlink"><i class="fa-solid fa-right-from-bracket"
-                        id="log_out"></i></a>
+                <a href="../logout.php" class="logouthyperlink"><i class="fa-solid fa-right-from-bracket" id="log_out"></i></a>
                 <!-- <i class='bx bx-log-out' id="log_out" ></i> -->
             </li>
 

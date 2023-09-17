@@ -42,7 +42,7 @@
     <script>
         function toggleNotification() {
             var notification = document.getElementById("notification");
-            var container = document.querySelector(".container")
+            var container = document.querySelector(".container");   
             notification.style.display = (notification.style.display === "block") ? "none" : "block";
             container.style.filter = (container.style.filter === "blur(5px)") ? "none" : "blur(5px)";
         }
