@@ -1,7 +1,7 @@
 <?php
+    
 
     class Utils{
-    
     
         public static function getTimeDiff( $date ){
 
@@ -157,9 +157,16 @@
 
         }    
 
-        public static function alert( $msg ){
+        public static function alert( $msg  ,$title){
 
-            return "<script> alert('" .$msg. "') </script>";
+            return "<script>  
+                
+                document.querySelector('.modal-body').innerHTML = '" .$msg. "';
+                document.querySelector('.modal-title').innerHTML = '" .$title. "';
+
+              
+                $('#myModal').modal();
+            </script>";
 
         }
 
