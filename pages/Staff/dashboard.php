@@ -195,7 +195,7 @@
                             <td class="<?php echo $hod_status ?>" ><?php echo $hod_status ?></td>
                             <td class="<?php echo $principal_status ?>" ><?php echo $principal_status ?></td>
                             <td class="font-weight-bold" ><?php echo $row['status'] ?></td>
-                            <td class="text-end"> <a href="" ><i class="fas fa-eye"></i></a> </td>
+                            <td class="text-end"> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?> &reason=<?php echo $row["reason"]; ?>" ><i class="fas fa-eye"></i></a> </td>
 
                         </tr>
                         <?php } ?>
