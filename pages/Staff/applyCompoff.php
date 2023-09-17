@@ -21,6 +21,7 @@
     $user =  $_SESSION['user'];
     $id = $user->employeeId;
 
+
 ?>
 
 
@@ -72,6 +73,7 @@
         <!-- Below code for dashboard -->
         <div class="container">
 
+
             <?php
                 $actionUrl = "./validateCompOff.php?id=$id";
             ?>
@@ -87,6 +89,7 @@
                     <!-- Input Email -->
                     <div class="form-group col-md-4">
                         
+
                         <input type="email" readonly class="form-control border-top-0 border-right-0 border-left-0 border border-dark bg-white" id="email" placeholder=" Email"  value="
                         <?php  echo $user->email  ?>">
 
@@ -120,6 +123,7 @@
 
                   
                     <div class="form-group col-md-3">
+
                         <input type="time" name='startTime' id="deptTime" class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark" placeholder="Start Time">
                     </div>
                     <div class="form-group col-md-3">
@@ -131,6 +135,7 @@
 
                     <!-- reason  -->
                     <div class="form-group col-md-12 pt-2">
+
 
                         <textarea type="text" name="reason"  placeholder="Reason" class="form-control border border-dark" id="reason"></textarea>
 

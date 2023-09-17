@@ -294,6 +294,7 @@ $data =  $user->viewDetailApplication($applicationId);
                 </div>
             </div>
         </div>
+        
 
     </section>
 
