@@ -43,6 +43,9 @@
         //Adjustment  Status
         public static $_ADJUSTMENT_STATUS  = array('PENDING' => "PENDING", 'ACCEPTED' => "ACCEPTED", 'REJECTED' => "REJECTED" , 'WITHDRAWN' => "WITHDRAWN", );
 
+        //ComOff Types
+        public static $_COMPOFF_TYPES  = array('Half Day' => "Half Day", 'Full Day' => "Full Day");
+
 
 
     }

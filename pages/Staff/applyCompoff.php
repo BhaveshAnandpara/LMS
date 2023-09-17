@@ -19,66 +19,10 @@
 
     //Get the User Object
     $user =  $_SESSION['user'];
+    $id = $user->employeeId;
+
 
 ?>
-
-
-<!-- Load all the necessary information -->
-<?php
-
-    //Get Data of Leave types from DB
-    $leaveTypes = Utils::getLeaveTypes();
-    $leaveTypesArr = array();
-    
-    while( $rows = mysqli_fetch_assoc( $leaveTypes ) ){
-        $leaveTypesArr[] =  $rows ;
-    }
-    
-    //Get Data of employee balance from DB  
-    $employeeBalance = Utils::getLeaveBalanceOfEmployee( $user->employeeId );
-    $employeeBalanceArr = array();
-    
-    while( $rows = mysqli_fetch_assoc( $employeeBalance ) ){
-        $employeeBalanceArr[] =  $rows ;
-    }
-
-    //Get Holidays Data
-    $holidays = Utils::getUpcomingHolidays( );
-    $holidaysArr = array();
-    
-    while( $rows = mysqli_fetch_assoc( $holidays ) ){
-        $holidaysArr[] =  $rows ;
-    }
-    
-    $leaveTypes = Utils::getLeaveTypes();
-    $employeeBalance = Utils::getLeaveBalanceOfEmployee( $user->employeeId );
-    $holidays = Utils::getUpcomingHolidays( );
-
-?>
-
-<script>
-
-    var user = <?php echo json_encode( $user ); ?>;
-    var leaveTypeDeatils = <?php echo json_encode( $leaveTypesArr ); ?>;
-    var employeeBalance = <?php echo json_encode( $employeeBalanceArr ); ?>;
-
-    var holidays = <?php echo json_encode( $holidaysArr ); ?>;
-
-    holiDaysDate = []
-
-    //Get all the holidays in array
-    holidays.forEach( holiday => {
-        holiDaysDate.push( new Date(holiday.date).toISOString().slice(0, 10))
-    });
-
-    var leaveNames = []
-
-    leaveTypeDeatils.forEach( leaveDetail => {
-        leaveNames[leaveDetail.leaveID + ''] = leaveDetail.leaveType
-    });
-
-
-</script>
 
 
 <!DOCTYPE html>
@@ -129,8 +73,13 @@
         <!-- Below code for dashboard -->
         <div class="container">
 
+
+            <?php
+                $actionUrl = "./validateCompOff.php?id=$id";
+            ?>
+
             <!-- Current Balance -->
-            <form  method="POST" class="bg-white shadow pl-5 pr-5  pb-5 pt-2 mt-5 rounded-lg " style="border-right:6px solid #11101D;">
+            <form action=<?php echo $actionUrl ?>  method="POST" class="bg-white shadow pl-5 pr-5  pb-5 pt-2 mt-5 rounded-lg " style="border-right:6px solid #11101D;">
 
                 <h4 class="pb-3 pt-2" style="color: #11101D;">Request for Leave</h4>
                 
@@ -140,7 +89,8 @@
                     <!-- Input Email -->
                     <div class="form-group col-md-4">
                         
-                        <input type="email" readonly class="form-control border-top-0 border-right-0 border-left-0 border border-dark bg-white" id="email" placeholder=" Email" name="email" value="
+
+                        <input type="email" readonly class="form-control border-top-0 border-right-0 border-left-0 border border-dark bg-white" id="email" placeholder=" Email"  value="
                         <?php  echo $user->email  ?>">
 
                     </div>
@@ -173,63 +123,85 @@
 
                   
                     <div class="form-group col-md-3">
-        <input type="time" id="deptTime" class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark" placeholder="Department">
-    </div>
-    <div class="form-group col-md-3">
-        <input type="time" id="endTime" class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark" placeholder="End Time">
-    </div>
-    <div class="form-group col-md-3">
-        <input type="text" id="leaveResult" class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark" placeholder="result">
-    </div>
+
+                        <input type="time" name='startTime' id="deptTime" class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark" placeholder="Start Time">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="time" name='endTime' id="endTime" class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark" placeholder="End Time">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" name='day' readonly id="leaveResult" class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark" placeholder="">
+                    </div>
 
                     <!-- reason  -->
                     <div class="form-group col-md-12 pt-2">
 
-<textarea type="text" name="reason"  placeholder="Reason" class="form-control border border-dark" id="reason"></textarea>
 
-</div>
+                        <textarea type="text" name="reason"  placeholder="Reason" class="form-control border border-dark" id="reason"></textarea>
 
-<div class="form-group col-md-12">
-<button id="leaveApplyBtn" name="submit" class="btn " style="background-color: #11101D; color: white;">Request</button>
-</div>
-<p id="leaveResult"></p>
+                    </div>
 
-    <script>
-        // Function to calculate leave based on time inputs
-        function calculateLeave() {
-            var deptTime = document.getElementById("deptTime").value;
-            var endTime = document.getElementById("endTime").value;
+                        <div class="form-group col-md-12">
+                        <button id="leaveApplyBtn" name="submit" class="btn " style="background-color: #11101D; color: white;">Request</button>
+                    </div>
 
-            var deptTimeParts = deptTime.split(":");
-            var endTimeParts = endTime.split(":");
+                    <p id="leaveResult"></p>
 
-            var deptHour = parseInt(deptTimeParts[0]);
-            var deptMinute = parseInt(deptTimeParts[1]);
+                    <script>
 
-            var endHour = parseInt(endTimeParts[0]);
-            var endMinute = parseInt(endTimeParts[1]);
+                        // Function to calculate leave based on time inputs
+                        function calculateLeave() {
+                            
+                            var deptTime = document.getElementById("deptTime").value;
+                            var endTime = document.getElementById("endTime").value;
 
-            var deptMinutes = deptHour * 60 + deptMinute;
-            var endMinutes = endHour * 60 + endMinute;
+                            var deptTimeParts = deptTime.split(":");
+                            var endTimeParts = endTime.split(":");
 
-            var minutesDifference = endMinutes - deptMinutes;
+                            var deptHour = parseInt(deptTimeParts[0]);
+                            var deptMinute = parseInt(deptTimeParts[1]);
 
-            if (minutesDifference >= 60 * 24) {
-              var result=  document.getElementById("leaveResult").innerText = "cant  take leave";
-              document.getElementById("leaveResult").value = result;
+                            var endHour = parseInt(endTimeParts[0]);
+                            var endMinute = parseInt(endTimeParts[1]);
 
-            } else if (minutesDifference <= 60 * 4) {
-                var result=  document.getElementById("leaveResult").innerText = "half leave";
-              document.getElementById("leaveResult").value = result;
-            } else {
-                var result=  document.getElementById("leaveResult").innerText = "full leave";
-              document.getElementById("leaveResult").value = result;
-            }
-        }
+                            var deptMinutes = deptHour * 60 + deptMinute;
+                            var endMinutes = endHour * 60 + endMinute;
 
-        // Add event listener to calculate leave when End Time input changes
-        document.getElementById("endTime").addEventListener("input", calculateLeave);
-    </script>
+                            if( endMinutes <= deptMinutes ){
+                                alert('End Time cannot be same or less than start time')
+                            } else{
+
+                                var minutesDifference = endMinutes - deptMinutes;
+
+
+                                if (minutesDifference >= 60 * 24) {
+
+                                var result=  document.getElementById("leaveResult").innerText = "cant  take leave";
+
+                                document.getElementById("leaveResult").value = result;
+
+                                } else if (minutesDifference <= 60 * 4) {
+
+
+                                    var result=  document.getElementById("leaveResult").innerText = "Half Day";
+                                    document.getElementById("leaveResult").value = result;
+
+                                } else {
+
+                                    var result=  document.getElementById("leaveResult").innerText = "Full Day";
+                                    document.getElementById("leaveResult").value = result;
+
+                                }
+                            }
+
+                        }
+
+                        // Add event listener to calculate leave when End Time input changes
+                        document.getElementById("endTime").addEventListener("input", calculateLeave);
+
+
+                    </script>
+
                 </div>
                 
 

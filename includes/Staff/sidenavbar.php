@@ -44,6 +44,13 @@
         <span class="tooltip">Apply Leave</span>
       </li>
       <li>
+        <a href="../../pages/Staff/applyCompoff.php">
+          <i class="fas fa-file-circle-plus"></i>
+          <span class="links_name">Request for CompOff</span>
+        </a>
+        <span class="tooltip">Request for CompOff</span>
+      </li>
+      <li>
         <a href="../../pages/Staff/leave_history.php">
           <i class="fa-solid fa-building-user"></i>
           <span class="links_name">Leave History</span>

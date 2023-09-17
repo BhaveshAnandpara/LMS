@@ -77,6 +77,7 @@
 
         <div class=" manageLeaveContainer container ">
 
+        
             <?php $actionUrl = "validateEmpBalance.php?leaveID=$leaveID&empID=$empID" ?>
 
             <form class=" bg-white shadow pl-5 pr-5 pb-3 pt-2 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
