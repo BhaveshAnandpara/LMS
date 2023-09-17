@@ -134,8 +134,6 @@
                             <th>FROM</th>
                             <th>TO</th>
                             <th>TOTAL DAYS</th>
-                            <th>HOD APPROVAL</th>
-                            <th>PRINCIPAL APPROVAL</th>
                             <th>STATUS</th>
                             <th>VIEW</th>
                         </tr>
@@ -144,57 +142,21 @@
                     <tbody id="tbody">
 
                         <?php
-                                $data =  $user->recentlyAppliedLeave(5);
+                                $data =  $user->recentlyAppliedLeave();
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 
-                              
-                                $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
+                                    $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
                                     
                         ?>
                         <tr>
-                            <?php
-
-                            $hod_status;
-                            $principal_status;
-
-                            if( empty($row["hodApproval"]) ) {
-                                $hod_status = Config::$_HOD_STATUS['PENDING'];
-                            }else{
-
-                                if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'] ){
-                                    $hod_status = Config::$_HOD_STATUS['APPROVED'];
-                                }
-                                else{
-                                    $hod_status = Config::$_HOD_STATUS['REJECTED'];
-                                }
-
-                            }
-
-
-                            if( empty($row["principalApproval"]) ) {
-                                $principal_status = Config::$_PRINCIPAL_STATUS['PENDING'];
-                            }else{
-
-                                if( $row["status"] == Config::$_APPLICATION_STATUS['APPROVED_BY_PRINCIPAL'] ){
-                                    $principal_status = Config::$_PRINCIPAL_STATUS['APPROVED'];
-                                }
-                                else{
-                                    $principal_status = Config::$_PRINCIPAL_STATUS['REJECTED'];
-                                }
-
-                            }
-                            
-                            ?>
 
                             <td><?php echo $leaveTypes ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
                             <td><?php echo $row["totalDays"] ?></td>
-                            <td class="<?php echo $hod_status ?>" ><?php echo $hod_status ?></td>
-                            <td class="<?php echo $principal_status ?>" ><?php echo $principal_status ?></td>
-                            <td class="font-weight-bold" ><?php echo $row['status'] ?></td>
+                            <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
                             <td class="text-end"> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?> &reason=<?php echo $row["reason"]; ?>" ><i class="fas fa-eye"></i></a> </td>
 
                         </tr>

@@ -96,13 +96,13 @@ class Staff
 
     // ------------------------------------ Leave History ------------------------------------ //
 
-    public function recentlyAppliedLeave($limit)
+    public function recentlyAppliedLeave()
     {
         $employeeID = $this->employeeId;
 
         // SQL Query to get the leave history of login employee
 
-        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID ORDER BY applications.dateTime DESC LIMIT $limit";
+        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID ORDER BY applications.dateTime DESC";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
