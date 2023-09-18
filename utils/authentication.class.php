@@ -21,6 +21,11 @@
         $class = "Staff";
     }
 
+    //For Principals we have defined class in same Principal.class.php file
+    else if( $class == Config::$_PRINCIPAL_ ){
+        $class = "Principal";
+    }
+
     $filename =  $_SERVER['DOCUMENT_ROOT']. "/LMS/utils/" . $class ."/". $class . ".class.php";
 
     if (is_readable($filename)) {
@@ -41,12 +46,12 @@
 
     Class Auth{
 
-     /*
-        @function "__contruct"
-        @description "Contructor 
-                        --> check's user is valid or not
-                        --> creates instance of User Type and return all information
-    */
+        /*
+            @function "__contruct"
+            @description "Contructor 
+                            --> check's user is valid or not
+                            --> creates instance of User Type and return all information
+        */
 
         public function __construct( $email ) {
 
@@ -54,20 +59,20 @@
             $conn = sql_conn();
 
             if( $this->isValidUser($conn , $email) ){
-
  
 
-                if( $_SESSION['role'] == Config::$_ADMIN_ ){
+                if( $_SESSION['role'] === Config::$_ADMIN_ ){
                      $user = new Admin( $_SESSION['employeeID'] );
                      $_SESSION['user'] = $user;
                      echo json_encode($user);
                 }
-                else if( $_SESSION['role'] == Config::$_HOD_ ){
+                else if( $_SESSION['role'] === Config::$_HOD_ ){
                     $user = new HOD( $_SESSION['employeeID']);
                     $_SESSION['user'] = $user;
                     echo json_encode($user);
                 }
-                else if( $_SESSION['role'] == Config::$_PRINCIPAL_ ){
+                else if( $_SESSION['role'] === Config::$_PRINCIPAL_ ){
+
                     $user = new Principal( $_SESSION['employeeID']);
                     $_SESSION['user'] = $user;
                     echo json_encode($user);
