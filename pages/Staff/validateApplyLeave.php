@@ -55,7 +55,17 @@
 
     // 1.Add data to appplication table
 
-    $sql = "INSERT INTO `applications` (`applicationID`, `employeeID`, `status`, `dateTime`, `startDate`, `startDateType`, `endDate`, `endDateType`, `totalDays`, `reason`, `extension`, `hodApproval`, `principalApproval`) VALUES (NULL, $userID, 'PENDING', '$applicationDate' , '$startDate' , '$startDateType', '$endDate', '$endDateType', $totalDays , '$reason' , NULL, 'PENDING', 'PENDING')";
+    $status = Config::$_APPLICATION_STATUS['PENDING'];
+    $hodApproval = Config::$_HOD_STATUS['PENDING'];
+
+    if( $user['role'] === Config::$_HOD_ ){
+
+         $hodApproval = Config::$_HOD_STATUS['APPROVED'];
+         $status = Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'];
+        
+    }
+
+    $sql = "INSERT INTO `applications` (`applicationID`, `employeeID`, `status`, `dateTime`, `startDate`, `startDateType`, `endDate`, `endDateType`, `totalDays`, `reason`, `extension`, `hodApproval`, `principalApproval`) VALUES (NULL, $userID, '$status', '$applicationDate' , '$startDate' , '$startDateType', '$endDate', '$endDateType', $totalDays , '$reason' , NULL, '$hodApproval', 'PENDING')";
 
     $result =  mysqli_query( $conn , $sql);
     
