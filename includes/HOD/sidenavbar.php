@@ -51,7 +51,7 @@
         <span class="tooltip">Apply Leave</span>
       </li>
       <li>
-        <a href="../../pages/HOD/leave_history.php">
+        <a href="../../pages/Staff/leave_history.php">
           <i class="fa-solid fa-building-user"></i>
           <span class="links_name">Leave History</span>
         </a>

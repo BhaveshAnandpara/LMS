@@ -60,7 +60,8 @@ $user =  $_SESSION['user'];
 <body>
     <!-- including navbar -->
     <?php
-    include "../../includes/Staff/sidenavbar.php";
+        if( $user->role === Config::$_HOD_ ) include "../../includes/HOD/sidenavbar.php";
+        if( $user->role === Config::$_FACULTY_ ) include "../../includes/Staff/sidenavbar.php";
     ?>
 
     <section class="home-section">
@@ -202,7 +203,7 @@ $user =  $_SESSION['user'];
                                 <td  ><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
                                 <td  ><?php echo $row["totalDays"] ?></td>
                                 <td  class="font-weight-bold "><?php echo $row['status'] ?></td>
-                                <td  class="text-end "> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?> &reason=<?php echo $row["reason"]; ?>"><i class="fas fa-eye"></i></a> </td>
+                                <td  class="text-end "> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?>"><i class="fas fa-eye"></i></a> </td>
 
                             </tr>
                             <?php } ?>
