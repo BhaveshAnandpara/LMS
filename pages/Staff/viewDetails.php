@@ -253,7 +253,7 @@
                             <h6 class="mb-0 d-inline ">Application Status</h6>
                         </div>
                         <div class="col-sm-3 bold d-inline text-secondary">
-                            <span class=<?php echo $data['status'] ?> >  <?php echo $data['status'] ?> </span>
+                            <span class=<?php echo $data['applicationStatus'] ?> >  <?php echo $data['applicationStatus'] ?> </span>
                         </div>
                     </div>
 
@@ -410,8 +410,8 @@
                         <tbody id="tbody">
                         <?php
                             // to get additional informatin details 
-                            $data =  $user->getFileDetails($applicationId);
-                            while ($row = mysqli_fetch_assoc($data)) { ?>
+                            $fileData =  $user->getFileDetails($applicationId);
+                            while ($row = mysqli_fetch_assoc($fileData)) { ?>
                             <tr>
                                 <td> <?php echo  substr( $row['file'] , 18 , strlen($row['file']) )  ?> </td>
                                 <td>
@@ -424,9 +424,12 @@
             </div>
 
 
+            <!-- Approve or Reject Button should only be visible when either user is hod and application has not elapsed -->
             <?php
             
-                if(  $user->role === Config::$_HOD_ ){
+                $curr = date( 'd-m-Y' , time() );
+
+                if(  ( $user->role === Config::$_HOD_ ) && ( date( 'd-m-Y' , strtotime($data['startDate'])) >  $curr) ){
                     
                     echo 
                     "<div>

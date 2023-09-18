@@ -44,6 +44,13 @@
         <span class="tooltip">My Team</span>
       </li>
       <li>
+        <a href="../../pages/HOD/leave_request.php">
+          <i class="fa-solid fa-address-card"></i>
+          <span class="links_name">Leave Requests</span>
+        </a>
+        <span class="tooltip">Leave Requests</span>
+      </li>
+      <li>
         <a href="../../pages/Staff/apply_leave.php">
           <i class="fas fa-sticky-note"></i>
           <span class="links_name">Apply Leave</span>
@@ -64,13 +71,8 @@
         </a>
         <span class="tooltip">Manage Adjustments</span>
       </li>
-      <li>
-        <a href="../../pages/HOD/leave_request.php">
-          <i class="fa-solid fa-code-pull-request"></i>
-          <span class="links_name">Leave Requests</span>
-        </a>
-        <span class="tooltip">Leave Requests</span>
-      </li>
+
+
       <!-- code for Log Out  -->
       <li class="profile">
         <div class="profile-details">

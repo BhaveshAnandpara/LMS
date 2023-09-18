@@ -113,7 +113,7 @@ class Staff
 
     public function viewDetailApplication( $id ){
 
-        $sql = "SELECT * FROM `applications` inner join employees on applications.employeeID = employees.employeeID WHERE `applicationID` = $id";
+        $sql = "SELECT applications.status as applicationStatus , applications.* FROM `applications` inner join employees on applications.employeeID = employees.employeeID WHERE `applicationID` = $id";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
