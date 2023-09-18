@@ -27,7 +27,7 @@
 
 <head>
 
-    <title>HOD Dashboard</title>
+    <title>Staff Dashboard</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,7 +55,7 @@
 <body>
     <!--Including sidenavbar -->
     <?php
-     include "../../includes/HOD/sidenavbar.php";
+     include "../../includes/Staff/sidenavbar.php";
     ?>
 
     <section class="home-section">
@@ -142,22 +142,22 @@
                     <tbody id="tbody">
 
                         <?php
-                                $data =  $user->recentlyAppliedLeave(5);
+                                $data =  $user->recentlyAppliedLeave();
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 
-                              
-                                $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
+                                    $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
                                     
                         ?>
                         <tr>
+
                             <td><?php echo $leaveTypes ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
                             <td><?php echo $row["totalDays"] ?></td>
-                            <td class="font-weight-bold" ><?php echo $row['status'] ?></td>
-                            <td class="text-end"> <a href="" ><i class="fas fa-eye"></i></a> </td>
+                            <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
+                            <td class="text-end"> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
 
                         </tr>
                         <?php } ?>
