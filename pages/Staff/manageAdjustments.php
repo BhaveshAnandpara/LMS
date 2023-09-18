@@ -80,9 +80,11 @@ $user =  $_SESSION['user'];
 </head>
 
 <body>
-    <!-- including navbar -->
+    <!--Including sidenavbar -->
     <?php
-    include "../../includes/Staff/sidenavbar.php";
+
+        if( $user->role === Config::$_HOD_ ) include "../../includes/HOD/sidenavbar.php";
+        if( $user->role === Config::$_FACULTY_ ) include "../../includes/Staff/sidenavbar.php";
     ?>
     <!-- Write all code in section with class "home-section"  -->
 

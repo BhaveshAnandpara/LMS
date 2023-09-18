@@ -58,7 +58,7 @@
         <span class="tooltip">Leave History</span>
       </li>
       <li>
-        <a href="../../pages/HOD/manageAdjustment.php">
+        <a href="../../pages/Staff/manageAdjustments.php">
           <i class="fa-solid fa-code-pull-request"></i>
           <span class="links_name">Manage Adjustments</span>
         </a>

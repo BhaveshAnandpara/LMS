@@ -100,7 +100,7 @@
          if( !$result ){
             echo "Error Occured During Insertion of ". $applicantID ."  Notification";
          }
- 
+
 
     }
 
@@ -115,7 +115,12 @@
         $conn = sql_conn();
         $result = mysqli_query($conn, $query);
 
+
     }
+
+    echo "<script>
+        window.location.href = './manageAdjustments.php'
+    </script>";
 
 
 ?>
