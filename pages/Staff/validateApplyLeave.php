@@ -148,7 +148,7 @@
         $lecStartTime =  date( 'H:i:s' , strtotime($lecAdjs[$key]['lecStartTime'] )  ) ;
         $lecEndTime =  date( 'H:i:s' , strtotime($lecAdjs[$key]['lecEndTime'] )  ) ;
 
-        $lecAdjsSql =  "INSERT INTO `lectureadjustments` (`lecAdjustmentID`, `applilcationID`, `applicantID`, `adjustedWith`, `status`, `date`, `startTime`, `endTime`, `semester`, `subject`) VALUES (NULL, '$applicationID', '$userID', '$adjustWith', 'PENDING', '$lecDate', '$lecStartTime', '$lecEndTime', '$sem', '$sub');";
+        $lecAdjsSql =  "INSERT INTO `lectureadjustments` (`lecAdjustmentID`, `applicationID`, `applicantID`, `adjustedWith`, `status`, `date`, `startTime`, `endTime`, `semester`, `subject`) VALUES (NULL, '$applicationID', '$userID', '$adjustWith', 'PENDING', '$lecDate', '$lecStartTime', '$lecEndTime', '$sem', '$sub');";
 
         $result =  mysqli_query( $conn , $lecAdjsSql);
     
@@ -177,14 +177,14 @@
     foreach ($taskAdjs as $key => $value) {
         
         
-        $adjustWith = $lecAdjs[$key]['taskAdjEmail'];
+        $adjustWith = $taskAdjs[$key]['taskAdjEmail'];
 
 
-        $task = $lecAdjs[$key]['task'];
-        $taskFromDate =  date( 'Y-m-d' , strtotime($lecAdjs[$key]['taskFromDate'] )  ) ;
-        $taskToDate =  date( 'Y-m-d' , strtotime($lecAdjs[$key]['taskToDate'] )  ) ;
+        $task = $taskAdjs[$key]['task'];
+        $taskFromDate =  date( 'Y-m-d' , strtotime($taskAdjs[$key]['taskFromDate'] )  ) ;
+        $taskToDate =  date( 'Y-m-d' , strtotime($taskAdjs[$key]['taskToDate'] )  ) ;
 
-        $taskAdjsSql =  "INSERT INTO `taskadjustments` (`taskAdjustmentID`, `applilcationID`, `applicantID`, `adjustedWith`, `status`, `startDate`, `endDate`, `task`) VALUES (NULL, '$applicationID', '$userID', '$adjustWith', 'PENDING', '$taskFromDate', '$taskToDate', '$task');";
+        $taskAdjsSql =  "INSERT INTO `taskadjustments` (`taskAdjustmentID`, `applicationID`, `applicantID`, `adjustedWith`, `status`, `startDate`, `endDate`, `task`) VALUES (NULL, '$applicationID', '$userID', '$adjustWith', 'PENDING', '$taskFromDate', '$taskToDate', '$task');";
 
         $result =  mysqli_query( $conn , $taskAdjsSql);
     
@@ -270,8 +270,6 @@
     }
 
     echo "Application submitted successfully !!";
-
-    
 
 
     }catch(Exception $e){

@@ -211,7 +211,60 @@ class Staff
         return $result;
     }
 
-    // This Function is Used To Find pending lecture adjustment request of login employee
+    public function getLectureAdjustments( $applicationID ){
+
+        $employeeID = $this->employeeId;
+        $curr = date('Y-m-d', time());
+
+        // SQL Query to get the lecture adjustment of login employee
+
+        $sql = "SELECT lectureadjustments.lecAdjustmentID, lectureadjustments.applicantID , lectureadjustments.date , lectureadjustments.startTime , lectureadjustments.endTime, lectureadjustments.semester, lectureadjustments.date, lectureadjustments.subject , lectureadjustments.status , employees.fullName , employees.email , employees.employeeID from lectureadjustments inner join employees on lectureadjustments.adjustedWith = employees.employeeID where lectureadjustments.applicationID = '$applicationID' ";
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+
+
+    }
+
+    public function getTaskAdjustments( $applicationID ){
+
+        $employeeID = $this->employeeId;
+        $curr = date('Y-m-d', time());
+
+        // SQL Query to get the task adjustment of login employee
+
+        $sql = "SELECT taskadjustments.taskAdjustmentID, taskadjustments.applicantID , taskadjustments.startDate , taskadjustments.endDate, taskadjustments.task, taskadjustments.status , employees.fullName , employees.email , employees.employeeID from taskadjustments inner join employees on taskadjustments.adjustedWith = employees.employeeID where taskadjustments.applicationID = '$applicationID' ";
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+
+
+    }
+
+    public function getApprovalRequst( $applicationID ){
+
+        $employeeID = $this->employeeId;
+        $curr = date('Y-m-d', time());
+
+        // SQL Query to get the task adjustment of login employee
+
+        $sql = "SELECT * from approvals where approvals.applicationID = '$applicationID' ";
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+
+
+    }
+        
+
+
+    // This Function is Used To Find pending task adjustment request of login employee
     public function lectureAdjustmentRequst()
     {
         $employeeID = $this->employeeId;

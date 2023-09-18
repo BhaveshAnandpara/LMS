@@ -1394,6 +1394,7 @@ $holidays = Utils::getUpcomingHolidays();
                     data: body,
                     processData: false,
                     contentType: false,
+
                     success: function(response) {
 
                         console.log(response);
@@ -1403,6 +1404,7 @@ $holidays = Utils::getUpcomingHolidays();
                         document.querySelector('.modal-title').innerHTML = "<span style=\'color: green;\'>Application Submitted</span>";
 
                         $('#myModal').modal();
+                        windows.location.href = "./apply_leave.php"
                         // alert(response);
                     },
 
@@ -1415,6 +1417,7 @@ $holidays = Utils::getUpcomingHolidays();
                         document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
 
                         $('#myModal').modal();
+                        windows.location.href = "./apply_leave.php"
                     }
                 });
 

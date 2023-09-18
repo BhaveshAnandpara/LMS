@@ -280,7 +280,7 @@
 
                             <?php
 
-                                $additionalApp =  $user->approvalRequst(); 
+                                $additionalApp =  $user->getApprovalRequst($applicationId); 
 
                                 while($row =  mysqli_fetch_assoc($additionalApp) ){
 
@@ -288,8 +288,8 @@
 
                                     echo "<tr>";
                                     echo "<td  >" . $row['approverId'] . "</td>";
-                                    echo "<td  >" . $row['email'] . "</td>";
-                                    echo "<td  >" . $row['fullName'] . "</td>";
+                                    echo "<td  >" . $approverInfo['email'] . "</td>";
+                                    echo "<td  >" . $approverInfo['fullName'] . "</td>";
                                     echo "<td  >" . $approverInfo['deptName'] . "</td>";
                                     echo "<td  >" . $approverInfo['role'] . " </td>";
                                     echo "<td  >" . $row['status'] . " </td>";
@@ -336,17 +336,12 @@
 
                                 // get lecture adjustment details of that perticuler application 
 
-                                $data =  $user->lectureAdjustmentRequst($applicationId);
+                                $lecData =  $user->getLectureAdjustments($applicationId);
 
-                                while ($row = mysqli_fetch_assoc($data)) {
-
-                                    // to get name of adjusted employee 
-                                    $userData =  $user->findEmployeeDetailsUsingId($row['adjustedWith']);
-
-                                    $rowemp = mysqli_fetch_assoc($userData);
+                                while ($row = mysqli_fetch_assoc($lecData)) {
 
                                     echo "<tr>";
-                                    echo "<td  >" . $rowemp['fullName'] . "</td>";
+                                    echo "<td  >" . $row['fullName'] . "</td>";
                                     echo "<td  >" . $row['semester'] . "</td>";
                                     echo "<td  >" . $row['subject']  . " </td>";
                                     echo "<td  >" . $row['date']  . " </td>";
@@ -377,24 +372,21 @@
                             </thead>
                             <tbody id="tbody">
                                 <?php
-                                 // to get task adjustment details 
-                                $data =  $user->taskAdjustmentRequst($applicationId);
-                                while ($row = mysqli_fetch_assoc($data)) {
-                                    // to get name of task adjusted employee 
-                                    $userData =  $user->findEmployeeDetailsUsingId($row['adjustedWith']);
-                                    $rowemp = mysqli_fetch_assoc($userData);
+
+                                // get lecture adjustment details of that perticuler application 
+
+                                $lecData =  $user->getTaskAdjustments($applicationId);
+
+                                while ($row = mysqli_fetch_assoc($lecData)) {
+
                                     echo "<tr>";
-                                    echo "<td  >" . $rowemp['fullName'] . "</td>";
-                                    echo "<td  >" . $row['startDate'] . "</td>";
-                                    echo "<td  >" . $row['endDate'] . " </td>";
-                                    echo "<td  >" . $row['task'] . " </td>";
-                                    if ($row['status'] == "ACCEPTED") {
-                                        echo "<td><p class='text-success'>" . $row['status'] . "</p></td>";
-                                    } elseif ($row['status'] == "REJECTED") {
-                                        echo "<td>" . $row['status'] . "</td>";
-                                    } else {
-                                        echo "<td>" . $row['status'] . "</td>";
-                                    }
+                                    echo "<td  >" . $row['fullName'] . "</td>";
+                                    echo "<td  >" . $row['semester'] . "</td>";
+                                    echo "<td  >" . $row['subject']  . " </td>";
+                                    echo "<td  >" . $row['date']  . " </td>";
+                                    echo "<td  >" . $row['startTime'] . "</td>";
+                                    echo "<td  >" . $row['endTime'] . " </td>";
+                                    echo "<td  >" . $row['status']  . " </td>";
                                 }
                                 ?>
                             </tbody>
@@ -486,8 +478,6 @@
 
                 $('#file-details-container').toggle();
             })
-
-            leave - balance
 
         });
     </script>
