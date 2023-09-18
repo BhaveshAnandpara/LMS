@@ -111,9 +111,12 @@ $holidays = Utils::getUpcomingHolidays();
 </head>
 
 <body>
+
     <!--Including sidenavbar -->
     <?php
-    include "../../includes/Staff/sidenavbar.php";
+
+        if( $user->role === Config::$_HOD_ ) include "../../includes/HOD/sidenavbar.php";
+        if( $user->role === Config::$_FACULTY_ ) include "../../includes/Staff/sidenavbar.php";
     ?>
 
     <section class="home-section">

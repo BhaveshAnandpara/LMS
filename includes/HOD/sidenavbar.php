@@ -38,13 +38,13 @@
       </li>
       <li>
         <a href="../../pages/HOD/my_team.php">
-          <i class="fas fa-sticky-note"></i>
+          <i class="fas fa-user"></i>
           <span class="links_name">My Team</span>
         </a>
         <span class="tooltip">My Team</span>
       </li>
       <li>
-        <a href="../../pages/HOD/apply_leave.php">
+        <a href="../../pages/Staff/apply_leave.php">
           <i class="fas fa-sticky-note"></i>
           <span class="links_name">Apply Leave</span>
         </a>
@@ -56,6 +56,13 @@
           <span class="links_name">Leave History</span>
         </a>
         <span class="tooltip">Leave History</span>
+      </li>
+      <li>
+        <a href="../../pages/HOD/manageAdjustment.php">
+          <i class="fa-solid fa-code-pull-request"></i>
+          <span class="links_name">Manage Adjustments</span>
+        </a>
+        <span class="tooltip">Manage Adjustments</span>
       </li>
       <li>
         <a href="../../pages/HOD/leave_request.php">

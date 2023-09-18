@@ -55,7 +55,7 @@
 <body>
     <!--Including sidenavbar -->
     <?php
-     include "../../includes/Staff/sidenavbar.php";
+     include "../../includes/HOD/sidenavbar.php";
     ?>
 
     <section class="home-section">
@@ -157,7 +157,7 @@
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
                             <td><?php echo $row["totalDays"] ?></td>
                             <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
-                            <td class="text-end"> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
+                            <td class="text-end"> <a href="../Staff/viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
 
                         </tr>
                         <?php } ?>
