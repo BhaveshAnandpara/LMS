@@ -107,7 +107,7 @@
                             <td><?php echo $row['email']?></td>
                             <td><?php echo $row['role']?></td>
                             <td><?php echo $row['joiningDate'] ?></td>
-                            <td class="text-end"><a href="" ><i class="fas fa-eye"></i></a> </td>
+                            <td class="text-end"><a href=<?php echo "./viewDetailedEmp.php?empID=".$row['employeeID'] ?> ><i class="fas fa-eye"></i></a> </td>
 
                         </tr>
                         <?php } ?>
