@@ -65,7 +65,7 @@
                             <h6 class="mb-0 d-inline ">Applicant ID</h6>
                         </div>
                         <div class="col-sm-3 d-inline text-secondary">
-                            <?php echo $user->employeeId  ?>
+                            <?php echo $data['employeeID'] ?>
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                             <h6 class="mb-0 d-inline ">Applicant Name</h6>
                         </div>
                         <div class="col-sm-3 d-inline text-secondary">
-                            <?php echo $user->fullName ?>
+                            <?php echo $data['fullName'] ?>
                         </div>
                     </div>
 
@@ -88,7 +88,7 @@
                             <h6 class="mb-0 d-inline ">Applicant Email</h6>
                         </div>
                         <div class="col-sm-3 d-inline text-secondary">
-                            <?php echo $user->email ?>
+                            <?php echo $data['email'] ?>
                         </div>
                     </div>
 
@@ -147,7 +147,7 @@
 
                             <?php
 
-                                $leavebalanceDetails =  Utils::getLeaveBalanceOfEmployee($user->employeeId); 
+                                $leavebalanceDetails =  Utils::getLeaveBalanceOfEmployee($data['employeeID']); 
 
                                 while($row =  mysqli_fetch_assoc($leavebalanceDetails) ){
 
@@ -397,7 +397,7 @@
 
 
             <!------------------------------ file details ------------------------------>
-            <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg" method="POST">
+            <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg mb-5" method="POST">
                 <h4 class="pb-3 pt-2  " style="color: #11101D;">Uploaded Documents <i id="file-details" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
                 <div class="form-row" id="file-details-container">
                     <table class="tablecontent" id="leave-balance-table">
@@ -422,6 +422,29 @@
                     </table>
                 </div>
             </div>
+
+
+            <?php
+            
+                if(  $user->role === Config::$_HOD_ ){
+                    
+                    echo 
+                    "<div>
+
+                        <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=APPROVE' > <button class='submitbtn approveBtn clickable my-0 mx-2' > Approve </button> </a>
+
+                        <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Reject </button> </a>
+        
+                    </div>";
+
+
+                }
+
+            
+            ?>
+
+
+
         </div>
         
 

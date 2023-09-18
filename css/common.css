@@ -184,6 +184,17 @@ table {
     transition: 0.2s;
 }
 
+.approveBtn{
+
+    background-color: #1f771f;
+    
+}
+
+.rejectBtn{
+    
+    background-color: rgb(212, 76, 76) ;
+}
+
 .submitbtn:hover {
     transform: scale(1.02);
 }

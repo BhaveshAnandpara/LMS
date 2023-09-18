@@ -75,6 +75,50 @@
                 <div class="col-md-12 col-sm-12 py-3">
                     <h3>Leave Request</h3>
                 </div>
+
+                <table class="tablecontent">
+
+                    <thead>
+                        <tr>
+                            <th>APPLICANT NAME</th>
+                            <th>APPLICANT EMAIL</th>
+                            <th>LEAVE TYPE</th>
+                            <th>FROM</th>
+                            <th>TO</th>
+                            <th>TOTAL DAYS</th>
+                            <th>STATUS</th>
+                            <th>VIEW</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody">
+
+                        <?php
+                                $data =  $user->getLeaveRequests();
+                                
+                                while ($row = mysqli_fetch_assoc($data)) { 
+                                
+                                    $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
+                                    $applicantInfo = mysqli_fetch_assoc( $user->findEmployeeDetailsUsingId( $row['employeeID'] ) );
+                                    
+                        ?>
+                        <tr>
+
+                            <td><?php echo $applicantInfo["fullName"] ?></td>
+                            <td><?php echo $applicantInfo["email"] ?></td>
+                            <td><?php echo $leaveTypes ?></td>
+                            <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
+                            <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
+                            <td><?php echo $row["totalDays"] ?></td>
+                            <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
+                            <td class="text-end"> <a href="../Staff/viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
+
+                        </tr>
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+
             </div>
 
         </div>

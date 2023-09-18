@@ -113,7 +113,7 @@ class Staff
 
     public function viewDetailApplication( $id ){
 
-        $sql = "SELECT * FROM `applications` WHERE `applicationID` = $id";
+        $sql = "SELECT * FROM `applications` inner join employees on applications.employeeID = employees.employeeID WHERE `applicationID` = $id";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
@@ -407,9 +407,26 @@ class Staff
 
 
 <?php
-class Faculty extends Staff {
-}
 
 class HOD extends Staff {
+
+
+    public function getLeaveRequests()
+    {
+        // SQL Query to get the leave history of login employee
+
+        $status = Config::$_APPLICATION_STATUS['PENDING'];
+        $deptID = $this->deptID;
+
+        $sql = "SELECT employees.employeeID , applications.applicationID , applications.startDate ,applications.endDate ,applications.totalDays ,applications.status from applications inner join employees on applications.employeeID = employees.employeeID where applications.status = '$status' and employees.deptID = $deptID";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        return $result;
+    }
+
+
 }
 ?>
