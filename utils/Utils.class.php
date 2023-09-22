@@ -17,7 +17,6 @@
         }
       
 
-
         public static function getLeaveTypes(){
 
             $sql = "Select * from masterdata ORDER BY leaveID ";

@@ -28,6 +28,7 @@
 
     $filename =  $_SERVER['DOCUMENT_ROOT']. "/LMS/utils/" . $class ."/". $class . ".class.php";
 
+
     if (is_readable($filename)) {
         require $filename;
     }
@@ -77,8 +78,8 @@
                     $_SESSION['user'] = $user;
                     echo json_encode($user);
                 }
-                else if( $_SESSION['role'] == Config::$_FACULTY_ ){
-                    $user = new Faculty( $_SESSION['employeeID']);
+                else if( $_SESSION['role'] === Config::$_FACULTY_ ){
+                    $user = new Staff( $_SESSION['employeeID']);
                     $_SESSION['user'] = $user;
                     echo json_encode($user);
                 }

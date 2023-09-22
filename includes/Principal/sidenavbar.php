@@ -30,21 +30,21 @@
         <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="../../pages/HOD/dashboard.php">
+        <a href="../../pages/Principal/dashboard.php">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
         <span class="tooltip">Dashboard</span>
       </li>
       <li>
-        <a href="../../pages/HOD/my_team.php">
+        <a href="../../pages/Principal/my_team.php">
           <i class="fas fa-user"></i>
           <span class="links_name">My Team</span>
         </a>
         <span class="tooltip">My Team</span>
       </li>
       <li>
-        <a href="../../pages/HOD/leave_request.php">
+        <a href="../../pages/Principal/leave_request.php">
           <i class="fa-solid fa-address-card"></i>
           <span class="links_name">Leave Requests</span>
         </a>

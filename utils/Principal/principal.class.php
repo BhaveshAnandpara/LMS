@@ -1,51 +1,49 @@
 <?php
 
-class Principal
+//include class definition
+require_once __DIR__ . '/../Admin/admin.class.php';
+
+
+class Principal extends Admin
 {
 
-    public $employeeId;
-    public $email;
-    public $fullName;
-    public $deptID;
-    public $joiningDate;
-    public $deactivationDate;
-    public $type;
-    public $role;
-    public $status;
-
-    /*
-        @function "__contruct"
-        @description "Contructor 
-                        --> get user data and set values
-                        
-         */
-    public function __construct($employeeID)
+    public function recentlyAppliedLeaveOfEmp( $empID )
     {
 
-        //Establish Connection
+        // SQL Query to get the leave history of login employee
+
+        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$empID ORDER BY applications.dateTime DESC";
+
         $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
 
-        //Run a Query
-        $getUserInfo = "Select * from employees where employeeID = $employeeID";
-        $result =  mysqli_query($conn, $getUserInfo);
+        return $result;
+    }
 
-        // Error Handling
-        if (!$result) {
-            echo ("Error description: " . mysqli_error($conn));
-            return false;
+    public function getAppLeaveTypes($appID)
+    {
+
+        // SQL Query to get the leave history of login employee
+
+        $sql = "SELECT leavetype.leaveType from leavetype where applicationID=$appID";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+
+        if (!$result) echo ("Error description: " . mysqli_error($conn));
+
+        $ans = "";
+
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            $ans = $ans . " + " . $row['leaveType'];
         }
 
-        $row = mysqli_fetch_assoc($result); // Response
+        $ans = substr($ans, 2) . "";
 
-        $this->employeeId = $row['employeeID'];
-        $this->email = $row['email'];
-        $this->fullName = $row['fullName'];
-        $this->deptID = $row['deptID'];
-        $this->joiningDate = $row['joiningDate'];
-        $this->deactivationDate = $row['deactivationDate'];
-        $this->type = $row['type'];
-        $this->role = $row['role'];
-        $this->status = $row['status'];
+        return $ans;
     }
+
 }
 ?>
