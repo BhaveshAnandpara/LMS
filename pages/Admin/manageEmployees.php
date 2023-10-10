@@ -148,7 +148,7 @@
                                 
                                 while( $leaveRow = mysqli_fetch_assoc( $leaveBalances ) ){
                                     
-                                    if( empty($leaveRow['balance']) ) $leaveRow['balance'] = "NULL";
+                                    $leaveRow['balance'] = floatval($leaveRow['balance']);
                                     echo "<td class='$statusStyle' >". ($leaveRow['balance']) ."</td>";
                                 }
 

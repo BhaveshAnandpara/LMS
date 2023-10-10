@@ -84,7 +84,7 @@ class Staff
 
 
         // SQL Query to get the count of all inactive employees
-        $sql = "SELECT * from leavebalance inner join leavetransactions on leavebalance.lastUpdatedOn = leavetransactions.transactionID where employeeID='$employeeID'";
+        $sql = "SELECT * from leavebalance where employeeID='$employeeID'";
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);
 
@@ -113,7 +113,7 @@ class Staff
 
     public function viewDetailApplication( $id ){
 
-        $sql = "SELECT applications.status as applicationStatus , applications.* FROM `applications` inner join employees on applications.employeeID = employees.employeeID WHERE `applicationID` = $id";
+        $sql = "SELECT applications.status as applicationStatus , applications.* , employees.* FROM `applications` inner join employees on applications.employeeID = employees.employeeID WHERE `applicationID` = $id";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);

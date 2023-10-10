@@ -152,7 +152,7 @@
         else if( $action === 'REJECT' ) {
 
                 //Send Notification
-                $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Leave Application REJECTED', '$time' );";
+                $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Leave Application $status', '$time' );";
     
                 $conn = sql_conn();
                 $result =  mysqli_query( $conn , $sql);

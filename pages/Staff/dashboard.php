@@ -85,29 +85,28 @@
 
                         while( $row = mysqli_fetch_assoc($data) ){
 
-                        $time = Utils::getTimeDiff( $row['date'] );
+                        // $time = Utils::getTimeDiff( $row['date'] );
 
 
-                        echo
+                            echo
 
-                        // <!-- Card -->
-                            "<div class='col-md-3 col-sm-12 py-4   rounded-lg m-4 bg-white shadow-lg fit-content'
-                            style='border-right:6px solid #11101D '>
-        
-                            <!-- Div for leave type and Leave Balance      -->
-                            <div class='row p-2 pr-0 '>
-                                <div class='col-12  '>
-                                    <div class='row pb-1 pl-2 d-flex justify-content-sm-center'>
-                                        <!-- PHP CODE HERE -->
-                                        <h5>" .$row['leaveType']. "</h5>
-                                    </div>
-                                    <div class='row d-flex justify-content-sm-center '>
-                                        <!-- PHP CODE HERE -->
-                                        <h3> " .$row['balance']. " </h3>
+                                "<div class='col-md-3 col-sm-12 py-4   rounded-lg m-4 bg-white shadow-lg fit-content'
+                                style='border-right:6px solid #11101D '>
+            
+                                <!-- Div for leave type and Leave Balance      -->
+                                <div class='row p-2 pr-0 '>
+                                    <div class='col-12  '>
+                                        <div class='row pb-1 pl-2 d-flex justify-content-sm-center'>
+                                            <!-- PHP CODE HERE -->
+                                            <h5>" .$row['leaveType']. "</h5>
+                                        </div>
+                                        <div class='row d-flex justify-content-sm-center '>
+                                            <!-- PHP CODE HERE -->
+                                            <h3> " .$row['balance']. " </h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>";
+                            </div>";
                             
                         } 
                     ?>

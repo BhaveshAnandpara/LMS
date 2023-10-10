@@ -30,15 +30,15 @@ try{
 
     //Check Whether Name and Desc is empty or not
     if ( empty($_POST['empEmail']) ) {
-        echo Utils::alert("Employee Email cannot be empty ");
+        echo Utils::alert("Employee Email cannot be empty" , "ERROR");
         throw new Exception("Employee Email cannot be empty ");
     }
     else if ( empty($_POST['empName']) ) {
-        echo Utils::alert("Employee Name cannot be Empty");
+        echo Utils::alert("Employee Name cannot be Empty" , "ERROR");
         throw new Exception("Employee Name cannot be Empty");
     }
     else if ( empty($_POST['joiningDate']) ) {
-        echo Utils::alert("Joining Date cannot be Empty");
+        echo Utils::alert("Joining Date cannot be Empty" , "ERROR");
         throw new Exception("Joining Date cannot be Empty");
     }
 
@@ -51,6 +51,8 @@ try{
     $role =  $_POST['role'] ;
     $status =  $_POST['status'] ;
     $inactiveDate =  $_POST['inactiveDate'] ;
+
+    
 
 
     //If Null Assign NULL Values
@@ -82,7 +84,7 @@ try{
     //Check whether entered email is bitwardha email or not
     if( !(str_contains( $empEmail , '@bitwardha.ac.in')) ){
         
-        echo Utils::alert("Email is not recognized by Institution");
+        echo Utils::alert("Email is not recognized by Institution" , "ERROR");
         throw new Exception("Email is not recognized by Institution");
         
     }
@@ -96,7 +98,7 @@ try{
         
         
         if( $row['email'] == $empEmail ){
-            echo Utils::alert("Employee with this Email Already Exists");
+            echo Utils::alert("Employee with this Email Already Exists" ,"ERROR");
             throw new Exception("Employee with this Email Already Exists");
         }
         
@@ -121,7 +123,7 @@ try{
     $roleResult =  mysqli_query( $conn , $sql);
     
     if( !$roleResult ) {
-        Utils::alert("Opertaion Failed");
+        Utils::alert("Opertaion Failed" , "ERROR");
         throw new Exception("Error Occured During Validation of Role");
     }   
     
@@ -130,7 +132,7 @@ try{
     if( $roleResult['count'] != 0 ){
 
         $msg = $role." Already Exists";
-        Utils::alert($msg); //! not working ( Don't know why )
+        Utils::alert($msg , "ERROR"); //! not working ( Don't know why )
         throw new Exception("$role Already Exists");
 
     }
@@ -147,20 +149,20 @@ try{
 
 
     
-    //Query to insert leave data into masterdata
+    //Query to insert employee info
     $sql = "INSERT INTO `employees` (`employeeID`, `email`, `fullName`, `deptID`, `joiningDate`, `deactivationDate`, `type`, `role`, `status`) VALUES (NULL, '$empEmail', '$empName', '$deptID', '$joiningDate', '$inactiveDate', '$type', '$role', '$status')";   
     
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
 
-        Utils::alert("Opertaion Failed");
+        Utils::alert("Opertaion Failed" , "ERROR");
         throw new Exception("Error Occured During Query Insertion");
 
     }
     else{
 
-            echo Utils::alert("Employee Added Successfully");
+            echo Utils::alert("Employee Added Successfully" , "SUCCESS");
 
             //------------------------------ Main Logic  ------------------------------//
 
@@ -189,8 +191,6 @@ try{
                 $leaveID = $row['leaveID'];
                 $leaveType = $row['leaveType'];
 
-                echo $leaveType;
-
                 // 3. Start A Transaction
                 $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $employeeID , $leaveID , current_timestamp(), 'Intial Balance of $leaveType : 0 Leaves', '$transaction_PENDING', '0' );";
                 $conn = sql_conn();
@@ -198,7 +198,7 @@ try{
                 $result =  mysqli_query( $conn , $sql);
 
                 if( !$result ){ //If transaction fails
-                    echo Utils::alert(" Error Occured during ". $row['fullName']. "Transaction ");
+                    echo Utils::alert(" Error Occured during ". $row['fullName']. "Transaction " , "ERROR");
                 }
 
                 // 4. Get Transaction ID

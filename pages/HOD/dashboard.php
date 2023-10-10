@@ -85,7 +85,7 @@
 
                         while( $row = mysqli_fetch_assoc($data) ){
 
-                        $time = Utils::getTimeDiff( $row['date'] );
+                        // $time = Utils::getTimeDiff( $row['date'] );
 
 
                         echo
