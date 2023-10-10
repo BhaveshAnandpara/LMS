@@ -28,55 +28,68 @@
 
 <?php
 
-        $status = Config::$_APPLICATION_STATUS['PENDING'];
-        $hodApproval = Config::$_HOD_STATUS['PENDING'];
-        
-        if( $action === 'APPROVE' ){
+        try{
+
+            $status = Config::$_APPLICATION_STATUS['PENDING'];
+            $hodApproval = Config::$_HOD_STATUS['PENDING'];
             
-            $status = Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'];
-            $hodApproval = Config::$_HOD_STATUS['APPROVED'];
+            if( $action === 'APPROVE' ){
+                
+                $status = Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'];
+                $hodApproval = Config::$_HOD_STATUS['APPROVED'];
 
-        }
+            }
 
-        else if( $action === 'REJECT' ){
+            else if( $action === 'REJECT' ){
+                
+                $status = Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'];
+                $hodApproval = Config::$_HOD_STATUS['REJECTED'];
+
+            }
+
+            //Update the status of Adjustment
+            $query = "UPDATE applications SET status='$status', hodApproval = '$hodApproval' WHERE applicationID = $applicationID";
+
+            print_r( $query );
+
+            $conn = sql_conn();
+            $result = mysqli_query($conn, $query);
+
+            if( !$result ){
+                echo Utils::alert("Errro Occured");
+            }
+
+            // Insert instance into notification table for applicant id
+
+            $empID = $data['employeeID'];
+
+            $time = date( 'Y-m-d H:i:s' , time());
+
+            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Your Application has been $hodApproval by department HOD ', '$time' );";
+
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( !$result ){
+                echo "Error Occured During Insertion of ". $empID ."  Notification";
+            }
+
+
             
-            $status = Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'];
-            $hodApproval = Config::$_HOD_STATUS['REJECTED'];
+            
 
-        }
 
-        //Update the status of Adjustment
-        $query = "UPDATE applications SET status='$status', hodApproval = '$hodApproval' WHERE applicationID = $applicationID";
+            echo "<script>
+                window.location.href = './leave_request.php'
+            </script>";
 
-        print_r( $query );
+    }catch( Exception $e){
+                
+        Utils::alert( "Error Occured" );
 
-        $conn = sql_conn();
-        $result = mysqli_query($conn, $query);
+        print_r( $e );
 
-        if( !$result ){
-            echo Utils::alert("Errro Occured");
-        }
-
-        // Insert instance into notification table for applicant id
-
-        $empID = $data['employeeID'];
-
-        $time = date( 'Y-m-d H:i:s' , time());
-
-        $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Your Application has been $hodApproval by department HOD ', '$time' );";
-
-        $conn = sql_conn();
-        $result =  mysqli_query( $conn , $sql);
-
-        if( !$result ){
-            echo "Error Occured During Insertion of ". $empID ."  Notification";
-        }
-        
-
-    echo "<script>
-        window.location.href = './leave_request.php'
-    </script>";
-
+    }
 
 ?>
 
