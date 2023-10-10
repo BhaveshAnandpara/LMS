@@ -7,6 +7,8 @@
 <?php
     //include class definition
     require('../../utils/Staff/Staff.class.php');
+    require('../../utils/Principal/Principal.class.php');
+
     //include Config Class
     require('../../utils/Config/Config.class.php');
     require('../../utils/Utils.class.php');
@@ -17,6 +19,7 @@
     // to get application idand reason
     $applicationId = $_GET['id'];
     $data =  mysqli_fetch_assoc( $user->viewDetailApplication($applicationId) );
+
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +46,7 @@
     <!--Including sidenavbar -->
     <?php
 
+        if( $user->role === Config::$_PRINCIPAL_ ) include "../../includes/Principal/sidenavbar.php";
         if( $user->role === Config::$_HOD_ ) include "../../includes/HOD/sidenavbar.php";
         if( $user->role === Config::$_FACULTY_ ) include "../../includes/Staff/sidenavbar.php";
     ?>
@@ -430,6 +434,7 @@
                 $curr = date( 'd-m-Y' , time() );
 
                 if(  ( $user->role === Config::$_HOD_ ) && ( date( 'd-m-Y' , strtotime($data['startDate'])) >  $curr) ){
+
                     
                     echo 
                     "<div>
@@ -439,6 +444,36 @@
                         <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Reject </button> </a>
         
                     </div>";
+
+
+                }
+
+                if(  ( $user->role === Config::$_PRINCIPAL_ ) ){
+
+                    if( ( date( 'd-m-Y' , strtotime($data['startDate'])) >  $curr)  ){
+
+                    
+                    echo 
+                    "<div>
+
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=APPROVE' > <button class='submitbtn approveBtn clickable my-0 mx-2' > Approve </button> </a>
+
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Reject </button> </a>
+        
+                    </div>";
+
+                }else{
+
+                    echo 
+                    "<div>
+
+                        <p> <b>Application Expired</b> as Start Date has Already been elasped ! </p>
+        
+                    </div>";
+
+
+                }
+
 
 
                 }
