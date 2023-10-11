@@ -47,6 +47,13 @@
 
         }
 
+        else if( $action === 'DEDUCTFROMEL' ){
+            
+            $status = Config::$_APPLICATION_STATUS['DEDUCTED_FROM_EL'];
+            $principalApproval = Config::$_PRINCIPAL_STATUS['APPROVED'];
+
+        }
+
         // Update the status of Adjustment
         $query = "UPDATE applications SET status='$status', principalApproval = '$principalApproval' WHERE applicationID = $applicationID";
 
@@ -65,8 +72,8 @@
         $transaction_SUCCESSFULL = Config::$_TRANSACTION_STATUS['SUCCESSFULL'];
         $amount = $data[ 'totalDays' ];
 
-
-        if( $action === 'APPROVE' ){
+        
+        if( $action === 'APPROVE' || $action === 'DEDUCTFROMEL' ){
 
             //1. Insert into leavetransaction table
             $amount = 0 - $amount;
@@ -79,6 +86,10 @@
             //Send Notification
             $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Application Approved by Principal', '$time' );";
 
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            $amount = abs( $amount);
 
             //2. deduct amount of leaves from leavebalance table
 
@@ -88,18 +99,46 @@
                 $conn = sql_conn();
                 $result =  mysqli_query( $conn , $leaveQuery);
 
+                
                 //Check if for any leaveType there is insuffcient Balance
                 while( $row =  mysqli_fetch_assoc( $result) ){
 
-                    if( floatval($row['totalDays']) > floatval($row['balance']) ){
+                    if( $action === 'DEDUCTFROMEL' ){
 
-                        // End Transaction
-                        $sql = "Update leavetransactions set reason='Insuffcient Balance', status='$transaction_FAILED' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+                        //Get Earned Leave Balance
+                        $leaveQuery = "SELECT balance from leavebalance where leavebalance.employeeID = $empID;";
                         $conn = sql_conn();
-                        $result =  mysqli_query( $conn , $sql);
-                        throw new Exception( "Insufficient Balance" );
+                        $result = mysqli_fetch_assoc( mysqli_query( $conn , $leaveQuery) );
+
+
+                        if( ceil($amount) > $result['balance'] ){
+
+                            // End Transaction
+                            $sql = "Update leavetransactions set reason='Insuffcient Balance', status='$transaction_FAILED' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+                            $conn = sql_conn();
+                            $result =  mysqli_query( $conn , $sql);
+                            throw new Exception( "Insufficient Balance" );
+    
+                        }
+
+                        break;
+
+                    }else{
+
+                        if( floatval($row['totalDays']) > floatval($row['balance']) ){
+
+                            // End Transaction
+                            $sql = "Update leavetransactions set reason='Insuffcient Balance', status='$transaction_FAILED' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+                            $conn = sql_conn();
+                            $result =  mysqli_query( $conn , $sql);
+                            throw new Exception( "Insufficient Balance" );
+    
+                        }
 
                     }
+
+
+
 
                 }
 
@@ -108,47 +147,92 @@
                 //Deduct the balance
                 while( $row =  mysqli_fetch_assoc( $leaveResult) ){
         
-                    $newBalance = $row[ 'balance' ] - $row[ 'totalDays' ] ;
-                    $leaveCounter = $row[ 'leaveCounter' ] + 1 ;
-                    $leaveID = $row['leaveID'];
-                    $deductingAmount = $row['totalDays'];
-                    $leaveName = $row['leaveType'];
-        
-                    //Get Transaction ID
+                    if( $action === 'DEDUCTFROMEL' ){
 
-                    $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$applicationID and status ='$transaction_PENDING'";
-                    $conn = sql_conn();
-                    $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
-                    $transactionID = $result['transactionID'];
+                            //Get Earned Leave Balance
+                            $ELQuery = "SELECT * from leavebalance where leavebalance.employeeID = $empID;";
+                            $conn = sql_conn();
+                            $ELBalance = mysqli_fetch_assoc( mysqli_query( $conn , $ELQuery) );
 
-                    //Deduct from leavebalance
-                    $sql = " UPDATE leavebalance SET balance='$newBalance' , leaveCounter='$leaveCounter' , lastUpdatedOn='$transactionID' where employeeID='$empID' and leaveID='$leaveID' ";
-        
-                    $conn = sql_conn();
-                    $result =  mysqli_query( $conn , $sql);
-                    
-                    //Send Notification
-                    $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Deducting $deductingAmount from $leaveName', '$time' );";
-                    
-                    $conn = sql_conn();
-                    $result =  mysqli_query( $conn , $sql);
-        
-                    //End Transaction
-                    $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
-                    $conn = sql_conn();
-                    $result =  mysqli_query( $conn , $sql);
-        
-                    if( !$result ){
-                        echo "Error Occured During Insertion of ". $empID ."  Notification";
+                            $newBalance = $ELBalance[ 'balance' ] - ceil( $amount ) ;
+                            $leaveCounter = $ELBalance[ 'leaveCounter' ] + 1 ;
+                            $leaveID = $ELBalance['leaveID'];
+                            $deductingAmount = ceil($amount);
+                            $leaveName = $ELBalance['leaveType'];
+
+                            //Get Transaction ID
+
+                            $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$applicationID and status ='$transaction_PENDING'";
+                            $conn = sql_conn();
+                            $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
+                            $transactionID = $result['transactionID'];
+
+                            //Deduct from leavebalance
+                            $sql = " UPDATE leavebalance SET balance='$newBalance' , leaveCounter='$leaveCounter' , lastUpdatedOn='$transactionID' where employeeID='$empID' and leaveType='Earned Leave' ";
+                
+                            $conn = sql_conn();
+                            $result =  mysqli_query( $conn , $sql);
+                            
+                            //Send Notification
+                            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Deducting $deductingAmount from $leaveName', '$time' );";
+                            
+                            $conn = sql_conn();
+                            $result =  mysqli_query( $conn , $sql);
+                
+                            //End Transaction
+                            $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+                            $conn = sql_conn();
+                            $result =  mysqli_query( $conn , $sql);
+                
+                            if( !$result ){
+                                echo "Error Occured During Insertion of ". $empID ."  Notification";
+                            }
+
+                            break;
+
+                    }else{
+
+                        $newBalance = $row[ 'balance' ] - $row[ 'totalDays' ] ;
+                        $leaveCounter = $row[ 'leaveCounter' ] + 1 ;
+                        $leaveID = $row['leaveID'];
+                        $deductingAmount = $row['totalDays'];
+                        $leaveName = $row['leaveType'];
+            
+                        //Get Transaction ID
+
+                        $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$applicationID and status ='$transaction_PENDING'";
+                        $conn = sql_conn();
+                        $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
+                        $transactionID = $result['transactionID'];
+
+                        //Deduct from leavebalance
+                        $sql = " UPDATE leavebalance SET balance='$newBalance' , leaveCounter='$leaveCounter' , lastUpdatedOn='$transactionID' where employeeID='$empID' and leaveID='$leaveID' ";
+            
+                        $conn = sql_conn();
+                        $result =  mysqli_query( $conn , $sql);
+                        
+                        //Send Notification
+                        $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Deducting $deductingAmount from $leaveName', '$time' );";
+                        
+                        $conn = sql_conn();
+                        $result =  mysqli_query( $conn , $sql);
+            
+                        //End Transaction
+                        $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+                        $conn = sql_conn();
+                        $result =  mysqli_query( $conn , $sql);
+            
+                        if( !$result ){
+                            echo "Error Occured During Insertion of ". $empID ."  Notification";
+                        }
+
                     }
-        
-        
+
                 }
 
                 
                 //ALert the Principal
                 Utils::alert( "Leave Approved Successfully" , "SUCCESS" );
-
 
         }
 
@@ -161,7 +245,6 @@
                 $result =  mysqli_query( $conn , $sql);
 
         }
-
 
 
         echo "<script>
