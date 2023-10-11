@@ -459,6 +459,10 @@
                         <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=APPROVE' > <button class='submitbtn approveBtn clickable my-0 mx-2' > Approve </button> </a>
 
                         <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Reject </button> </a>
+
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=DEDUCTFROMEL' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Deduct from EL </button> </a>
+
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=LWP' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Leave Without Pay </button> </a>
         
                     </div>";
 

@@ -1380,6 +1380,8 @@ $holidays = Utils::getUpcomingHolidays();
 
                 }
 
+                console.log(leaveTypes);
+
                 body.append('user', JSON.stringify(user));
                 body.append('applicationDate', JSON.stringify(new Date().toISOString().slice(0, 10)));
                 body.append('leaveTypes', JSON.stringify(leaveTypes));

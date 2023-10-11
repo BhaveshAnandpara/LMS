@@ -76,6 +76,9 @@
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
+            //Send Notification
+            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Application Approved by Principal', '$time' );";
+
 
             //2. deduct amount of leaves from leavebalance table
 
