@@ -30,11 +30,11 @@ try{
 
     //Check Whether Name and Alias is empty or not
     if ( empty($_POST['holidayDate']) ) {
-        echo Utils::alert("Holiday Date cannot be Empty");
+        echo Utils::alert("Holiday Date cannot be Empty", "ERROR");
         throw new Exception("Holiday Date cannot be Empty");
     }
     else if ( empty($_POST['holidayName']) ) {
-        echo Utils::alert("Holiday Name cannot be Empty");
+        echo Utils::alert("Holiday Name cannot be Empty", "ERROR");
         throw new Exception("Holiday Name cannot be Empty");
     }
 
@@ -54,7 +54,7 @@ try{
         
         if(  strtotime($row['date']) == strtotime($holidayDate) ){
 
-            echo Utils::alert("Holiday at this date Already Exits");
+            echo Utils::alert("Holiday at this date Already Exits", "ERROR");
             throw new Exception("Holiday at this date Already Exits");
 
         }
@@ -67,11 +67,11 @@ try{
 
     if( !$result ){
 
-        echo Utils::alert("Error Occured");
+        echo Utils::alert("Error Occured", "ERROR");
         
     }
     
-    echo Utils::alert("Holiday Added");
+    echo Utils::alert("Holiday Added", "SUCCESS");
 
     echo "<script>
         window.location.href = './manageHolidays.php'

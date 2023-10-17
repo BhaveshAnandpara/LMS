@@ -129,6 +129,8 @@
                             
                             foreach($employees as $row ){
                                 
+                                // if( $row['role'] === Config::$_ADMIN_ ) continue;
+
                                 $statusBtnValue = empStatusButton( $row['status'] );
 
                                 $statusStyle = "text-black";
@@ -137,7 +139,7 @@
                                 
                                 echo "<tr>";
                                 echo "<td class='$statusStyle' >" . $row['employeeID'] . "</td>";
-                                echo "<td class='$statusStyle' >" . $row['fullName'] . "</td>";
+                                echo "<td class='$statusStyle' a>" . $row['fullName'] . "</td>";
                                 echo "<td class='$statusStyle' >" . $row['email'] . "</td>";
                                 echo "<td class='$statusStyle' >" . $row['deptName'] . " </td>";
                                 echo "<td class='$statusStyle' >" . $row['role'] . " </td>";

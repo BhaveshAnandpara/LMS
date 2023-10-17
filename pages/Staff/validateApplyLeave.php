@@ -71,7 +71,7 @@
     
     if( !$result ) {
 
-        Utils::alert("Some Error Occured , Application was not Submitted","Error Occured");
+        Utils::alert("Some Error Occured , Application was not Submitted", "ERROR");
         throw new Exception("Error Occured During Query Insertion");
         return;
     }
@@ -83,7 +83,7 @@
     
     if( !$result ) {
 
-        Utils::alert("Some Error Occured , Application was not Submitted","Error Occured");
+        Utils::alert("Some Error Occured , Application was not Submitted", "ERROR");
         throw new Exception("Error Occured During Query Insertion");
         return;
     }

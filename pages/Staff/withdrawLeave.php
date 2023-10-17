@@ -42,7 +42,7 @@ try{
 
     if( !$result ){
 
-        echo Utils::alert("Errro Occured During Updating Status");
+        echo Utils::alert("Errro Occured During Updating Status", "ERROR");
         throw new Exception("Errro Occured During Updating Status");
         exit(0);
         
@@ -74,7 +74,7 @@ try{
 
 
         if( !$adj_result ){     
-            echo Utils::alert("Errro Occured During Updating Adjustment Status");
+            echo Utils::alert("Errro Occured During Updating Adjustment Status", "ERROR");
             throw new Exception("Errro Occured During Updating Adjustment Status");
             exit(0);
 
@@ -122,7 +122,7 @@ try{
 
         if( !$adj_result ){
 
-            echo Utils::alert("Errro Occured During Updating Adjustment Status");
+            echo Utils::alert("Errro Occured During Updating Adjustment Status", "ERROR");
             throw new Exception("Errro Occured During Updating Adjustment Status");
             exit(0);
 

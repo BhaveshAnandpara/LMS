@@ -229,7 +229,7 @@
                                 
                                 while( $leaveRow = mysqli_fetch_assoc( $leaveBalances ) ){
                                     
-                                    if( empty($leaveRow['balance']) ) $leaveRow['balance'] = "NULL";
+                                    if( empty($leaveRow['balance']) ) $leaveRow['balance'] = "0";
                                     echo "<td class='$statusStyle' >". ($leaveRow['balance']) ."</td>";
                                 }
 

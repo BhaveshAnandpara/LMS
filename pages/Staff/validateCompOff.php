@@ -36,17 +36,17 @@
         //check validations
 
         if( $day === null || $day === "" || empty($day) ){
-            echo Utils::alert("date not selected" , "ALERT");
+            echo Utils::alert("date not selected" , "ERROR");
             throw new Exception("date not selected");
         }
 
         if( $endTime < $startTime ){
-            echo Utils::alert("endTime cannot be less than startTime" , "ALERT");
+            echo Utils::alert("endTime cannot be less than startTime" , "ERROR");
             throw new Exception("endTime cannot be less than startTime");
         }
         
         if( $reason === null || $reason === "" || empty($reason) ){
-            echo Utils::alert("Reason cannot be empty", "ALERT");
+            echo Utils::alert("Reason cannot be empty", "ERROR");
             throw new Exception("Reason cannot be empty");
         }
 
@@ -79,7 +79,7 @@
             echo "Error Occured During Insertion of ". $id ."  Notification";
         }
 
-        echo Utils::alert( "Request Submitted Successfully", "SUCESSFULL" );
+        echo Utils::alert( "Request Submitted Successfully", "SUCCESS" );
 
         echo "<script>
             window.location.href = './applyCompoff.php'

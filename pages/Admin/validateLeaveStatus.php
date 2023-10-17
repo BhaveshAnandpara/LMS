@@ -28,9 +28,9 @@
 
     echo Utils::alert( "Are you Sure ! You want to change the Status " );
 
-    if( $user->setLeaveInactive( $_GET['leaveId'] , $_GET['status'] ) ){ echo Utils::alert("Leave set to " .$_GET['status']. " Successfully"); }
+    if( $user->setLeaveInactive( $_GET['leaveId'] , $_GET['status'] ) ){ echo Utils::alert("Leave set to " .$_GET['status']. " Successfully" , "SUCCESS"); }
 
-    else{ echo Utils::alert("Opertaion Failed"); }
+    else{ echo Utils::alert("Opertaion Failed", "ERROR"); }
 
     echo 
     "<script>

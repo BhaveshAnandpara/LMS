@@ -30,11 +30,11 @@ try{
 
     //Check Whether Name and Alias is empty or not
     if ( empty($_POST['deptName']) ) {
-        echo Utils::alert("Department Name cannot be Empty");
+        echo Utils::alert("Department Name cannot be Empty", "ERROR");
         throw new Exception("Department Name cannot be Empty");
     }
     else if ( empty($_POST['deptAlias']) ) {
-        echo Utils::alert("Department Alias cannot be Empty");
+        echo Utils::alert("Department Alias cannot be Empty", "ERROR");
         throw new Exception("Department Alias cannot be Empty");
     }
 
@@ -62,11 +62,11 @@ try{
     while( $row = mysqli_fetch_assoc($result) ){
         
         if( $row['deptName'] == $deptName ){
-            echo Utils::alert("Department Name Already Exits");
+            echo Utils::alert("Department Name Already Exits", "ERROR");
             throw new Exception("Department Name Already Exits");
         }
         if( $row['deptAlias'] == $deptAlias ){
-            echo Utils::alert("Department Alias Already Exits");
+            echo Utils::alert("Department Alias Already Exits", "ERROR");
             throw new Exception("Department Alias Already Exits");
         }
         
@@ -78,12 +78,12 @@ try{
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
-        Utils::alert("Opertaion Failed");
+        Utils::alert("Opertaion Failed", "ERROR");
         throw new Exception("Error Occured During Query Insertion");
     }
     else{
 
-        echo Utils::alert("Department Added Successfully");
+        echo Utils::alert("Department Added Successfully", "SUCCESS");
 
 
         $time = date( 'Y-m-d H:i:s' , time());

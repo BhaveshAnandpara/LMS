@@ -26,7 +26,7 @@
 
 <?php
 
-echo Utils::alert( "Are you Sure ! You want to change the Status " );
+echo Utils::alert( "Are you Sure ! You want to change the Status ", "ALERT" );
 
 $status = $_GET['status'];
 $empID = $_GET['empID'];

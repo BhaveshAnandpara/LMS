@@ -30,7 +30,7 @@ try{
 
     //Check Whether Name and Desc is empty or not
     if ( empty($_POST['empName']) ) {
-        echo Utils::alert("Employee Name cannot be Empty");
+        echo Utils::alert("Employee Name cannot be Empty", "ERROR");
         throw new Exception("Employee Name cannot be Empty");
     }
 
@@ -69,7 +69,7 @@ try{
            $roleResult =  mysqli_query( $conn , $sql);
        
            if( !$roleResult ) {
-               Utils::alert("Opertaion Failed");
+               Utils::alert("Opertaion Failed", "ERROR");
                throw new Exception("Error Occured During Validation of Role");
            }   
            
@@ -82,7 +82,7 @@ try{
        
                $msg = $role." Already Exists";
 
-               $alert = Utils::alert($msg); 
+               $alert = Utils::alert($msg, "ERROR"); 
                print_r( $alert ); //! don't remove this don't know why but it is working only when storing it in variabale
                throw new Exception("$role Already Exists");
        
@@ -96,7 +96,7 @@ try{
            $roleResult =  mysqli_query( $conn , $sql);
        
            if( !$roleResult ) {
-               Utils::alert("Opertaion Failed");
+               Utils::alert("Opertaion Failed", "ERROR");
                throw new Exception("Error Occured During Validation of Role");
            }   
            
@@ -105,7 +105,7 @@ try{
            if( !empty($roleResult['deptHOD']) ){
        
                $msg = $role." Already Exists";
-               $alert = Utils::alert($msg); 
+               $alert = Utils::alert($msg, "ERROR"); 
                print_r( $alert ); //! don't remove this don't know why but it is working only when storing it in variabale
                throw new Exception("$role Already Exists");
        
@@ -121,12 +121,12 @@ try{
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
-        Utils::alert("Opertaion Failed");
+        Utils::alert("Opertaion Failed", "ERROR");
         throw new Exception("Error Occured During Query Updation");
     }
     else{
 
-        echo Utils::alert("Employee Updated Successfully");
+        echo Utils::alert("Employee Updated Successfully", "SUCCESS");
         echo "<script>
             window.location.href = './manageEmployees.php'
         </script>";

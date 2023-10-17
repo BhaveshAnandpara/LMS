@@ -69,6 +69,60 @@
         <!-- Below code for dashboard -->
         <div class="container">
 
+            <!-- List of Staff on Leave -->
+            <div class=" bg-white shadow pl-5 pr-5 pb-5 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
+                method="POST">
+
+
+                <h4 class="pb-3 pt-2  " style="color: #11101D;"> List of Staff on Leave<i id="add-app" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
+
+                        <div class="form-row" id="add-app-container">
+
+                            <table class="tablecontent" id="add-app-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>APPLICANT EMAIL</th>
+                                        <th>START DATE</th>
+                                        <th>END DATE</th>
+                                        <th>REASON</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tbody">
+
+                                    <?php
+
+                                        $addApp =  $user->approvalRequst(); 
+                                        while($row =  mysqli_fetch_assoc($addApp) ){
+                                        
+                                            
+                                            echo "<tr>";
+                                            echo "<td  >" . $row['email'] . "</td>";
+                                            echo "<td  >" . $row['startDate'] . "</td>";
+                                            echo "<td  >" . $row['endDate'] . " </td>";
+                                            echo "<td  >" . $row['reason']  . " </td>";
+                                            if( $row['status']  === Config::$_ADJUSTMENT_STATUS['PENDING'] ){
+                                                echo "<td  > <a href='../../pages/Staff/validateAdjAction.php?applicationID=" .$row['applicationID']. "&approverId=" .$row['approverId']. "&type=approval&action=" .Config::$_ADJUSTMENT_STATUS['ACCEPTED']. "'> <button class='submitbtn clickable my-0 mx-2' > Accept </button> </a></td>";
+                                                echo "<td  > <a href='../../pages/Staff/validateAdjAction.php?applicationID=" .$row['applicationID']. "&approverId=" .$row['approverId']. "&type=approval&action=" .Config::$_ADJUSTMENT_STATUS['REJECTED']. "'> <button class='submitbtn clickable my-0 mx-2' > Reject </button> </a></td>";
+                                            }else{
+                                                echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
+                                            }
+                                        }
+                                    
+                                    ?>
+                                </tbody>
+
+                            </table>
+                                    
+                                    
+                        </div>
+
+            </div>
+
+
             <!-- Current Balance -->
 
 
@@ -168,6 +222,15 @@
             </div>
 
         </div>
+
+        <script>
+
+            $(document).ready(function() {
+                
+            }
+
+
+        </script>
 
     </section>
 

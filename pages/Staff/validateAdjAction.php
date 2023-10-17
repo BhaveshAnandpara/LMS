@@ -37,7 +37,7 @@
         $result = mysqli_query($conn, $query);
 
         if( !$result ){
-            echo Utils::alert("Errro Occured");
+            echo Utils::alert("Errro Occured", "ERROR");
         }
 
         // Insert instance into notification table for applicant id
@@ -76,7 +76,7 @@
          $result = mysqli_query($conn, $query);
 
          if( !$result ){
-            echo Utils::alert("Errro Occured");
+            echo Utils::alert("Errro Occured", "ERROR");
          }
      
          // Insert instance into notification table for applicant id

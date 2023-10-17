@@ -35,11 +35,11 @@ try{
 
       //Check Whether Name and Alias is empty or not
       if ( empty($date) ) {
-        echo Utils::alert("Holiday Date cannot be Empty");
+        echo Utils::alert("Holiday Date cannot be Empty", "ERROR");
         throw new Exception("Holiday Date cannot be Empty");
     }
     else if ( empty($name) ) {
-        echo Utils::alert("Holiday Name cannot be Empty");
+        echo Utils::alert("Holiday Name cannot be Empty", "ERROR");
         throw new Exception("Holiday Name cannot be Empty");
     }
     
@@ -59,7 +59,7 @@ try{
         
         if(  strtotime($row['date']) == strtotime($holidayDate) ){
 
-            echo Utils::alert("Holiday at this date Already Exits");
+            echo Utils::alert("Holiday at this date Already Exits", "ERROR");
             throw new Exception("Holiday at this date Already Exits");
 
         }
@@ -72,11 +72,11 @@ try{
 
     if( !$result ){
 
-        echo Utils::alert("Errro Occured");
+        echo Utils::alert("Errro Occured", "ERROR");
         
     }
     
-    echo Utils::alert("Holiday Updated");
+    echo Utils::alert("Holiday Updated", "SUCCESS");
 
     echo "<script>
         window.location.href = './editHoliday.php?date=$date&name=$name'

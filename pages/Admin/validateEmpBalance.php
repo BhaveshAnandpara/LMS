@@ -32,12 +32,12 @@ try{
 
     //Check Whether Name and Desc is empty or not
     if ( empty($_POST['amount']) ) {
-        echo Utils::alert("Amount cannot be Empty");
+        echo Utils::alert("Amount cannot be Empty", "ERROR");
         throw new Exception("Amount cannot be Empty");
     }
 
     else if ( empty($_POST['reason']) ) {
-        echo Utils::alert("Reason cannot be Empty");
+        echo Utils::alert("Reason cannot be Empty", "ERROR");
         throw new Exception("Reason cannot be Empty");
     }
 

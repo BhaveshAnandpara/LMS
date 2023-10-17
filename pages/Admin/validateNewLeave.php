@@ -30,11 +30,11 @@ try{
 
     //Check Whether Name and Desc is empty or not
     if ( empty($_POST['leaveName']) ) {
-        echo Utils::alert("Leave Name cannot be Empty");
+        echo Utils::alert("Leave Name cannot be Empty", "ERROR");
         throw new Exception("Leave Name cannot be Empty");
     }
     else if ( empty($_POST['leaveDesc']) ) {
-        echo Utils::alert("Leave Description cannot be Empty");
+        echo Utils::alert("Leave Description cannot be Empty", "ERROR");
         throw new Exception("Leave Description cannot be Empty");
     }
 
@@ -74,7 +74,7 @@ try{
     while( $row = mysqli_fetch_assoc($result) ){
         
         if( $row['leaveType'] == $leaveName ){
-            echo Utils::alert("Leave Name Already Exits");
+            echo Utils::alert("Leave Name Already Exits", "ERROR");
             throw new Exception("Leave Name Already Exits");
         }
         
@@ -90,13 +90,13 @@ try{
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
-        Utils::alert("Opertaion Failed");
+        Utils::alert("Opertaion Failed", "ERROR");
 
         throw new Exception("Error Occured During Query Insertion");
     }
     else{
 
-            echo Utils::alert("Leave Added Successfully");
+            echo Utils::alert("Leave Added Successfully", "SUCCESS");
 
             //------------------------------ Main Logic  ------------------------------//
             
@@ -139,7 +139,7 @@ try{
 
                 if( !$result ){ //If transaction fails
 
-                    echo Utils::alert(" Error Occured during ". $row['fullName']. "Transaction ");
+                    echo Utils::alert(" Error Occured during ". $row['fullName']. "Transaction ", "ERROR");
 
                 }
 
