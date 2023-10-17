@@ -54,6 +54,14 @@
 
         }
 
+        else if( $action === 'LWP' ){
+            
+            $status = Config::$_APPLICATION_STATUS['LEAVE_WITHOUT_PAY'];
+            $principalApproval = Config::$_PRINCIPAL_STATUS['APPROVED'];
+
+        }
+        
+
         // Update the status of Adjustment
         $query = "UPDATE applications SET status='$status', principalApproval = '$principalApproval' WHERE applicationID = $applicationID";
 
@@ -61,7 +69,7 @@
         $result = mysqli_query($conn, $query);
 
         if( !$result ){
-            echo Utils::alert("Errro Occured");
+            echo Utils::alert("Errro Occured", "ERROR");
         }
 
         $empID = $data['employeeID'];
@@ -246,6 +254,53 @@
 
         }
 
+        else if( $action === 'LWP' ) {
+
+            // Start Transaction
+            $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $empID , $applicationID , current_timestamp(), 'Leave Approved ( Adding Leaves Leave Without Pay )', '$transaction_PENDING', '$amount' );";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+
+            //Get Transaction ID
+            $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$applicationID and status ='$transaction_PENDING'";
+            $conn = sql_conn();
+            $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
+            $transactionID = $result['transactionID'];
+
+            //get Leave Details
+            $sql = "SELECT * FROM `leavebalance` WHERE leaveType= 'Leave Without Pay' and employeeID = '$empID'";
+            $conn = sql_conn();
+            $leaveDetails =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
+            $counter = $leaveDetails['leaveCounter']+1;
+            $total = $leaveDetails['balance'] + $amount;
+            $leaveID = $leaveDetails['leaveID'];
+
+            //Adding amount in LWP 
+            $sql = "UPDATE leavebalance  SET `balance`='$total' , `leaveCounter`='$counter' , `lastUpdatedOn` = '$transactionID' where `employeeID`='$empID' and `leaveID`='$leaveID' ";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( !$result ){
+                throw new Exception( "Amount not Updated" );
+            }
+
+            //Send Notification
+            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Leave Application APPROVED by Principal with $status', '$time' );";
+
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            //End Transaction
+            $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+            if( !$result ){
+                echo "Error Occured During Insertion of ". $empID ."  Notification";
+            }
+
+        }
 
         echo "<script>
             window.location.href = './leave_request.php'
@@ -256,11 +311,11 @@
                     
         Utils::alert( "Error Occured" , "ERROR" );
 
-        print_r(e);
+        print_r($e);
 
-        echo "<script>
-            window.location.href = './leave_request.php'
-        </script>";
+        // echo "<script>
+        //     window.location.href = './leave_request.php'
+        // </script>";
 
     }
 
