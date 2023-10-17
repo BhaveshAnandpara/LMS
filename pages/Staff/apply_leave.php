@@ -253,7 +253,7 @@ $holidays = Utils::getUpcomingHolidays();
                 <!-- Lecture Adjustments -->
                 <div class="form-row border py-1 px-3 mb-4 rounded">
 
-                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="lecAdj" name="lecAdj" class="pe-auto" type="checkbox"> Lecture Adjustments ( Optional )</h6>
+                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="lecAdj" name="lecAdj" class="pe-auto" type="checkbox"> Lecture Adjustments </h6>
 
                     <!-- Container for all lecAdj Rows -->
                     <div class="lecAdjContainer col-md-12  ">
@@ -329,7 +329,7 @@ $holidays = Utils::getUpcomingHolidays();
                 <!-- Task Adjustments -->
                 <div class="form-row border py-1 px-3 mb-4 rounded">
 
-                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="taskAdj" class="pe-auto" name="taskAdj" type="checkbox"> Task Adjustments ( Optional )</h6>
+                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="taskAdj" class="pe-auto" name="taskAdj" type="checkbox"> Task Adjustments </h6>
 
                     <!-- Container for all taskAdj Rows -->
                     <div class="taskAdjContainer col-md-12  ">
@@ -431,7 +431,7 @@ $holidays = Utils::getUpcomingHolidays();
                 <!-- Attach Files-->
                 <div class="form-row border py-1 px-3 mb-4 rounded">
 
-                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="files" name="files" class="pe-auto" type="checkbox"> Attach Files ( Optional )</h6>
+                    <h6 class=" pb-3 pt-2 col-md-12" style="color: #11101D;"> <input id="files" name="files" class="pe-auto" type="checkbox"> Attach Files ( Optional ) </h6>
 
                     <!-- Container for all Files Rows -->
                     <div class="filesContainer col-md-12">
