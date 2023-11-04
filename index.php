@@ -40,10 +40,33 @@
 
     <!-- Script to validate emails -->
     <script>
+
+    function base64UrlDecode(base64Url) {
+            // Convert base64Url to base64 by adding padding characters
+            while (base64Url.length % 4 !== 0) {
+                base64Url += '=';
+            }
+
+            // Decode the base64 string
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            return atob(base64);
+        }
+
+    function decodeJwt(jwt) {
+            const parts = jwt.split('.');
+            if (parts.length !== 3) {
+                throw new Error('Invalid JWT format');
+            }
+
+            const payload = base64UrlDecode(parts[1]);
+            return JSON.parse(payload);
+        }
+
+
     function handleCredentialResponse(response) {
 
         // decodes the credentials
-        const responsePayload = jwt_decode(response.credential);
+        const responsePayload = decodeJwt(response.credential);
         const email = responsePayload.email
 
 
