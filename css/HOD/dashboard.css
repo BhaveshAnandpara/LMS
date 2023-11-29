@@ -1,0 +1,58 @@
+.employeesOnLeave {
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+}
+
+.seperateDates {
+    width: 15%;
+    min-height: 250px;
+    max-height: 250px;
+    overflow: scroll;
+    border: 1px solid #e0e0e0;
+}
+
+.seperateDates::-webkit-scrollbar {
+    display: none;
+}
+
+.currentDate {
+    text-align: center;
+    background-color: #191728;
+    color: white;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+.employeesOnLeaves {
+    text-align: left;
+    padding: 10px;
+    overflow-x: scroll;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.employeesOnLeave a:hover {
+    color: #4f4f4f;
+}
+
+.employeesOnLeaves::-webkit-scrollbar {
+    display: none;
+}
+
+.employeesOnLeave a {
+    color: #4f4f4f;
+    border: 1px solid #b5b5b5;
+    box-shadow: 0px 0px 2px #b5b5b5;
+    word-wrap: ellipsis;
+    padding: 10px 0;
+    border-radius: 8px;
+}
+
+.mainDiv {
+    height: calc(100vh - 79px);
+}
