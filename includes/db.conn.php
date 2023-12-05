@@ -2,8 +2,8 @@
 function sql_conn(){
 
 $servername = "localhost";
-$username = "bitwadke_lms";
-$password = "Lms@4649";
+$username = "root";
+$password = "";
 $db = "lms";
 
 // Create connection
