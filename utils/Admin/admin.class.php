@@ -15,6 +15,12 @@
         public $role;
         public $status;
 
+
+        // public function __serialize(): array {
+        //     return get_object_vars($this);
+        // }
+
+
          /*
             @function "__contruct"
             @description "Contructor  --> get user data and set values

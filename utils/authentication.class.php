@@ -1,41 +1,43 @@
-
-<?php 
-    //  Creates database connection 
+<?php  session_start();
     require "../includes/db.conn.php";
 ?>
 
-
 <?php
 
+    //load all the require files
+    require("./Config/Config.class.php");
+    require("./Admin/admin.class.php");
+    require("./Principal/Principal.class.php");
+    require("./Staff/staff.class.php");
 
     //  Autoloader to load PHP class files automatically 
 
-    function autoloadModel($class) {
+    // function autoloadModel($class) {
 
-    if( $class == 'Config' ){
-        $filename =  $_SERVER['DOCUMENT_ROOT']. "/LMS/utils/" . $class ."/". $class . ".class.php";
-    }
+    // if( $class == 'Config' ){
+    //     $filename =  $_SERVER['DOCUMENT_ROOT']. "/LMS/utils/" . $class ."/". $class . ".class.php";
+    // }
     
-    //For Faculties and HOD we have defined class in same Staff.class.php file
-    else if( $class == Config::$_HOD_ || $class == "Faculty"){
-        $class = "Staff";
-    }
+    // //For Faculties and HOD we have defined class in same Staff.class.php file
+    // else if( $class == Config::$_HOD_ || $class == "Faculty"){
+    //     $class = "Staff";
+    // }
 
-    //For Principals we have defined class in same Principal.class.php file
-    else if( $class == Config::$_PRINCIPAL_ ){
-        $class = "Principal";
-    }
+    // //For Principals we have defined class in same Principal.class.php file
+    // else if( $class == Config::$_PRINCIPAL_ ){
+    //     $class = "Principal";
+    // }
 
-    $filename =  $_SERVER['DOCUMENT_ROOT']. "/LMS/utils/" . $class ."/". $class . ".class.php";
+    // $filename =  $_SERVER['DOCUMENT_ROOT']. "/LMS/utils/" . $class ."/". $class . ".class.php";
 
 
-    if (is_readable($filename)) {
-        require $filename;
-    }
+    // if (is_readable($filename)) {
+    //     require $filename;
+    // }
 
-    }
+    // }
 
-    spl_autoload_register("autoloadModel");
+    // spl_autoload_register("autoloadModel");
 
 ?>
 
@@ -59,8 +61,11 @@
             //Establish Database Connection
             $conn = sql_conn();
 
+            // print_r($email);
+
             if( $this->isValidUser($conn , $email) ){
  
+                // print_r($_SESSION['role']);
 
                 if( $_SESSION['role'] === Config::$_ADMIN_ ){
                      $user = new Admin( $_SESSION['employeeID'] );
@@ -80,8 +85,10 @@
                 }
                 else if( $_SESSION['role'] === Config::$_FACULTY_ ){
                     $user = new Staff( $_SESSION['employeeID']);
-                    $_SESSION['user'] = $user;
+                    $_SESSION['user'] = serialize($user);
+                    
                     echo json_encode($user);
+                    
                 }
                 else{
                     $user = new Staff( $_SESSION['employeeID'] );
@@ -108,6 +115,7 @@
             $sql = "SELECT * FROM employees where email='$email' ";
 
             $result =  mysqli_query( $conn , $sql);
+            // print_r($result);
 
             // Error Handling
             if ( !$result ) {
@@ -121,7 +129,7 @@
                 if( !empty( $row ) ){
     
                     //Starting the Session
-                    session_start();
+                
                     $_SESSION['role'] = $row['role'];
                     $_SESSION['fullName'] = $row['fullName'];
                     $_SESSION['employeeID'] = $row['employeeID'];
@@ -175,6 +183,8 @@
 
             // email from POST request
             $email = $_POST['email'];
+
+            // echo $email;
 
             // creating a new obj of user
             $newUser = new Auth($email);

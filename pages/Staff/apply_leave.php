@@ -1,24 +1,28 @@
 <?php
-//  Creates database connection 
-require "../../includes/db.conn.php";
+
+    //start session
+    session_start();
+
+    //  Creates database connection 
+    require "../../includes/db.conn.php";
+    
+    //include class definition
+    require('../../utils/Staff/staff.class.php');
+    
+    //include Config Class
+    require('../../utils/Config/Config.class.php');
+    require('../../utils/Utils.class.php');
+
 ?>
 
 
 <!-- Include this to use User object -->
+
 <?php
-
-//include class definition
-require('../../utils/Staff/Staff.class.php');
-
-//include Config Class
-require('../../utils/Config/Config.class.php');
-require('../../utils/Utils.class.php');
-
-//start session
-session_start();
-
 //Get the User Object
-$user =  $_SESSION['user'];
+$user = unserialize($_SESSION['user']) ;
+
+var_dump($user);
 
 ?>
 
@@ -456,6 +460,7 @@ $holidays = Utils::getUpcomingHolidays();
                 </div>
 
                 <!-- Button trigger modal -->
+                
                 <!-- <button id="leaveApplyBtn" name="submit" class="btn mt-2" style="background-color: #11101D; color: white; " onclick="openModal('Your leave application has been <span style=\'color: green;\'>successfully processed</span>.','<span style=\'color: green;\'>Application Processed</span>')" data-toggle="modal" data-target="#exampleModal">Apply</button> -->
                 <button id="leaveApplyBtn" name="submit" class="btn mt-2" style="background-color: #11101D; color: white; " data-toggle="modal" data-target="#exampleModal">Apply</button>
                 

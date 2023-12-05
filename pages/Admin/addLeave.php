@@ -1,8 +1,17 @@
-
-
 <?php 
     //  Creates database connection 
     require "../../includes/db.conn.php";
+    
+        //include Config Class
+    require('../../utils/Utils.class.php');
+    require('../../utils/Config/Config.class.php');
+
+    //include class definition
+    require('../../utils/Admin/admin.class.php');
+
+    //start session
+    session_start();
+    
 ?>
 
 
@@ -10,18 +19,12 @@
 <!-- Include this to use User object -->
 <?php
 
-    //include Config Class
-    require('../../utils/Utils.class.php');
-    require('../../utils/Config/Config.class.php');
-
-    //include class definition
-    require('../../utils/Admin/Admin.class.php');
-
-    //start session
-    session_start();
-
     //Get the User Object
     $user =  $_SESSION['user'];
+
+
+
+
 
 ?>
 
@@ -76,7 +79,7 @@
 
             <form class=" bg-white shadow pl-5 pr-5 pb-3 pt-2 mt-5 rounded-lg" action="validateNewLeave.php" method="POST">
 
-                <h4 class="pb-3 pt-2" style="color: #11101D;">Add New Leave</h4>
+                <h4 class="pb-3 pt-2 mt-5" style="color: #11101D;">Add New Leave</h4>
 
                 <div class="form-row">
 
@@ -96,7 +99,7 @@
 
                     <!-- Cycle Date -->
                     <div class="form-group col-md-4">
-                        <input type="text" onfocus="(this.type='date')"
+                        <input type="text" onfocus="(this.type='date')" min="<?php echo date('Y-m-d'); ?>"
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark "
                             placeholder="Cycle Date" name="cycleDate">
                     </div>
@@ -160,7 +163,6 @@
 
                     </div>
 
-
                     <div class="form-group col-md-6"> <input type="submit" name="addLeaveSubmit" class="submitbtn"> </div>
 
             </form>
@@ -169,6 +171,23 @@
 
 
     </section>
+
+    <?php
+    
+        require('../../includes/model.php'); 
+        
+        
+            // Check for response message from validateNewLeave.php
+        if (isset($_SESSION['response_message'])) {
+            $res = unserialize($_SESSION['response_message']);
+            echo Utils::alert($res[0] , $res[1]);
+            unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+    }
+
+    ?>
+
+
 </body>
+
 
 </html>

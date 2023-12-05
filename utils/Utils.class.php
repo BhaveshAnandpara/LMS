@@ -159,12 +159,14 @@
         public static function alert( $msg  ,$title){
 
             return "<script>  
-                
+            
+
                 document.querySelector('.modal-body').innerHTML = '" .$msg. "';
                 document.querySelector('.modal-title').innerHTML = '" .$title. "';
 
               
                 $('#myModal').modal();
+                
             </script>";
 
         }

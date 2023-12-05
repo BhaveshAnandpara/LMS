@@ -1,28 +1,28 @@
 <?php 
     //  Creates database connection 
     require "../../includes/db.conn.php";
+    
+        //include Config Class
+    require('../../utils/Utils.class.php');
+    require('../../utils/Config/Config.class.php');
+
+    //include class definition
+    require('../../utils/Admin/admin.class.php');
+
+    //start session
+    session_start();
+    
+    
 ?>
 
 
 
 <!-- Include this to use User object -->
 <?php
-
-    //include Config Class
-    require('../../utils/Utils.class.php');
-    require('../../utils/Config/Config.class.php');
-
-    //include class definition
-    require('../../utils/Admin/Admin.class.php');
-
-    //start session
-    session_start();
-
     //Get the User Object
     $user =  $_SESSION['user'];
 
 ?>
-
 
 <?php
 
@@ -199,10 +199,12 @@ try{
                 echo "Error Occured During Insertion of Notification";
             }else{
 
-                echo "<script>
-                        window.location.href = './addLeave.php'
-                    </script>";
-                exit(0);
+                // Set a session variable with the response message
+                $_SESSION['response_message'] = serialize(["Leave Added Successfully" , "SUCCESS"]);
+
+                // Redirect back to addLeave.php
+                header("Location: addLeave.php");
+                exit();
 
             }
 
@@ -215,14 +217,17 @@ try{
 }
 catch(Exception $e){
 
-    echo $e;
+    $errorMessage = $e->getMessage();
+    echo $errorMessage;
 
-    echo "<script>
-        window.location.href = './addLeave.php'
-    </script>";
+    // Set a session variable with the response message
+    $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+
+    // Redirect back to addLeave.php
+    header("Location: addLeave.php");
+    exit();
     
 }
-
 
 
 

@@ -1,0 +1,12 @@
+[30-Nov-2023 06:45:17 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Principal/dashboard.php on line 18
+[30-Nov-2023 06:45:17 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Principal/dashboard.php on line 21
+[30-Nov-2023 06:45:17 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Principal/dashboard.php on line 21
+[30-Nov-2023 06:45:17 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/includes/Principal/sidenavbar.php on line 60
+[30-Nov-2023 06:45:17 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/includes/Principal/sidenavbar.php on line 60
+[30-Nov-2023 06:45:17 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/includes/Principal/sidenavbar.php on line 61
+[30-Nov-2023 06:45:17 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/includes/Principal/sidenavbar.php on line 61
+[30-Nov-2023 06:45:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Principal/dashboard.php(63): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21

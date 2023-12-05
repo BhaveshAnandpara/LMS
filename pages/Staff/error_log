@@ -1,0 +1,1259 @@
+[29-Nov-2023 13:12:02 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:12:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:12:08 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:12:08 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:13:29 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:13:29 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:13:34 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:13:34 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:14:07 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:14:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:14:22 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[29-Nov-2023 13:14:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:44:29 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:44:29 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:44:33 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:44:33 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:45:44 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:45:44 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:47:17 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 18
+[30-Nov-2023 06:47:17 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 21
+[30-Nov-2023 06:47:17 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 21
+[30-Nov-2023 06:47:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:48:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:48:23 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 11
+[30-Nov-2023 06:48:31 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 18
+[30-Nov-2023 06:48:31 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 21
+[30-Nov-2023 06:48:31 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 21
+[30-Nov-2023 06:48:31 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:49:27 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 18
+[30-Nov-2023 06:49:27 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 21
+[30-Nov-2023 06:49:27 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 21
+[30-Nov-2023 06:49:27 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:49:42 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 18
+[30-Nov-2023 06:49:42 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 21
+[30-Nov-2023 06:49:42 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 21
+[30-Nov-2023 06:49:42 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:50:57 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 06:50:57 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:50:57 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:50:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:51:28 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 06:51:28 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:51:28 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:51:28 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getCurrentBalance() on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:85
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 85
+[30-Nov-2023 06:51:49 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 06:51:49 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:51:49 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:51:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:52:03 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 06:52:03 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:52:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:52:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getCurrentBalance() on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:85
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 85
+[30-Nov-2023 06:55:07 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 18
+[30-Nov-2023 06:55:07 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 21
+[30-Nov-2023 06:55:07 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 21
+[30-Nov-2023 06:55:07 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 38
+[30-Nov-2023 06:55:07 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php(38): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php on line 79
+[30-Nov-2023 06:55:07 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 06:55:07 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:55:07 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:55:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getCurrentBalance() on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:85
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 85
+[30-Nov-2023 06:55:09 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 06:55:09 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:55:09 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 06:55:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getCurrentBalance() on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php:85
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 85
+[30-Nov-2023 06:55:12 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 18
+[30-Nov-2023 06:55:12 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:55:12 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:55:12 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 22
+[30-Nov-2023 06:55:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:55:12 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 18
+[30-Nov-2023 06:55:12 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:55:12 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:55:12 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 22
+[30-Nov-2023 06:55:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:55:15 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 13
+[30-Nov-2023 06:55:15 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 16
+[30-Nov-2023 06:55:15 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 16
+[30-Nov-2023 06:55:15 UTC] PHP Warning:  Attempt to read property "role" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 63
+[30-Nov-2023 06:55:15 UTC] PHP Warning:  Attempt to read property "role" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 64
+[30-Nov-2023 06:55:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php(72): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:55:55 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 18
+[30-Nov-2023 06:55:55 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:55:55 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:55:55 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 22
+[30-Nov-2023 06:55:55 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:56:22 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 18
+[30-Nov-2023 06:56:22 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:56:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:56:22 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 22
+[30-Nov-2023 06:56:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 06:56:53 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 18
+[30-Nov-2023 06:56:53 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:56:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 06:56:53 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 22
+[30-Nov-2023 06:56:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:07:39 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:07:39 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:07:39 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:07:39 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:07:48 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:07:48 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:07:48 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:07:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:07:50 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 18
+[30-Nov-2023 07:07:50 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 21
+[30-Nov-2023 07:07:50 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 21
+[30-Nov-2023 07:07:50 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 38
+[30-Nov-2023 07:07:50 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php(38): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php on line 79
+[30-Nov-2023 07:07:57 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 18
+[30-Nov-2023 07:07:57 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 07:07:57 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 07:07:57 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php on line 22
+[30-Nov-2023 07:07:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/applyCompoff.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:07:59 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 13
+[30-Nov-2023 07:07:59 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 16
+[30-Nov-2023 07:07:59 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 16
+[30-Nov-2023 07:07:59 UTC] PHP Warning:  Attempt to read property "role" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 63
+[30-Nov-2023 07:07:59 UTC] PHP Warning:  Attempt to read property "role" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php on line 64
+[30-Nov-2023 07:07:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/leave_history.php(72): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:16:14 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:16:14 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:16:14 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:16:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:17:00 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:17:00 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:17:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:17:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:19:53 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:19:53 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:19:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:19:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:20:54 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:20:54 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:20:54 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:20:54 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(72): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:21:14 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:21:14 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:21:14 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:21:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(72): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:21:39 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:21:39 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:21:39 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:21:39 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(69): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:21:52 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:21:52 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:21:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:21:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(69): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:22:34 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:22:34 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:22:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:22:34 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 68
+[30-Nov-2023 07:22:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 68
+[30-Nov-2023 07:22:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(73): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:22:47 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:22:47 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:22:47 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:22:47 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 69
+[30-Nov-2023 07:22:47 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 69
+[30-Nov-2023 07:22:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(74): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:23:01 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:23:01 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:23:01 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:23:01 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 69
+[30-Nov-2023 07:23:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(74): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:25:11 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:25:11 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:25:11 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:25:11 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 69
+[30-Nov-2023 07:25:11 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 69
+[30-Nov-2023 07:25:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(75): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:27:07 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:27:07 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:27:07 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:27:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(78): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:27:30 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:27:30 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:27:30 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:27:30 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(78): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:29:15 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:29:15 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:29:15 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:29:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(78): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:30:44 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:30:44 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:30:44 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:30:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(78): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:32:17 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 19
+[30-Nov-2023 07:32:17 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:32:17 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:32:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(78): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:32:36 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:32:36 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 07:32:36 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(78): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:33:47 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:33:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:34:07 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:34:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:34:20 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:34:20 UTC] PHP Warning:  Array to string conversion in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 71
+[30-Nov-2023 07:34:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:34:33 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:34:33 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:35:08 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:35:08 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 71
+[30-Nov-2023 07:35:08 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:37:05 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:37:05 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 71
+[30-Nov-2023 07:37:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:37:58 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:37:58 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 71
+[30-Nov-2023 07:37:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:39:21 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:39:21 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 71
+[30-Nov-2023 07:39:21 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 07:39:46 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 07:39:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:03:57 UTC] PHP Warning:  Array to string conversion in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 5
+[30-Nov-2023 08:03:57 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 08:03:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:04:12 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 5
+[30-Nov-2023 08:04:12 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 24
+[30-Nov-2023 08:04:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(80): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:05:04 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 25
+[30-Nov-2023 08:05:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(81): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:05:17 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 25
+[30-Nov-2023 08:05:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(81): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:08:35 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 25
+[30-Nov-2023 08:08:35 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(81): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:14:35 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 25
+[30-Nov-2023 08:14:35 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(81): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:15:21 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 26
+[30-Nov-2023 08:15:21 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(82): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:15:41 UTC] PHP Parse error:  syntax error, unexpected token "require" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 9
+[30-Nov-2023 08:15:44 UTC] PHP Parse error:  syntax error, unexpected token "require" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 9
+[30-Nov-2023 08:15:57 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 26
+[30-Nov-2023 08:15:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(82): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:16:55 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 26
+[30-Nov-2023 08:16:55 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(82): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:17:04 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 26
+[30-Nov-2023 08:17:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(82): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:20:48 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 37
+[30-Nov-2023 08:20:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(93): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:21:15 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 37
+[30-Nov-2023 08:21:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(93): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:24:16 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 28
+[30-Nov-2023 08:24:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(84): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:25:08 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 36
+[30-Nov-2023 08:25:08 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(92): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:29:26 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 36
+[30-Nov-2023 08:29:26 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(92): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:30:50 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 36
+[30-Nov-2023 08:30:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(92): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:31:18 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 7
+[30-Nov-2023 08:31:18 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 36
+[30-Nov-2023 08:31:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(92): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:33:03 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 08:33:03 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 42
+[30-Nov-2023 08:33:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(98): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:35:59 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 08:35:59 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 42
+[30-Nov-2023 08:35:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(98): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:36:50 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 8
+[30-Nov-2023 08:36:50 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 14
+[30-Nov-2023 08:36:50 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 43
+[30-Nov-2023 08:36:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(99): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:37:19 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 8
+[30-Nov-2023 08:37:19 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 08:37:19 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 39
+[30-Nov-2023 08:37:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(95): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:44:16 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 14
+[30-Nov-2023 08:44:16 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 43
+[30-Nov-2023 08:44:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(99): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:50:49 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 9
+[30-Nov-2023 08:50:49 UTC] PHP Warning:  Undefined array key "user" in /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php on line 38
+[30-Nov-2023 08:50:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(94): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:53:32 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(94): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:54:39 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(77): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:54:56 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:55:19 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:55:35 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(67): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:56:33 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(68): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 08:57:21 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(68): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:06:36 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(68): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:08:41 UTC] PHP Fatal error:  Cannot declare class Staff, because the name is already in use in /home2/bitwadke/public_html/lms/LMS/utils/Staff/Staff.class.php on line 3
+[30-Nov-2023 09:09:32 UTC] PHP Fatal error:  Cannot declare class Staff, because the name is already in use in /home2/bitwadke/public_html/lms/LMS/utils/Staff/Staff.class.php on line 3
+[30-Nov-2023 09:09:41 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(69): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:11:00 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(71): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:11:18 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:11:34 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(71): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:56:43 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(65): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:56:52 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(65): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:57:04 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 18
+[30-Nov-2023 09:57:04 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 21
+[30-Nov-2023 09:57:04 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 21
+[30-Nov-2023 09:57:04 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php on line 38
+[30-Nov-2023 09:57:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms/LMS/pages/Staff/apply_leave.php(38): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/Utils.class.php on line 79
+[30-Nov-2023 09:57:11 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(65): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 09:57:19 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms/LMS/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/pages/Staff/dashboard.php(65): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/includes/header.php on line 21
+[30-Nov-2023 12:29:36 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(65): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:29:38 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(65): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:29:40 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 18
+[30-Nov-2023 12:29:40 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 21
+[30-Nov-2023 12:29:40 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 21
+[30-Nov-2023 12:29:40 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 38
+[30-Nov-2023 12:29:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(38): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:30:23 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 12
+[30-Nov-2023 12:30:23 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:30:23 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:30:23 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 39
+[30-Nov-2023 12:30:23 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(39): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:30:27 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(65): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:30:29 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 12
+[30-Nov-2023 12:30:29 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:30:29 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:30:29 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 39
+[30-Nov-2023 12:30:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(39): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:30:34 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(65): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:31:26 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:31:29 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:31:33 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:32:03 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:32:03 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:32:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:32:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:32:22 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:32:22 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:32:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:32:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:32:25 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:32:25 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:32:25 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:32:25 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:32:50 UTC] PHP Warning:  require(../../utils/Staff/staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 5
+[30-Nov-2023 12:32:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php:5
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 5
+[30-Nov-2023 12:32:53 UTC] PHP Warning:  require(../../utils/Staff/staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 5
+[30-Nov-2023 12:32:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php:5
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 5
+[30-Nov-2023 12:32:54 UTC] PHP Warning:  require(../../utils/Staff/staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 5
+[30-Nov-2023 12:32:54 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php:5
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 5
+[30-Nov-2023 12:33:07 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:33:07 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:33:07 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:33:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:33:10 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 12
+[30-Nov-2023 12:33:10 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:33:10 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:33:10 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 39
+[30-Nov-2023 12:33:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(39): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:33:14 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:33:14 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:33:14 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:33:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:33:16 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 12
+[30-Nov-2023 12:33:16 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:33:16 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:33:16 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 39
+[30-Nov-2023 12:33:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(39): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:34:01 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:34:01 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:34:01 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:34:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:34:10 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/applyCompoff.php on line 18
+[30-Nov-2023 12:34:10 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 12:34:10 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/applyCompoff.php on line 21
+[30-Nov-2023 12:34:10 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/applyCompoff.php on line 22
+[30-Nov-2023 12:34:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/applyCompoff.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:34:12 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:34:12 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:34:12 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:34:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:34:17 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:34:17 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:34:17 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:34:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:34:18 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 12
+[30-Nov-2023 12:34:18 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:34:18 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:34:18 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 39
+[30-Nov-2023 12:34:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(39): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:45:28 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 10
+[30-Nov-2023 12:45:28 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:45:28 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:45:28 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(66): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:46:09 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:46:09 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 12:46:09 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 12:46:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(69): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:46:32 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:46:32 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 12:46:32 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 12:46:32 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:46:54 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:47:07 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:47:07 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 12:47:07 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 12:47:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:47:54 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php:6
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 6
+[30-Nov-2023 12:48:02 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 12
+[30-Nov-2023 12:48:02 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 12:48:02 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 22
+[30-Nov-2023 12:48:02 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:48:18 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:50:12 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:50:40 UTC] PHP Fatal error:  Uncaught Error: The script tried to call a method on an incomplete object. Please ensure that the class definition "Staff" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:50:52 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 12:50:52 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:50:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:50:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(71): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:51:03 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 12:51:03 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:51:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:51:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:52:43 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 12:52:43 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:52:43 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:52:43 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:53:12 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 12:53:12 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:53:12 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:53:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:53:44 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 12:53:44 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:53:44 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 12:53:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 12:54:29 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php:5
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 5
+[30-Nov-2023 12:55:00 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 13
+[30-Nov-2023 12:55:00 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 23
+[30-Nov-2023 12:55:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 23
+[30-Nov-2023 12:55:00 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 40
+[30-Nov-2023 12:55:00 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(40): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:55:26 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 41
+[30-Nov-2023 12:55:26 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(41): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:55:29 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 41
+[30-Nov-2023 12:55:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(41): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:55:39 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 41
+[30-Nov-2023 12:55:39 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(41): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:56:06 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 41
+[30-Nov-2023 12:56:06 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(41): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:56:10 UTC] PHP Warning:  Undefined variable $user in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 12:56:10 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 44
+[30-Nov-2023 12:56:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(44): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:56:37 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 45
+[30-Nov-2023 12:56:37 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(45): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:57:33 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 12:57:33 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 12:57:33 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 12:57:33 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 43
+[30-Nov-2023 12:57:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(43): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 12:59:18 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 43
+[30-Nov-2023 12:59:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(43): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:02:10 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 43
+[30-Nov-2023 13:02:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(43): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:02:22 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 42
+[30-Nov-2023 13:02:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(42): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:02:36 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 13:02:36 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 13:02:36 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 13:02:36 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 43
+[30-Nov-2023 13:02:36 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(43): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:04:24 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 15
+[30-Nov-2023 13:04:24 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 13:04:24 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 13:04:24 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 43
+[30-Nov-2023 13:04:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(43): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:05:21 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:05:21 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:05:21 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:05:21 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:05:24 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:05:24 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:05:24 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:05:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:05:26 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 38
+[30-Nov-2023 13:05:26 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(38): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:05:37 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 14
+[30-Nov-2023 13:05:37 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 23
+[30-Nov-2023 13:05:37 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 23
+[30-Nov-2023 13:05:37 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 39
+[30-Nov-2023 13:05:37 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(39): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:06:29 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:06:29 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:06:29 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:06:29 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:06:34 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:06:34 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:06:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:06:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:06:36 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 14
+[30-Nov-2023 13:06:36 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 13:06:36 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 13:06:36 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 43
+[30-Nov-2023 13:06:36 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(43): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:07:04 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 14
+[30-Nov-2023 13:07:04 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 13:07:04 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 24
+[30-Nov-2023 13:07:04 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 43
+[30-Nov-2023 13:07:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(43): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:07:17 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 45
+[30-Nov-2023 13:07:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(45): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:08:21 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:08:21 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:08:21 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:08:21 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:08:24 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 45
+[30-Nov-2023 13:08:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(45): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:08:37 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 45
+[30-Nov-2023 13:08:37 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(45): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:08:59 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:08:59 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:08:59 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:08:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:09:02 UTC] PHP Warning:  require(../../utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/applyCompoff.php on line 11
+[30-Nov-2023 13:09:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/applyCompoff.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/applyCompoff.php on line 11
+[30-Nov-2023 13:09:07 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 45
+[30-Nov-2023 13:09:07 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(45): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:10:20 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:10:20 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:10:20 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:10:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:10:25 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:10:25 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:10:25 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:10:25 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:19:59 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:19:59 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:19:59 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:19:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:20:02 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 45
+[30-Nov-2023 13:20:02 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(45): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:20:17 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 16
+[30-Nov-2023 13:20:17 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 25
+[30-Nov-2023 13:20:17 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 25
+[30-Nov-2023 13:20:17 UTC] PHP Warning:  Attempt to read property "employeeId" on null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 44
+[30-Nov-2023 13:20:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(44): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:20:33 UTC] PHP Warning:  main(): The script tried to access a property on an incomplete object. Please ensure that the class definition &quot;Staff&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide an autoloader to load the class definition in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 45
+[30-Nov-2023 13:20:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(45): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79
+[30-Nov-2023 13:24:06 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 13
+[30-Nov-2023 13:24:06 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:24:06 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php on line 23
+[30-Nov-2023 13:24:06 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getNotifications() on null in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/dashboard.php(70): include()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/includes/header.php on line 21
+[30-Nov-2023 13:24:10 UTC] PHP Warning:  Attempt to read property "employeeId" on string in /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php on line 42
+[30-Nov-2023 13:24:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php:79
+Stack trace:
+#0 /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php(79): mysqli_query(Object(mysqli), 'SELECT employee...')
+#1 /home2/bitwadke/public_html/lms1/LMS1/pages/Staff/apply_leave.php(42): Utils::getLeaveBalanceOfEmployee(NULL)
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/Utils.class.php on line 79

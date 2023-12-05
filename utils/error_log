@@ -1,0 +1,558 @@
+[29-Nov-2023 12:46:35 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:46:35 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:46:50 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:46:50 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:47:07 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:47:07 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:47:16 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:47:16 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:51:24 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:51:24 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:53:04 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:53:04 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:53:13 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:53:13 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:53:57 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:53:57 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:54:23 UTC] PHP Warning:  Undefined global variable $_SESSION in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:54:23 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:54:23 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:57:51 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:57:51 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:58:22 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:58:22 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 12:59:26 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 12:59:26 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:02:21 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 124
+[29-Nov-2023 13:02:21 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(180): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(155): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:03:21 UTC] PHP Fatal error:  Uncaught Error: Object of class mysqli could not be converted to string in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:60
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 60
+[29-Nov-2023 13:29:22 UTC] PHP Fatal error:  Uncaught Error: Object of class mysqli could not be converted to string in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:60
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 60
+[29-Nov-2023 13:30:06 UTC] PHP Fatal error:  Uncaught Error: Object of class mysqli could not be converted to string in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:60
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 60
+[29-Nov-2023 13:30:44 UTC] PHP Fatal error:  Uncaught Error: Object of class mysqli could not be converted to string in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:60
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 60
+[29-Nov-2023 13:32:01 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:32:01 UTC] PHP Warning:  Undefined variable $SESSION in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:32:01 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:32:01 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:37:34 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:37:34 UTC] PHP Warning:  Undefined variable $SESSION in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:37:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:37:34 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:00 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:40:00 UTC] PHP Warning:  Undefined variable $SESSION in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:00 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:18 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:40:18 UTC] PHP Warning:  Undefined variable $SESSION in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:18 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:18 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:51 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:40:51 UTC] PHP Warning:  Undefined variable $SESSION in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:51 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:40:51 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:42:18 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 126
+[29-Nov-2023 13:42:18 UTC] PHP Warning:  Undefined variable $SESSION in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 66
+[29-Nov-2023 13:42:18 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 66
+[29-Nov-2023 13:42:18 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:66
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(183): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(157): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 66
+[29-Nov-2023 13:46:56 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 126
+[29-Nov-2023 13:46:56 UTC] PHP Warning:  Undefined variable $SESSION in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 66
+[29-Nov-2023 13:46:56 UTC] PHP Warning:  Trying to access array offset on value of type null in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 66
+[29-Nov-2023 13:46:56 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:66
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(183): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(157): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 66
+[29-Nov-2023 13:48:36 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:48:36 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:50:49 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:50:49 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:52:38 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:52:38 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:52:46 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 13:52:46 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:53:25 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 126
+[29-Nov-2023 13:53:25 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(157): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:53:56 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 126
+[29-Nov-2023 13:53:56 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(157): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:54:33 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 126
+[29-Nov-2023 13:54:33 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:64
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(182): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(157): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 64
+[29-Nov-2023 13:55:32 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 127
+[29-Nov-2023 13:55:32 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:64
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(183): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(158): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 64
+[29-Nov-2023 13:56:10 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 128
+[29-Nov-2023 13:56:10 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:64
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(184): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(159): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 64
+[29-Nov-2023 13:57:01 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 129
+[29-Nov-2023 13:57:01 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(185): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(160): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 13:58:11 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 130
+[29-Nov-2023 13:58:11 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:66
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(186): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(161): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 66
+[29-Nov-2023 13:58:59 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 131
+[29-Nov-2023 13:58:59 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:67
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(187): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(162): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 67
+[29-Nov-2023 13:59:49 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 130
+[29-Nov-2023 13:59:49 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:66
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(186): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(161): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 66
+[29-Nov-2023 14:00:18 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 131
+[29-Nov-2023 14:00:18 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:67
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(187): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(162): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 67
+[29-Nov-2023 14:06:46 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 131
+[29-Nov-2023 14:06:46 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:67
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(187): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(162): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 67
+[29-Nov-2023 14:07:37 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 127
+[29-Nov-2023 14:07:37 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:67
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(183): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(158): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 67
+[29-Nov-2023 14:14:28 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 131
+[29-Nov-2023 14:14:28 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:67
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(187): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(162): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 67
+[29-Nov-2023 14:19:06 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:21
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(40): autoloadModel('YourClassName')
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 21
+[29-Nov-2023 14:19:51 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 129
+[29-Nov-2023 14:19:51 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(185): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(160): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 14:20:14 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 127
+[29-Nov-2023 14:20:14 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:67
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(183): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(158): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 67
+[29-Nov-2023 14:20:24 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 127
+[29-Nov-2023 14:20:24 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:67
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(183): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(158): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 67
+[29-Nov-2023 14:20:53 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "autoloadModel" in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:39
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 39
+[29-Nov-2023 14:22:38 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[29-Nov-2023 14:22:38 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[29-Nov-2023 14:24:41 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:35
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(10): autoloadModel('YourClassName')
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 35
+[29-Nov-2023 14:25:21 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:35
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(10): autoloadModel('YourClassName')
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 35
+[29-Nov-2023 14:26:16 UTC] PHP Parse error:  syntax error, unexpected identifier "spl_autoload_register", expecting "function" or "const" in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 51
+[29-Nov-2023 14:27:30 UTC] PHP Parse error:  syntax error, unexpected token "public" in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 120
+[29-Nov-2023 14:27:38 UTC] PHP Parse error:  syntax error, unexpected token "public" in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 120
+[30-Nov-2023 05:57:36 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[30-Nov-2023 05:57:36 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[30-Nov-2023 06:00:15 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[30-Nov-2023 06:00:15 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[30-Nov-2023 06:02:41 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[30-Nov-2023 06:02:41 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[30-Nov-2023 06:03:19 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[30-Nov-2023 06:03:19 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[30-Nov-2023 06:03:28 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[30-Nov-2023 06:03:28 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('sandesh.jain@bi...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[30-Nov-2023 06:28:58 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 125
+[30-Nov-2023 06:28:58 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:65
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(181): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(156): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 65
+[30-Nov-2023 06:32:07 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:32:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:32:39 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:32:39 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:33:17 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:33:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:33:47 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:33:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:34:55 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:34:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:35:18 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:35:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:35:59 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:35:59 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:36:39 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:36:39 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:37:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function sql_conn() in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:64
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(190): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(163): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 64
+[30-Nov-2023 06:38:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function sql_conn() in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:64
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(190): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(163): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 64
+[30-Nov-2023 06:38:56 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:38:56 UTC] PHP Fatal error:  Uncaught Error: Class "Config" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:72
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(190): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(163): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 72
+[30-Nov-2023 06:39:36 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:39:36 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Config/Config.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 11
+[30-Nov-2023 06:39:58 UTC] PHP Warning:  require(/home2/bitwadke/public_html/LMS/utils/Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 12
+[30-Nov-2023 06:39:58 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/LMS/utils/Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 12
+[30-Nov-2023 06:40:52 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:40:52 UTC] PHP Fatal error:  Uncaught Error: Class "Staff" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:89
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(190): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(163): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 89
+[30-Nov-2023 06:41:31 UTC] PHP Warning:  require(./Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 13
+[30-Nov-2023 06:41:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required './Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:13
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 13
+[30-Nov-2023 06:42:02 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:42:02 UTC] PHP Fatal error:  Uncaught Error: Class "Staff" not found in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:89
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(190): Auth->__construct('co.2020.baanand...')
+#1 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(163): setUser()
+#2 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 89
+[30-Nov-2023 06:42:22 UTC] PHP Warning:  require(./Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 13
+[30-Nov-2023 06:42:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required './Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:13
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 13
+[30-Nov-2023 06:43:07 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:44:06 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:44:28 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:44:52 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:45:16 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:45:43 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 06:48:19 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 07:07:39 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 07:14:32 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 07:14:58 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 07:16:14 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 132
+[30-Nov-2023 07:29:15 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 5
+[30-Nov-2023 07:30:44 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 5
+[30-Nov-2023 07:31:34 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 140
+[30-Nov-2023 07:32:16 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 07:37:04 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 07:37:25 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 140
+[30-Nov-2023 07:37:58 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 07:38:36 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 140
+[30-Nov-2023 07:39:20 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 08:07:54 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 08:08:35 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 08:17:03 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 08:21:15 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 6
+[30-Nov-2023 08:21:15 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 10
+[30-Nov-2023 08:21:15 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 13
+[30-Nov-2023 08:21:15 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 152
+[30-Nov-2023 08:24:15 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 08:29:37 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 139
+[30-Nov-2023 08:30:32 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 138
+[30-Nov-2023 08:30:50 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 138
+[30-Nov-2023 08:35:00 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 3
+[30-Nov-2023 08:35:59 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 3
+[30-Nov-2023 08:37:19 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 3
+[30-Nov-2023 08:47:06 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 3
+[30-Nov-2023 08:48:00 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 3
+[30-Nov-2023 08:50:00 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 3
+[30-Nov-2023 08:50:34 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 3
+[30-Nov-2023 08:50:48 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 3
+[30-Nov-2023 09:23:38 UTC] PHP Fatal error:  Class Admin contains 2 abstract methods and must therefore be declared abstract or implement the remaining methods (Serializable::serialize, Serializable::unserialize) in /home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php on line 6
+[30-Nov-2023 09:24:11 UTC] PHP Fatal error:  Cannot declare class Admin, because the name is already in use in /home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php on line 6
+[30-Nov-2023 09:25:00 UTC] PHP Fatal error:  Cannot declare class Admin, because the name is already in use in /home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php on line 6
+[30-Nov-2023 09:25:34 UTC] PHP Fatal error:  Cannot declare class Admin, because the name is already in use in /home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php on line 6
+[30-Nov-2023 09:26:00 UTC] PHP Fatal error:  Cannot declare class Admin, because the name is already in use in /home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php on line 6
+[30-Nov-2023 09:26:40 UTC] PHP Fatal error:  Cannot declare class Admin, because the name is already in use in /home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php on line 6
+[30-Nov-2023 09:27:17 UTC] PHP Fatal error:  Cannot declare class Admin, because the name is already in use in /home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php on line 6
+[30-Nov-2023 09:29:03 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/Principal/Principal.class.php:4
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(10): require()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/Principal/Principal.class.php on line 4
+[30-Nov-2023 09:29:35 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/bitwadke/public_html/lms/LMS/utils/Admin/admin.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/Principal/Principal.class.php:4
+Stack trace:
+#0 /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php(10): require()
+#1 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/Principal/Principal.class.php on line 4
+[30-Nov-2023 09:32:19 UTC] PHP Warning:  require(./Admin/Admin.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 9
+[30-Nov-2023 09:32:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required './Admin/Admin.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php:9
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 9
+[30-Nov-2023 09:40:10 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms/LMS/utils/authentication.class.php on line 14
+[30-Nov-2023 13:04:43 UTC] PHP Warning:  require(./Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php on line 11
+[30-Nov-2023 13:04:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required './Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php on line 11
+[30-Nov-2023 13:04:56 UTC] PHP Warning:  require(./Staff/Staff.class.php): Failed to open stream: No such file or directory in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php on line 11
+[30-Nov-2023 13:04:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required './Staff/Staff.class.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php on line 11
+[30-Nov-2023 13:08:20 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php on line 13
+[30-Nov-2023 13:08:59 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php on line 13
+[30-Nov-2023 13:09:33 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home2/bitwadke/public_html/lms1/LMS1/utils/authentication.class.php on line 13

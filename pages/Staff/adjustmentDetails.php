@@ -27,7 +27,7 @@
     <section class="home-section">
      <div class="container m-4 bg-white ">
         <div>
-        <h2 class="m-3">Leacture Adjustment </h2>
+        <h2 class="m-3">Lecture Adjustment </h2>
         </div>
         <div class="m-3">       
         <h2 class=" font-weight-bold medium-text mb-3">Leaves Applicant - Ganesh Golhar<?php  ?></h1>

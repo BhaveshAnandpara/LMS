@@ -1,25 +1,24 @@
-<?php 
+<?php     
+
     //  Creates database connection 
     require "../../includes/db.conn.php";
+    
+    //include class definition
+    require('../../utils/Admin/admin.class.php');
+    
+    //include Config Class
+    require('../../utils/Config/Config.class.php');
+    require('../../utils/Utils.class.php');
+    
+    session_start();
+
 ?>
 
 
 <!-- Include this to use User object -->
 <?php
-
-    //include class definition
-    require('../../utils/Admin/Admin.class.php');
-
-    //include Config Class
-    require('../../utils/Config/Config.class.php');
-    require('../../utils/Utils.class.php');
-
-    //start session
-    session_start();
-
     //Get the User Object
     $user =  $_SESSION['user'];
-
 ?>
 
 <!DOCTYPE html>

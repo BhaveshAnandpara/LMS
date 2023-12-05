@@ -1,7 +1,6 @@
 <?php
 
 
-
     Class Config{
 
         //Roles

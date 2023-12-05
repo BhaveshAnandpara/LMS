@@ -69,7 +69,8 @@
         const responsePayload = decodeJwt(response.credential);
         const email = responsePayload.email
 
-
+        console.log(email);
+    
         // Validates College Email
         if (email.includes('@bitwardha')) {
 
@@ -92,7 +93,7 @@
 
                     if( userData.status === "INACTIVE" ) alert( "You are not authorised to access this" )
                     else if (userData.role === "ADMIN") window.location.href = './pages/Admin/dashboard.php'
-                    else if (userData.role === "FACULTY") window.location.href = './pages/Staff/dashboard.php'
+                     else if (userData.role === "FACULTY") window.location.href = './pages/Staff/dashboard.php'
                     else if (userData.role === "HOD") window.location.href = './pages/HOD/dashboard.php'
                     else if (userData.role === "PRINCIPAL") window.location.href = './pages/Principal/dashboard.php'
 

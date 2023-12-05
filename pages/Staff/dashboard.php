@@ -1,24 +1,27 @@
-<?php 
+<?php     
+
     //  Creates database connection 
     require "../../includes/db.conn.php";
+    
+
+    //include Config Class
+    require('../../utils/Config/Config.class.php');
+    require('../../utils/Utils.class.php');
+    
+    //include class definition
+    require('../../utils/Staff/staff.class.php');
+    session_start();
+    
+
 ?>
 
 
 <!-- Include this to use User object -->
 <?php
 
-    //include class definition
-    require('../../utils/Staff/Staff.class.php');
-
-    //include Config Class
-    require('../../utils/Config/Config.class.php');
-    require('../../utils/Utils.class.php');
-
-    //start session
-    session_start();
-
     //Get the User Object
     $user =  $_SESSION['user'];
+
 
 ?>
 
@@ -62,9 +65,11 @@
 
         <!--Including header -->
 
+        
         <?php
             include "../../includes/header.php";
         ?>
+
 
         <!-- Below code for dashboard -->
         <div class="container">
@@ -80,8 +85,8 @@
                 </div>
 
                 <?php
-                    
                         $data =  $user->getCurrentBalance() ;
+                        
 
                         while( $row = mysqli_fetch_assoc($data) ){
 

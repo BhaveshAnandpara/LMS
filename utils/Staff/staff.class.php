@@ -1,7 +1,6 @@
 <?php
 
-class Staff
-{
+class Staff {
 
     public $employeeId;
     public $email;
@@ -12,6 +11,12 @@ class Staff
     public $type;
     public $role;
     public $status;
+    
+    
+        public function __serialize(): array {
+             return get_object_vars($this);
+        }
+
 
     /*
         @function "__contruct"
