@@ -16,7 +16,7 @@
 
     <div class="main">
 
-        <h1>BIT Leave Management System</h1>
+        <h1>BIT Leave Management System 1</h1>
 
         <!-- HTML API for Sign in with Google Function -->
         <!-- //! Do not remove this part  -->
