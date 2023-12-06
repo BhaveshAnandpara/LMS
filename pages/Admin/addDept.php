@@ -133,6 +133,28 @@
 
 
     </section>
+
+
+    <?php
+    
+        require('../../includes/model.php'); 
+        
+        
+            // Check for response message from validateNewLeave.php
+        if (isset($_SESSION['response_message'])) {
+            $res = unserialize($_SESSION['response_message']);
+            unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+
+            if( $res[1] === "SUCCESS" ){   
+                echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "manageDepartment.php");
+            }else{
+                echo Utils::alert($res[0] , $res[1], "addDept.php");
+            }
+
+    }
+
+    ?>
+
 </body>
 
 </html>

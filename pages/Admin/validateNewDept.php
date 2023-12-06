@@ -34,22 +34,16 @@ try{
 
     //Check Whether Name and Alias is empty or not
     if ( empty($_POST['deptName']) ) {
-        echo Utils::alert("Department Name cannot be Empty", "ERROR");
         throw new Exception("Department Name cannot be Empty");
     }
     else if ( empty($_POST['deptAlias']) ) {
-        echo Utils::alert("Department Alias cannot be Empty", "ERROR");
         throw new Exception("Department Alias cannot be Empty");
     }
 
     //Get the Data
     $deptName =  $_POST['deptName'] ;
     $deptAlias =  $_POST['deptAlias'] ;
-    $deptHOD =  $_POST['deptHOD'] ; //Gives undefined if not selected but whatever
-
-
-    //If Null Assign NULL Values
-    if( empty($deptHOD) ) $deptHOD = "NULL";
+    $deptHOD =  empty($_POST['deptHOD'])  ? "NULL" : $_POST['deptHOD'] ; //Gives undefined if not selected but whatever
 
 
     // ----------------------------------- Validate Department Name ----------------------------------- //
@@ -66,33 +60,29 @@ try{
     while( $row = mysqli_fetch_assoc($result) ){
         
         if( $row['deptName'] == $deptName ){
-            echo Utils::alert("Department Name Already Exits", "ERROR");
             throw new Exception("Department Name Already Exits");
         }
         if( $row['deptAlias'] == $deptAlias ){
-            echo Utils::alert("Department Alias Already Exits", "ERROR");
             throw new Exception("Department Alias Already Exits");
         }
         
         
     }
     
+
     //Query to insert dept data into departments
     $sql = "INSERT INTO `departments` (`deptID`, `deptName`, `deptAlias`, `deptHOD`) VALUES (NULL, '$deptName', '$deptAlias', $deptHOD);";
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
-        Utils::alert("Opertaion Failed", "ERROR");
-        throw new Exception("Error Occured During Query Insertion");
+        throw new Exception("Opertaion Failed");
     }
     else{
-
-        echo Utils::alert("Department Added Successfully", "SUCCESS");
-
 
         $time = date( 'Y-m-d H:i:s' , time());
 
         if( $deptHOD != "NULL" ) {
+
 
             //Set Faculty Role as HOD
             
@@ -113,24 +103,31 @@ try{
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
             if( !$result ){
-                echo "Error Occured During Insertion of ". $deptHOD ."  Notification";
+                // echo "Error Occured During Insertion of ". $deptHOD ."  Notification";
             }
-
 
             //4. Send Notification to Admin
             $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$user->employeeId', '$deptName has been assigned a new HOD.<a href=./manageDepartment.php > View Details </a>', '$time' );";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
             if( !$result ){
-                echo "Error Occured During Insertion of Notification";
+                // echo "Error Occured During Insertion of Notification";
+            }else{
+
+
+
             }
 
         }
 
-    echo "<script>
-        window.location.href = './manageDepartment.php'
-    </script>";
-    exit(0);
+                // Set a session variable with the response message
+                $_SESSION['response_message'] = serialize(["Department Added Successfully" , "SUCCESS"]);
+
+                // Redirect back to addLeave.php
+                header("Location: addDept.php");
+                exit();
+
+
 
     }
 
@@ -140,13 +137,18 @@ try{
 }
 catch(Exception $e){
 
-    echo $e;
+    $errorMessage = $e->getMessage();
+    // echo $errorMessage;
 
-    echo "<script>
-        window.location.href = './addDept.php'
-    </script>";
+    // Set a session variable with the response message
+    $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+
+    // Redirect back to addLeave.php
+    header("Location: addDept.php");
+    exit();
     
 }
+
 
 
 
