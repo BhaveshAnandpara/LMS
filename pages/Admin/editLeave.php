@@ -197,11 +197,11 @@
         if (isset($_SESSION['response_message']) && !empty($_SESSION['response_message'])) {
             
                     $res = unserialize($_SESSION['response_message']);
+                    unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
 
                     if( $res[1] === "SUCCESS" || !$leaveID ){   
                         echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "manageMasterData.php");
                     }
-                    unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
             }
 
     ?>
