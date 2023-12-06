@@ -15,11 +15,8 @@
 ?>
 
 
-
 <!-- Include this to use User object -->
 <?php
-
-
 
     //Get the User Object
     $user =  $_SESSION['user'];
@@ -74,7 +71,11 @@
         ?>
 
         <?php 
-        $leaveDetails = mysqli_fetch_assoc( Utils::getLeaveDetails($leaveID) );
+
+            if( $leaveID){
+                $leaveDetails = mysqli_fetch_assoc( Utils::getLeaveDetails($leaveID) );
+            }
+
         ?>
 
         <div class="container">
@@ -186,6 +187,25 @@
 
 
     </section>
+
+    <?php
+    
+        require('../../includes/model.php'); 
+
+        
+        // Check for response message from validateNewLeave.php
+        if (isset($_SESSION['response_message']) && !empty($_SESSION['response_message'])) {
+            
+                    $res = unserialize($_SESSION['response_message']);
+
+                    if( $res[1] === "SUCCESS" || !$leaveID ){   
+                        echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "manageMasterData.php");
+                    }
+                    unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+            }
+
+    ?>
+
 </body>
 
 </html>
