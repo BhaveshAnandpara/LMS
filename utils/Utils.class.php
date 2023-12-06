@@ -156,13 +156,17 @@
 
         }    
 
-        public static function alert( $msg  ,$title){
+        public static function alert( $msg  ,$title , $redirect){
 
             return "<script>  
             
 
                 document.querySelector('.modal-body').innerHTML = '" .$msg. "';
                 document.querySelector('.modal-title').innerHTML = '" .$title. "';
+
+                document.querySelector('#close-btn').onclick = ()=>{
+                    window.location.href = '" . $redirect . "'
+                }
 
               
                 $('#myModal').modal();
