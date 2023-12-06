@@ -19,8 +19,6 @@
 <!-- Include this to use User object -->
 <?php
 
-
-
     //Get the User Object
     $user =  $_SESSION['user'];
 
@@ -29,15 +27,22 @@
 
 <?php
 
-    echo Utils::alert( "Are you Sure ! You want to change the Status " );
+    if( $user->setLeaveInactive( $_GET['leaveId'] , $_GET['status'] ) ){ 
+        
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize([ "Leave set to " .$_GET['status']. " Successfully" , "SUCCESS"]);
 
-    if( $user->setLeaveInactive( $_GET['leaveId'] , $_GET['status'] ) ){ echo Utils::alert("Leave set to " .$_GET['status']. " Successfully" , "SUCCESS"); }
+        // Redirect back to addLeave.php
+        header("Location: manageMasterData.php");
+        exit();
+    }
+    else{ 
+            // Set a session variable with the response message
+            $_SESSION['response_message'] = serialize([ "Opertaion Failed" , "ERROR"]);
 
-    else{ echo Utils::alert("Opertaion Failed", "ERROR"); }
-
-    echo 
-    "<script>
-        window.location.href='./manageMasterData.php'
-    </script>";
+            // Redirect back to addLeave.php
+            header("Location: manageMasterData.php");
+            exit();
+    }
 
 ?>

@@ -158,7 +158,8 @@
                                 echo "<td class='$statusStyle' >" . $row['waitingTime'] . " Days </td>";
                                 echo "<td class='$statusStyle' >" . $row['status'] . " </td>";
                                 echo "<td><a href='../../pages/Admin/editLeave.php?leaveId=$row[leaveID]' name='edit'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
-                                echo "<td><a href='../../pages/Admin/validateLeaveStatus.php?leaveId=$row[leaveID]&status=$statusBtnValue' name='delete'> <button class='submitbtn m-0 w-100' > ". $statusBtnValue ." </button> </a></td>";
+                                echo "<td><button id='leaveId=".$row['leaveID']."&status=". $statusBtnValue ."' class='submitbtn $statusBtnValue-btn m-0 w-100'> $statusBtnValue </button>
+                            </td>";
 
                                 echo "</tr>";
                             }
@@ -175,6 +176,50 @@
 
 
     </section>
+
+    <?php
+    
+        require('../../includes/model.php'); 
+
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const buttons = document.querySelectorAll('.submitbtn');
+                buttons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        const leaveId = this.id;
+
+                        document.querySelector('.modal-body').innerHTML = 'Are you sure you want to " . $statusBtnValue . " this leave ?';
+                        document.querySelector('.modal-title').innerHTML = 'WARNING';
+        
+                        document.querySelector('#close-btn').onclick = ()=>{
+                            window.location.href = `../../pages/Admin/validateLeaveStatus.php?` + leaveId
+                        }
+        
+                      
+                        $('#myModal').modal();
+
+                        
+                    });
+                });
+            });
+        </script>";
+
+        if (isset($_SESSION['response_message'])) {
+
+            $res = unserialize($_SESSION['response_message']);
+            unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+
+            if( $res[1] === "SUCCESS" ){
+                echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "manageMasterData.php");
+            }else{
+                echo Utils::alert($res[0] , $res[1], "manageMasterData.php");
+            }
+
+    }
+
+    ?>
+
+
 </body>
 
 </html>
