@@ -29,19 +29,18 @@
 
 <?php
 
-echo Utils::alert( "Are you Sure ! You want to change the Status ", "ALERT" );
-
-$status = $_GET['status'];
-$empID = $_GET['empID'];
+    $status = $_GET['status'];
+    $empID = $_GET['empID'];
 
 
     $emp_ACTIVE = Config::$_EMPLOYEE_STATUS['ACTIVE'];
     $emp_INACTIVE = Config::$_EMPLOYEE_STATUS['INACTIVE'];
 
-
     $FACULTY = Config::$_EMPLOYEE_ROLE['FACULTY'];
+    $HOD = Config::$_EMPLOYEE_ROLE['HOD'];
 
     $conn = sql_conn();
+
 
     if( $status == $emp_ACTIVE ){
 
@@ -50,10 +49,15 @@ $empID = $_GET['empID'];
 
         
         if( !$result ){
-            echo "Error Occured during Updating Employee";
+            $_SESSION['response_message'] = serialize([ "Error Occured during Updating Employee" , "ERROR"]);
+
+            // Redirect back to addLeave.php
+            header("Location: manageEmployees.php");
+            exit();
         }
 
     }
+
 
     else if( $status == $emp_INACTIVE ){
 
@@ -68,8 +72,24 @@ $empID = $_GET['empID'];
             $result =  mysqli_query( $conn , $sql);
 
             if( !$result ){
-                echo "Error Occured during Deducting Balance";
+                $_SESSION['response_message'] = serialize([ "Error Occured during Deducting Balance" , "ERROR"]);
+
+                // Redirect back to addLeave.php
+                header("Location: manageEmployees.php");
+                exit();
             }
+
+            $sql = "UPDATE departments SET `deptHod` = NULL  where `deptId`= ( SELECT deptID from employees where `employeeID`=$empID and `role`='$HOD' )  ";
+            $result =  mysqli_query( $conn , $sql);
+
+            if( !$result ){
+                $_SESSION['response_message'] = serialize([ "Error Occured during Setting Department HOD as NULL" , "ERROR"]);
+
+                // Redirect back to addLeave.php
+                header("Location: manageEmployees.php");
+                exit();
+            }
+
         
         }
 
@@ -78,15 +98,20 @@ $empID = $_GET['empID'];
         $result =  mysqli_query( $conn , $sql);
 
         if( !$result ){
-            echo "Error Occured during Updating Employee";
+            $_SESSION['response_message'] = serialize([ "Error Occured during Updating Employee" , "ERROR"]);
+
+            // Redirect back to addLeave.php
+            header("Location: manageEmployees.php");
+            exit();
+            
         }
 
     }
 
 
-    echo 
-    "<script>
-        window.location.href='./manageEmployees.php'
-    </script>";
+    $_SESSION['response_message'] = serialize([ "Employee Set to $status Successfully" , "ERROR"]);
+    // Redirect back to addLeave.php
+    header("Location: manageEmployees.php");
+    exit();
 
 ?>

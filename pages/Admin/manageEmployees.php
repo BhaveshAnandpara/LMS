@@ -94,7 +94,7 @@
                         <h3> Manage Employees </h3>
                     </div>
 
-                    <a href="../../pages/Admin/addEmp.php" class="my-3"><button class="AddBtn"> + </button></a>
+                    <a href="../../pages/Admin/addEmp.php" class="my-3" style="width : fit-content;"  ><button class="AddBtn"> + </button></a>
 
                     <table class="tablecontent">
 
@@ -157,15 +157,15 @@
                                     echo "<td class='$statusStyle' >". ($leaveRow['balance']) ."</td>";
                                 }
 
-                                echo "<td class='$statusStyle'  class='font-weight-bold' >" . $row['status'] . " </td>";
+                                echo "<td class='$statusStyle font-weight-bold' >" . $row['status'] . " </td>";
                                         
                                 if( $row['status'] == Config::$_EMPLOYEE_STATUS['ACTIVE'] ){
-                                    echo "<td  ><a href='../../pages/Admin/editEmp.php?empID=$employeeID '><i class='fa-solid fa-pen-to-square edit $statusStyle'></i></a></td>";
+                                    echo "<td  ><a href='../../pages/Admin/editEmp.php?empID=$employeeID '><i class='fa-solid fa-pen-to-square edit  $statusStyle'></i></a></td>";
                                 }else{
                                     echo "<td class='$statusStyle' ></td>";
                                 }
                                 echo "<td ><a href='../../pages/Admin/viewDetailedEmp.php?empID=$employeeID'><i class='fa-solid fa-eye edit $statusStyle'></i></a></td>";
-                                echo "<td><a href='../../pages/Admin/validateEmpStatus.php?empID=$employeeID&status=$statusBtnValue' name='delete'> <button class='submitbtn m-0 w-100' > ". $statusBtnValue ." </button> </a></td>";
+                                echo "<td><button id='empID=$employeeID&status=$statusBtnValue' class='submitbtn $statusBtnValue-btn m-0 w-100'> $statusBtnValue </button>";
                                 echo "</tr>";
                             }
 
@@ -179,8 +179,50 @@
 
         </div>
 
-
     </section>
+
+    <?php
+    
+        require('../../includes/model.php'); 
+
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const buttons = document.querySelectorAll('.submitbtn');
+                buttons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        const empId = this.id;
+
+                        document.querySelector('.modal-body').innerHTML = 'Are you sure you want to " . $statusBtnValue . " this Employee ?';
+                        document.querySelector('.modal-title').innerHTML = 'WARNING';
+        
+                        document.querySelector('#close-btn').onclick = ()=>{
+                            window.location.href = `../../pages/Admin/validateEmpStatus.php?` + empId
+                        }
+        
+                      
+                        $('#myModal').modal();
+
+                        
+                    });
+                });
+            });
+        </script>";
+
+        if (isset($_SESSION['response_message'])) {
+
+            $res = unserialize($_SESSION['response_message']);
+            unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+
+            if( $res[1] === "SUCCESS" ){
+                echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "manageEmployees.php");
+            }else{
+                echo Utils::alert($res[0] , $res[1], "manageEmployees.php");
+            }
+
+    }
+
+    ?>
+
 </body>
 
 </html>
