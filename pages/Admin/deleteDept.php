@@ -29,12 +29,23 @@
 
 <?php
 
-    echo Utils::alert( "Are you Sure ! You want to delete the Department" );
-    echo Utils::alert($user->deleteDept( $_GET['deptID'] ));
+    $res = $user->deleteDept( $_GET['deptID'] );
 
-    echo 
-    "<script>
-        window.location.href='./manageDepartment.php'
-    </script>";
+    if( $res  === "Department Removed Successfully" ){ 
+        
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize([ "Department deleted Successfully" , "SUCCESS"]);
 
+        // Redirect back to addLeave.php
+        header("Location: manageDepartment.php");
+        exit();
+    }
+    else{ 
+            // Set a session variable with the response message
+            $_SESSION['response_message'] = serialize([ $res , "ERROR"]);
+
+            // Redirect back to addLeave.php
+            header("Location: manageDepartment.php");
+            exit();
+    }
 ?>

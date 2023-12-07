@@ -116,7 +116,7 @@
                                 echo "<td  >" . $row['deptAlias'] . "</td>";
                                 echo "<td  >" . $row['fullName'] . " </td>";
                                 echo "<td><a href='../../pages/Admin/editDept.php?deptID=$row[deptID]'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
-                                echo "<td><a href='../../pages/Admin/deleteDept.php?deptID=$row[deptID]'> <i class='fa-solid fa-trash edit'></i> </a></td>";
+                                echo "<td> <i id='deptID=".$row['deptID']."' style='cursor: pointer;' class='fa-solid fa-trash delete deleteBtn m-0 w-100'></i></td>";
                                 echo "</tr>";
                             }
 
@@ -132,6 +132,48 @@
 
 
     </section>
+
+    <?php
+    
+        require('../../includes/model.php'); 
+
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const buttons = document.querySelectorAll('.deleteBtn');
+                buttons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        const deptID = this.id;
+
+                        document.querySelector('.modal-body').innerHTML = 'Are you sure you want to delete this department ?';
+                        document.querySelector('.modal-title').innerHTML = 'WARNING';
+        
+                        document.querySelector('#close-btn').onclick = ()=>{
+                            window.location.href = `../../pages/Admin/deleteDept.php?` + deptID
+                        }
+        
+                        $('#myModal').modal();
+
+                        
+                    });
+                });
+            });
+        </script>";
+
+        if (isset($_SESSION['response_message'])) {
+
+            $res = unserialize($_SESSION['response_message']);
+            unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+
+            if( $res[1] === "SUCCESS" ){
+                echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "manageDepartment.php");
+            }else{
+                echo Utils::alert($res[0] , $res[1], "manageDepartment.php");
+            }
+
+    }
+
+    ?>
+
 </body>
 
 </html>

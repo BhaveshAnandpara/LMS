@@ -19,8 +19,6 @@
 <!-- Include this to use User object -->
 <?php
 
-
-
     //Get the User Object
     $user =  $_SESSION['user'];
 
@@ -69,6 +67,23 @@ try{
         
         if( $row['deptName'] == $deptName ){
             throw new Exception("Department Name Already Exits");
+        }
+        
+        
+    }
+
+
+    //Check if department alias Exists
+
+    $sql = "Select deptAlias from departments EXCEPT ( Select deptAlias from departments where deptID=$deptID )";
+    $conn = sql_conn();
+    $deptAliasResult =  mysqli_query( $conn , $sql);
+    
+
+    while( $row = mysqli_fetch_assoc($deptAliasResult) ){
+        
+        if( $row['deptAlias'] == $deptAlias ){
+            throw new Exception("Department Alias Already Exits");
         }
         
         
