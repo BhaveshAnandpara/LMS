@@ -107,14 +107,14 @@
                                 <th>ROLE</th>
 
                                 <?php
-                                //  To print all available Leave Types
-                                $leaveTypes = Utils::getLeaveTypes();
+                                    // //  To print all available Leave Types
+                                    // $leaveTypes = Utils::getLeaveTypes();
 
-                                while( $row = mysqli_fetch_assoc( $leaveTypes ) ){
-                                    echo "<th>". strtoupper($row['leaveType']) ."</th>";
-                                }
+                                    // while( $row = mysqli_fetch_assoc( $leaveTypes ) ){
+                                    //     echo "<th>". strtoupper($row['leaveType']) ."</th>";
+                                    // }
 
-                            ?>
+                                ?>
 
                                 <th>STATUS</th>
                                 <th>EDIT</th>
@@ -148,13 +148,13 @@
                                 echo "<td class='$statusStyle' >" . $row['role'] . " </td>";
                                 
                                 //  To print all available balance of all Leave Types
-                                $leaveBalances = Utils::getLeaveBalanceOfEmployee($row['employeeID']  );
+                                // $leaveBalances = Utils::getLeaveBalanceOfEmployee($row['employeeID']  );
                                 
-                                while( $leaveRow = mysqli_fetch_assoc( $leaveBalances ) ){
+                                // while( $leaveRow = mysqli_fetch_assoc( $leaveBalances ) ){
                                     
-                                    $leaveRow['balance'] = floatval($leaveRow['balance']);
-                                    echo "<td class='$statusStyle' >". ($leaveRow['balance']) ."</td>";
-                                }
+                                //     $leaveRow['balance'] = floatval($leaveRow['balance']);
+                                //     echo "<td class='$statusStyle' >". ($leaveRow['balance']) ."</td>";
+                                // }
 
                                 echo "<td class='$statusStyle font-weight-bold' >" . $row['status'] . " </td>";
                                         
