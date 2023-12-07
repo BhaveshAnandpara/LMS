@@ -33,7 +33,6 @@ try{
 
     //Check Whether Name and Desc is empty or not
     if ( empty($_POST['empName']) ) {
-        echo Utils::alert("Employee Name cannot be Empty", "ERROR");
         throw new Exception("Employee Name cannot be Empty");
     }
 
@@ -55,6 +54,7 @@ try{
     $ADMIN = Config::$_ADMIN_;
     $PRINCIPAL = Config::$_EMPLOYEE_ROLE['PRINCIPAL'];
     $HOD = Config::$_EMPLOYEE_ROLE['HOD'];
+    $FACULTY = Config::$_EMPLOYEE_ROLE['FACULTY'];
 
     $conn = sql_conn();
    
@@ -72,21 +72,14 @@ try{
            $roleResult =  mysqli_query( $conn , $sql);
        
            if( !$roleResult ) {
-               Utils::alert("Opertaion Failed", "ERROR");
-               throw new Exception("Error Occured During Validation of Role");
+               throw new Exception("Opertaion Failed");
            }   
            
            $roleResult =  mysqli_fetch_assoc($roleResult);
 
-           print_r( $roleResult );
-           echo "</br>";
-           
            if( !empty($roleResult['employeeID']) ){
        
                $msg = $role." Already Exists";
-
-               $alert = Utils::alert($msg, "ERROR"); 
-               print_r( $alert ); //! don't remove this don't know why but it is working only when storing it in variabale
                throw new Exception("$role Already Exists");
        
            }
@@ -99,21 +92,42 @@ try{
            $roleResult =  mysqli_query( $conn , $sql);
        
            if( !$roleResult ) {
-               Utils::alert("Opertaion Failed", "ERROR");
-               throw new Exception("Error Occured During Validation of Role");
+               throw new Exception("Opertaion Failed");
            }   
            
            $roleResult =  mysqli_fetch_assoc($roleResult);
            
            if( !empty($roleResult['deptHOD']) ){
        
-               $msg = $role." Already Exists";
-               $alert = Utils::alert($msg, "ERROR"); 
-               print_r( $alert ); //! don't remove this don't know why but it is working only when storing it in variabale
                throw new Exception("$role Already Exists");
        
+           }else{
+
+                $updateRole = "UPDATE `departments` SET `deptHod` = '$employeeID' WHERE deptID = $deptID";
+                $updateResult =  mysqli_query( $conn , $updateRole);     
+
            }
            
+    }
+    else if(  $role == $FACULTY) {
+
+        $sql = " Select deptHOD from departments where deptID=$deptID ";
+
+        $roleResult =  mysqli_query( $conn , $sql);
+    
+        if( !$roleResult ) {
+            throw new Exception("Opertaion Failed");
+        }   
+        
+        $roleResult =  mysqli_fetch_assoc($roleResult);
+        
+        if( $roleResult['deptHOD']  == $employeeID ){
+
+            $updateRole = "UPDATE `departments` SET `deptHod` = NULL WHERE deptID = $deptID";
+            $updateResult =  mysqli_query( $conn , $updateRole);     
+
+        }
+
     }
    
     
@@ -124,31 +138,30 @@ try{
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
-        Utils::alert("Opertaion Failed", "ERROR");
-        throw new Exception("Error Occured During Query Updation");
+        throw new Exception("Opertaion Failed");
     }
     else{
 
-        echo Utils::alert("Employee Updated Successfully", "SUCCESS");
-        echo "<script>
-            window.location.href = './manageEmployees.php'
-        </script>";
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize(["Employee Edited Successfully" , "SUCCESS"]);
+        
+        header("Location: manageEmployees.php");
+        exit();
 
         }
 
 
     }
-        
-
-
-    
 catch(Exception $e){
 
-    echo $e;
+        $errorMessage = $e->getMessage();
+        echo $errorMessage;
 
-    echo "<script>
-        window.location.href = './manageEmployees.php'
-    </script>";
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+
+        header("Location: editEmp.php?empID=$employeeID");
+        exit();
     
 }
 
