@@ -45,7 +45,7 @@ try{
     else if ( empty($_POST['joiningDate']) ) {
         throw new Exception("Joining Date cannot be Empty");
     }
-    else if ( date($_POST['inactiveDate']) < date($_POST['joiningDate']) ) {
+    else if ( !empty($_POST['inactiveDate']) && date($_POST['inactiveDate']) < date($_POST['joiningDate']) ) {
         throw new Exception("Joining Date cannot be after Deactivation Date");
     }
 
@@ -176,6 +176,14 @@ try{
                 exit();
 
             }
+
+            if (  $role == $HOD && $roleResult['count'] == 0 ){
+
+                $updateRole = "UPDATE `departments` SET `deptHod` = '$employeeID' WHERE deptID = $deptID";
+                $updateResult =  mysqli_query( $conn , $updateRole);
+
+            }
+
             
             // 2. for every Leave Type
             $leaveTypes = Utils::getLeaveTypes();
