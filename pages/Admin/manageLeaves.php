@@ -196,9 +196,7 @@
 
                             ?>
 
-                                <th>EDIT</th>
-                                <th>VIEW</th>
-                                <th></th>
+                                <th>MANAGE</th>
                             </tr>
                         </thead>
 
@@ -236,14 +234,7 @@
                                     echo "<td class='$statusStyle' >". ($leaveRow['balance']) ."</td>";
                                 }
 
-                                        
-                                if( $row['status'] == Config::$_EMPLOYEE_STATUS['ACTIVE'] ){
-                                    echo "<td  ><a href='../../pages/Admin/editEmp.php?empID=$employeeID '><i class='fa-solid fa-pen-to-square edit $statusStyle'></i></a></td>";
-                                }else{
-                                    echo "<td class='$statusStyle' ></td>";
-                                }
-                                echo "<td ><a href='../../pages/Admin/viewDetailedEmp.php?empID=$employeeID'><i class='fa-solid fa-eye edit $statusStyle'></i></a></td>";
-                                echo "<td><a href='../../pages/Admin/validateEmpStatus.php?empID=$employeeID&status=$statusBtnValue' name='delete'> <button class='submitbtn m-0 w-100' > ". $statusBtnValue ." </button> </a></td>";
+                                echo "<td ><a href='../../pages/Admin/viewDetailedEmp.php?empID=$employeeID'><i class=' fa-solid fa-user-pen editBtn $statusStyle'></i></a></td>";
                                 echo "</tr>";
                             }
 

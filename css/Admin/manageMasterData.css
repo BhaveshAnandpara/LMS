@@ -50,6 +50,11 @@
 
 }
 
+.editBtn{
+    color : #11101D;
+    transform: scale(1.2);
+}
+
 .INACTIVE-btn{
 
     background-color: #c93c3c;
