@@ -19,7 +19,9 @@
 
         public static function getLeaveTypes(){
 
-            $sql = "Select * from masterdata ORDER BY leaveID ";
+            $ACTIVE = Config::$_MASTERADTA_STATUS['ACTIVE'];
+
+            $sql = "Select * from masterdata where status='$ACTIVE' ORDER BY leaveID";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
@@ -64,6 +66,8 @@
 
         public static function getLeaveBalanceOfEmployee( $empID ){
 
+            $ACTIVE = Config::$_MASTERADTA_STATUS['ACTIVE'];
+            $INACTIVE = Config::$_MASTERADTA_STATUS['INACTIVE'];
 
             $sql = "SELECT employees.employeeID , masterdata.leaveID , masterdata.leaveType , leavebalance.balance , leavebalance.leaveCounter , leavetransactions.date , leavetransactions.reason from 
 			employees 
@@ -73,7 +77,7 @@
             leavebalance on masterdata.leaveID = leavebalance.leaveID and employees.employeeID = leavebalance.employeeID 
             LEFT JOIN
             leavetransactions on leavebalance.lastUpdatedOn = leavetransactions.transactionID
-            where employees.employeeID = $empID";
+            where employees.employeeID = $empID and masterdata.status = '$ACTIVE'";
 
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);

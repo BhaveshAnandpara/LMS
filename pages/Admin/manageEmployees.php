@@ -150,7 +150,6 @@
                                 //  To print all available balance of all Leave Types
                                 $leaveBalances = Utils::getLeaveBalanceOfEmployee($row['employeeID']  );
                                 
-                                
                                 while( $leaveRow = mysqli_fetch_assoc( $leaveBalances ) ){
                                     
                                     $leaveRow['balance'] = floatval($leaveRow['balance']);

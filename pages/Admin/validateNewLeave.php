@@ -112,7 +112,7 @@ try{
             
 
             // 2. Get Every Employee
-            $sql = "Select * from employees where status='$employee_ACTIVE' Except ( Select * from employees where role='$ADMIN' and status='$employee_ACTIVE' )";
+            $sql = "Select * from employees where status='$employee_ACTIVE' Except ( Select * from employees where role='$ADMIN' )";
             $conn = sql_conn();
             $employeeResult =  mysqli_query( $conn , $sql);
 
@@ -145,7 +145,7 @@ try{
                 $transactionID = $result['transactionID'];
                 
                 // 5. Insert Balance
-                $sql = "INSERT INTO leavebalance (`employeeID`, `leaveID`, `leaveType`, `balance`, `leaveCounter`, `lastUpdatedOn`) VALUES ( $employeeID , $leaveID , '$leaveName' , '0', '0', $transactionID )";
+                $sql = "INSERT INTO leavebalance (`employeeID`, `leaveID`, `leaveType`, `balance`, `leaveCounter`, `lastUpdatedOn`) VALUES ( $employeeID , $leaveID , '$leaveName' , 0, 0, $transactionID )";
 
                 $conn = sql_conn();
                 $insertBalance = mysqli_query( $conn , $sql);

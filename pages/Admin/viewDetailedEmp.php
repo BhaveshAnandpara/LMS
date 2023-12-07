@@ -156,7 +156,7 @@
                         <div class="col-sm-3 d-inline text-secondary">
                             <?php
                                 if( empty( $empDetails['deactivationDate'] ) ) echo "NULL";
-                                else echo $empDetails['deactivationDate'] ;
+                                else echo date( 'd-m-Y' , strtotime($empDetails['joiningDate']) )  ;
                               
                               ?>
                         </div>
