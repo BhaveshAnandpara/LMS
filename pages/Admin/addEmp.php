@@ -98,7 +98,7 @@
                     <!-- Department -->
                     <div class="form-group col-md-3">
 
-                        <select name="dept"
+                        <select name="deptID"
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark ">
                             <option value="NULL" selected disabled hidden>No Department</option>
 
@@ -108,7 +108,7 @@
 
                                 while( $row = mysqli_fetch_assoc($depts) ){
 
-                                    echo "<option value='" .$row['deptID']. "'>". $row['deptName'] ."</option>";
+                                    echo "<option  value='" .$row['deptID']. "'>". $row['deptName'] ."</option>";
                                 
                                 }
 

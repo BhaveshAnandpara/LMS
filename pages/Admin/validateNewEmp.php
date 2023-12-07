@@ -39,6 +39,9 @@ try{
     else if ( empty($_POST['empName']) ) {
         throw new Exception("Employee Name cannot be Empty");
     }
+    else if ( empty($_POST['deptID']) ) {
+        throw new Exception("Department cannot be Empty");
+    }
     else if ( empty($_POST['joiningDate']) ) {
         throw new Exception("Joining Date cannot be Empty");
     }
@@ -46,7 +49,7 @@ try{
     //Get the Data
     $empEmail =  $_POST['empEmail'] ;
     $empName =  $_POST['empName'] ;
-    $deptID =  empty($_POST['dept']) ? "NULL" : $_POST['dept'] ;
+    $deptID =  empty($_POST['deptID']) ? "NULL" : $_POST['deptID'] ;
     $joiningDate =  $_POST['joiningDate'] ;
     $type =  $_POST['type'] ;
     $role =  $_POST['role'] ;
