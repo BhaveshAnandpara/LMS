@@ -45,8 +45,6 @@ try{
     $deptAlias =  $_POST['deptAlias'] ;
     $deptHOD =  $_POST['deptHOD']; //Gives undefined if not selected but whatever
 
-    //If Null Assign NULL Values
-    if( empty($deptHOD) ) $deptHOD = "NULL";
 
 
     // ----------------------------------- Validate Department Name ----------------------------------- //
@@ -92,7 +90,7 @@ try{
 
 
     //Updating Current HOD role to faculty
-    if( $deptHOD != "NULL" ){
+    if( $deptHOD == "NULL" ){
 
         //Check if HOD exists
 
@@ -105,17 +103,6 @@ try{
 
                 $hod = $currDept['deptHOD'];
 
-                echo 
-                "<script>
-                    let ans = false
-                     if (confirm( 'Are you Sure ! Current HOD will be demoted to FACULTY' ) == true ) ans = true
-                </script>";
-
-                echo $ans = "<script>document.write(ans)</script>";
-
-                if( $ans == true ){
-
-                
                 $employee_FACULTY = Config::$_EMPLOYEE_ROLE['FACULTY'];
 
                 //Query to update currentHOD to faculty
@@ -125,11 +112,6 @@ try{
                 if( !$result ) {
                     throw new Exception("Opertaion Failed");
                 }
-
-
-                }
-
-
 
             }
 
