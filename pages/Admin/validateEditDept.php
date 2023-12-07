@@ -33,12 +33,10 @@ try{
 
     //Check Whether Name and Desc is empty or not
     if ( empty($_POST['deptName']) ) {
-        echo Utils::alert("Department Name cannot be Empty" , "ERROR");
         throw new Exception("Department Name cannot be Empty");
     }
 
     else if ( empty($_POST['deptAlias']) ) {
-        echo Utils::alert("Department Alias cannot be Empty", "ERROR");
         throw new Exception("Department Alias cannot be Empty");
     }
 
@@ -70,7 +68,6 @@ try{
     while( $row = mysqli_fetch_assoc($deptNameResult) ){
         
         if( $row['deptName'] == $deptName ){
-            echo Utils::alert("Department Name Already Exits" , "ERROR");
             throw new Exception("Department Name Already Exits");
         }
         
@@ -111,8 +108,7 @@ try{
                 $result =  mysqli_query( $conn , $sql);
 
                 if( !$result ) {
-                    Utils::alert("Opertaion Failed" , "ERROR");
-                    throw new Exception("Error Occured During Query Updation");
+                    throw new Exception("Opertaion Failed");
                 }
 
 
@@ -131,12 +127,9 @@ try{
     $result =  mysqli_query( $conn , $sql);
     
     if( !$result ) {
-        Utils::alert("Opertaion Failed", "ERROR");
-        throw new Exception("Error Occured During Query Updation");
+        throw new Exception("Opertaion Failed");
     }
     else{
-
-        echo Utils::alert("Department Updated Successfully", "SUCCESS");
 
 
         $time = date( 'Y-m-d H:i:s' , time());
@@ -168,9 +161,11 @@ try{
         }
 
 
-        echo "<script>
-            window.location.href = './manageDepartment.php'
-        </script>";
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize(["Department Edited Successfully" , "SUCCESS"]);
+        header("Location: editDept.php?deptID=$deptID");
+        exit();
+
 
         }
 
@@ -182,11 +177,14 @@ try{
     
 catch(Exception $e){
 
-    echo $e;
+        $errorMessage = $e->getMessage();
+        echo $errorMessage;
 
-    echo "<script>
-        window.location.href = './manageDepartment.php'
-    </script>";
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+
+        header("Location: editDept.php?deptID=$deptID");
+        exit();
     
 }
 

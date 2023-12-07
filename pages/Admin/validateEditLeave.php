@@ -106,7 +106,7 @@ try{
 
 
     }
-    catch(Exception $e){
+catch(Exception $e){
 
         $errorMessage = $e->getMessage();
         echo $errorMessage;
