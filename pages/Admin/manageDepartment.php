@@ -83,7 +83,7 @@
                     <h3> Manage Departments </h3>
                 </div>
 
-                <a href="../../pages/Admin/addDept.php" class="my-3" ><button class="AddBtn"> + </button></a>
+                <a href="../../pages/Admin/addDept.php" class="my-3" style="width : fit-content;"  ><button class="AddBtn"> + </button></a>
 
                 <table class="tablecontent">
 
