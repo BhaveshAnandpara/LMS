@@ -45,6 +45,10 @@ try{
     else if ( empty($_POST['joiningDate']) ) {
         throw new Exception("Joining Date cannot be Empty");
     }
+    else if ( date($_POST['inactiveDate']) < date($_POST['joiningDate']) ) {
+        throw new Exception("Joining Date cannot be after Deactivation Date");
+    }
+
 
     //Get the Data
     $empEmail =  $_POST['empEmail'] ;
