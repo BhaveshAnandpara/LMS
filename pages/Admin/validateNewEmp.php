@@ -34,35 +34,24 @@ try{
 
     //Check Whether Name and Desc is empty or not
     if ( empty($_POST['empEmail']) ) {
-        echo Utils::alert("Employee Email cannot be empty" , "ERROR");
         throw new Exception("Employee Email cannot be empty ");
     }
     else if ( empty($_POST['empName']) ) {
-        echo Utils::alert("Employee Name cannot be Empty" , "ERROR");
         throw new Exception("Employee Name cannot be Empty");
     }
     else if ( empty($_POST['joiningDate']) ) {
-        echo Utils::alert("Joining Date cannot be Empty" , "ERROR");
         throw new Exception("Joining Date cannot be Empty");
     }
 
     //Get the Data
     $empEmail =  $_POST['empEmail'] ;
     $empName =  $_POST['empName'] ;
-    $deptID =  $_POST['dept'] ;
+    $deptID =  empty($_POST['dept']) ? "NULL" : $_POST['dept'] ;
     $joiningDate =  $_POST['joiningDate'] ;
     $type =  $_POST['type'] ;
     $role =  $_POST['role'] ;
     $status =  $_POST['status'] ;
-    $inactiveDate =  $_POST['inactiveDate'] ;
-
-    
-
-
-    //If Null Assign NULL Values
-    if( empty($deptID) ) $deptID = "NULL";
-    if( empty($inactiveDate) ) $inactiveDate = "NULL";
-
+    $inactiveDate =  empty($_POST['inactiveDate']) ? "NULL" : $_POST['inactiveDate'] ;
 
 
     //DECLARATIONS OF CONSTANTS
@@ -88,7 +77,6 @@ try{
     //Check whether entered email is bitwardha email or not
     if( !(str_contains( $empEmail , '@bitwardha.ac.in')) ){
         
-        echo Utils::alert("Email is not recognized by Institution" , "ERROR");
         throw new Exception("Email is not recognized by Institution");
         
     }
@@ -102,7 +90,6 @@ try{
         
         
         if( $row['email'] == $empEmail ){
-            echo Utils::alert("Employee with this Email Already Exists" ,"ERROR");
             throw new Exception("Employee with this Email Already Exists");
         }
         
@@ -127,16 +114,13 @@ try{
     $roleResult =  mysqli_query( $conn , $sql);
     
     if( !$roleResult ) {
-        Utils::alert("Opertaion Failed" , "ERROR");
-        throw new Exception("Error Occured During Validation of Role");
+        throw new Exception("Opertaion Failed");
     }   
     
     $roleResult =  mysqli_fetch_assoc($roleResult);
     
     if( $roleResult['count'] != 0 ){
 
-        $msg = $role." Already Exists";
-        Utils::alert($msg , "ERROR"); //! not working ( Don't know why )
         throw new Exception("$role Already Exists");
 
     }
@@ -160,13 +144,11 @@ try{
     
     if( !$result ) {
 
-        Utils::alert("Opertaion Failed" , "ERROR");
-        throw new Exception("Error Occured During Query Insertion");
+        throw new Exception("Opertaion Failed");
 
     }
     else{
 
-            echo Utils::alert("Employee Added Successfully" , "SUCCESS");
 
             //------------------------------ Main Logic  ------------------------------//
 
@@ -179,11 +161,12 @@ try{
 
             if( $result['status'] == $employee_INACTIVE ){
 
-                    echo "<script>
-                        window.location.href = './addEmp.php'
-                    </script>";
+                // Set a session variable with the response message
+                $_SESSION['response_message'] = serialize(["Employee Added Successfully" , "SUCCESS"]);
 
-                exit(0);
+                // Redirect back to addLeave.php
+                header("Location: addEmp.php");
+                exit();
 
             }
             
@@ -202,7 +185,7 @@ try{
                 $result =  mysqli_query( $conn , $sql);
 
                 if( !$result ){ //If transaction fails
-                    echo Utils::alert(" Error Occured during ". $row['fullName']. "Transaction " , "ERROR");
+                    // echo Utils::alert(" Error Occured during ". $row['fullName']. "Transaction " , "ERROR");
                 }
 
                 // 4. Get Transaction ID
@@ -224,7 +207,7 @@ try{
                     $sql = "Update leavetransactions set status='$transaction_FAILED' where applicantID=$employeeID and leaveID=$leaveID and status = '$transaction_PENDING'";
                     $conn = sql_conn();
                     $result = mysqli_query( $conn , $sql);
-                    echo "Error Occured during Adding New Balances";
+                    // echo "Error Occured during Adding New Balances";
                     
                 }
                 
@@ -237,24 +220,30 @@ try{
 
                 }
 
-                
-                echo "<script>
-                    window.location.href = './addEmp.php'
-                </script>";
-
-
-            
             }
+
+            // Set a session variable with the response message
+            $_SESSION['response_message'] = serialize(["Employee Added Successfully" , "SUCCESS"]);
+
+            // Redirect back to addLeave.php
+            header("Location: addEmp.php");
+            exit();
+            
 
     }
 }
+
 catch(Exception $e){
 
-    echo $e;
+    $errorMessage = $e->getMessage();
+    echo $errorMessage;
 
-    echo "<script>
-        window.location.href = './addEmp.php'
-    </script>";
+    // Set a session variable with the response message
+    $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+
+    // Redirect back to addLeave.php
+    header("Location: addEmp.php");
+    exit();
     
 }
 
