@@ -74,6 +74,20 @@
             include "../../includes/header.php";
         ?>
 
+        <?php
+
+            $masterData = $user->getMasterData();
+            foreach($masterData as $row ){
+
+                if( $row['leaveID'] == $leaveID ){
+                    $balanceLimit = $row['balanceLimit'];
+                    break;
+                }
+
+            }
+        
+        ?>
+
         <?php 
             $leaveDetails = mysqli_fetch_assoc( Utils::getLeaveDetailsOfEmployee($empID , $leaveID) );
         ?>
@@ -82,9 +96,9 @@
 
         
             <?php $actionUrl = "validateEmpBalance.php?leaveID=$leaveID&empID=$empID" ?>
-
-            <form class=" bg-white shadow pl-5 pr-5 pb-3 pt-2 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
-                method="POST">
+            
+            
+            <form class=" bg-white shadow pl-5 pr-5 pb-3 pt-2 mt-5 rounded-lg"  onsubmit="return submitForm(event)"  action='<?php echo $actionUrl?>' method="POST" >
 
                 <h4 class="pb-3 pt-2 mt-3" style="color: #11101D;">Manage Leave Balance</h4>
 
@@ -155,7 +169,7 @@
 
                     <!-- Amount -->
                     <div class="form-group ml-2 col-md-6">
-                        <input type="number"
+                        <input type="number" id="amount"
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark "
                             placeholder="Amount" name="amount">
                     </div>
@@ -164,18 +178,97 @@
                     <div class="form-group ml-2 col-md-12  ">
                         <input type="text"
                             class="form-control bg-white border-top-0 border-right-0 border-left-0 border border-dark "
-                            placeholder="Reason" name="reason">
+                            placeholder="Reason" name="reason" id="reason" >
                     </div>
 
-                    <div class="form-group col-md-6"> <input type="submit" value="Update" name="addLeaveSubmit"
+                    <div class="form-group col-md-6"> <input type="submit" value="Update" name="addLeaveSubmit" id="submitForm"
                             class="submitbtn"> </div>
 
-            </form>
+</form>
 
         </div>
 
 
     </section>
+
+
+
+    <?php
+    
+        require('../../includes/model.php'); 
+
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+
+                let action = 'credit';
+
+                const manageBalanceRadios = document.getElementsByName('manageBalance');
+                manageBalanceRadios.forEach(radio => {
+                    radio.addEventListener('click', (e)=>{
+                        action = e.target.value;
+                        console.log(action);
+                    });
+                });
+                
+                document.getElementById('submitForm').onclick = ()=>submitForm()
+
+                function submitForm(){
+
+                    const amount = document.getElementById('amount').value
+                    const reason = document.getElementById('reason').value
+                    const balance = " . $leaveDetails['balance']. "
+
+
+                    let newBalance = balance-parseInt(amount);
+                    if( action === 'credit' ) newBalance = balance+parseInt(amount);
+
+                    if( amount.trim() === '' ) customAlert('Amount cannot be empty' , 'ERROR'  )
+                    else if( reason.trim() === '' ) customAlert('Reason cannot be empty' , 'ERROR'  )
+                    else if( amount < 0 ) customAlert('Amount cannot be less than 0' , 'ERROR'  )
+                    else if(  action === 'debit' &&  newBalance < 0 ) customAlert('You cannot deduct more than balance' , 'ERROR' );
+                    else if(  action === 'credit' &&  newBalance > $balanceLimit ) customAlert('Cannot Add more than balance limit of $balanceLimit' , 'ERROR' );
+                    else{
+
+                        if( confirm( 'The Balance will be ' + newBalance ) ){
+                            return true
+                        }
+                    }
+
+
+                    return false;
+
+                }
+
+                function customAlert( msg , title ){
+
+                    document.querySelector('.modal-body').innerHTML = msg;
+                    document.querySelector('.modal-title').innerHTML = title;
+    
+                  
+                    $('#myModal').modal();
+
+
+                }
+
+            });
+        </script>";
+
+        if (isset($_SESSION['response_message'])) {
+
+            $res = unserialize($_SESSION['response_message']);
+            unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+
+            if( $res[1] === "SUCCESS" ){
+                echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "viewDetailedEmp.php?empID=$empID");
+            }else{
+                echo Utils::alert($res[0] , $res[1], "viewDetailedEmp.php?empID=$empID");
+            }
+
+        }
+
+    ?>
+
+
 </body>
 
 </html>
