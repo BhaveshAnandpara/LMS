@@ -172,8 +172,6 @@
 
                     </div>
 
-                    <a href="../../pages/Admin/addEmp.php" class="my-3"><button class="AddBtn"> + </button></a>
-
                     <table class="tablecontent" id="employeeTable">
 
                         <thead>
