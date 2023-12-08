@@ -19,9 +19,6 @@
 
 <!-- Include this to use User object -->
 <?php
-
-
-
     //Get the User Object
     $user =  $_SESSION['user'];
 
@@ -34,18 +31,15 @@ try{
 
     //Check Whether Name and Alias is empty or not
     if ( empty($_POST['holidayDate']) ) {
-        echo Utils::alert("Holiday Date cannot be Empty", "ERROR");
         throw new Exception("Holiday Date cannot be Empty");
     }
     else if ( empty($_POST['holidayName']) ) {
-        echo Utils::alert("Holiday Name cannot be Empty", "ERROR");
         throw new Exception("Holiday Name cannot be Empty");
     }
 
 
     $holidayDate =   $_POST['holidayDate'] ;
     $holidayName =  $_POST['holidayName'] ;
-
 
     $holidayName = trim(ucwords(strtolower($holidayName))); // lowercase -> captitalized -> trim spaces
 
@@ -58,7 +52,6 @@ try{
         
         if(  strtotime($row['date']) == strtotime($holidayDate) ){
 
-            echo Utils::alert("Holiday at this date Already Exits", "ERROR");
             throw new Exception("Holiday at this date Already Exits");
 
         }
@@ -71,29 +64,33 @@ try{
 
     if( !$result ){
 
-        echo Utils::alert("Error Occured", "ERROR");
+        throw new Exception("Error Occured");
         
     }
     
-    echo Utils::alert("Holiday Added", "SUCCESS");
+    // Set a session variable with the response message
+    $_SESSION['response_message'] = serialize(["Holiday Added Successfully" , "SUCCESS"]);
 
-    echo "<script>
-        window.location.href = './manageHolidays.php'
-    </script>";
+    // Redirect back to addLeave.php
+    header("Location: addHoliday.php");
+    exit();
 
 
     
 }
 catch(Exception $e){
 
-    echo $e;
+    $errorMessage = $e->getMessage();
+    echo $errorMessage;
 
-    echo "<script>
-        window.location.href = './addHoliday.php'
-    </script>";
+    // Set a session variable with the response message
+    $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+
+    // Redirect back to addLeave.php
+    header("Location: addHoliday.php");
+    exit();
     
 }
-
 
 
 

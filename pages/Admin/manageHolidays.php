@@ -84,9 +84,22 @@
                         <h3> Manage Holidays </h3>
                     </div>
 
-                    <a href="../../pages/Admin/addHoliday.php" class="my-3"><button class="AddBtn"> + </button></a>
+                    <a href="../../pages/Admin/addHoliday.php" class="my-3" style="width : fit-content;" ><button class="AddBtn"> + </button></a>
 
-                    <table class="tablecontent mb-4 ">
+                    
+                    <?php
+                            $holidays = Utils::getUpcomingHolidays(); // Returns Array of Tuples in Database
+
+
+                            if( mysqli_num_rows($holidays) == 0){
+                                echo "<p style=' width : 100%; text-align : center; ' >No Upcoming Holdiays</p>";
+                            }
+                            else{
+                                
+                    ?>
+
+
+                    <table class='tablecontent mb-4'>
 
                         <thead>
                             <tr>
@@ -100,24 +113,43 @@
 
                             <?php
 
-                            $holidays = Utils::getUpcomingHolidays(); // Returns Array of Tuples in Database
 
-                            while($row = mysqli_fetch_assoc( $holidays) ){
+                                while($row = mysqli_fetch_assoc( $holidays) ){
 
-                                echo "<tr>";
-                                echo "<td  >" . date( 'd-m-Y' , strtotime($row['date']) ) . "</td>";
-                                echo "<td  >" . $row['holidayName'] . "</td>";
-                                echo "<td><a href='../../pages/Admin/editHoliday.php?date=$row[date]&name=$row[holidayName]'><i class='fa-solid fa-pen-to-square edit'></i></a></td>";
-                                echo "</tr>";
-                            }
+                                    $name = $row['holidayName'];
+                                    $date = $row['date'];
+                                    
+                                    echo "<tr>";
+                                    echo "<td >" . date( 'd-m-Y' , strtotime($row['date']) ) . "</td>";
+                                    echo "<td >" . $row['holidayName'] . "</td>";
+                                    echo "<td ><a href='../../pages/Admin/editHoliday.php?date=$date&name=$name'><i class=' fa-solid fa-pen editBtn '></i></a></td>";
+                                    echo "</tr>";
+                                }
 
                         ?>
                         </tbody>
+
                     </table>
+
+                        <?php
+                            }
+                        ?>
 
                     <!-- Elapsed Holidays -->
 
                     <p id="filter-btn">Elapsed Holidays <i class="fa-solid fa-caret-down"></i> </p>
+
+
+                    <?php
+                            $holidays = Utils::getElapsedHolidays(); // Returns Array of Tuples in Database
+                            
+                            
+                            if( mysqli_num_rows($holidays) == 0 ){
+                                echo "<p style=' width : 100%; text-align : center; ' >No Elapsed Holdiays</p>";
+                            }
+                            else{
+                                
+                    ?>
 
                     <table class="tablecontent" id="elapsed-holidays-table">
 
@@ -132,8 +164,6 @@
 
                             <?php
 
-                                $holidays = Utils::getElapsedHolidays(); // Returns Array of Tuples in Database
-
                                 while($row = mysqli_fetch_assoc( $holidays) ){
                                 
                                     echo "<tr>";
@@ -145,6 +175,10 @@
                             ?>
                         </tbody>
                     </table>
+
+                    <?php
+                        }
+                    ?>
 
                 </div>
 

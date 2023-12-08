@@ -38,11 +38,9 @@ try{
 
       //Check Whether Name and Alias is empty or not
       if ( empty($date) ) {
-        echo Utils::alert("Holiday Date cannot be Empty", "ERROR");
         throw new Exception("Holiday Date cannot be Empty");
     }
     else if ( empty($name) ) {
-        echo Utils::alert("Holiday Name cannot be Empty", "ERROR");
         throw new Exception("Holiday Name cannot be Empty");
     }
     
@@ -60,11 +58,9 @@ try{
     
     while( $row = mysqli_fetch_assoc($result) ){
         
-        if(  strtotime($row['date']) == strtotime($holidayDate) ){
-
-            echo Utils::alert("Holiday at this date Already Exits", "ERROR");
+        if(  $currDate != $date && strtotime($row['date']) == strtotime($holidayDate) ){
             throw new Exception("Holiday at this date Already Exits");
-
+            
         }
         
     }
@@ -72,28 +68,32 @@ try{
     //Query to insert holiday data into holidays
     $sql = "UPDATE `holidays` SET `date`='$holidayDate' , `holidayName`='$holidayName' where date='$currDate' ";
     $result =  mysqli_query( $conn , $sql);
-
+    
     if( !$result ){
-
-        echo Utils::alert("Errro Occured", "ERROR");
+        
+        throw new Exception("Errro Occured");
         
     }
     
-    echo Utils::alert("Holiday Updated", "SUCCESS");
+    // Set a session variable with the response message
+    $_SESSION['response_message'] = serialize(["Holiday Updated Successfully" , "SUCCESS"]);
 
-    echo "<script>
-        window.location.href = './editHoliday.php?date=$date&name=$name'
-    </script>";
+    // Redirect back to addLeave.php
+    header("Location: editHoliday.php?date=$date&name=$name");
+    exit();
 
 }
-    
 catch(Exception $e){
 
-    echo $e;
+    $errorMessage = $e->getMessage();
+    // echo $errorMessage;
 
-    echo "<script>
-        window.location.href = './manageHolidays.php'
-    </script>";
+    // Set a session variable with the response message
+    $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+
+    // Redirect back to addLeave.php
+    header("Location: editHoliday.php?date=$date&name=$name");
+    exit();
     
 }
 
