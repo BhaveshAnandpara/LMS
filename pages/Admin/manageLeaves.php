@@ -163,6 +163,9 @@
                                 $roles = Config::$_EMPLOYEE_ROLE;
 
                                 foreach( $roles as $key => $value ){
+
+                                    if( $value === Config::$_ADMIN_ || $value === Config::$_PRINCIPAL_  ) continue;
+
                                         echo "<input type='checkbox' class='check-inp inp-role' checked value='$key' >";
                                         echo "<label class=' mr-4 ml-2 ' >$value</label>";
                                 } ?>
@@ -206,7 +209,9 @@
 
                             
                             foreach($employees as $row ){
-                                
+                          
+                                if( $row['role'] === Config::$_ADMIN_ || $row['role'] === Config::$_PRINCIPAL_  ) continue;
+
                                 $statusBtnValue = empStatusButton( $row['status'] );
 
                                 $statusStyle = "text-black";
