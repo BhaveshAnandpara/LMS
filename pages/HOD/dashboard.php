@@ -1,26 +1,26 @@
 <?php 
+
+    session_start();
+    
     //  Creates database connection 
     require "../../includes/db.conn.php";
-?>
-
-
-<!-- Include this to use User object -->
-<?php
-
+    
     //include class definition
-    require('../../utils/Staff/Staff.class.php');
+    require('../../utils/Staff/staff.class.php');
 
     //include Config Class
     require('../../utils/Config/Config.class.php');
     require('../../utils/Utils.class.php');
 
     //start session
-    session_start();
+    
 
     //Get the User Object
-    $user =  $_SESSION['user'];
-
+    $user = unserialize($_SESSION['user']) ;
+    
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,11 +74,13 @@
             <div class=" bg-white shadow pl-5 pr-5 pb-5 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
                 method="POST">
 
+                <h4 class="pb-3 pt-2  " style="color: #11101D;"> Staff on Leave <i id="add-app" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
 
-                <h4 class="pb-3 pt-2  " style="color: #11101D;"> List of Staff on Leave<i id="add-app" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
-                <?php 
-                    include '../../utils/HOD/employeesOnLeave.php'
-                ?>
+                <div id="staffOnLeaveCon">
+                    <?php 
+                        include '../../utils/HOD/employeesOnLeave.php'
+                    ?>
+                </div>
             </div>
 
 
@@ -186,6 +188,14 @@
 
             $(document).ready(function() {
                 
+
+            // function to toggle basic information div
+            $('#add-app').click(() => {
+                
+                $('#staffOnLeaveCon').toggle();
+
+            })
+
             })
 
         </script>

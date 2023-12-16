@@ -7,8 +7,8 @@
 
 .seperateDates {
     width: 15%;
-    min-height: 250px;
-    max-height: 250px;
+    min-height: 150px;
+    max-height: 150px;
     overflow: scroll;
     border: 1px solid #e0e0e0;
 }
@@ -36,6 +36,15 @@
     gap: 10px;
 }
 
+.calender-text{
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 6px;
+}
+
+
 .employeesOnLeave a:hover {
     color: #4f4f4f;
 }
@@ -49,8 +58,7 @@
     border: 1px solid #b5b5b5;
     box-shadow: 0px 0px 2px #b5b5b5;
     word-wrap: ellipsis;
-    padding: 10px 0;
-    border-radius: 8px;
+    border-radius: 12px 4px 4px 4px;
 }
 
 .mainDiv {

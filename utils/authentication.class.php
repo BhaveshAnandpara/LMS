@@ -74,7 +74,7 @@
                 }
                 else if( $_SESSION['role'] === Config::$_HOD_ ){
                     $user = new HOD( $_SESSION['employeeID']);
-                    $_SESSION['user'] = $user;
+                    $_SESSION['user'] = serialize($user);
                     echo json_encode($user);
                 }
                 else if( $_SESSION['role'] === Config::$_PRINCIPAL_ ){
