@@ -1,4 +1,7 @@
 <?php
+    //start session
+    session_start();
+    
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -6,16 +9,15 @@
 <!-- Include this to use User object -->
 <?php
     //include class definition
-    require('../../utils/Staff/Staff.class.php');
+    require('../../utils/Staff/staff.class.php');
     require('../../utils/Principal/Principal.class.php');
 
     //include Config Class
     require('../../utils/Config/Config.class.php');
     require('../../utils/Utils.class.php');
-    //start session
-    session_start();
+    
     //Get the User Object
-    $user =  $_SESSION['user'];
+    $user = unserialize($_SESSION['user']) ;
     // to get application idand reason
     $applicationId = $_GET['id'];
     $data =  mysqli_fetch_assoc( $user->viewDetailApplication($applicationId) );
@@ -268,6 +270,19 @@
                         </div>
                         <div class="col-sm-3 d-inline text-secondary">
                             
+                    <?php
+                    
+                        $additionalApp =  $user->getApprovalRequst($applicationId); 
+
+                    
+                        if( mysqli_num_rows($additionalApp) == 0){
+                            echo " <span> No Additional Approvals </span>";
+                        }
+                        else{
+
+                    
+                    ?>
+
                     <!-- table here -->
                     <table class="tablecontent" id="add-app-table">
 
@@ -286,7 +301,6 @@
 
                             <?php
 
-                                $additionalApp =  $user->getApprovalRequst($applicationId); 
 
                                 while($row =  mysqli_fetch_assoc($additionalApp) ){
 
@@ -298,12 +312,14 @@
                                     echo "<td  >" . $approverInfo['fullName'] . "</td>";
                                     echo "<td  >" . $approverInfo['deptName'] . "</td>";
                                     echo "<td  >" . $approverInfo['role'] . " </td>";
-                                    echo "<td  >" . $row['status'] . " </td>";
+                                    echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
                                 }
                             
                             ?>
                         </tbody>
                     </table>
+
+                    <?php }?>
 
 
                         </div>
@@ -325,6 +341,20 @@
 
                     <div class="form-row">
                         <h5 class="pb-3 pt-2  " style="color: #11101D;">Lecture Adjustment Details </h5>
+
+                    <?php
+                    
+                        $lecData =  $user->getLectureAdjustments($applicationId);
+
+                    
+                        if( mysqli_num_rows($lecData) == 0){
+                            echo "<p style=' width : 100%; text-align : center; ' > No Lecture Adjustments </p>";
+                        }
+                        else{
+
+                    
+                    ?>
+
                         <table class="tablecontent" id="leave-balance-table">
                             <thead>
                                 <tr>
@@ -353,11 +383,14 @@
                                     echo "<td  >" . $row['date']  . " </td>";
                                     echo "<td  >" . $row['startTime'] . "</td>";
                                     echo "<td  >" . $row['endTime'] . " </td>";
-                                    echo "<td  >" . $row['status']  . " </td>";
+                                    echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
                                 }
                                 ?>
                             </tbody>
                         </table>
+
+
+                    <?php }?>
                     </div>
 
                     <!-- Task Adjustment Details  -->
@@ -365,6 +398,18 @@
                     <div class="form-row mt-2">
 
                         <h5 class="pb-3 pt-2 mt-2 " style="color: #11101D;">Task Adjustment Details </h5>
+
+                        <?php
+                    
+                            $lecData =  $user->getTaskAdjustments($applicationId);
+
+                        
+                            if( mysqli_num_rows($lecData) == 0){
+                                echo "<p style=' width : 100%; text-align : center; ' > No Task Adjustments </p>";
+                            }
+                            else{
+                        
+                        ?>
 
                         <table class="tablecontent" id="leave-balance-table">
                             <thead>
@@ -381,8 +426,6 @@
 
                                 // get lecture adjustment details of that perticuler application 
 
-                                $lecData =  $user->getTaskAdjustments($applicationId);
-
                                 while ($row = mysqli_fetch_assoc($lecData)) {
 
                                     echo "<tr>";
@@ -390,11 +433,14 @@
                                     echo "<td  >" . $row['startDate'] . "</td>";
                                     echo "<td  >" . $row['endDate'] . " </td>";
                                     echo "<td  >" . $row['task']  . " </td>";
-                                    echo "<td  >" . $row['status']  . " </td>";
+                                    echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
                                 }
                                 ?>
                             </tbody>
                         </table>
+
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>
@@ -404,6 +450,19 @@
             <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg mb-5" method="POST">
                 <h4 class="pb-3 pt-2  " style="color: #11101D;">Uploaded Documents <i id="file-details" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
                 <div class="form-row" id="file-details-container">
+
+                <?php
+                    
+                    $fileData =  $user->getFileDetails($applicationId);
+
+                
+                    if( mysqli_num_rows($fileData) == 0){
+                        echo "<p style=' width : 100%; text-align : center; ' > No Files Attached </p>";
+                    }
+                    else{
+                
+                ?>
+
                     <table class="tablecontent" id="leave-balance-table">
                         <thead>
                             <tr>
@@ -414,16 +473,18 @@
                         <tbody id="tbody">
                         <?php
                             // to get additional informatin details 
-                            $fileData =  $user->getFileDetails($applicationId);
+
                             while ($row = mysqli_fetch_assoc($fileData)) { ?>
                             <tr>
                                 <td> <?php echo  substr( $row['file'] , 18 , strlen($row['file']) )  ?> </td>
                                 <td>
-                                <a href="<?php echo $row['file']; ?>" class="btn btn-success">View Document</a>
+                                    <a href="<?php echo $row['file']; ?>" class="btn btn-success">View Document</a>
                                 </td>
                                 <?php  } ?>
                         </tbody>
                     </table>
+
+                    <?php }?>
                 </div>
             </div>
 
