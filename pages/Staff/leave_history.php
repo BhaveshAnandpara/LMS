@@ -1,19 +1,21 @@
-<!-- Include this to use User object -->
 <?php
-//  Creates database connection 
-require "../../includes/db.conn.php";
-//include class definition
-require('../../utils/Staff/Staff.class.php');
 
-//include Config Class
-require('../../utils/Config/Config.class.php');
-require('../../utils/Utils.class.php');
+    //start session
+    session_start();
 
-//start session
-session_start();
-
-//Get the User Object
-$user =  unserialize($_SESSION['user']);
+    //  Creates database connection 
+    require "../../includes/db.conn.php";
+    
+    //include class definition
+    require('../../utils/Staff/staff.class.php');
+    
+    //include Config Class
+    require('../../utils/Config/Config.class.php');
+    require('../../utils/Utils.class.php');
+    
+    
+    //Get the User Object
+    $user =  unserialize($_SESSION['user']);
 
 
 ?>
@@ -106,16 +108,8 @@ $user =  unserialize($_SESSION['user']);
                             ?>
 
                         </div>
-
-                        <!-- Extension Filter -->
-                        <div class="my-2 col-md-5 ">
-
-                            <input type='checkbox' id="inp-ext" class='check-inp '  value='extension' >
-                            <label class=' mr-4 ml-2 ' > Extension </label>
-
-                        </div>
                         <!-- Status Filter -->
-                        <div class="my-2 col-md-6 ">
+                        <div class="my-2 col-md-12 ">
                             <!-- Showing Status as Options -->
                             <?php
 
@@ -232,21 +226,18 @@ $user =  unserialize($_SESSION['user']);
             //Take all Types of Filters
             let leaveInps = document.querySelectorAll('.inp-leave')
             let statusInps = document.querySelectorAll('.inp-status')
-            let extInps = document.getElementById('inp-ext')
 
             //Create Arrays
             let leaves = []
             let status = []
 
-
             //For Leaves
             leaveInps.forEach(element => {
 
                 if (element.checked) {
-
                     leaves.push(element.value);
                 }
-
+                
             });
 
             //For Status
@@ -259,18 +250,23 @@ $user =  unserialize($_SESSION['user']);
 
             });
 
-
             let tableLeaves = data[1];
-            let tableStatus = data[9];
-            let tableExt = data[5];
+            let tableStatus = data[5];
+            
+            tableLeaves = tableLeaves.split(' + ')
+            
+            let result = false;
 
-            tableLeaves = tableLeaves.split(' + ')[0]
+            tableLeaves.forEach( leave => {
+                
+                if( leaves.includes( leave ) && status.includes( tableStatus ) ){
+                    result = true;
+                }
+                
+            });
 
-            //Filter Logic
-            if( leaves.includes( tableLeaves ) && status.includes( tableStatus ) && extInps.checked+'' == tableExt ) return true;
-            else return false;
-
-
+            return result;
+            
 
 
         });
