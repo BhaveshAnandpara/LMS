@@ -13,7 +13,7 @@ require('../../utils/Utils.class.php');
 session_start();
 
 //Get the User Object
-$user =  $_SESSION['user'];
+$user =  unserialize($_SESSION['user']);
 
 
 ?>

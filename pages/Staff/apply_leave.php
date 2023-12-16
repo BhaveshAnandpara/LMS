@@ -22,8 +22,6 @@
 //Get the User Object
 $user = unserialize($_SESSION['user']) ;
 
-var_dump($user);
-
 ?>
 
 
@@ -135,9 +133,9 @@ $holidays = Utils::getUpcomingHolidays();
         <div class="container">
 
             <!-- Current Balance -->
-            <form method="POST" class="bg-white shadow pl-5 pr-5  pb-5 pt-2 mt-5 rounded-lg " style="border-right:6px solid #11101D;">
+            <form method="POST" class="bg-white shadow pl-5 pr-5  pb-5 pt-2 mt-4 rounded-lg " style="border-right:6px solid #11101D;">
 
-                <h4 class="pb-3 pt-2" style="color: #11101D;">Apply for Leave</h4>
+                <h4 class="pb-3 pt-2 mt-4" style="color: #11101D;">Apply for Leave</h4>
 
                 <!-- Uneditable Info -->
                 <div class="form-row">
@@ -277,7 +275,7 @@ $holidays = Utils::getUpcomingHolidays();
                                     $emps = Utils::getAllActiveEmployees();
 
                                     while ($row = mysqli_fetch_assoc($emps)) {
-
+                                        if( $row['employeeID'] === $user->employeeId || $row['role'] === Config::$_ADMIN_ ) continue;
                                         echo "<option value='" . $row['employeeID'] . "' > " . $row['fullName'] . " </option>";
                                     }
 
@@ -351,9 +349,9 @@ $holidays = Utils::getUpcomingHolidays();
                                     <?php
 
                                     $emps = Utils::getAllActiveEmployees();
-
+                                    
                                     while ($row = mysqli_fetch_assoc($emps)) {
-
+                                        if( $row['employeeID'] === $user->employeeId || $row['role'] === Config::$_ADMIN_ ) continue;
                                         echo "<option value='" . $row['employeeID'] . "' > " . $row['fullName'] . " </option>";
                                     }
 
@@ -409,7 +407,7 @@ $holidays = Utils::getUpcomingHolidays();
                                 $emps = Utils::getAllActiveEmployees();
 
                                 while ($row = mysqli_fetch_assoc($emps)) {
-
+                                    if( $row['employeeID'] === $user->employeeId || $row['role'] === Config::$_ADMIN_ ) continue; 
                                     echo "<option value='" . $row['employeeID'] . "' disable> " . $row['fullName'] . " </option>";
                                 }
 
@@ -1412,10 +1410,10 @@ $holidays = Utils::getUpcomingHolidays();
 
                         document.querySelector('.modal-body').innerHTML = message;
                         document.querySelector('.modal-title').innerHTML = "<span style=\'color: green;\'>Application Submitted</span>";
-
+                        document.querySelector('#close-btn').onclick = ()=>{
+                          window.location.href = './dashboard.php'
+                        }
                         $('#myModal').modal();
-                        windows.location.href = "./apply_leave.php"
-                        // alert(response);
                     },
 
                     error: function(jqXHR, textStatus, errorThrown) {
