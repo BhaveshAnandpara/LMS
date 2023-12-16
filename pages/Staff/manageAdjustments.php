@@ -1,19 +1,20 @@
-<!-- Include this to use User object -->
 <?php
-//  Creates database connection 
-require "../../includes/db.conn.php";
-//include class definition
-require('../../utils/Staff/Staff.class.php');
+    //start session
+    session_start();
 
-//include Config Class
-require('../../utils/Config/Config.class.php');
-require('../../utils/Utils.class.php');
+    //  Creates database connection 
+    require "../../includes/db.conn.php";
+    
+    //include class definition
+    require('../../utils/Staff/staff.class.php');
+    
+    //include Config Class
+    require('../../utils/Config/Config.class.php');
+    require('../../utils/Utils.class.php');
 
-//start session
-session_start();
 
-//Get the User Object
-$user = unserialize($_SESSION['user']);
+    //Get the User Object
+    $user = unserialize($_SESSION['user']) ;
 
 ?>
 <!DOCTYPE html>
@@ -106,8 +107,18 @@ $user = unserialize($_SESSION['user']);
 
                         <div class="form-row" id="lec-adj-container">
 
-                            <table class="tablecontent" id="lec-adj-table">
+                        <?php
+                        
+                            $lecAdjData =  $user->lectureAdjustmentRequst(); 
 
+                            if( mysqli_num_rows($lecAdjData) == 0){
+                                echo "<p style=' width : 100%; text-align : center; ' > No Lecture Adjustments </p>";
+                            }
+                            else{
+
+                        ?>
+
+                            <table class="tablecontent" id="lec-adj-table">
 
                                 <thead>
                                     <tr>
@@ -127,7 +138,6 @@ $user = unserialize($_SESSION['user']);
 
                                     <?php
 
-                                        $lecAdjData =  $user->lectureAdjustmentRequst(); 
                                         while($row =  mysqli_fetch_assoc($lecAdjData) ){
                                         
 
@@ -151,7 +161,10 @@ $user = unserialize($_SESSION['user']);
                                     ?>
                                 </tbody>
                             </table>
-                                    
+
+                        <?php
+                            }
+                        ?>
                                     
                         </div>
 
@@ -255,6 +268,17 @@ $user = unserialize($_SESSION['user']);
 
                         <div class="form-row" id="task-adj-container">
 
+                        <?php
+                        
+                            $lecAdjData =  $user->taskAdjustmentRequst(); 
+
+                            if( mysqli_num_rows($lecAdjData) == 0){
+                                echo "<p style=' width : 100%; text-align : center; ' > No Lecture Adjustments </p>";
+                            }
+                            else{
+
+                        ?>
+
                             <table class="tablecontent" id="task-adj-table">
 
 
@@ -274,7 +298,7 @@ $user = unserialize($_SESSION['user']);
 
                                     <?php
 
-                                        $lecAdjData =  $user->taskAdjustmentRequst(); 
+
                                         while($row =  mysqli_fetch_assoc($lecAdjData) ){
                                         
                                             echo "<tr>";
@@ -295,7 +319,10 @@ $user = unserialize($_SESSION['user']);
                                 </tbody>
                             </table>
                                     
-                                    
+                        <?php 
+                            }
+                        ?>
+                            
                         </div>
 
                             <p class=" w-100 mt-3 clickable " id="task-elapsed-btn">Elapsed Task Adjustments<i class="fa-solid fa-caret-down ml-2"></i> </p>
@@ -380,6 +407,17 @@ $user = unserialize($_SESSION['user']);
 
                         <div class="form-row" id="add-app-container">
 
+                        <?php
+                            
+                            $addApp =  $user->approvalRequst(); 
+
+                            if( mysqli_num_rows($addApp) == 0){
+                                echo "<p style=' width : 100%; text-align : center; ' > No Lecture Adjustments </p>";
+                            }
+                            else{
+
+                        ?>
+
                             <table class="tablecontent" id="add-app-table">
 
                                 <thead>
@@ -397,7 +435,7 @@ $user = unserialize($_SESSION['user']);
 
                                     <?php
 
-                                        $addApp =  $user->approvalRequst(); 
+
                                         while($row =  mysqli_fetch_assoc($addApp) ){
                                         
                                             
@@ -417,7 +455,10 @@ $user = unserialize($_SESSION['user']);
                                     ?>
                                 </tbody>
                             </table>
-                                    
+                                   
+                        <?php
+                                }
+                        ?>
                                     
                         </div>
 
@@ -507,7 +548,7 @@ $user = unserialize($_SESSION['user']);
                     $('#lec-elapsed').toggle()
                 })
 
-                $('#lec-adj-container').hide()
+                // $('#lec-adj-container').hide()
 
                 $('#lec-adj').click(() => {
                 
@@ -525,7 +566,7 @@ $user = unserialize($_SESSION['user']);
                     $('#task-elapsed').toggle()
                 })
 
-                $('#task-adj-container').hide()
+                // $('#task-adj-container').hide()
 
                 $('#task-adj').click(() => {
                 
@@ -541,7 +582,7 @@ $user = unserialize($_SESSION['user']);
                     $('#addApp-elapsed').toggle()
                 })
 
-                $('#add-app-container').hide()
+                // $('#add-app-container').hide()
 
                 $('#add-app').click(() => {
                 
