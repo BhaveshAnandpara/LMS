@@ -247,7 +247,8 @@
                                         echo "<td  >" . $row['endTime'] . " </td>";
                                         echo "<td  >" . $row['semester']  . " </td>";
                                         echo "<td  >" . $row['subject']  . " </td>";
-                                        echo "<td  >" . $row['status']  . " </td>";
+                                        echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
+                                        
                                     }
 
                                 ?>
@@ -273,7 +274,7 @@
                             $lecAdjData =  $user->taskAdjustmentRequst(); 
 
                             if( mysqli_num_rows($lecAdjData) == 0){
-                                echo "<p style=' width : 100%; text-align : center; ' > No Lecture Adjustments </p>";
+                                echo "<p style=' width : 100%; text-align : center; ' > No Task Adjustments </p>";
                             }
                             else{
 
@@ -385,7 +386,8 @@
                                                 echo "<td  >" . $row['startDate'] . "</td>";
                                                 echo "<td  >" . $row['endDate'] . " </td>";
                                                 echo "<td  >" . $row['task']  . " </td>";
-                                                echo "<td  >" . $row['status']  . " </td>";
+                                                echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
+                                                
                                             }
                                         
                                         ?>
@@ -412,7 +414,7 @@
                             $addApp =  $user->approvalRequst(); 
 
                             if( mysqli_num_rows($addApp) == 0){
-                                echo "<p style=' width : 100%; text-align : center; ' > No Lecture Adjustments </p>";
+                                echo "<p style=' width : 100%; text-align : center; ' > No Approvals Requests </p>";
                             }
                             else{
 
@@ -520,7 +522,8 @@
                                             echo "<td  >" . $row['startDate'] . "</td>";
                                             echo "<td  >" . $row['endDate'] . " </td>";
                                             echo "<td  >" . $row['reason']  . " </td>";
-                                            echo "<td  >" . $row['status']  . " </td>";
+                                            echo "<td class=" .$row['status']. " >" . $row['status']  . " </td>";
+                                            
                                         }
                                     
                                     ?>
@@ -534,6 +537,7 @@
 
             
     </section>
+
 
 
         <script>
@@ -768,6 +772,27 @@
             })
 
         </script>
+
+
+    <?php
+        
+        require('../../includes/model.php'); 
+          
+            // Check for response message from validateNewLeave.php
+        if (isset($_SESSION['response_message'])) {
+            $res = unserialize($_SESSION['response_message']);
+            unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+
+            if( $res[1] === "SUCCESS" ){   
+                echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "manageAdjustments.php");
+            }else{
+                echo Utils::alert($res[0] , $res[1], "manageAdjustments.php");
+            }
+
+    }
+
+    ?>
+
 </body>
 
 </html>

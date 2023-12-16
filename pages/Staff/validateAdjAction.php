@@ -1,4 +1,5 @@
-<?php 
+<?php    ob_start();
+    session_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -16,14 +17,20 @@
     require('../../utils/Staff/staff.class.php');
 
     //start session
-    session_start();
 
-    $user =  $_SESSION['user'];
+
+    $user = unserialize($_SESSION['user']) ;
     $type = $_GET['type'];
     $action = $_GET['action'];
+    
 ?>
 
 <?php
+
+    try{
+
+
+
 
     if( $type === 'lec' ){
 
@@ -37,7 +44,7 @@
         $result = mysqli_query($conn, $query);
 
         if( !$result ){
-            echo Utils::alert("Errro Occured", "ERROR");
+            throw new Exception("Employee Email cannot be empty ");
         }
 
         // Insert instance into notification table for applicant id
@@ -58,9 +65,11 @@
         $result =  mysqli_query( $conn , $sql);
 
         if( !$result ){
-            echo "Error Occured During Insertion of ". $applicantID ."  Notification";
+            // throw new Exception("Error Occured During Insertion of ". $applicantID ."  Notification");
         }
         
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize(["Lecture Adjustment $action " , "SUCCESS"]);
 
     }
 
@@ -76,7 +85,7 @@
          $result = mysqli_query($conn, $query);
 
          if( !$result ){
-            echo Utils::alert("Errro Occured", "ERROR");
+            throw new Exception("Error Occured");
          }
      
          // Insert instance into notification table for applicant id
@@ -98,8 +107,12 @@
          $result =  mysqli_query( $conn , $sql);
      
          if( !$result ){
-            echo "Error Occured During Insertion of ". $applicantID ."  Notification";
+            // echo "Error Occured During Insertion of ". $applicantID ."  Notification";
          }
+
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize(["Task Adjustment $action" , "SUCCESS"]);
+
 
 
     }
@@ -115,14 +128,29 @@
         $conn = sql_conn();
         $result = mysqli_query($conn, $query);
 
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize(["Approval $action " , "SUCCESS"]);
+
 
     }
 
-    echo "<script>
-        window.location.href = './manageAdjustments.php'
-    </script>";
+    header("Location: manageAdjustments.php");
+    exit();
 
+    }catch(Exception $e){   
 
+        $errorMessage = $e->getMessage();
+        // echo $errorMessage;
+    
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+    
+        // Redirect back to addLeave.php
+        header("Location: manageAdjustments.php");
+        exit();
+        
+    }
+ob_end_flush();
 ?>
 
 
