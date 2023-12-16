@@ -98,6 +98,12 @@ $holidays = Utils::getUpcomingHolidays();
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
+    <!-- For Spinner -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- all common Script  -->
 
     <!-- Include jQuery -->
@@ -113,6 +119,12 @@ $holidays = Utils::getUpcomingHolidays();
 </head>
 
 <body>
+
+    <?php 
+
+        require('../../includes/spinner.php');
+    
+    ?>
 
     <!--Including sidenavbar -->
     <?php
@@ -1394,6 +1406,8 @@ $holidays = Utils::getUpcomingHolidays();
                 body.append('AddApp', JSON.stringify(AddApp));
 
 
+                document.getElementById('spinner-container').style.display = 'flex'
+                document.querySelector('.home-section').style.display = 'none'
 
                 // Fire off the request to /form.php
                 request = $.ajax({
@@ -1410,6 +1424,8 @@ $holidays = Utils::getUpcomingHolidays();
 
                         document.querySelector('.modal-body').innerHTML = message;
                         document.querySelector('.modal-title').innerHTML = "<span style=\'color: green;\'>Application Submitted</span>";
+                        document.getElementById('spinner-container').style.display = 'none'
+                        document.querySelector('.home-section').style.display = 'flex'
                         document.querySelector('#close-btn').onclick = ()=>{
                           window.location.href = './dashboard.php'
                         }
@@ -1423,6 +1439,8 @@ $holidays = Utils::getUpcomingHolidays();
                         let message = "Error occured during Applying Leave !!"
                         document.querySelector('.modal-body').innerHTML = message;
                         document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                        document.getElementById('spinner-container').style.display = 'none'
+                        document.querySelector('.home-section').style.display = 'flex'
 
                         $('#myModal').modal();
                         windows.location.href = "./apply_leave.php"

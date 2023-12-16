@@ -55,6 +55,20 @@ body {
     overflow-x: hidden;
 }
 
+.spinner-container{
+
+    position: absolute;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
 .pointer-events-none{
     pointer-events: none;
 }
