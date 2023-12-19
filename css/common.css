@@ -202,12 +202,16 @@ table {
 .approveBtn{
 
     background-color: #1f771f;
+    padding: 16px 24px !important;
+    font-size: 18px;
     
 }
 
 .rejectBtn{
     
     background-color: rgb(212, 76, 76) ;
+    padding: 16px 24px !important;
+    font-size: 18px;
 }
 
 .submitbtn:hover {

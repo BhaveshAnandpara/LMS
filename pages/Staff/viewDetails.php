@@ -494,15 +494,15 @@
             
                 $curr = date( 'd-m-Y' , time() );
 
-                if(  ( $user->role === Config::$_HOD_ ) && ( date( 'd-m-Y' , strtotime($data['startDate'])) >  $curr) ){
+                if(  ( $user->role === Config::$_HOD_ ) && ( date( 'd-m-Y' , strtotime($data['startDate'])) >  $curr) && $data['applicationStatus'] == Config::$_APPLICATION_STATUS['PENDING'] ){
 
                     
                     echo 
                     "<div>
 
-                        <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=APPROVE' > <button class='submitbtn approveBtn clickable my-0 mx-2' > Approve </button> </a>
+                        <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=APPROVE' > <button class='submitbtn approveBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-check mr-2'></i> Approve Request </button> </a>
 
-                        <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Reject </button> </a>
+                        <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-xmark mr-2'></i> Reject Request</button> </a>
         
                     </div>";
 
@@ -552,6 +552,27 @@
         
 
     </section>
+
+    <?php
+    
+        require('../../includes/model.php'); 
+        
+        
+            // Check for response message from validateNewLeave.php
+        if (isset($_SESSION['response_message'])) {
+            $res = unserialize($_SESSION['response_message']);
+            unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
+
+            if( $res[1] === "SUCCESS" ){   
+                echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "../HOD/leave_request.php");
+            }else{
+                echo Utils::alert($res[0] , $res[1], "../Staff/viewDetails.php?id=$applicationId.php");
+            }
+
+    }
+
+    ?>
+
 
     <script>
         // script for filter 

@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -16,7 +16,6 @@
     require('../../utils/Staff/staff.class.php');
 
     //start session
-    session_start();
 
     $user = unserialize($_SESSION['user']);
     $applicationID = $_GET['id'];
@@ -50,13 +49,11 @@
             //Update the status of Adjustment
             $query = "UPDATE applications SET status='$status', hodApproval = '$hodApproval' WHERE applicationID = $applicationID";
 
-            print_r( $query );
-
             $conn = sql_conn();
             $result = mysqli_query($conn, $query);
 
             if( !$result ){
-                echo Utils::alert("Errro Occured", "ERROR");
+                throw new Exception("Error Occured");
             }
 
             // Insert instance into notification table for applicant id
@@ -71,23 +68,28 @@
             $result =  mysqli_query( $conn , $sql);
 
             if( !$result ){
-                echo "Error Occured During Insertion of ". $empID ."  Notification";
+                // echo "Error Occured During Insertion of ". $empID ."  Notification";
             }
 
 
-            
-            
+            // Set a session variable with the response message
+            $_SESSION['response_message'] = serialize(["Request $action Successfully" , "SUCCESS"]);
 
+            // Redirect back to addLeave.php
+            header("Location: ../Staff/viewDetails.php?id=$applicationID");
+            exit();
 
-            echo "<script>
-                window.location.href = './leave_request.php'
-            </script>";
 
     }catch( Exception $e){
                 
-        Utils::alert( "Error Occured", "ERROR" );
+    $errorMessage = $e->getMessage();
+    echo $errorMessage;
 
-        print_r( $e );
+    // Set a session variable with the response message
+    $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+
+    header("Location: ../Staff/viewDetails.php?id=$applicationID");
+    exit();
 
     }
 
