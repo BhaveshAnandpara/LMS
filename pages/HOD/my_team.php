@@ -1,4 +1,4 @@
-<?php 
+<?php     session_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -8,17 +8,17 @@
 <?php
 
     //include class definition
-    require('../../utils/Staff/Staff.class.php');
+    require('../../utils/Staff/staff.class.php');
 
     //include Config Class
     require('../../utils/Config/Config.class.php');
     require('../../utils/Utils.class.php');
 
     //start session
-    session_start();
+
 
     //Get the User Object
-    $user =  $_SESSION['user'];
+    $user =  unserialize($_SESSION['user']);
 
 ?>
 
@@ -78,7 +78,18 @@
                     <h3>My Team</h3>
                 </div>
 
+                <?php
+                    $data =  $user->fetchMyTeamData();
 
+
+                    if( mysqli_num_rows($data) == 0){
+                        echo "<p style=' width : 100%; text-align : center; ' >No Team Members Yet</p>";
+                    }
+                    else{
+                                
+                ?>
+
+                    
                 <table class="tablecontent">
 
                     <thead>
@@ -96,7 +107,7 @@
 
                         <?php
                                 $i = 1;
-                                $data =  $user->fetchMyTeamData();
+                                
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                     
@@ -114,6 +125,8 @@
 
                     </tbody>
                 </table>
+
+                <?php } ?>
 
             </div>
 

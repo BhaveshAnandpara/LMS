@@ -139,6 +139,17 @@
                     <h3> Recently Applied Leaves</h3>
                 </div>
 
+                <?php
+
+                    $data =  $user->recentlyAppliedLeave();
+
+                    if( mysqli_num_rows($data) == 0){
+                        echo "<p style=' width : 100%; text-align : center; ' >No Leaves Appplied Yet </p>";
+                    }
+                    else{
+                                
+                ?>
+
 
                 <table class="tablecontent">
 
@@ -157,7 +168,7 @@
                     <tbody id="tbody">
 
                         <?php
-                                $data =  $user->recentlyAppliedLeave();
+
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 
@@ -179,6 +190,8 @@
 
                     </tbody>
                 </table>
+
+                <?php } ?>
 
             </div>
 

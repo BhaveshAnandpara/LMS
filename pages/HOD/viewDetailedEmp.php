@@ -19,7 +19,7 @@
     session_start();
 
     //Get the User Object
-    $user =  $_SESSION['user'];
+    $user = unserialize($_SESSION['user']) ;
     $empID = $_GET['empID'];
 
 ?>

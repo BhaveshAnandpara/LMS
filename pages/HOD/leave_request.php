@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -8,17 +8,14 @@
 <?php
 
     //include class definition
-    require('../../utils/Staff/Staff.class.php');
+    require('../../utils/Staff/staff.class.php');
 
     //include Config Class
     require('../../utils/Config/Config.class.php');
     require('../../utils/Utils.class.php');
 
-    //start session
-    session_start();
-
     //Get the User Object
-    $user =  $_SESSION['user'];
+    $user = unserialize($_SESSION['user']) ;
 
 ?>
 
@@ -76,6 +73,18 @@
                     <h3>Leave Request</h3>
                 </div>
 
+            
+                <?php
+
+                    $data =  $user->getLeaveRequests();
+
+                    if( mysqli_num_rows($data) == 0){
+                        echo "<p style=' width : 100%; text-align : center; ' >No Leave Request </p>";
+                    }
+                    else{
+                                
+                ?>
+
                 <table class="tablecontent">
 
                     <thead>
@@ -94,7 +103,7 @@
                     <tbody id="tbody">
 
                         <?php
-                                $data =  $user->getLeaveRequests();
+                                
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 
@@ -118,6 +127,10 @@
 
                     </tbody>
                 </table>
+
+                <?php
+                    }
+                ?>
 
             </div>
 

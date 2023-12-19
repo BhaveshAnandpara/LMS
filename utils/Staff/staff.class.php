@@ -377,10 +377,13 @@ class Staff {
         return $deptName;
     }
     
-    public function fetchMyTeamData() {
+    public function fetchMyTeamData( ) {
         $deptId = $this->deptID;
+        $hod = Config::$_HOD_;
+        $principal = Config::$_PRINCIPAL_;
+        $admin = Config::$_ADMIN_;
         // SQL Query to get the leave history of login employee
-        $sql = "SELECT * FROM employees WHERE deptID = $deptId AND role != 'HOD'";
+        $sql = "SELECT * FROM employees WHERE deptID = $deptId AND role != '$hod' AND role != '$principal' AND role != '$admin' ";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);

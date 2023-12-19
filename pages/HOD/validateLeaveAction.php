@@ -18,7 +18,7 @@
     //start session
     session_start();
 
-    $user =  $_SESSION['user'];
+    $user = unserialize($_SESSION['user']);
     $applicationID = $_GET['id'];
     $action = $_GET['action'];
 
