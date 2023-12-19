@@ -1,4 +1,4 @@
-<?php 
+<?php ob_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -318,7 +318,7 @@
         // </script>";
 
     }
-
+    ob_end_flush();
 ?>
 
 

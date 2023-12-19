@@ -1,4 +1,4 @@
-<?php 
+<?php ob_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
     
@@ -44,5 +44,7 @@
             header("Location: manageMasterData.php");
             exit();
     }
+
+ob_end_flush();
 
 ?>

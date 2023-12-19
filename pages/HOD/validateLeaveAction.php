@@ -1,4 +1,5 @@
 <?php session_start();
+    ob_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -92,7 +93,7 @@
     exit();
 
     }
-
+    ob_end_flush();
 ?>
 
 

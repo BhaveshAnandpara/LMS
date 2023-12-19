@@ -1,4 +1,4 @@
-<?php 
+<?php ob_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
     
@@ -99,5 +99,5 @@ catch(Exception $e){
 
 
 
-
+ob_end_flush();
 ?>
