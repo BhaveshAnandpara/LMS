@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -9,14 +9,14 @@
 <?php
 
     //include class definition
-    require('../../utils/Staff/Staff.class.php');
+    require('../../utils/Staff/staff.class.php');
 
     //include Config Class
     require('../../utils/Config/Config.class.php');
     require('../../utils/Utils.class.php');
 
     //start session
-    session_start();
+    
 
     //Get the User Object
     $user = unserialize($_SESSION['user']) ;
