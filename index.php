@@ -68,6 +68,7 @@
         // decodes the credentials
         const responsePayload = decodeJwt(response.credential);
         const email = responsePayload.email
+        localStorage.setItem('profile' , responsePayload.picture ) 
 
         console.log(email);
     

@@ -77,17 +77,27 @@
       <li class="profile">
         <div class="profile-details">
           <!-- <img src="assets/ganesh.jpg" alt="profileImg"> -->
-          <img src="../../assets/ganesh.jpg" alt="profileImg">
+          <img  id="profile"  alt="profileImg">
           <div class="name_job">
-            <div class="name"><?php echo $_SESSION['fullName'] ?></div>
-            <div class="job">ID: <?php echo $_SESSION['employeeID'] ?></div>
+            <p class="name"><?php echo $_SESSION['fullName'] ?></p>
+            <div class="job">Emp ID : <?php echo $_SESSION['employeeID'] ?></div>
           </div>
         </div>
-        <a href="../logout.php" class="logouthyperlink"><i class="fa-solid fa-right-from-bracket" id="log_out"></i></a>
+        <a href="../../includes/logout.php" class="logouthyperlink" ><i  style="cursor : pointer;" class="fa-solid fa-right-from-bracket" id="log_out"></i></a>
       </li>
     </ul>
   </div>
   <script src="../../js/sidebarScript.js"></script>
+
+  <script>
+
+    if( localStorage.getItem('profile') === undefined ) document.getElementById('profile').src = "https://ik.imagekit.io/gmarvquw2/user.png?updatedAt=1703056838757"
+    document.getElementById('profile').src = localStorage.getItem('profile')
+
+  </script>
+
+
+
 </body>
 
 </html>

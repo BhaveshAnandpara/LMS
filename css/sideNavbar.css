@@ -208,13 +208,26 @@
   border-radius: 6px;
   margin-right: 10px;
 }
-.sidebar li.profile .name,
+
 .sidebar li.profile .job{
   font-size: 15px;
   font-weight: 400;
   color: #fff;
   white-space: nowrap;
 }
+
+.sidebar li.profile .name{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  white-space: nowrap;
+  width: 80%;
+}
+
 .sidebar li.profile .job{
   font-size: 12px;
 }
