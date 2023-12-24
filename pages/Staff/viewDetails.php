@@ -492,8 +492,9 @@
             <!-- Approve or Reject Button should only be visible when either user is hod and application has not elapsed -->
             <?php
             
-                $curr = date( 'd-m-Y' , time() );
-
+                
+                $curr = date('Y-m-d'); // Current date in 'Y-m-d' format
+                
                 if(  ( $user->role === Config::$_HOD_ ) && ( date( 'd-m-Y' , strtotime($data['startDate'])) >  $curr) && $data['applicationStatus'] == Config::$_APPLICATION_STATUS['PENDING'] ){
 
                     
