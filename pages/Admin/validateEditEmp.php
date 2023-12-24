@@ -79,7 +79,7 @@ try{
            
            $roleResult =  mysqli_fetch_assoc($roleResult);
 
-           if( !empty($roleResult['employeeID']) ){
+           if( !empty($roleResult['employeeID']) && $roleResult['employeeID'] !== $employeeID ){
        
                $msg = $role." Already Exists";
                throw new Exception("$role Already Exists");
@@ -99,7 +99,7 @@ try{
            
            $roleResult =  mysqli_fetch_assoc($roleResult);
            
-           if( !empty($roleResult['deptHOD']) ){
+           if( !empty($roleResult['deptHOD']) && $roleResult['deptHOD'] !== $employeeID ){
        
                throw new Exception("$role Already Exists");
        
