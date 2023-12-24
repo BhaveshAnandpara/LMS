@@ -56,7 +56,7 @@ try{
 
     //Check if department Exists
 
-    $sql = "Select deptName from departments EXCEPT ( Select deptName from departments where deptID=$deptID )";
+    $sql = "SELECT deptName  FROM departments  WHERE deptID != '$deptID'";
     $conn = sql_conn();
     $deptNameResult =  mysqli_query( $conn , $sql);
     
@@ -73,7 +73,7 @@ try{
 
     //Check if department alias Exists
 
-    $sql = "Select deptAlias from departments EXCEPT ( Select deptAlias from departments where deptID=$deptID )";
+    $sql = "SELECT deptAlias  FROM departments  WHERE deptID != '$deptID'";
     $conn = sql_conn();
     $deptAliasResult =  mysqli_query( $conn , $sql);
     
