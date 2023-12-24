@@ -495,7 +495,7 @@
                 
                 $curr = date('Y-m-d'); // Current date in 'Y-m-d' format
                 
-                if(  ( $user->role === Config::$_HOD_ ) && ( date( 'd-m-Y' , strtotime($data['startDate'])) >  $curr) && $data['applicationStatus'] == Config::$_APPLICATION_STATUS['PENDING'] ){
+                if(  ( $user->role === Config::$_HOD_ ) && ( date( 'Y-m-d' , strtotime($data['startDate'])) >  $curr) && $data['applicationStatus'] == Config::$_APPLICATION_STATUS['PENDING'] ){
 
                     
                     echo 
@@ -512,7 +512,7 @@
 
                 if(  ( $user->role === Config::$_PRINCIPAL_ ) ){
 
-                    if( ( date( 'd-m-Y' , strtotime($data['startDate'])) >  $curr)  ){
+                    if( ( date( 'Y-m-d' , strtotime($data['startDate'])) >  $curr) ){
 
                     
                     echo 
