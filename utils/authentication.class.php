@@ -80,7 +80,7 @@
                 else if( $_SESSION['role'] === Config::$_PRINCIPAL_ ){
 
                     $user = new Principal( $_SESSION['employeeID']);
-                    $_SESSION['user'] = $user;
+                    $_SESSION['user'] = serialize($user);
                     echo json_encode($user);
                 }
                 else if( $_SESSION['role'] === Config::$_FACULTY_ ){

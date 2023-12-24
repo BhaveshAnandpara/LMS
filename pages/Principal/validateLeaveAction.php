@@ -1,4 +1,5 @@
 <?php ob_start();
+    session_start();
     //  Creates database connection 
     require "../../includes/db.conn.php";
 ?>
@@ -16,9 +17,9 @@
     require('../../utils/Principal/Principal.class.php');
 
     //start session
-    session_start();
+    
 
-    $user =  $_SESSION['user'];
+    $user = unserialize($_SESSION['user']) ;
     $applicationID = $_GET['id'];
     $action = $_GET['action'];
 
