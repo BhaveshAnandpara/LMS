@@ -63,6 +63,11 @@
     </script>
     <script src="https://kit.fontawesome.com/65712a75e6.js" crossorigin="anonymous"></script>
 
+        <!-- DataTables library to implement optimal search functinality ---- light weight library -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+
+
 </head>
 
 <body>
@@ -94,9 +99,68 @@
                         <h3> Manage Employees </h3>
                     </div>
 
+                    <input type="text" class="form-control bg-white p-4 my-3 " id="searchInput" placeholder="Search...">
+
+                    <p id="filter-btn">Filters <i class="fa-solid fa-caret-down"></i> </p>
+
+                    <!-- //Filters -->
+                    <div class="col-md-12 col-sm-12 py-3 border" id='filter-box'>
+
+                        <!-- Department Filter -->
+                        <div class="my-2 col-md-12 ">
+
+                            <!-- Showing Departments as Options -->
+                            <?php
+
+                                $depts = Utils::getAllDepts();
+
+                                while( $row = mysqli_fetch_assoc($depts) ){
+                                        $deptName = $row['deptName'];
+                                        echo "<input type='checkbox' class='check-inp inp-dept' checked value='$deptName' >";
+                                        echo "<label class=' mr-4 ml-2  ' >$deptName</label>";
+                                }
+
+                            ?>
+
+                        </div>
+
+                        <!-- Status Filter -->
+                        <div class="my-2 col-md-5 ">
+                            <!-- Showing Status as Options -->
+                            <?php
+
+                                $status = Config::$_EMPLOYEE_STATUS;
+
+                                foreach( $status as $key => $value ){
+                                        echo "<input type='checkbox' class='check-inp inp-status' checked value='$key' >";
+                                        echo "<label class=' mr-4 ml-2 ' >$value</label>";
+                                }
+
+                            ?>
+
+                        </div>
+
+                        <!-- Role Filter -->
+                        <div class="my-2 col-md-12 ">
+
+                            <!-- Showing Roles as Options -->
+                            <?php
+
+                                $roles = Config::$_EMPLOYEE_ROLE;
+
+                                foreach( $roles as $key => $value ){
+
+                                        echo "<input type='checkbox' class='check-inp inp-role' checked value='$key' >";
+                                        echo "<label class=' mr-4 ml-2 ' >$value</label>";
+                                } ?>
+                        </div>
+
+                    </div>
+
+
                     <a href="../../pages/Admin/addEmp.php" class="my-3" style="width : fit-content;"  ><button class="AddBtn"> + </button></a>
 
-                    <table class="tablecontent">
+                    <table class="tablecontent" id="employeeTable">
 
                         <thead>
                             <tr>
@@ -221,6 +285,101 @@
     }
 
     ?>
+
+<script>
+    // script for filter 
+    $(document).ready(function() {
+
+        $('#filter-box').hide()
+
+        //Dropdown Toggle
+        $('#filter-btn').click(() => {
+
+            $('#filter-box').toggle()
+
+        })
+
+        // Initialize DataTable
+        var table = $('#employeeTable').DataTable({
+            paging: false,
+            ordering: false,
+            info: false
+        });
+
+        $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+
+
+            //Take all Types of Filters
+            let deptInps = document.querySelectorAll('.inp-dept')
+            let statusInps = document.querySelectorAll('.inp-status')
+            let roleInps = document.querySelectorAll('.inp-role')
+
+            //Create Arrays
+            let depts = []
+            let status = []
+            let roles = []
+
+            //For Department
+            deptInps.forEach(element => {
+
+                if (element.checked) {
+
+                    depts.push(element.value);
+                }
+
+            });
+
+            //For Status
+            statusInps.forEach(element => {
+
+                if (element.checked) {
+
+                    status.push(element.value);
+                }
+
+            });
+            
+            //For Roles
+            roleInps.forEach(element => {
+
+                if (element.checked) {
+
+                    roles.push(element.value);
+                }
+
+            });
+
+            
+            let tableDept = data[3];
+            let tableRole = data[4];
+            let tableStatus = data[5];
+            
+            console.log(tableDept);
+            console.log(tableRole);
+            console.log(tableStatus);
+
+            //Filter Logic
+            if( depts.includes( tableDept ) && status.includes( tableStatus )  && roles.includes( tableRole )   ) return true;
+            else return false;
+
+
+        });
+
+        //On Filter Change load the table
+        $('.check-inp').change(() => {
+            console.log("Check");
+            table.draw();
+        })
+
+        // Add event listener for the search input
+        $('#searchInput').on('keyup', function() {
+            table.search(this.value).draw();
+        });
+
+    });
+    </script>
+
+
 
 </body>
 
