@@ -454,7 +454,7 @@ $holidays = Utils::getUpcomingHolidays();
                         <div id="filesItem-0" class="filesItem  form-row flex justify-content-between align-items-end mu-2 mb-3">
 
                             <!-- Files -->
-                            <input type="file" id="file-0" class="file">
+                            <input type="file" id="file-0" class="file" accept=".pdf, .doc, image/*">
 
                             <button type="button" id="fileRemove-0" class=" filesRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row'> <i class="fas fa-minus mr-1"></i> Remove </button>
 

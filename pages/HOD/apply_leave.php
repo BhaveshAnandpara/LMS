@@ -443,7 +443,7 @@
                         <div id="filesItem-0" class="filesItem  form-row flex justify-content-between align-items-end mu-2 mb-3">
 
                             <!-- Files -->
-                            <input type="file" id="file-0" class="file"  >
+                            <input type="file" id="file-0" class="file"  accept=".pdf, .doc, image/*">
 
                             <button type="button" id="fileRemove-0"  class=" filesRemoveBtn btn " style="background-color: #c62828; color:white" data-toggle="tooltip" data-placement="top" title='Remove Row' > <i class="fas fa-minus mr-1"></i> Remove </button>
                             
@@ -1067,87 +1067,93 @@
                 let calculations = "" //text for total days input
                 
                 //for every leave type user selected
+                //for every leave type user selected
                 for (const key in leavedata) {
-                    
-                    if( key === 'final' ) continue
+
+                    if (key === 'final') continue
 
                     let holidayLeaves = 0;
 
-                    let startDate = new Date( leavedata[key].fromDate )
-                    startDate.setHours(5,30,0,0)
-                    
-                    let startDateType = leavedata[key].fromDateType 
-                    
+                    let startDate = new Date(leavedata[key].fromDate)
+                    startDate.setHours(5, 30, 0, 0)
+
+                    let startDateType = leavedata[key].fromDateType
+
                     let endDate = new Date(leavedata[key].toDate)
-                    endDate.setHours(5,30,0,0)
-                    
+                    endDate.setHours(5, 30, 0, 0)
+
                     let endDateType = leavedata[key].toDateType
 
 
-                    let totalDays = (endDate.getTime() - startDate.getTime()) /( 24*60*60*1000 ) + 1 //total difference between fromDate and startDate
+                    let totalDays = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000) + 1 //total difference between fromDate and startDate
                     let leaveName = leaveNames[key] //name of the leave type
 
                     calculations += `Total ${ leaveName } = <b>${totalDays} Days </b> </br>Holidays =  `
 
                     let leftHolidays = 0 // holidays counting from left side ( fromDate )
 
+                    let dumStartDate = startDate;
+        
                     //Decrement total days if the startingDate ends starts some holiday
-                    while( idx == 1 ){
+                    while (idx == 1) {
 
                         //if there is holiday then check for next day
-                        if( holiDaysDate.includes( startDate.toISOString().slice(0, 10) ) || startDate.getDay() == 0 ){
+                        if ( dumStartDate <= endDate && (holiDaysDate.includes(dumStartDate.toISOString().slice(0, 10)) || dumStartDate.getDay() == 0) ) {
 
-                            calculations += `<b>${ startDate.toISOString().slice(0, 10) }</b> |`
-                            startDate.setDate( startDate.getDate() + 1 );
+                            calculations += `<b>${ dumStartDate.toISOString().slice(0, 10) }</b> |`
+                            dumStartDate.setDate(dumStartDate.getDate() + 1);
                             leftHolidays++;
 
-                        }
-                        else{
+                        } else {
                             break;
                         }
-                        
+
                     }
 
                     //If dateType is half then reduce it by 0.5
-                    if( idx === 1 && startDateType !== 'FULL' && leftHolidays === 0 && leaveName !== 'Earned Leave') totalDays -= 0.5
+                    if (idx === 1 && startDateType !== 'FULL' && leftHolidays === 0 && leaveName !== 'Earned Leave') totalDays -= 0.5
 
 
                     let rightHolidays = 0 // holidays counting from right side ( toDate )
                     //Decrement total days if the endingDate ends with some holiday
-                    while( startDate !== endDate && idx === leaveTypesLen ){
-                        
-                        if( holiDaysDate.includes( endDate.toISOString().slice(0, 10) ) || endDate.getDay() == 0 ){
-                            
-                            calculations += `<b>${ endDate.toISOString().slice(0, 10) }</b> |`
-                            endDate.setDate( endDate.getDate() - 1 );
+
+                    let dumEndDate = endDate;
+                    
+                    while (startDate !== endDate && idx === leaveTypesLen) {
+
+                        if ( dumEndDate > startDate && (holiDaysDate.includes(dumEndDate.toISOString().slice(0, 10)) || dumEndDate.getDay() == 0) ) {
+
+                            calculations += `<b>${ dumEndDate.toISOString().slice(0, 10) }</b> |`
+                            dumEndDate.setDate(dumEndDate.getDate() - 1);
                             rightHolidays++;
-                        }
-                        else{
+                        } else {
                             break;
                         }
-                        
+
                     }
 
 
                     //If dateType is half then reduce it by 0.5
-                    if( startDate !== endDate && idx === leaveTypesLen && endDateType !== 'FULL' && rightHolidays === 0  && leaveName !== 'Earned Leave' ) totalDays -= 0.5
+                    if (startDate !== endDate && idx === leaveTypesLen && endDateType !== 'FULL' && rightHolidays === 0 && leaveName !== 'Earned Leave') totalDays -= 0.5
 
                     //total holidays through application
                     holidayLeaves = leftHolidays + rightHolidays
 
-                    if( holidayLeaves === 0 ) calculations += "<b>No Holiday Leaves !!</b>"
-                    if( holidayLeaves > totalDays ) totalDays = 0;
+                    if (holidayLeaves === 0) calculations += "<b>No Holiday Leaves !!</b>"
+                    if (holidayLeaves > totalDays) totalDays = 0;
+
+                    let finalTotaldays = (totalDays - holidayLeaves) < 0 ? 0 : (totalDays - holidayLeaves);
 
                     calculations += `</br>Total Holiday Leaves = <b>${holidayLeaves}</b></br>`
-                    calculations += `Total Leaves to be deducted from ${leaveNames[key]} = <b>${(totalDays - holidayLeaves)}</b></br></br>`
+                    calculations += `Total Leaves to be deducted from ${leaveNames[key]} = <b>${ finalTotaldays  }</b></br></br>`
 
-                    leaveTypes[key].totalDays = (totalDays - holidayLeaves);
-                    
-                    leavedata.final.totalDays = leavedata.final.totalDays != undefined ? leavedata.final.totalDays + (totalDays - holidayLeaves) : (totalDays - holidayLeaves);
+                    leaveTypes[key].totalDays = finalTotaldays;
+
+                    leavedata.final.totalDays = leavedata.final.totalDays != undefined ? leavedata.final.totalDays + finalTotaldays : finalTotaldays;
 
 
                     idx++;
-                    
+
                 }
 
                 
