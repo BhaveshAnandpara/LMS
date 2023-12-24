@@ -1145,14 +1145,16 @@ $holidays = Utils::getUpcomingHolidays();
 
                     let leftHolidays = 0 // holidays counting from left side ( fromDate )
 
+                    let dumStartDate = startDate;
+        
                     //Decrement total days if the startingDate ends starts some holiday
                     while (idx == 1) {
 
                         //if there is holiday then check for next day
-                        if (holiDaysDate.includes(startDate.toISOString().slice(0, 10)) || startDate.getDay() == 0) {
+                        if ( dumStartDate <= endDate && (holiDaysDate.includes(dumStartDate.toISOString().slice(0, 10)) || dumStartDate.getDay() == 0) ) {
 
-                            calculations += `<b>${ startDate.toISOString().slice(0, 10) }</b> |`
-                            startDate.setDate(startDate.getDate() + 1);
+                            calculations += `<b>${ dumStartDate.toISOString().slice(0, 10) }</b> |`
+                            dumStartDate.setDate(dumStartDate.getDate() + 1);
                             leftHolidays++;
 
                         } else {
@@ -1167,12 +1169,15 @@ $holidays = Utils::getUpcomingHolidays();
 
                     let rightHolidays = 0 // holidays counting from right side ( toDate )
                     //Decrement total days if the endingDate ends with some holiday
+
+                    let dumEndDate = endDate;
+                    
                     while (startDate !== endDate && idx === leaveTypesLen) {
 
-                        if (holiDaysDate.includes(endDate.toISOString().slice(0, 10)) || endDate.getDay() == 0) {
+                        if ( dumEndDate > startDate && (holiDaysDate.includes(dumEndDate.toISOString().slice(0, 10)) || dumEndDate.getDay() == 0) ) {
 
-                            calculations += `<b>${ endDate.toISOString().slice(0, 10) }</b> |`
-                            endDate.setDate(endDate.getDate() - 1);
+                            calculations += `<b>${ dumEndDate.toISOString().slice(0, 10) }</b> |`
+                            dumEndDate.setDate(dumEndDate.getDate() - 1);
                             rightHolidays++;
                         } else {
                             break;
@@ -1190,12 +1195,14 @@ $holidays = Utils::getUpcomingHolidays();
                     if (holidayLeaves === 0) calculations += "<b>No Holiday Leaves !!</b>"
                     if (holidayLeaves > totalDays) totalDays = 0;
 
+                    let finalTotaldays = (totalDays - holidayLeaves) < 0 ? 0 : (totalDays - holidayLeaves);
+
                     calculations += `</br>Total Holiday Leaves = <b>${holidayLeaves}</b></br>`
-                    calculations += `Total Leaves to be deducted from ${leaveNames[key]} = <b>${(totalDays - holidayLeaves)}</b></br></br>`
+                    calculations += `Total Leaves to be deducted from ${leaveNames[key]} = <b>${ finalTotaldays  }</b></br></br>`
 
-                    leaveTypes[key].totalDays = (totalDays - holidayLeaves);
+                    leaveTypes[key].totalDays = finalTotaldays;
 
-                    leavedata.final.totalDays = leavedata.final.totalDays != undefined ? leavedata.final.totalDays + (totalDays - holidayLeaves) : (totalDays - holidayLeaves);
+                    leavedata.final.totalDays = leavedata.final.totalDays != undefined ? leavedata.final.totalDays + finalTotaldays : finalTotaldays;
 
 
                     idx++;
@@ -1232,14 +1239,25 @@ $holidays = Utils::getUpcomingHolidays();
 
                 if (Object.keys(leaveTypes).length <= 1) {
 
-                    // alert('You Need to Select atleast one Leave Type to Apply !!');
                     let message = "You Need to Select atleast one Leave Type to Apply !!"
+                    
                     document.querySelector('.modal-body').innerHTML = message;
-                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                $('#myModal').modal();
-                    return;
+                    document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                    $('#myModal').modal();
+                        return;
+                    
                 }
 
+                if( leaveTypes.final.totalDays === 0 ) {
+                    
+                    let message = "You cannot apply as 0 Leaves will be deducted !!";
+                    
+                    document.querySelector('.modal-body').innerHTML = message;
+                    document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                    $('#myModal').modal();
+                        return;
+                    
+                }
 
                 //Validating Reason
                 if ($('#reason')[0].value === "") {
@@ -1394,8 +1412,6 @@ $holidays = Utils::getUpcomingHolidays();
                     }
 
                 }
-
-                console.log(leaveTypes);
 
                 body.append('user', JSON.stringify(user));
                 body.append('applicationDate', JSON.stringify(new Date().toISOString().slice(0, 10)));
