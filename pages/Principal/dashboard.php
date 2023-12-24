@@ -65,7 +65,7 @@ $user =  unserialize($_SESSION['user']) ;
         <div class="container mainDiv">
 
             <!-- List of Staff on Leave -->
-            <div class=" bg-white shadow pl-5 pr-5 pb-5 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
+            <div class=" bg-white shadow pl-4 pr-4 pb-5 pt-4 mt-5 rounded-lg" action='<?php echo $actionUrl?>'
                 method="POST">
 
 

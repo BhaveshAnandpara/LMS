@@ -1,17 +1,30 @@
+.mainDiv{
+
+    max-width: 90vw !important;
+
+}
+
 .employeesOnLeave {
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: flex-start;
     padding: 0;
-    border: 1px solid #e0e0e0;
+    /* border: 1px solid #e0e0e0; */
 }
 
 .seperateDates {
-    width: 15%;
-    min-height: 150px;
-    max-height: 150px;
+    /* width: 15%; */
+    min-height: 200px;
+    max-height: 200px;
     overflow: scroll;
     border: 1px solid #e0e0e0;
+    margin: 12px 0px;
+    flex: 0 0 calc(14%); /* 20% width with some space between items */
+    box-sizing: border-box; /* Include padding and border in the width */
 }
+
+  
 
 .seperateDates::-webkit-scrollbar {
     display: none;
@@ -61,6 +74,6 @@
     border-radius: 12px 4px 4px 4px;
 }
 
-.mainDiv {
+/* .mainDiv {
     height: calc(100vh - 79px);
-}
+} */
