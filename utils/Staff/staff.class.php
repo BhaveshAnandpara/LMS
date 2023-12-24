@@ -179,7 +179,7 @@ class Staff {
         
         $curr = date( 'Y-m-d' , time() );
 
-        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.extension , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID and applications.startDate < '$curr' ORDER BY applications.dateTime DESC";
+        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.totalDays , applications.reason , applications.extension , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID ORDER BY applications.dateTime DESC";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);

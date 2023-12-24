@@ -92,7 +92,7 @@
                     <div class="col-md-12 col-sm-12 py-3 border my-3 " id='filter-box'>
 
                         <!-- Leave Filter -->
-                        <div class="my-2 col-md-12 ">
+                        <div class="my-3 col-md-12 ">
 
                             <!-- Showing Departments as Options -->
                             <?php
@@ -109,7 +109,7 @@
 
                         </div>
                         <!-- Status Filter -->
-                        <div class="my-2 col-md-12 ">
+                        <div class="my-4 col-md-12 ">
                             <!-- Showing Status as Options -->
                             <?php
 
@@ -121,6 +121,19 @@
                                 }
                             ?>
                         </div>
+
+                        <!-- Date Filter -->
+                        <div class="my-3` col-md-12 ">
+
+                            <input type="date" name="startDate" id="inp-startDate" class='check-inp inp-startDate'>
+                            <label class=' mr-4 ml-2 ' >Start Date</label>
+
+                            <input type="date" name="endDate" id="inp-endDate" class='check-inp inp-endDate'>
+                            <label class=' mr-4 ml-2 ' >End Date</label>
+
+                        </div>
+
+
                     </div>
 
                     <!-- Elapsed Applications -->
@@ -227,6 +240,9 @@
             let leaveInps = document.querySelectorAll('.inp-leave')
             let statusInps = document.querySelectorAll('.inp-status')
 
+            let startDateInp = document.getElementById('inp-startDate')
+            let endDateInp = document.getElementById('inp-endDate')
+
             //Create Arrays
             let leaves = []
             let status = []
@@ -252,7 +268,29 @@
 
             let tableLeaves = data[1];
             let tableStatus = data[5];
+
+            let startDate = data[2];
+            let endDate = data[3];
             
+
+            // Split the string into day, month, and year components
+            let dateParts = startDate.split("-");
+            let year = dateParts[2];
+            let month = dateParts[1];
+            let day = dateParts[0];
+
+            // Create a new Date object using the rearranged string format (YYYY-MM-DD)
+            let newStartDate = new Date(year + "-" + month + "-" + day);
+
+            // Split the string into day, month, and year components
+            dateParts = endDate.split("-");
+            year = dateParts[2];
+            month = dateParts[1];
+            day = dateParts[0];
+
+            // Create a new Date object using the rearranged string format (YYYY-MM-DD)
+            let newEndDate = new Date(year + "-" + month + "-" + day);
+
             tableLeaves = tableLeaves.split(' + ')
             
             let result = false;
@@ -260,7 +298,10 @@
             tableLeaves.forEach( leave => {
                 
                 if( leaves.includes( leave ) && status.includes( tableStatus ) ){
-                    result = true;
+
+                    if( startDateInp.value !== "" && newStartDate < new Date(startDateInp.value) ) result = false;
+                    else if( endDateInp.value !== "" && newEndDate > new Date(endDateInp.value) ) result = false;
+                    else result = true;
                 }
                 
             });
