@@ -70,11 +70,24 @@
         <div class="container overflow-scroll">
 
             <!-- Recently Applied Leaves -->
-            <div class=" row p-4 bg-white rounded-lg shadow-lg d-flex justify-content-sm-center  pl-5 pr-5 pb-3 pt-4 my-5 ml-2 "
-                style="transition: all all 0.5s ease; border-right:6px solid #11101D; width:max-content">
+
+            <div class=" row p-4 bg-white  rounded-lg shadow-lg d-flex justify-content-sm-center  pl-5 pr-5 pb-3 pt-4 my-5 ml-2 "
+                style="transition: all all 0.5s ease; border-right:6px solid #11101D">
                 <div class="col-md-12 col-sm-12 py-3">
                     <h3>Leave Request</h3>
                 </div>
+
+            
+                <?php
+
+                    $data =  $user->getLeaveRequests();
+
+                    if( mysqli_num_rows($data) == 0){
+                        echo "<p style=' width : 100%; text-align : center; ' >No Leave Request </p>";
+                    }
+                    else{
+                                
+                ?>
 
                 <table class="tablecontent">
 
@@ -82,7 +95,6 @@
                         <tr>
                             <th>APPLICANT NAME</th>
                             <th>APPLICANT EMAIL</th>
-                            <th>DEPARTMENT</th>
                             <th>LEAVE TYPE</th>
                             <th>FROM</th>
                             <th>TO</th>
@@ -95,7 +107,7 @@
                     <tbody id="tbody">
 
                         <?php
-                                $data =  $user->getLeaveRequests();
+                                
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 
@@ -105,21 +117,26 @@
                         ?>
                         <tr>
 
-                            <td><?php echo $applicantInfo["fullName"] ?></td>
-                            <td><?php echo $applicantInfo["email"] ?></td>
-                            <td><?php echo $row["deptName"] ?></td>
-                            <td><?php echo $leaveTypes ?></td>
-                            <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
-                            <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
-                            <td><?php echo $row["totalDays"] ?></td>
-                            <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
-                            <td class="text-end"> <a href="../Staff/viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
+                        <td><?php echo $applicantInfo["fullName"] ?></td>
+                        <td><?php echo $applicantInfo["email"] ?></td>
+                        <td><?php echo $row["deptName"] ?></td>
+                        <td><?php echo $leaveTypes ?></td>
+                        <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
+                        <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
+                        <td><?php echo $row["totalDays"] ?></td>
+                        <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
+                        <td class="text-end"> <a href="../Staff/viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
 
                         </tr>
+
                         <?php } ?>
 
                     </tbody>
                 </table>
+
+                <?php
+                    }
+                ?>
 
             </div>
 
