@@ -63,16 +63,6 @@
         }
         
 
-        // Update the status of Adjustment
-        $query = "UPDATE applications SET status='$status', principalApproval = '$principalApproval' WHERE applicationID = $applicationID";
-
-        $conn = sql_conn();
-        $result = mysqli_query($conn, $query);
-
-        if( !$result ){
-            throw new Exception("Errro Occured");
-        }
-
         $empID = $data['employeeID'];
         $time = date( 'Y-m-d H:i:s' , time());
         
@@ -89,12 +79,6 @@
 
             // Start Transaction
             $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $empID , $applicationID , current_timestamp(), 'Leave Approved ( Deducting Leaves )', '$transaction_PENDING', '$amount' );";
-            $conn = sql_conn();
-            $result =  mysqli_query( $conn , $sql);
-
-            //Send Notification
-            $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Application Approved by Principal', '$time' );";
-
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
@@ -145,7 +129,6 @@
                         }
 
                     }
-
 
                 }
 
@@ -297,6 +280,24 @@
             }
 
         }
+
+                // Update the status of Adjustment
+                $query = "UPDATE applications SET status='$status', principalApproval = '$principalApproval' WHERE applicationID = $applicationID";
+
+                $conn = sql_conn();
+                $result = mysqli_query($conn, $query);
+
+                //Send Notification
+                $sql = "INSERT INTO notifications (`employeeID`, `notification`, `dateTime`) VALUES ('$empID', 'Application Approved by Principal', '$time' );";
+
+                $conn = sql_conn();
+                $result =  mysqli_query( $conn , $sql);
+
+
+                if( !$result ){
+                    throw new Exception("Errro Occured");
+                }
+
 
             // Set a session variable with the response message
             $_SESSION['response_message'] = serialize(["Leave $action Successfully" , "SUCCESS"]);
