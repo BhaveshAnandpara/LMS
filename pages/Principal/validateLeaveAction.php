@@ -70,7 +70,7 @@
         $result = mysqli_query($conn, $query);
 
         if( !$result ){
-            echo Utils::alert("Errro Occured", "ERROR");
+            throw new Exception("Errro Occured");
         }
 
         $empID = $data['employeeID'];
@@ -147,8 +147,6 @@
                     }
 
 
-
-
                 }
 
                 $leaveResult =  mysqli_query( $conn , $leaveQuery);
@@ -194,7 +192,7 @@
                             $result =  mysqli_query( $conn , $sql);
                 
                             if( !$result ){
-                                echo "Error Occured During Insertion of ". $empID ."  Notification";
+                                // throw new Exception("Errro Occured");
                             }
 
                             break;
@@ -232,16 +230,12 @@
                         $result =  mysqli_query( $conn , $sql);
             
                         if( !$result ){
-                            echo "Error Occured During Insertion of ". $empID ."  Notification";
+                            // throw new Exception("Errro Occured");
                         }
 
                     }
 
                 }
-
-                
-                //ALert the Principal
-                Utils::alert( "Leave Approved Successfully" , "SUCCESS" );
 
         }
 
@@ -298,28 +292,33 @@
             $result =  mysqli_query( $conn , $sql);
 
             if( !$result ){
-                echo "Error Occured During Insertion of ". $empID ."  Notification";
+                // throw new Exception("Errro Occured");
+                // echo "Error Occured During Insertion of ". $empID ."  Notification";
             }
 
         }
 
-        echo "<script>
-            window.location.href = './leave_request.php'
-        </script>";
+            // Set a session variable with the response message
+            $_SESSION['response_message'] = serialize(["Leave $action Successfully" , "SUCCESS"]);
+
+            // Redirect back to addLeave.php
+            header("Location: ../Staff/viewDetails.php?id=$applicationID");
+            exit();
 
 
     }catch( Exception $e){
-                    
-        Utils::alert( "Error Occured" , "ERROR" );
-
-        print_r($e);
-
-        // echo "<script>
-        //     window.location.href = './leave_request.php'
-        // </script>";
-
-    }
-    ob_end_flush();
+                
+        $errorMessage = $e->getMessage();
+        echo $errorMessage;
+    
+        // Set a session variable with the response message
+        $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
+    
+        header("Location: ../Staff/viewDetails.php?id=$applicationID");
+        exit();
+    
+        }
+        ob_end_flush();
 ?>
 
 

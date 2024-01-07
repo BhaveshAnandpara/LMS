@@ -581,7 +581,8 @@
             unset($_SESSION['response_message']); // Clear the message to prevent displaying it again
 
             if( $res[1] === "SUCCESS" ){   
-                echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "../HOD/leave_request.php");
+                if( $user->role === Config::$_PRINCIPAL_ ) echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "../Principal/leave_request.php");
+                if( $user->role === Config::$_HOD_ ) echo Utils::alert(htmlspecialchars($res[0]), htmlspecialchars($res[1]) , "../HOD/leave_request.php");
             }else{
                 echo Utils::alert($res[0] , $res[1], "../Staff/viewDetails.php?id=$applicationId.php");
             }
