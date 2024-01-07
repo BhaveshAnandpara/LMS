@@ -495,26 +495,42 @@
                 
                 $curr = date('Y-m-d'); // Current date in 'Y-m-d' format
                 
-                if(  ( $user->role === Config::$_HOD_ ) && ( date( 'Y-m-d' , strtotime($data['startDate'])) >  $curr) && $data['applicationStatus'] == Config::$_APPLICATION_STATUS['PENDING'] ){
+                if(  ( $user->role === Config::$_HOD_ ) && $data['applicationStatus'] == Config::$_APPLICATION_STATUS['PENDING'] ){
 
                     
-                    echo 
-                    "<div>
+                    if(( date( 'Y-m-d' , strtotime($data['startDate'])) >=  $curr)){
 
-                        <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=APPROVE' > <button class='submitbtn approveBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-check mr-2'></i> Approve Request </button> </a>
+                        echo 
+                        "<div>
+    
+                            <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=APPROVE' > <button class='submitbtn approveBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-check mr-2'></i> Approve Request </button> </a>
+    
+                            <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-xmark mr-2'></i> Reject Request</button> </a>
+            
+                        </div>";
+    
 
-                        <a href='../../pages/HOD/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-xmark mr-2'></i> Reject Request</button> </a>
-        
-                    </div>";
+                    }else{
+
+                        echo 
+                        "<div>
+
+                            <p> <b>Application Expired</b> as Start Date has Already been elasped ! </p>
+            
+                        </div>";
+
+
+                    }
+
+
 
 
                 }
 
-                if(  ( $user->role === Config::$_PRINCIPAL_ ) ){
+                if( ( $user->role === Config::$_PRINCIPAL_ ) && $data['applicationStatus'] == Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'] ){
 
-                    if( ( date( 'Y-m-d' , strtotime($data['startDate'])) >  $curr) ){
+                    if( ( date( 'Y-m-d' , strtotime($data['startDate'])) >=  $curr) ){
 
-                    
                     echo 
                     "<div>
 
