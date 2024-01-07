@@ -50,27 +50,6 @@
         </a>
         <span class="tooltip">Leave Requests</span>
       </li>
-      <li>
-        <a href="../../pages/Staff/apply_leave.php">
-          <i class="fas fa-sticky-note"></i>
-          <span class="links_name">Apply Leave</span>
-        </a>
-        <span class="tooltip">Apply Leave</span>
-      </li>
-      <li>
-        <a href="../../pages/Staff/leave_history.php">
-          <i class="fa-solid fa-building-user"></i>
-          <span class="links_name">Leave History</span>
-        </a>
-        <span class="tooltip">Leave History</span>
-      </li>
-      <li>
-        <a href="../../pages/Staff/manageAdjustments.php">
-          <i class="fa-solid fa-code-pull-request"></i>
-          <span class="links_name">Manage Adjustments</span>
-        </a>
-        <span class="tooltip">Manage Adjustments</span>
-      </li>
 
 
       <!-- code for Log Out  -->

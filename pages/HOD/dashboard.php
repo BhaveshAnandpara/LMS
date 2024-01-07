@@ -84,52 +84,6 @@
             </div>
 
 
-            <!-- Current Balance -->
-
-
-            <div class="row p-4 bg-white rounded-lg shadow-lg d-flex justify-content-sm-center  pl-5 pr-5 pb-3 pt-4 my-5 ml-2 "
-                style="transition: all all 0.5s ease; border-right:6px solid #11101D">
-
-                <div class="col-md-12 col-sm-12 py-3">
-                    <h3> Current Balance </h3>
-                </div>
-
-                <?php
-                    
-                        $data =  $user->getCurrentBalance() ;
-
-                        while( $row = mysqli_fetch_assoc($data) ){
-
-                        // $time = Utils::getTimeDiff( $row['date'] );
-
-
-                        echo
-
-                        // <!-- Card -->
-                            "<div class='col-md-3 col-sm-12 py-4   rounded-lg m-4 bg-white shadow-lg fit-content'
-                            style='border-right:6px solid #11101D '>
-        
-                            <!-- Div for leave type and Leave Balance      -->
-                            <div class='row p-2 pr-0 '>
-                                <div class='col-12  '>
-                                    <div class='row pb-1 pl-2 d-flex justify-content-sm-center'>
-                                        <!-- PHP CODE HERE -->
-                                        <h5>" .$row['leaveType']. "</h5>
-                                    </div>
-                                    <div class='row d-flex justify-content-sm-center '>
-                                        <!-- PHP CODE HERE -->
-                                        <h3> " .$row['balance']. " </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>";
-                            
-                        } 
-                    ?>
-
-            </div>
-
-
             <!-- Recently Applied Leaves -->
 
             <div class=" row p-4 bg-white  rounded-lg shadow-lg d-flex justify-content-sm-center  pl-5 pr-5 pb-3 pt-4 my-5 ml-2 "
