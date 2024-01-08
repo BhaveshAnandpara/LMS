@@ -153,6 +153,7 @@
                             <th>TOTAL DAYS</th>
                             <th>STATUS</th>
                             <th>VIEW</th>
+                            <th>EDIT</th>
                         </tr>
                     </thead>
 
@@ -175,6 +176,15 @@
                             <td><?php echo $row["totalDays"] ?></td>
                             <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
                             <td class="text-end"> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
+                            <?php
+                            
+                            if( $row['status'] == Config::$_APPLICATION_STATUS['PENDING'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_PRINCIPAL'] ){
+                                echo "<td class='text-end'> <a href='./editApplication.php?id=".$row['applicationID']."' ><i class='fas fa-pen-to-square'></i></a> </td>";
+                            }else{
+                                echo "<td class='text-end'> <i class='fas fa-pen-to-square' style='color: #ccc;' ></i> </td>";
+                            }
+                            
+                            ?>
 
                         </tr>
                         <?php } ?>

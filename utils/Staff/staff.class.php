@@ -128,6 +128,19 @@ class Staff {
 
     }
 
+    public function getApplicationLeaveData($appID)
+    {
+
+        // SQL Query to get the leave history of login employee
+
+        $sql = "SELECT * from leavetype where applicationID=$appID";
+
+        $conn = sql_conn();
+        $result =  mysqli_query($conn, $sql);
+
+        return $result;
+    }
+
     public function getAppLeaveTypes($appID)
     {
 
@@ -267,8 +280,6 @@ class Staff {
 
     }
         
-
-
     // This Function is Used To Find pending task adjustment request of login employee
     public function lectureAdjustmentRequst()
     {
