@@ -40,8 +40,7 @@
         if( !empty( $data['extension'] ) ){
             
             //Call withdrawApplication page
-            
-            $url = "http://localhost/LMS1/pages/Staff/withdrawApplication.php?id=$data[extension]&empID=$data[employeeID]&return=true";
+            $url = "https://bitwardha.ac.in/lms/pages/Staff/withdrawApplication.php?id=$data[extension]&empID=$data[employeeID]&return=true";
 
             $options = array(
                 'http' => array(

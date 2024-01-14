@@ -14,7 +14,7 @@
     require('../../utils/Config/Config.class.php');
 
     //include class definition
-    require('../../utils/Staff/Staff.class.php');
+    require('../../utils/Staff/staff.class.php');
 
     //start session
     $applicationID = $_GET['id'];
