@@ -237,9 +237,17 @@ table {
     cursor: pointer;
 }
 
-.APPROVED , .ACCEPTED , .APPROVED_BY_HOD , .APPROVED_BY_PRINCIPAL{
+.APPROVED , .ACCEPTED , .APPROVED_BY_HOD , .APPROVED_BY_PRINCIPAL , .SANCTIONED , .DEDUCTED_FROM_EL , .LEAVE_WITHOUT_PAY{
 
     color: rgb(36, 124, 36);
+    font-weight: 800;
+
+}
+
+
+.WITHDRAWN{
+
+    color: rgb(102, 102, 102);
     font-weight: 800;
 
 }

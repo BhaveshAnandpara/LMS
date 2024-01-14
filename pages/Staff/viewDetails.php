@@ -488,17 +488,35 @@
                 </div>
             </div>
 
+            <?php
+            
+                if( !empty($data['extension']) ){
+
+                    echo 
+                    "<div class='mb-5' >
+
+                        <a href='../../pages/Staff/viewDetails.php?id=$data[extension]' > <button class='submitbtn approveBtn clickable my-0 mx-2' style=' background-color : #11101D; ' > <i class='fas fa-link mr-2' style=' color : #fff; ' ></i> Check the Linked Application </button> </a>
+        
+                    </div>";   
+
+                }
+
+            
+            ?>
+
 
             <!-- Approve or Reject Button should only be visible when either user is hod and application has not elapsed -->
             <?php
             
                 
+
                 $curr = date('Y-m-d'); // Current date in 'Y-m-d' format
                 
                 if(  ( $user->role === Config::$_HOD_ ) && $data['applicationStatus'] == Config::$_APPLICATION_STATUS['PENDING'] ){
 
                     
                     if(( date( 'Y-m-d' , strtotime($data['startDate'])) >=  $curr)){
+
 
                         echo 
                         "<div>
@@ -531,16 +549,18 @@
 
                     if( ( date( 'Y-m-d' , strtotime($data['startDate'])) >=  $curr) ){
 
+                    $extension = empty($data['extension']) ? false : true ;
+
                     echo 
                     "<div>
 
-                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=APPROVE' > <button class='submitbtn approveBtn clickable my-0 mx-2' > Approve </button> </a>
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=APPROVE&extension=$extension' > <button class='submitbtn approveBtn clickable my-0 mx-2' > Approve </button> </a>
 
-                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=REJECT' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Reject </button> </a>
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=REJECT&extension=$extension' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Reject </button> </a>
 
-                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=DEDUCTFROMEL' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Deduct from EL </button> </a>
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=DEDUCTFROMEL&extension=$extension' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Deduct from EL </button> </a>
 
-                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=LWP' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Leave Without Pay </button> </a>
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=LWP&extension=$extension' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Leave Without Pay </button> </a>
         
                     </div>";
 

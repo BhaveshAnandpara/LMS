@@ -148,12 +148,14 @@
                         <tr>
                             <th>LEAVE TYPE</th>
                             <th>APPLICATION DATE</th>
+                            <th>EXTENDED FROM</th>
                             <th>FROM</th>
                             <th>TO</th>
                             <th>TOTAL DAYS</th>
                             <th>STATUS</th>
                             <th>VIEW</th>
                             <th>EDIT</th>
+                            <th>WITHDRAW</th>
                         </tr>
                     </thead>
 
@@ -171,20 +173,36 @@
 
                             <td><?php echo $leaveTypes ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
+                            <?php 
+                                if( empty($row["extension"]) ){
+                                    echo "<td class='text-end'> <i class='fas fa-link' style='color: #ccc;' ></i> </td>";
+                                }
+                                else{
+                                    echo "<td class='text-end'> <a href='./viewDetails.php?id=$row[extension]'><i class='fas fa-link'></i></a> </td>";
+                                }
+                            ?>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
                             <td><?php echo $row["totalDays"] ?></td>
+                            
                             <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
+
                             <td class="text-end"> <a href="./viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
                             <?php
                             
-                            if( $row['status'] == Config::$_APPLICATION_STATUS['PENDING'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_PRINCIPAL'] ){
-                                echo "<td class='text-end'> <a href='./editApplication.php?id=".$row['applicationID']."' ><i class='fas fa-pen-to-square'></i></a> </td>";
-                            }else{
+                            if( $row['status'] == Config::$_APPLICATION_STATUS['PENDING'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_HOD'] || $row['status'] == Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'] || $row['status'] == Config::$_APPLICATION_STATUS['REJECTED_BY_PRINCIPAL'] ){
+
+                                echo "<td class='text-end'> <a href='./editApplication.php?id=".$row['applicationID']."&extend=false' ><i class='fas fa-pen-to-square'></i></a> </td>";
+
+                            }
+                            else if( $row['status'] == Config::$_APPLICATION_STATUS['APPROVED_BY_PRINCIPAL'] || $row['status'] == Config::$_APPLICATION_STATUS['DEDUCTED_FROM_EL'] || $row['status'] == Config::$_APPLICATION_STATUS['LEAVE_WITHOUT_PAY']  ){
+                                echo "<td class='text-end'> <a href='./editApplication.php?id=".$row['applicationID']."&extend=true' ><i class='fas fa-pen-to-square'></i></a> </td>";
+                            }
+                            else{
                                 echo "<td class='text-end'> <i class='fas fa-pen-to-square' style='color: #ccc;' ></i> </td>";
                             }
-                            
                             ?>
+                            <td class='text-end'> <a href="./withdrawApplication.php?id=<?php echo $row['applicationID'] ?>&empID=<?php echo $user->employeeId ?>" > <i class='fas fa-trash' ></i> </a> </td>
 
                         </tr>
                         <?php } ?>

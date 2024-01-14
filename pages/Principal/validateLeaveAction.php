@@ -22,8 +22,10 @@
     $user = unserialize($_SESSION['user']) ;
     $applicationID = $_GET['id'];
     $action = $_GET['action'];
+    $extension = $_GET['extension'];
 
     $data =  mysqli_fetch_assoc( $user->viewDetailApplication($applicationID) );
+
 
 ?>
 
@@ -31,6 +33,40 @@
 
     try{
 
+
+        //------------------------------- Withdraw the previous Application -------------------------------
+
+        //If this application is extension of some another application then withdraw prev application
+        if( !empty( $data['extension'] ) ){
+            
+            //Call withdrawApplication page
+            
+            $url = "http://localhost/LMS1/pages/Staff/withdrawApplication.php?id=$data[extension]&empID=$data[employeeID]&return=true";
+
+            $options = array(
+                'http' => array(
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'POST',
+                    'content' => http_build_query($data),
+                ),
+            );
+            $context  = stream_context_create($options);
+            $html = file_get_contents($url, false, $context);
+
+            // If the return response is not true that means there is an error
+
+            if( !$html ){
+
+                throw new Exception("Error Occured");
+
+            }
+
+        }
+
+        // ------------------------------ Perform Action --------------------------------------
+
+
+        //Intial Status
         $status = Config::$_APPLICATION_STATUS['APPROVED_BY_HOD'];
         $principalApproval = Config::$_PRINCIPAL_STATUS['PENDING'];
         
@@ -69,25 +105,20 @@
         $transaction_PENDING = Config::$_TRANSACTION_STATUS['PENDING'];
         $transaction_FAILED = Config::$_TRANSACTION_STATUS['FAILED'];
         $transaction_SUCCESSFULL = Config::$_TRANSACTION_STATUS['SUCCESSFULL'];
-        $amount = $data[ 'totalDays' ];
+        $amount = $data[ 'totalDays' ]; //total Amount
 
         
         if( $action === 'APPROVE' || $action === 'DEDUCTFROMEL' ){
 
-            //1. Insert into leavetransaction table
             $amount = 0 - $amount;
-
-            // Start Transaction
-            $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $empID , $applicationID , current_timestamp(), 'Leave Approved ( Deducting Leaves )', '$transaction_PENDING', '$amount' );";
-            $conn = sql_conn();
-            $result =  mysqli_query( $conn , $sql);
 
             $amount = abs( $amount);
 
-            //2. deduct amount of leaves from leavebalance table
+            //1. deduct amount of leaves from leavebalance table
 
                 //check if there is sufficient balance
 
+                //get the current balance and amount of leave taken for each leave type
                 $leaveQuery = "SELECT leavetype.leaveID , leavetype.totalDays  , leavebalance.employeeID , leavebalance.leaveType ,  leavebalance.leaveCounter , leavebalance.balance from leavetype inner join leavebalance on leavetype.leaveID = leavebalance.leaveID where leavetype.applicationID = $applicationID and leavebalance.employeeID = $empID;";
                 $conn = sql_conn();
                 $result =  mysqli_query( $conn , $leaveQuery);
@@ -96,6 +127,7 @@
                 //Check if for any leaveType there is insuffcient Balance
                 while( $row =  mysqli_fetch_assoc( $result) ){
 
+                    //If action is DEDUCTFROMEL then check if we can deduct total days from EL balance
                     if( $action === 'DEDUCTFROMEL' ){
 
                         //Get Earned Leave Balance
@@ -103,13 +135,8 @@
                         $conn = sql_conn();
                         $result = mysqli_fetch_assoc( mysqli_query( $conn , $leaveQuery) );
 
-
                         if( ceil($amount) > $result['balance'] ){
 
-                            // End Transaction
-                            $sql = "Update leavetransactions set reason='Insuffcient Balance', status='$transaction_FAILED' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
-                            $conn = sql_conn();
-                            $result =  mysqli_query( $conn , $sql);
                             throw new Exception( "Insufficient Balance" );
     
                         }
@@ -119,11 +146,6 @@
                     }else{
 
                         if( floatval($row['totalDays']) > floatval($row['balance']) ){
-
-                            // End Transaction
-                            $sql = "Update leavetransactions set reason='Insuffcient Balance', status='$transaction_FAILED' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
-                            $conn = sql_conn();
-                            $result =  mysqli_query( $conn , $sql);
                             throw new Exception( "Insufficient Balance" );
     
                         }
@@ -136,7 +158,20 @@
 
                 //Deduct the balance
                 while( $row =  mysqli_fetch_assoc( $leaveResult) ){
-        
+    
+                    
+                    // Start Transaction
+                    $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $empID , $row[leaveID] , current_timestamp(), 'Leave Approved ( Deducting Leaves )', '$transaction_PENDING', '$amount' );";
+                    $conn = sql_conn();
+                    $result =  mysqli_query( $conn , $sql);
+
+                    //Get Transaction ID
+
+                    $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$row[leaveID] and status ='$transaction_PENDING'";
+                    $conn = sql_conn();
+                    $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
+                    $transactionID = $result['transactionID'];
+
                     if( $action === 'DEDUCTFROMEL' ){
 
                             //Get Earned Leave Balance
@@ -149,13 +184,6 @@
                             $leaveID = $ELBalance['leaveID'];
                             $deductingAmount = ceil($amount);
                             $leaveName = $ELBalance['leaveType'];
-
-                            //Get Transaction ID
-
-                            $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$applicationID and status ='$transaction_PENDING'";
-                            $conn = sql_conn();
-                            $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
-                            $transactionID = $result['transactionID'];
 
                             //Deduct from leavebalance
                             $sql = " UPDATE leavebalance SET balance='$newBalance' , leaveCounter='$leaveCounter' , lastUpdatedOn='$transactionID' where employeeID='$empID' and leaveType='Earned Leave' ";
@@ -170,13 +198,9 @@
                             $result =  mysqli_query( $conn , $sql);
                 
                             //End Transaction
-                            $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+                            $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$row[leaveID] and status = '$transaction_PENDING'";
                             $conn = sql_conn();
                             $result =  mysqli_query( $conn , $sql);
-                
-                            if( !$result ){
-                                // throw new Exception("Errro Occured");
-                            }
 
                             break;
 
@@ -187,13 +211,6 @@
                         $leaveID = $row['leaveID'];
                         $deductingAmount = $row['totalDays'];
                         $leaveName = $row['leaveType'];
-            
-                        //Get Transaction ID
-
-                        $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$applicationID and status ='$transaction_PENDING'";
-                        $conn = sql_conn();
-                        $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
-                        $transactionID = $result['transactionID'];
 
                         //Deduct from leavebalance
                         $sql = " UPDATE leavebalance SET balance='$newBalance' , leaveCounter='$leaveCounter' , lastUpdatedOn='$transactionID' where employeeID='$empID' and leaveID='$leaveID' ";
@@ -208,7 +225,7 @@
                         $result =  mysqli_query( $conn , $sql);
             
                         //End Transaction
-                        $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+                        $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$row[leaveID] and status = '$transaction_PENDING'";
                         $conn = sql_conn();
                         $result =  mysqli_query( $conn , $sql);
             
@@ -234,25 +251,29 @@
 
         else if( $action === 'LWP' ) {
 
-            // Start Transaction
-            $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $empID , $applicationID , current_timestamp(), 'Leave Approved ( Adding Leaves Leave Without Pay )', '$transaction_PENDING', '$amount' );";
-            $conn = sql_conn();
-            $result =  mysqli_query( $conn , $sql);
-
-
-            //Get Transaction ID
-            $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$applicationID and status ='$transaction_PENDING'";
-            $conn = sql_conn();
-            $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
-            $transactionID = $result['transactionID'];
 
             //get Leave Details
             $sql = "SELECT * FROM `leavebalance` WHERE leaveType= 'Leave Without Pay' and employeeID = '$empID'";
             $conn = sql_conn();
             $leaveDetails =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
+
             $counter = $leaveDetails['leaveCounter']+1;
             $total = $leaveDetails['balance'] + $amount;
             $leaveID = $leaveDetails['leaveID'];
+
+            // Start Transaction
+            $sql = "INSERT INTO leavetransactions (`transactionID`, `applicantID`, `leaveID`, `date`, `reason`, `status`, `balance`) VALUES (NULL, $empID , $leaveID , current_timestamp(), 'Leave Approved ( Adding Leaves Leave Without Pay )', '$transaction_PENDING', '$amount' );";
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+
+
+            //Get Transaction ID
+            $sql = "Select * from leavetransactions where applicantID=$empID and leaveID=$leaveID and status ='$transaction_PENDING'";
+            $conn = sql_conn();
+            $result =   mysqli_fetch_assoc(mysqli_query( $conn , $sql));
+            $transactionID = $result['transactionID'];
+
+
 
             //Adding amount in LWP 
             $sql = "UPDATE leavebalance  SET `balance`='$total' , `leaveCounter`='$counter' , `lastUpdatedOn` = '$transactionID' where `employeeID`='$empID' and `leaveID`='$leaveID' ";
@@ -270,7 +291,7 @@
             $result =  mysqli_query( $conn , $sql);
 
             //End Transaction
-            $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$applicationID and status = '$transaction_PENDING'";
+            $sql = "Update leavetransactions set status='$transaction_SUCCESSFULL' where applicantID=$empID and leaveID=$leaveID and status = '$transaction_PENDING'";
             $conn = sql_conn();
             $result =  mysqli_query( $conn , $sql);
 
@@ -307,19 +328,21 @@
             exit();
 
 
-    }catch( Exception $e){
+    }
+    catch( Exception $e){
                 
         $errorMessage = $e->getMessage();
         echo $errorMessage;
     
         // Set a session variable with the response message
         $_SESSION['response_message'] = serialize([$errorMessage , "ERROR"]);
-    
+
         header("Location: ../Staff/viewDetails.php?id=$applicationID");
         exit();
     
-        }
-        ob_end_flush();
+    }
+    ob_end_flush();
+
 ?>
 
 

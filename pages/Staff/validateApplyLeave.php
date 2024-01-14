@@ -38,6 +38,10 @@
     $lecAdjs = json_decode( $_POST['lecAdjs'] , true);
     $taskAdjs = json_decode( $_POST['taskAdjs'] , true);
     $AddApp = json_decode( $_POST['AddApp'] , true);
+    $extensionOf = json_decode( $_POST['extensionOf'] , true);
+
+    if( empty($extensionOf) ) $extensionOf = NULL;
+
 
     try{
 
@@ -64,7 +68,7 @@
             
         }
 
-        $sql = "INSERT INTO `applications` (`applicationID`, `employeeID`, `status`, `dateTime`, `startDate`, `startDateType`, `endDate`, `endDateType`, `totalDays`, `reason`, `extension`, `hodApproval`, `principalApproval`) VALUES (NULL, $userID, '$status', '$applicationDate' , '$startDate' , '$startDateType', '$endDate', '$endDateType', $totalDays , '$reason' , NULL, '$hodApproval', 'PENDING')";
+        $sql = "INSERT INTO `applications` (`applicationID`, `employeeID`, `status`, `dateTime`, `startDate`, `startDateType`, `endDate`, `endDateType`, `totalDays`, `reason`, `extension`, `hodApproval`, `principalApproval`) VALUES (NULL, $userID, '$status', '$applicationDate' , '$startDate' , '$startDateType', '$endDate', '$endDateType', $totalDays , '$reason' , '$extensionOf', '$hodApproval', 'PENDING')";
 
         $result =  mysqli_query( $conn , $sql);
         

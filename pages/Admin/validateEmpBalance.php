@@ -19,8 +19,6 @@
 <!-- Include this to use User object -->
 <?php
 
-
-
     //Get the User Object
     $user =  $_SESSION['user'];
     $leaveID = $_GET['leaveID'];
@@ -121,8 +119,5 @@ try{
         
     }
     
-
-
-
 ob_end_flush();
 ?>

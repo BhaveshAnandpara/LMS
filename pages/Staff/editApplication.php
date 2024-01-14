@@ -19,6 +19,7 @@
 <!-- Include this to use User object -->
 
 <?php
+
 //Get the User Object
 $user = unserialize($_SESSION['user']) ;
 
@@ -32,6 +33,7 @@ $user = unserialize($_SESSION['user']) ;
 
     //Get Data of Applied Leave Types for this application
     $appID = $_GET['id'];
+    $isExtension = $_GET['extend'];
 
     // All Data 
 
@@ -129,7 +131,11 @@ $user = unserialize($_SESSION['user']) ;
 
 <script>
 
-    var appID = <?php echo $appID ?>
+    var appID = "<?php echo $appID ?>"
+    var isExtension = "<?php echo $isExtension ?>"
+
+    isExtension = isExtension === "true" ? true : false
+
 
     var user = <?php echo json_encode($user); ?>;
     var leaveTypeDeatils = <?php echo json_encode($leaveTypesArr); ?>;
@@ -1521,10 +1527,13 @@ $user = unserialize($_SESSION['user']) ;
                     for (let i = 0; i < employeeBalance.length; i = i + 1) {
 
                         if (employeeBalance[i].leaveID === key) {
+
                             balances = employeeBalance[i];
                             break;
                         }
                     }
+
+                    console.log(balances);
 
                     //The Time according to UTC is 5:30:00 ahead for india
                     let currTime = new Date()
@@ -1566,8 +1575,18 @@ $user = unserialize($_SESSION['user']) ;
                         isValid: false
                     }
 
+                    let currentLeaveDay = 0;
+
+                    for( let i = 0 ; i < appLeaveTypesData.length ; i++ ){
+
+                        if( appLeaveTypesData[i].leaveID === key ){
+                            currentLeaveDay = parseInt(appLeaveTypesData[i].totalDays) 
+                        }
+
+                    }
+
                     //Check for insuffcient Balance
-                    if (parseInt(balances.balance) < diffBtnDates) return {
+                    if ( (parseInt(balances.balance)+currentLeaveDay) < diffBtnDates) return {
                         msg: `Insuffcient balance , Current ${balances.leaveType}s :  ${balances.balance} `,
                         isValid: false
                     }
@@ -1975,14 +1994,19 @@ $user = unserialize($_SESSION['user']) ;
                 body.append('AddApp', JSON.stringify(AddApp));
                 body.append('deletedFiles', JSON.stringify(deletedFiles));
 
-                console.log(leaveTypes);
-
                 document.getElementById('spinner-container').style.display = 'flex'
                 document.querySelector('.home-section').style.display = 'none'
 
+                let url = "./validateEditApplication.php";
+
+                if( isExtension ){ 
+                    url = "./validateApplyLeave.php"
+                    body.append('extensionOf', JSON.stringify(appID));
+                }
+
                 // Fire off the request to ./validateEditApplication.php
                 request = $.ajax({
-                    url: "./validateEditApplication.php",
+                    url: url,
                     type: "post",
                     data: body,
                     processData: false,

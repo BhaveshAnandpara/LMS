@@ -1420,6 +1420,7 @@ $holidays = Utils::getUpcomingHolidays();
                 body.append('lecAdjs', JSON.stringify(lecAdjs));
                 body.append('taskAdjs', JSON.stringify(taskAdjs));
                 body.append('AddApp', JSON.stringify(AddApp));
+                body.append('extensionOf', "");
 
 
                 document.getElementById('spinner-container').style.display = 'flex'

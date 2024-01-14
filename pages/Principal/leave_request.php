@@ -95,6 +95,7 @@
                         <tr>
                             <th>APPLICANT NAME</th>
                             <th>APPLICANT EMAIL</th>
+                            <th>DEPARTMENT</th>
                             <th>LEAVE TYPE</th>
                             <th>FROM</th>
                             <th>TO</th>

@@ -158,7 +158,32 @@
 
             return $result ;
 
-        }    
+        }  
+        
+        public static function viewDetailApplication( $id ){
+
+            $sql = "SELECT applications.status as applicationStatus , applications.* , employees.* FROM `applications` inner join employees on applications.employeeID = employees.employeeID WHERE `applicationID` = $id";
+    
+            $conn = sql_conn();
+            $result =  mysqli_query($conn, $sql);
+            if (!$result) echo ("Error description: " . mysqli_error($conn));
+    
+            return $result;
+    
+        }
+
+        public static function getApplicationLeaveData($appID)
+        {
+    
+            // SQL Query to get the leave history of login employee
+    
+            $sql = "SELECT * from leavetype where applicationID=$appID";
+    
+            $conn = sql_conn();
+            $result =  mysqli_query($conn, $sql);
+    
+            return $result;
+        }
 
         public static function alert( $msg  ,$title , $redirect){
 
