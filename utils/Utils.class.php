@@ -85,6 +85,16 @@
 
         }
 
+        public static function getLeaveBalanceOfEmployeeForSpecificLeave( $empID , $leaveID ){
+
+            $sql = "SELECT balance from leavebalance where employeeID='$empID' and leaveID='$leaveID'";
+
+            $conn = sql_conn();
+            $result =  mysqli_query( $conn , $sql);
+            return $result ;
+
+        }
+
         public static function getLeaveDetailsOfEmployee( $empID , $leaveID ){
 
 

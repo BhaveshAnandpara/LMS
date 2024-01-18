@@ -86,6 +86,14 @@
                 <span class="tooltip">Manage Holidays</span>
             </li>
 
+            <li>
+                <a href="../../pages/Admin/creditLeaves.php">
+                <i class="fa-solid fa-hourglass"></i>
+                    <span class="links_name">Credit Leaves</span>
+                </a>
+                <span class="tooltip">Credit Leaves</span>
+            </li>
+
             <li class="profile">
         <div class="profile-details">
           <!-- <img src="assets/ganesh.jpg" alt="profileImg"> -->
