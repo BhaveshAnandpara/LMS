@@ -59,6 +59,7 @@ $holidays = Utils::getUpcomingHolidays();
 ?>
 
 <script>
+
     var user = <?php echo json_encode($user); ?>;
     var leaveTypeDeatils = <?php echo json_encode($leaveTypesArr); ?>;
     var employeeBalance = <?php echo json_encode($employeeBalanceArr); ?>;
@@ -77,6 +78,7 @@ $holidays = Utils::getUpcomingHolidays();
     leaveTypeDeatils.forEach(leaveDetail => {
         leaveNames[leaveDetail.leaveID + ''] = leaveDetail.leaveType
     });
+
 </script>
 
 
@@ -209,7 +211,10 @@ $holidays = Utils::getUpcomingHolidays();
                             </select>
 
                             <!-- From Date -->
-                            <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="fromDate-0" min="<?php echo date('Y-m-d') ?>">
+
+                            <p id='fromDate-0-label' class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
+
+                            <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="fromDate-0" min="<?php echo date('Y-m-d') ?>" onchange="updateFromLabel(this)" >
 
                             <!-- From Date Type -->
                             <select id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select From Date Type">
@@ -221,7 +226,10 @@ $holidays = Utils::getUpcomingHolidays();
                             </select>
 
                             <!-- To Date -->
-                            <input type="date" name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="toDate-0" min="<?php echo date('Y-m-d') ?>">
+
+                            <p id='toDate-0-label' class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
+
+                            <input type="date" name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="toDate-0" min="<?php echo date('Y-m-d') ?> " onchange="updateToLabel(this)">
 
                             <!-- From Date Type -->
                             <select id="toDateType-0" name="toDateType" class=" toDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select To Date Type">
@@ -487,7 +495,46 @@ $holidays = Utils::getUpcomingHolidays();
     ?>
 
     <script>
+
+        function updateFromLabel(e){
+            let id = e.id
+            id = id+'-label'
+
+            let selectedDate = new Date(e.value);
+            let yyyy = selectedDate.getFullYear();
+            let mm = selectedDate.getMonth() + 1; // Months start at 0!
+            let dd = selectedDate.getDate();
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            let formattedToday = dd + '/' + mm + '/' + yyyy;
+            document.getElementById(id).innerHTML = formattedToday
+
+        }
+
+        function updateToLabel(e){
+            let id = e.id
+            id = id+'-label'
+
+            let selectedDate = new Date(e.value);
+            let yyyy = selectedDate.getFullYear();
+            let mm = selectedDate.getMonth() + 1; // Months start at 0!
+            let dd = selectedDate.getDate();
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            let formattedToday = dd + '/' + mm + '/' + yyyy;
+            document.getElementById(id).innerHTML = formattedToday
+
+        }
+
+    </script>
+
+    <script>
         $(document).ready(function() {
+
 
             //* ------------------------- Additional Approvals Box --------------------------------
 
@@ -786,11 +833,10 @@ $holidays = Utils::getUpcomingHolidays();
 
             //* ------------------------- Leave Types box --------------------------------
 
-            leaveTypes = {} // array to avoid duplicate leave types
-            leaveTypes['final'] = {} //final object will have first fromDate to last toDate
+            leaveTypes = new Map() // array to avoid duplicate leave types ( Using Map to maintain the order ) 
+            leaveTypes.set('final' , {})  //final object will have first fromDate to last toDate
 
             var isSafeToAddNewLeaveTypeRow = false //if false meanse the currrent data is not validated hence don't allow adding another row
-
 
             //Add new Row
             $('#addleaveTypeRowBtn').click(() => {
@@ -831,18 +877,20 @@ $holidays = Utils::getUpcomingHolidays();
                 let lastRow = $(`#leavetypeItem-${id}`)[0]
                 let childrensOfLastRow = lastRow.children
 
-                //If some leave type for the rowNo already exist then remove that
-                for (const key in leaveTypes) {
 
-                    if (leaveTypes[key].rowNo === id) {
-                        delete leaveTypes[key];
+                //If some leave type for the rowNo already exist then remove that
+
+                for (let [key, value] of leaveTypes) {
+                    
+                    if ( value.rowNo === id) {
+                        delete leaveTypes.delete(key);
                         break;
                     }
-
                 }
 
+
                 //Check if there is already some data for specific leavetype
-                if (leaveTypes[$(`#leaveType-${id}`)[0].value + ''] != undefined && leaveTypes[$(`#leaveType-${id}`)[0].value + ''].rowNo !== id) {
+                if (leaveTypes.get($(`#leaveType-${id}`)[0].value + '') != undefined && leaveTypes.get($(`#leaveType-${id}`)[0].value + '').rowNo !== id) {
                     
                     // alert("Cannot Select Leave Type more than Once !")
                     let message = "Cannot Select Leave Type more than Once !!!"
@@ -850,11 +898,12 @@ $holidays = Utils::getUpcomingHolidays();
                     document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
                     $('#myModal').modal();
                     return;
+
                 }
 
                 //create a object for that specefic leave type
-                leaveTypes[$(`#leaveType-${id}`)[0].value + ''] = {}
-                leaveTypes[$(`#leaveType-${id}`)[0].value + ''].rowNo = id;
+                leaveTypes.set($(`#leaveType-${id}`)[0].value + '' , {})
+                leaveTypes.get($(`#leaveType-${id}`)[0].value + '').rowNo = id;
 
 
                 //For every element in row i.e , select , inputs,
@@ -868,20 +917,21 @@ $holidays = Utils::getUpcomingHolidays();
                     if (childrensOfLastRow[i].name === "leaveID") {
 
                         //create new object for new leave type
-                        leaveTypes[childrensOfLastRow[i].value + ''][childrensOfLastRow[i].name + ''] = childrensOfLastRow[i].value
+                        leaveTypes.get(childrensOfLastRow[i].value + '')[childrensOfLastRow[i].name + ''] = childrensOfLastRow[i].value
 
-                        leaveTypes[childrensOfLastRow[i].value + '']['leaveType'] = childrensOfLastRow[i].options[childrensOfLastRow[i].value - 1].text
+                        leaveTypes.get(childrensOfLastRow[i].value + '')['leaveType'] = childrensOfLastRow[i].options[childrensOfLastRow[i].value - 1].text
 
                     }
 
                     //Add all the data in leave type specific object
-                    leaveTypes[childrensOfLastRow[0].value + ''][childrensOfLastRow[i].name + ''] = childrensOfLastRow[i].value
+                    leaveTypes.get(childrensOfLastRow[0].value + '')[childrensOfLastRow[i].name + ''] = childrensOfLastRow[i].value
 
                 }
 
 
                 //reset final object
-                leaveTypes['final'] = {}
+                leaveTypes.set('final' , {});
+
 
                 let validate = validateLeaveData(leaveTypes) //Validate Data and configure final dates
 
@@ -917,10 +967,10 @@ $holidays = Utils::getUpcomingHolidays();
                 let id = (e.target.id).split('-')[1]
 
                 //Remove the leave type specific object
-                for (const key in leaveTypes) {
-
-                    if (leaveTypes[key].rowNo === parseInt(id)) {
-                        delete leaveTypes[key];
+                for (let [key, value] of leaveTypes) {
+                    
+                    if (value.rowNo === parseInt(id)) {
+                        delete leaveTypes.delete(key);
                         break;
                     }
 
@@ -931,10 +981,9 @@ $holidays = Utils::getUpcomingHolidays();
 
 
                 //reset final object
-                leaveTypes['final'] = {}
+                leaveTypes.set('final' , {})
 
                 let validate = validateLeaveData(leaveTypes) //Validate Data and configure final dates
-                console.log(validate)
 
                 //If validations fails
                 if (!validate.isValid) {
@@ -961,12 +1010,12 @@ $holidays = Utils::getUpcomingHolidays();
             function validateLeaveData(leavedata) {
 
                 //For every leave in leave data
-                for (const key in leavedata) {
+                for (let [key , value] of leavedata) {
 
                     if (key === 'final') continue
 
                     //Define all data
-                    let appliedLeaveData = leavedata[key]
+                    let appliedLeaveData = value
                     let validationsRequired //LeaveType data from DB
                     let balances //Employee Balance data from DB
 
@@ -997,11 +1046,11 @@ $holidays = Utils::getUpcomingHolidays();
                     let toDate = new Date(appliedLeaveData.toDate)
                     toDate.setHours(5, 30, 0, 0)
 
-                    let finalEndDate = new Date(leavedata.final.endDate)
+                    let finalEndDate = new Date(leavedata.get('final').endDate)
                     finalEndDate.setHours(5, 30, 0, 0)
 
                     //Validate dates sequence from above rows ( from Date of row cannot be less than toDate of prev row )
-                    if (leavedata.final.endDate != undefined && (finalEndDate.getTime() >= fromDate.getTime())) return {
+                    if (leavedata.get('final').endDate != undefined && (finalEndDate.getTime() >= fromDate.getTime())) return {
                         msg: `fromDate cannot be less than or equals to previous endDate!`,
                         isValid: false
                     }
@@ -1035,19 +1084,18 @@ $holidays = Utils::getUpcomingHolidays();
                     }
 
                     //Add totalDays to leave type specefic object
-                    leavedata[key].totalDays = diffBtnDates;
-
+                    value.totalDays = diffBtnDates;
 
                     //update final object
-                    if (leavedata.final.startDate === undefined) {
+                    if (leavedata.get('final').startDate === undefined) {
 
-                        leavedata.final.startDate = appliedLeaveData.fromDate
-                        leavedata.final.startDateType = appliedLeaveData.fromDateType;
+                        leavedata.get('final').startDate = appliedLeaveData.fromDate
+                        leavedata.get('final').startDateType = appliedLeaveData.fromDateType;
 
                     }
 
-                    leavedata.final.endDate = appliedLeaveData.toDate;
-                    leavedata.final.endDateType = appliedLeaveData.toDateType;
+                    leavedata.get('final').endDate = appliedLeaveData.toDate;
+                    leavedata.get('final').endDateType = appliedLeaveData.toDateType;
 
                 }
 
@@ -1074,6 +1122,7 @@ $holidays = Utils::getUpcomingHolidays();
                 $('.leavetypesContainer').append(leavetypeItem) //append the new row
 
                 let len = leavetypeItem[0].children.length //get all elements in row like select and buttons
+                let id = parseInt(leaveTypeNo) + 1;
 
                 //for every element
                 for (let i = 0; i < len; i = i + 1) {
@@ -1081,11 +1130,29 @@ $holidays = Utils::getUpcomingHolidays();
                     //if form Date set it to immediate next date to toDate from prev row
                     if (leavetypeItem[0].children[i].name === "fromDate") {
 
-                        let tom = new Date(leavetypeItem[0].children[i + 2].value)
+                        //get the endDate of last row and get next date
+                        let tom = new Date(leavetypeItem[0].children[i+3].value)
                         tom.setDate(tom.getDate() + 1)
 
                         leavetypeItem[0].children[i].value = tom.toISOString().slice(0, 10)
-                        leavetypeItem[0].children[i].max = tom.toISOString().slice(0, 10)
+                        leavetypeItem[0].children[i].disabled = true
+
+                        //format that date into dd/mm/yyyy
+                        let yyyy = tom.getFullYear();
+                        let mm = tom.getMonth() + 1; // Months start at 0!
+                        let dd = tom.getDate();
+
+                        if (dd < 10) dd = '0' + dd;
+                        if (mm < 10) mm = '0' + mm;
+
+                        let formattedToday = dd + '/' + mm + '/' + yyyy;
+
+                        leavetypeItem[0].children[i-1].innerHTML = formattedToday
+                        
+                        //Set endDate for new row as blank
+                        
+                        leavetypeItem[0].children[i+2].innerHTML = ""
+
 
 
                     }
@@ -1115,32 +1182,36 @@ $holidays = Utils::getUpcomingHolidays();
 
             function calculateTotalDays(leavedata) {
 
-                let leaveTypesLen = (Object.keys(leavedata).length) - 1 //No of Leave Type selected
+                
+                let leaveTypesLen = leavedata.size //No of Leave Type selected
+                
                 let idx = 1;
-
+                
                 let calculations = "" //text for total days input
-
+                
                 //for every leave type user selected
-                for (const key in leavedata) {
-
+                for (let [key , value] of leavedata) {
+                    
+                    console.log(key);
                     if (key === 'final') continue
 
                     let holidayLeaves = 0;
 
-                    let startDate = new Date(leavedata[key].fromDate)
+                    let startDate = new Date(value.fromDate)
                     startDate.setHours(5, 30, 0, 0)
 
-                    let startDateType = leavedata[key].fromDateType
+                    let startDateType = value.fromDateType
 
-                    let endDate = new Date(leavedata[key].toDate)
+                    let endDate = new Date(value.toDate)
                     endDate.setHours(5, 30, 0, 0)
 
-                    let endDateType = leavedata[key].toDateType
+                    let endDateType = value.toDateType
 
 
                     let totalDays = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000) + 1 //total difference between fromDate and startDate
                     let leaveName = leaveNames[key] //name of the leave type
 
+                    console.log(`Total ${ leaveName } = <b>${totalDays} Days </b> </br>Holidays =  `);
                     calculations += `Total ${ leaveName } = <b>${totalDays} Days </b> </br>Holidays =  `
 
                     let leftHolidays = 0 // holidays counting from left side ( fromDate )
@@ -1200,9 +1271,9 @@ $holidays = Utils::getUpcomingHolidays();
                     calculations += `</br>Total Holiday Leaves = <b>${holidayLeaves}</b></br>`
                     calculations += `Total Leaves to be deducted from ${leaveNames[key]} = <b>${ finalTotaldays  }</b></br></br>`
 
-                    leaveTypes[key].totalDays = finalTotaldays;
+                    value.totalDays = finalTotaldays;
 
-                    leavedata.final.totalDays = leavedata.final.totalDays != undefined ? leavedata.final.totalDays + finalTotaldays : finalTotaldays;
+                    leavedata.get('final').totalDays = leavedata.get('final').totalDays != undefined ? leavedata.get('final').totalDays + finalTotaldays : finalTotaldays;
 
 
                     idx++;
