@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Login </title>
+    <link rel="stylesheet" href="./css/logIn.css">
 
 </head>
 
@@ -14,14 +15,16 @@
 
     <? include  "./utils/Config/Config.class.php" ?>
 
-    <div class="main">
-
-        <h1>BIT Leave Management System 1</h1>
-
-        <!-- HTML API for Sign in with Google Function -->
-        <!-- //! Do not remove this part  -->
-
-        <div id="g_id_onload" data-client_id="983317266916-01juk5ugf6rfg0fop30213s6d0k3atun.apps.googleusercontent.com"
+    <h1 class="signin-text">BIT Leave Management System</h1>
+<div class="container" id="container">
+	
+	<div class="form-container sign-in-container">
+		<form action="#">
+            <img style="height: 80px; width: 80px; display: flex; align-items: center; justify-content: center;"  src="https://yt3.ggpht.com/a/AATXAJz3tBeOzGRtKL1x2VX_rSFwCKgSIHsvDhEa8qnd=s900-c-k-c0xffffffff-no-rj-mo" alt="">
+            
+			<h1 class="signin-text">Sign in</h1>
+           
+            <div id="g_id_onload" data-client_id="983317266916-01juk5ugf6rfg0fop30213s6d0k3atun.apps.googleusercontent.com"
             data-context="signin" data-ux_mode="popup" data-auto_prompt="false"
             data-callback='handleCredentialResponse'>
         </div>
@@ -29,8 +32,17 @@
         <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
             data-text="signin_with" data-size="large" data-locale="en-GB" data-logo_alignment="left">
         </div>
+			
+		</form>
+	</div>
+	<div class="overlay-container">
+        
+		
+	</div>
+</div>
 
-    </div>
+
+   
 
     <!-- Required to run HTML Google API  -->
     <!-- //! Do not remove this part  -->
