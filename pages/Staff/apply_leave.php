@@ -1193,10 +1193,8 @@ $holidays = Utils::getUpcomingHolidays();
             //* ------------------------- Calculate Total Days --------------------------------
 
             function calculateTotalDays(leavedata) {
-
-                
+ 
                 let leaveTypesLen = leavedata.size //No of Leave Type selected
-                
                 let idx = 1;
                 
                 let calculations = "" //text for total days input
@@ -1217,7 +1215,6 @@ $holidays = Utils::getUpcomingHolidays();
                     endDate.setHours(5, 30, 0, 0)
 
                     let endDateType = value.toDateType
-
 
                     let totalDays = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000) + 1 //total difference between fromDate and startDate
                     let leaveName = leaveNames[key] //name of the leave type
@@ -1252,10 +1249,10 @@ $holidays = Utils::getUpcomingHolidays();
                     //Decrement total days if the endingDate ends with some holiday
 
                     let dumEndDate = endDate;
-                    
-                    while (startDate !== endDate && idx === leaveTypesLen) {
 
-                        if ( dumEndDate > startDate && (holiDaysDate.includes(dumEndDate.toISOString().slice(0, 10)) || dumEndDate.getDay() == 0) ) {
+                    while (startDate !== endDate && idx === leaveTypesLen-1 ) {
+
+                        if ( dumEndDate > startDate && (holiDaysDate.includes(dumEndDate.toISOString().slice(0, 10)) || dumEndDate.getDay() === 0) ) {
 
                             calculations += `<b>${ dumEndDate.toISOString().slice(0, 10) }</b> |`
                             dumEndDate.setDate(dumEndDate.getDate() - 1);

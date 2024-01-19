@@ -1797,7 +1797,7 @@ $user = unserialize($_SESSION['user']) ;
 
                     let dumEndDate = endDate;
                     
-                    while (startDate !== endDate && idx === leaveTypesLen) {
+                    while (startDate !== endDate && idx === leaveTypesLen-1) {
 
                         if ( dumEndDate > startDate && (holiDaysDate.includes(dumEndDate.toISOString().slice(0, 10)) || dumEndDate.getDay() == 0) ) {
 
