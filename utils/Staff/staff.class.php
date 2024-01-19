@@ -133,7 +133,7 @@ class Staff {
 
         // SQL Query to get the leave history of login employee
 
-        $sql = "SELECT * from leavetype where applicationID=$appID";
+        $sql = "SELECT * from leavetype where applicationID=$appID ORDER BY startDate";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);

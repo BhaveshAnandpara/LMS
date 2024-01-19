@@ -646,8 +646,8 @@ $holidays = Utils::getUpcomingHolidays();
 
                     if (lecAdjItem[0].children[0].children[i].name === "lecDate") {
 
-                        lecAdjItem[0].children[0].children[i].max = new Date(leaveTypes.final.endDate).toISOString().slice(0, 10)
-                        lecAdjItem[0].children[0].children[i].min = new Date(leaveTypes.final.startDate).toISOString().slice(0, 10)
+                        lecAdjItem[0].children[0].children[i].max = new Date(leaveTypes.get('final').endDate).toISOString().slice(0, 10)
+                        lecAdjItem[0].children[0].children[i].min = new Date(leaveTypes.get('final').startDate).toISOString().slice(0, 10)
 
                     }
 
@@ -1433,7 +1433,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                             if (container.children[j].name === 'taskFromDate' || container.children[j].name === 'taskToDate') {
 
-                                if ((new Date(container.children[j].value) < new Date(leaveTypes.final.startDate)) || (new Date(container.children[j].value) > new Date(leaveTypes.get('final').endDate))) {
+                                if ((new Date(container.children[j].value) < new Date(leaveTypes.get('final').startDate)) || (new Date(container.children[j].value) > new Date(leaveTypes.get('final').endDate))) {
                                     isValidated = false;
                                     // alert('Dates in Task Adjustments should be between startDate and endDate of Application !')
                                     let message = "Dates in Task Adjustments should be between startDate and endDate of Application !!"
@@ -1493,11 +1493,11 @@ $holidays = Utils::getUpcomingHolidays();
 
                 }
 
-                leaveTypes = Object.fromEntries(leaveTypes); //Convert map to js obj as we have intially wrote the whole logic using js object logic
+                let leaveTypesObj = Object.fromEntries(leaveTypes); //Convert map to js obj as we have intially wrote the whole logic using js object logic
 
                 body.append('user', JSON.stringify(user));
                 body.append('applicationDate', JSON.stringify(new Date().toISOString().slice(0, 10)));
-                body.append('leaveTypes', JSON.stringify(leaveTypes));
+                body.append('leaveTypes', JSON.stringify(leaveTypesObj));
                 body.append('reason', JSON.stringify(reason));
                 body.append('lecAdjs', JSON.stringify(lecAdjs));
                 body.append('taskAdjs', JSON.stringify(taskAdjs));

@@ -55,7 +55,6 @@ $user = unserialize($_SESSION['user']) ;
         $appLeaveTypeArr[] =  $rows;
     } 
 
-
     // Lecture Adjustments Data
 
     $applicationLecAdjData = $user->getLectureAdjustments($appID);
@@ -160,25 +159,21 @@ $user = unserialize($_SESSION['user']) ;
     // ------------- For Current Application Data ---------------------------
 
     var appLeaveTypesData = <?php echo json_encode($appLeaveTypeArr); ?>;
+
     var deletedFiles = []
     
-    var leaveTypesData = []
+    var leaveTypesData = new Map();
     
     //Get all the leave type for application in array
     appLeaveTypesData.forEach((leaveDetail , idx) => {
-        leaveTypesData[leaveDetail.leaveID + ''] = leaveDetail
+        leaveTypesData.set(leaveDetail.leaveID + '' , leaveDetail) 
     });
     
-    leaveTypesData = leaveTypesData.filter(function (el) {
-        return el != null;
-    });
 
     // Reason
     
     var applicationData = <?php echo json_encode($appData); ?>;
     applicationData = applicationData[0]
-
-    console.log(applicationData);
 
     // Lecture Adjustments
 
@@ -343,8 +338,11 @@ $user = unserialize($_SESSION['user']) ;
 
                             </select>
 
+                            <p id='fromDate-0-label' class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
+
+                            
                             <!-- From Date -->
-                            <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="fromDate-0" min="<?php echo date('Y-m-d') ?>">
+                            <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="fromDate-0" min="<?php echo date('Y-m-d') ?>">
 
                             <!-- From Date Type -->
                             <select id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select From Date Type">
@@ -356,7 +354,9 @@ $user = unserialize($_SESSION['user']) ;
                             </select>
 
                             <!-- To Date -->
-                            <input type="date" name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2" id="toDate-0" min="<?php echo date('Y-m-d') ?>">
+                            <p id='toDate-0-label' name="toDate-label" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
+
+                            <input type="date" name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="toDate-0" min="<?php echo date('Y-m-d') ?> " onchange="updateToLabel(this)">
 
                             <!-- From Date Type -->
                             <select id="toDateType-0" name="toDateType" class=" toDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select To Date Type">
@@ -622,17 +622,59 @@ $user = unserialize($_SESSION['user']) ;
     ?>
 
     <script>
+
+        function updateFromLabel(e){
+
+            let id = e.id
+            id = id+'-label'
+
+            let selectedDate = new Date(e.value);
+            let yyyy = selectedDate.getFullYear();
+            let mm = selectedDate.getMonth() + 1; // Months start at 0!
+            let dd = selectedDate.getDate();
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            let formattedToday = dd + '/' + mm + '/' + yyyy;
+            document.getElementById(id).innerHTML = formattedToday
+
+        }
+
+        function updateToLabel(e){
+
+            
+            let id = e.id
+            id = id+'-label'
+
+            let selectedDate = new Date(e.value);
+            let yyyy = selectedDate.getFullYear();
+            let mm = selectedDate.getMonth() + 1; // Months start at 0!
+            let dd = selectedDate.getDate();
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            let formattedToday = dd + '/' + mm + '/' + yyyy;
+
+            if( selectedDate instanceof Date && !isNaN(dd) )document.getElementById(id).innerHTML = formattedToday
+
+        }
+
+    </script>
+
+    <script>
         $(document).ready(function() {
 
             // ----------- Pre rendering of Application ----------------------------
 
-            leaveTypes = {} // array to avoid duplicate leave types
-            leaveTypes['final'] = {} //final object will have first fromDate to last toDate
+            leaveTypes = new Map() // array to avoid duplicate leave types ( Using Map to maintain the order ) 
+            leaveTypes.set('final' , {})  //final object will have first fromDate to last toDate
 
             var isSafeToAddNewLeaveTypeRow = true //if false meanse the currrent data is not validated hence don't allow adding another row
             
 
-            for( let i = 1 ; i < leaveTypesData.length ; i++ ){
+            for( let i = 1 ; i < leaveTypesData.size ; i++ ){
                 addEmptyRows()
             }
 
@@ -660,31 +702,35 @@ $user = unserialize($_SESSION['user']) ;
 
                 // ------------------ Populate Leave Type Box ------------------
 
-                for( let i = 0 ; i < leaveTypesData.length ; i++ ){
+                let i = -1;
 
+                for( let [key , value] of leaveTypesData ){
+
+                    i++;
                     let prevValue = $(`#leavetypeItem-${i}`)[0]
                     let childrens = prevValue.children
 
                     //For every element in row
                     for (let j = 0; j < childrens.length - 1; j++) {
 
-                        // console.log(leaveTypesData[i]);
 
                         switch(j) {
                         case 0: // For Leave type
-                            childrens[j].value = parseInt(leaveTypesData[i].leaveID) ;
+                            childrens[j].value = parseInt(leaveTypesData.get(key).leaveID) ;
                             break;
-                        case 1: // For StartDay
-                            childrens[j].value = leaveTypesData[i].startDate ;
+                        case 1: // For StartDay Label
+                            childrens[2].value = leaveTypesData.get(key).startDate ;
+                            updateFromLabel(childrens[2])
                             break;
-                        case 2: // For StartDay Type
-                            childrens[j].value = leaveTypesData[i].startDateType ;
+                        case 3: // For StartDay Type
+                            childrens[j].value = leaveTypesData.get(key).startDateType ;
                             break;
-                        case 3: // For EndDate
-                            childrens[j].value = leaveTypesData[i].endDate ;
+                        case 4: // For endDay Label
+                            childrens[5].value = leaveTypesData.get(key).endDate ;
+                            updateToLabel(childrens[5])
                             break;
-                        case 4: // For EndDate Type
-                            childrens[j].value = leaveTypesData[i].endDateType ;
+                        case 7: // For EndDate Type
+                            childrens[j].value = leaveTypesData.get(key).endDateType ;
                             break;
 
                         }
@@ -1141,8 +1187,8 @@ $user = unserialize($_SESSION['user']) ;
 
                     if (lecAdjItem[0].children[0].children[i].name === "lecDate") {
 
-                        lecAdjItem[0].children[0].children[i].max = new Date(leaveTypes.final.endDate).toISOString().slice(0, 10)
-                        lecAdjItem[0].children[0].children[i].min = new Date(leaveTypes.final.startDate).toISOString().slice(0, 10)
+                        lecAdjItem[0].children[0].children[i].max = new Date(leaveTypes.get('final').endDate).toISOString().slice(0, 10)
+                        lecAdjItem[0].children[0].children[i].min = new Date(leaveTypes.get('final').startDate).toISOString().slice(0, 10)
 
                     }
 
@@ -1239,8 +1285,6 @@ $user = unserialize($_SESSION['user']) ;
 
             //Function to remove approval rows
             function removeTaskAdjRow(e) {
-
-                console.log("object");
 
                 let len = $('.taskAdjItem').length
 
@@ -1355,8 +1399,13 @@ $user = unserialize($_SESSION['user']) ;
             //Fucntion to Validate the current data and configure final object
             function handleLeaveDataChange(e) {
 
+                if( e.srcElement !== undefined ){
+                    e  = e.srcElement.id
+                }
+
                 //get the id of row
-                id = parseInt(e.split('-')[1])
+                let id = e
+                id = parseInt(id.split('-')[1])
 
                 let prevValue = $(`#leavetypeItem-${id}`)[0]
                 let childrens = prevValue.children
@@ -1375,18 +1424,20 @@ $user = unserialize($_SESSION['user']) ;
                 let lastRow = $(`#leavetypeItem-${id}`)[0]
                 let childrensOfLastRow = lastRow.children
 
-                //If some leave type for the rowNo already exist then remove that
-                for (const key in leaveTypes) {
 
-                    if (leaveTypes[key].rowNo === id) {
-                        delete leaveTypes[key];
+                //If some leave type for the rowNo already exist then remove that
+
+                for (let [key, value] of leaveTypes) {
+                    
+                    if ( value.rowNo === id) {
+                        delete leaveTypes.delete(key);
                         break;
                     }
-
                 }
 
+
                 //Check if there is already some data for specific leavetype
-                if (leaveTypes[$(`#leaveType-${id}`)[0].value + ''] != undefined && leaveTypes[$(`#leaveType-${id}`)[0].value + ''].rowNo !== id) {
+                if (leaveTypes.get($(`#leaveType-${id}`)[0].value + '') != undefined && leaveTypes.get($(`#leaveType-${id}`)[0].value + '').rowNo !== id) {
                     
                     // alert("Cannot Select Leave Type more than Once !")
                     let message = "Cannot Select Leave Type more than Once !!!"
@@ -1394,11 +1445,12 @@ $user = unserialize($_SESSION['user']) ;
                     document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
                     $('#myModal').modal();
                     return;
+
                 }
 
                 //create a object for that specefic leave type
-                leaveTypes[$(`#leaveType-${id}`)[0].value + ''] = {}
-                leaveTypes[$(`#leaveType-${id}`)[0].value + ''].rowNo = id;
+                leaveTypes.set($(`#leaveType-${id}`)[0].value + '' , {})
+                leaveTypes.get($(`#leaveType-${id}`)[0].value + '').rowNo = id;
 
 
                 //For every element in row i.e , select , inputs,
@@ -1412,20 +1464,21 @@ $user = unserialize($_SESSION['user']) ;
                     if (childrensOfLastRow[i].name === "leaveID") {
 
                         //create new object for new leave type
-                        leaveTypes[childrensOfLastRow[i].value + ''][childrensOfLastRow[i].name + ''] = childrensOfLastRow[i].value
+                        leaveTypes.get(childrensOfLastRow[i].value + '')[childrensOfLastRow[i].name + ''] = childrensOfLastRow[i].value
 
-                        leaveTypes[childrensOfLastRow[i].value + '']['leaveType'] = childrensOfLastRow[i].options[childrensOfLastRow[i].value - 1].text
+                        leaveTypes.get(childrensOfLastRow[i].value + '')['leaveType'] = childrensOfLastRow[i].options[childrensOfLastRow[i].value - 1].text
 
                     }
 
                     //Add all the data in leave type specific object
-                    leaveTypes[childrensOfLastRow[0].value + ''][childrensOfLastRow[i].name + ''] = childrensOfLastRow[i].value
+                    leaveTypes.get(childrensOfLastRow[0].value + '')[childrensOfLastRow[i].name + ''] = childrensOfLastRow[i].value
 
                 }
 
 
                 //reset final object
-                leaveTypes['final'] = {}
+                leaveTypes.set('final' , {});
+
 
                 let validate = validateLeaveData(leaveTypes) //Validate Data and configure final dates
 
@@ -1445,9 +1498,9 @@ $user = unserialize($_SESSION['user']) ;
 
                 }
 
-                
                 //Validations were fine hence allow to add new Row
                 isSafeToAddNewLeaveTypeRow = true
+
 
             }
 
@@ -1461,10 +1514,10 @@ $user = unserialize($_SESSION['user']) ;
                 let id = (e.target.id).split('-')[1]
 
                 //Remove the leave type specific object
-                for (const key in leaveTypes) {
-
-                    if (leaveTypes[key].rowNo === parseInt(id)) {
-                        delete leaveTypes[key];
+                for (let [key, value] of leaveTypes) {
+                    
+                    if (value.rowNo === parseInt(id)) {
+                        delete leaveTypes.delete(key);
                         break;
                     }
 
@@ -1475,10 +1528,9 @@ $user = unserialize($_SESSION['user']) ;
 
 
                 //reset final object
-                leaveTypes['final'] = {}
+                leaveTypes.set('final' , {})
 
                 let validate = validateLeaveData(leaveTypes) //Validate Data and configure final dates
-                console.log(validate)
 
                 //If validations fails
                 if (!validate.isValid) {
@@ -1504,13 +1556,15 @@ $user = unserialize($_SESSION['user']) ;
             //Validate Current data and return response
             function validateLeaveData(leavedata) {
 
+                
+
                 //For every leave in leave data
-                for (const key in leavedata) {
+                for (let [key , value] of leavedata) {
 
                     if (key === 'final') continue
 
                     //Define all data
-                    let appliedLeaveData = leavedata[key]
+                    let appliedLeaveData = value
                     let validationsRequired //LeaveType data from DB
                     let balances //Employee Balance data from DB
 
@@ -1527,13 +1581,10 @@ $user = unserialize($_SESSION['user']) ;
                     for (let i = 0; i < employeeBalance.length; i = i + 1) {
 
                         if (employeeBalance[i].leaveID === key) {
-
                             balances = employeeBalance[i];
                             break;
                         }
                     }
-
-                    console.log(balances);
 
                     //The Time according to UTC is 5:30:00 ahead for india
                     let currTime = new Date()
@@ -1544,12 +1595,13 @@ $user = unserialize($_SESSION['user']) ;
                     let toDate = new Date(appliedLeaveData.toDate)
                     toDate.setHours(5, 30, 0, 0)
 
-                    let finalEndDate = new Date(leavedata.final.endDate)
+                    let finalEndDate = new Date(leavedata.get('final').endDate)
                     finalEndDate.setHours(5, 30, 0, 0)
 
-                    //Validate dates sequence from above rows ( from Date of row cannot be less than toDate of prev row )
-                    if (leavedata.final.endDate != undefined && (finalEndDate.getTime() >= fromDate.getTime())) return {
-                        msg: `fromDate cannot be less than or equals to previous endDate!`,
+
+                     //Validate dates sequence from above rows ( from Date of row cannot be less than toDate of prev row )
+                     if (leavedata.get('final').endDate != undefined && (finalEndDate.getTime() >= fromDate.getTime())) return {
+                        msg: `fromDate of lower Row cannot be less than or equals to endDate of above rows!`,
                         isValid: false
                     }
 
@@ -1565,7 +1617,6 @@ $user = unserialize($_SESSION['user']) ;
                         isValid: false
                     }
 
-
                     //calculate difference between days
                     let diffBtnDates = (Math.floor((toDate.getTime() - fromDate.getTime()) / (24 * 60 * 60 * 1000))) + 1
 
@@ -1575,36 +1626,25 @@ $user = unserialize($_SESSION['user']) ;
                         isValid: false
                     }
 
-                    let currentLeaveDay = 0;
-
-                    for( let i = 0 ; i < appLeaveTypesData.length ; i++ ){
-
-                        if( appLeaveTypesData[i].leaveID === key ){
-                            currentLeaveDay = parseInt(appLeaveTypesData[i].totalDays) 
-                        }
-
-                    }
-
                     //Check for insuffcient Balance
-                    if ( (parseInt(balances.balance)+currentLeaveDay) < diffBtnDates) return {
+                    if (parseInt(balances.balance) < diffBtnDates) return {
                         msg: `Insuffcient balance , Current ${balances.leaveType}s :  ${balances.balance} `,
                         isValid: false
                     }
 
                     //Add totalDays to leave type specefic object
-                    leavedata[key].totalDays = diffBtnDates;
-
+                    value.totalDays = diffBtnDates;
 
                     //update final object
-                    if (leavedata.final.startDate === undefined) {
+                    if (leavedata.get('final').startDate === undefined) {
 
-                        leavedata.final.startDate = appliedLeaveData.fromDate
-                        leavedata.final.startDateType = appliedLeaveData.fromDateType;
+                        leavedata.get('final').startDate = appliedLeaveData.fromDate
+                        leavedata.get('final').startDateType = appliedLeaveData.fromDateType;
 
                     }
 
-                    leavedata.final.endDate = appliedLeaveData.toDate;
-                    leavedata.final.endDateType = appliedLeaveData.toDateType;
+                    leavedata.get('final').endDate = appliedLeaveData.toDate;
+                    leavedata.get('final').endDateType = appliedLeaveData.toDateType;
 
                 }
 
@@ -1615,6 +1655,7 @@ $user = unserialize($_SESSION['user']) ;
                     isValid: true
                 }
             }
+
 
 
             //  Add new Row
@@ -1631,6 +1672,7 @@ $user = unserialize($_SESSION['user']) ;
                 $('.leavetypesContainer').append(leavetypeItem) //append the new row
 
                 let len = leavetypeItem[0].children.length //get all elements in row like select and buttons
+                let id = parseInt(leaveTypeNo) + 1;
 
                 //for every element
                 for (let i = 0; i < len; i = i + 1) {
@@ -1638,32 +1680,56 @@ $user = unserialize($_SESSION['user']) ;
                     //if form Date set it to immediate next date to toDate from prev row
                     if (leavetypeItem[0].children[i].name === "fromDate") {
 
-                        let tom = new Date(leavetypeItem[0].children[i + 2].value)
+                        //get the endDate of last row and get next date
+                        let tom = new Date(leavetypeItem[0].children[i+3].value)
                         tom.setDate(tom.getDate() + 1)
 
                         leavetypeItem[0].children[i].value = tom.toISOString().slice(0, 10)
-                        leavetypeItem[0].children[i].max = tom.toISOString().slice(0, 10)
+                        leavetypeItem[0].children[i].disabled = true
+
+                        //format that date into dd/mm/yyyy
+                        let yyyy = tom.getFullYear();
+                        let mm = tom.getMonth() + 1; // Months start at 0!
+                        let dd = tom.getDate();
+
+                        if (dd < 10) dd = '0' + dd;
+                        if (mm < 10) mm = '0' + mm;
+
+                        let formattedToday = dd + '/' + mm + '/' + yyyy;
+
+                        leavetypeItem[0].children[i-1].innerHTML = formattedToday
+                        
+                        //Set endDate for new row as blank
+                        
+                        leavetypeItem[0].children[i+2].innerHTML = ""
+
 
 
                     }
 
-                    //Set Dates input as blank for cloned row
-                    if (leavetypeItem[0].children[i].name === "toDate") leavetypeItem[0].children[i].value = ""
-
-
+                    
                     let id = (leavetypeItem[0].children[i].id).toString()
                     let newId = (id.replace(leaveTypeNo, `${parseInt(leaveTypeNo) + 1}`)) //change the id according to no.
-
+                    
                     leavetypeItem[0].children[i].id = newId;
+
+                    //Set Dates input as blank for cloned row
+                    if (leavetypeItem[0].children[i].name === "toDate"){
+
+                         leavetypeItem[0].children[i].value = ""
+                         $(`#${newId}`).change((e)=>updateToLabel(e.target))
+
+                    }
 
                     //for remove button add onclick function
                     if (i == len - 1) {
                         leavetypeItem[0].children[i].onclick = (e) => removeLeaveTypeRow(e);
                     } else {
-                        leavetypeItem[0].children[i].onchange = (e) => handleLeaveDataChange(e.target.id);
+                        leavetypeItem[0].children[i].onchange = (e) => handleLeaveDataChange(e);
                     }
 
                 }
+
 
             }
 
@@ -1672,27 +1738,29 @@ $user = unserialize($_SESSION['user']) ;
 
             function calculateTotalDays(leavedata) {
 
-                let leaveTypesLen = (Object.keys(leavedata).length) - 1 //No of Leave Type selected
+                
+                let leaveTypesLen = leavedata.size //No of Leave Type selected
+                
                 let idx = 1;
-
+                
                 let calculations = "" //text for total days input
-
+                
                 //for every leave type user selected
-                for (const key in leavedata) {
-
+                for (let [key , value] of leavedata) {
+                    
                     if (key === 'final') continue
 
                     let holidayLeaves = 0;
 
-                    let startDate = new Date(leavedata[key].fromDate)
+                    let startDate = new Date(value.fromDate)
                     startDate.setHours(5, 30, 0, 0)
 
-                    let startDateType = leavedata[key].fromDateType
+                    let startDateType = value.fromDateType
 
-                    let endDate = new Date(leavedata[key].toDate)
+                    let endDate = new Date(value.toDate)
                     endDate.setHours(5, 30, 0, 0)
 
-                    let endDateType = leavedata[key].toDateType
+                    let endDateType = value.toDateType
 
 
                     let totalDays = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000) + 1 //total difference between fromDate and startDate
@@ -1757,9 +1825,9 @@ $user = unserialize($_SESSION['user']) ;
                     calculations += `</br>Total Holiday Leaves = <b>${holidayLeaves}</b></br>`
                     calculations += `Total Leaves to be deducted from ${leaveNames[key]} = <b>${ finalTotaldays  }</b></br></br>`
 
-                    leaveTypes[key].totalDays = finalTotaldays;
+                    value.totalDays = finalTotaldays;
 
-                    leavedata.final.totalDays = leavedata.final.totalDays != undefined ? leavedata.final.totalDays + finalTotaldays : finalTotaldays;
+                    leavedata.get('final').totalDays = leavedata.get('final').totalDays != undefined ? leavedata.get('final').totalDays + finalTotaldays : finalTotaldays;
 
 
                     idx++;
@@ -1771,6 +1839,7 @@ $user = unserialize($_SESSION['user']) ;
 
 
             }
+
 
             //* ------------------------- API Call --------------------------------
 
@@ -1793,8 +1862,7 @@ $user = unserialize($_SESSION['user']) ;
 
                 var body = new FormData();
 
-
-                if (Object.keys(leaveTypes).length <= 1) {
+                if ( leaveTypes.size <= 1) {
 
                     let message = "You Need to Select atleast one Leave Type to Apply !!"
                     
@@ -1805,7 +1873,7 @@ $user = unserialize($_SESSION['user']) ;
                     
                 }
 
-                if( leaveTypes.final.totalDays === 0 ) {
+                if( leaveTypes.get('final').totalDays === 0 ) {
                     
                     let message = "You cannot apply as 0 Leaves will be deducted !!";
                     
@@ -1832,7 +1900,6 @@ $user = unserialize($_SESSION['user']) ;
                 let len = $('.lecAdjContainer')[0].children.length
 
                 // validate and store Lecture Adjustment Details
-
                 if ($('#lecAdj')[0].checked) {
 
                     // Get Lec Adjustments Details
@@ -1852,22 +1919,22 @@ $user = unserialize($_SESSION['user']) ;
                                 // alert('Inputs in Lecture Adjustment cannot be Empty')
 
                                 let message = "Inputs in Lecture Adjustment cannot be Empty !!"
-                                document.querySelector('.modal-body').innerHTML = message;
-                                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                                $('#myModal').modal();
+                    document.querySelector('.modal-body').innerHTML = message;
+                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                $('#myModal').modal();
                                 break;
                             }
 
                             if (container.children[j].name === 'lecDate') {
 
 
-                                if (new Date(container.children[j].value) < new Date(leaveTypes.final.startDate) || new Date(container.children[j].value) > new Date(leaveTypes.final.endDate)) {
+                                if (new Date(container.children[j].value) < new Date(leaveTypes.get('final').startDate) || new Date(container.children[j].value) > new Date(leaveTypes.get('final').endDate)) {
                                     isValidated = false;
                                     // alert('Lec Date in Lecture Adjustments should be between startDate and endDate of Application')
                                     let message = "Lec Date in Lecture Adjustments should be between startDate and endDate of Application !!"
-                                    document.querySelector('.modal-body').innerHTML = message;
-                                    document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                                    $('#myModal').modal();
+                    document.querySelector('.modal-body').innerHTML = message;
+                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                $('#myModal').modal();
                                     break;
                                 }
 
@@ -1903,21 +1970,21 @@ $user = unserialize($_SESSION['user']) ;
                                 isValidated = false;
                                 // alert('Inputs in Task Adjustment cannot be Empty')
                                 let message = "Inputs in Task Adjustment cannot be Empt!!"
-                                document.querySelector('.modal-body').innerHTML = message;
-                                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                                $('#myModal').modal();
+                    document.querySelector('.modal-body').innerHTML = message;
+                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                $('#myModal').modal();
                                 break;
                             }
 
                             if (container.children[j].name === 'taskFromDate' || container.children[j].name === 'taskToDate') {
 
-                                if ((new Date(container.children[j].value) < new Date(leaveTypes.final.startDate)) || (new Date(container.children[j].value) > new Date(leaveTypes.final.endDate))) {
+                                if ((new Date(container.children[j].value) < new Date(leaveTypes.get('final').startDate)) || (new Date(container.children[j].value) > new Date(leaveTypes.get('final').endDate))) {
                                     isValidated = false;
                                     // alert('Dates in Task Adjustments should be between startDate and endDate of Application !')
                                     let message = "Dates in Task Adjustments should be between startDate and endDate of Application !!"
-                                    document.querySelector('.modal-body').innerHTML = message;
-                                    document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                                    $('#myModal').modal();
+                    document.querySelector('.modal-body').innerHTML = message;
+                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                $('#myModal').modal();
                                     break;
                                 }
 
@@ -1953,7 +2020,6 @@ $user = unserialize($_SESSION['user']) ;
 
                 let totalFiles = $('.filesContainer')[0].children.length
 
-
                 // validate and store Files Details
                 if ($('#files')[0].checked) {
 
@@ -1962,32 +2028,22 @@ $user = unserialize($_SESSION['user']) ;
 
                         let container = $('.filesContainer')[0].children[i]
 
-                        if( container.children[0].tagName === 'A' ){
+                        if (!files.includes(container.children[0].value)) {
 
-                            continue
-
-                        }else{
-
-
-                            if ( !files.includes(container.children[0].value) && container.children[0].value !== undefined  && container.children[0].value !== null && container.children[0].value.trim() !== ""  ) {
-
-                                body.append('files[]', container.children[0].files[0])
-                                files.push(container.children[0].files[0])
-                            }
-
+                            body.append('files[]', container.children[0].files[0])
+                            files.push(container.children[0].files[0])
                         }
-
-
-
 
                     }
 
                 }
 
+                let leaveTypesObj = Object.fromEntries(leaveTypes); //Convert map to js obj as we have intially wrote the whole logic using js object logic
+
                 body.append('user', JSON.stringify(user));
                 body.append('appID', JSON.stringify(appID));
                 body.append('applicationDate', JSON.stringify(new Date().toISOString().slice(0, 10)));
-                body.append('leaveTypes', JSON.stringify(leaveTypes));
+                body.append('leaveTypes', JSON.stringify(leaveTypesObj));
                 body.append('reason', JSON.stringify(reason));
                 body.append('lecAdjs', JSON.stringify(lecAdjs));
                 body.append('taskAdjs', JSON.stringify(taskAdjs));
