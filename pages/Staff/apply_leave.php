@@ -227,7 +227,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                             <!-- To Date -->
 
-                            <p id='toDate-0-label' class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
+                            <p id='toDate-0-label' name="toDate-label" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
 
                             <input type="date" name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="toDate-0" min="<?php echo date('Y-m-d') ?> " onchange="updateToLabel(this)">
 
@@ -514,6 +514,8 @@ $holidays = Utils::getUpcomingHolidays();
         }
 
         function updateToLabel(e){
+
+            
             let id = e.id
             id = id+'-label'
 
@@ -526,7 +528,8 @@ $holidays = Utils::getUpcomingHolidays();
             if (mm < 10) mm = '0' + mm;
 
             let formattedToday = dd + '/' + mm + '/' + yyyy;
-            document.getElementById(id).innerHTML = formattedToday
+
+            if( selectedDate instanceof Date && !isNaN(dd) )document.getElementById(id).innerHTML = formattedToday
 
         }
 
@@ -1009,6 +1012,8 @@ $holidays = Utils::getUpcomingHolidays();
             //Validate Current data and return response
             function validateLeaveData(leavedata) {
 
+                
+
                 //For every leave in leave data
                 for (let [key , value] of leavedata) {
 
@@ -1049,9 +1054,10 @@ $holidays = Utils::getUpcomingHolidays();
                     let finalEndDate = new Date(leavedata.get('final').endDate)
                     finalEndDate.setHours(5, 30, 0, 0)
 
+
                     //Validate dates sequence from above rows ( from Date of row cannot be less than toDate of prev row )
                     if (leavedata.get('final').endDate != undefined && (finalEndDate.getTime() >= fromDate.getTime())) return {
-                        msg: `fromDate cannot be less than or equals to previous endDate!`,
+                        msg: `fromDate of lower Row cannot be less than or equals to endDate of above rows!`,
                         isValid: false
                     }
 
@@ -1157,14 +1163,19 @@ $holidays = Utils::getUpcomingHolidays();
 
                     }
 
-                    //Set Dates input as blank for cloned row
-                    if (leavetypeItem[0].children[i].name === "toDate") leavetypeItem[0].children[i].value = ""
-
-
+                    
                     let id = (leavetypeItem[0].children[i].id).toString()
                     let newId = (id.replace(leaveTypeNo, `${parseInt(leaveTypeNo) + 1}`)) //change the id according to no.
-
+                    
                     leavetypeItem[0].children[i].id = newId;
+
+                    //Set Dates input as blank for cloned row
+                    if (leavetypeItem[0].children[i].name === "toDate"){
+
+                         leavetypeItem[0].children[i].value = ""
+                         $(`#${newId}`).change((e)=>updateToLabel(e.target))
+
+                    }
 
                     //for remove button add onclick function
                     if (i == len - 1) {
@@ -1174,6 +1185,7 @@ $holidays = Utils::getUpcomingHolidays();
                     }
 
                 }
+
 
             }
 
@@ -1192,7 +1204,6 @@ $holidays = Utils::getUpcomingHolidays();
                 //for every leave type user selected
                 for (let [key , value] of leavedata) {
                     
-                    console.log(key);
                     if (key === 'final') continue
 
                     let holidayLeaves = 0;
@@ -1211,7 +1222,6 @@ $holidays = Utils::getUpcomingHolidays();
                     let totalDays = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000) + 1 //total difference between fromDate and startDate
                     let leaveName = leaveNames[key] //name of the leave type
 
-                    console.log(`Total ${ leaveName } = <b>${totalDays} Days </b> </br>Holidays =  `);
                     calculations += `Total ${ leaveName } = <b>${totalDays} Days </b> </br>Holidays =  `
 
                     let leftHolidays = 0 // holidays counting from left side ( fromDate )
@@ -1307,8 +1317,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                 var body = new FormData();
 
-
-                if (Object.keys(leaveTypes).length <= 1) {
+                if ( leaveTypes.size <= 1) {
 
                     let message = "You Need to Select atleast one Leave Type to Apply !!"
                     
@@ -1319,7 +1328,7 @@ $holidays = Utils::getUpcomingHolidays();
                     
                 }
 
-                if( leaveTypes.final.totalDays === 0 ) {
+                if( leaveTypes.get('final').totalDays === 0 ) {
                     
                     let message = "You cannot apply as 0 Leaves will be deducted !!";
                     
@@ -1374,7 +1383,7 @@ $holidays = Utils::getUpcomingHolidays();
                             if (container.children[j].name === 'lecDate') {
 
 
-                                if (new Date(container.children[j].value) < new Date(leaveTypes.final.startDate) || new Date(container.children[j].value) > new Date(leaveTypes.final.endDate)) {
+                                if (new Date(container.children[j].value) < new Date(leaveTypes.get('final').startDate) || new Date(container.children[j].value) > new Date(leaveTypes.get('final').endDate)) {
                                     isValidated = false;
                                     // alert('Lec Date in Lecture Adjustments should be between startDate and endDate of Application')
                                     let message = "Lec Date in Lecture Adjustments should be between startDate and endDate of Application !!"
@@ -1424,7 +1433,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                             if (container.children[j].name === 'taskFromDate' || container.children[j].name === 'taskToDate') {
 
-                                if ((new Date(container.children[j].value) < new Date(leaveTypes.final.startDate)) || (new Date(container.children[j].value) > new Date(leaveTypes.final.endDate))) {
+                                if ((new Date(container.children[j].value) < new Date(leaveTypes.final.startDate)) || (new Date(container.children[j].value) > new Date(leaveTypes.get('final').endDate))) {
                                     isValidated = false;
                                     // alert('Dates in Task Adjustments should be between startDate and endDate of Application !')
                                     let message = "Dates in Task Adjustments should be between startDate and endDate of Application !!"
@@ -1483,6 +1492,8 @@ $holidays = Utils::getUpcomingHolidays();
                     }
 
                 }
+
+                leaveTypes = Object.fromEntries(leaveTypes); //Convert map to js obj as we have intially wrote the whole logic using js object logic
 
                 body.append('user', JSON.stringify(user));
                 body.append('applicationDate', JSON.stringify(new Date().toISOString().slice(0, 10)));
