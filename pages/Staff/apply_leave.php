@@ -214,7 +214,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                             <p id='fromDate-0-label' class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
 
-                            <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="fromDate-0" min="<?php echo date('Y-m-d') ?>" onchange="updateFromLabel(this)" >
+                            <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="fromDate-0" min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d' , strtotime('+1 month', time() ) ) ?>" onchange="updateFromLabel(this)" >
 
                             <!-- From Date Type -->
                             <select id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select From Date Type">
@@ -229,7 +229,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                             <p id='toDate-0-label' name="toDate-label" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
 
-                            <input type="date" name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="toDate-0" min="<?php echo date('Y-m-d') ?> " onchange="updateToLabel(this)">
+                            <input type="date" name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="toDate-0" min="<?php echo date('Y-m-d') ?> " max="<?php echo date('Y-m-d' , strtotime('+1 month', time() ) ) ?>" onchange="updateToLabel(this)">
 
                             <!-- From Date Type -->
                             <select id="toDateType-0" name="toDateType" class=" toDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select To Date Type">
