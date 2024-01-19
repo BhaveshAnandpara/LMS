@@ -306,4 +306,62 @@ table {
     color: rgb(212, 76, 76);
     font-weight: 800;
 
+
+}
+
+#calendar-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+#calendar-container > div {
+    display: inline-flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0;
+    width: 500px;
+}
+
+.calendarDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    max-height: 50px;
+    max-width: 50px;
+    border: 1px solid #e0e0e0;
+    margin: 8px; /* Adjusted margin to create space between calendarDate elements */
+    flex: 1 0 calc(14.2857% - 16px); /* 100% / 7 - (2 * margin) */
+    box-sizing: border-box; /* Include padding and border in the width */
+    border-radius: 100%;
+}
+
+.calendarDate:nth-last-child(-n+2) {
+    flex: 0 0 calc(14.2857% - 16px); /* Set a specific width for the last two elements */
+}
+
+.leave-box-calendar{
+  
+    background-color: rgb(212, 76, 76);
+    color: white;
+    
+}
+
+.current-date-box-calendar{
+    
+    background-color: rgb(76, 148, 212);
+    color: white;
+
+}
+
+.rules{
+
+    display: inline-block;
+    width: fit-content;
+    margin-left: 40px;
+
 }

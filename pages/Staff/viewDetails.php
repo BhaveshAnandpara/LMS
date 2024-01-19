@@ -488,6 +488,83 @@
                 </div>
             </div>
 
+            <!------------------------------ Calendar ------------------------------>
+            <div class=" bg-white shadow pl-5 pr-5 pb-3 pt-4 mt-5 rounded-lg mb-5" method="POST">
+
+                <h4 class="pb-3 pt-2  " style="color: #11101D;"> Leave Calendar  <i id="file-details" class="fa-solid fa-caret-down ml-3 clickable"></i> </h4>
+
+                <div id="calendar-container"  >
+
+
+                    <div class="form-row" >
+
+                        <?php
+                        
+                            $calendar = Utils::getEmployeeLeaveCalendar($user->employeeId);
+                            $leaveCalendarArr = array();
+                                
+                            while( $row = mysqli_fetch_assoc($calendar) ){
+
+                                for( $i = 0; $i < (int)( $row['totalDays'] ) ; $i++ ){
+                                    
+                                    
+                                    $date = date('Y-d-m' , strtotime("+{$i} days",  strtotime($row['startDate']) ) );
+                                    $leaveCalendarArr[] = $date;
+                                    
+                                }
+                                
+                            }
+
+
+                            $count = 0;
+
+                            for ($i = -15; $i < 15; $i++) {
+
+                                if( $i < 0  ){
+                                    $currentDayDisplay = date("d", strtotime("{$i} days"));
+                                    $currentDate = date("Y-d-m", strtotime("{$i} days"));
+                                }else{
+                                    $currentDayDisplay = date("d", strtotime("+{$i} days"));
+                                    $currentDate = date("Y-d-m", strtotime("+{$i} days"));
+                                }
+
+
+                                $status = '';
+                                
+                                if( $count < count($leaveCalendarArr) &&  $currentDate == $leaveCalendarArr[$count] ){
+                                    $status = 'leave-box-calendar';
+                                    $count++;
+                                }
+                                
+                                if( $currentDate == date("Y-d-m" ) ){
+                                    $status = 'current-date-box-calendar';
+                                }
+
+                                echo " <div class='calendarDate ". $status ."' > $currentDayDisplay </div> ";
+                                
+                            }
+                            
+                            ?>
+
+
+                    </div>
+
+                    <div class='rules' > 
+
+                        <div>
+                            <div class='calendarDate leave-box-calendar ' > </div> <p>On Leave</p>
+                            <div class='calendarDate current-date-box-calendar ' > </div> <p>Current Day</p>
+                        </div>
+
+
+                    </div>;   
+
+                </div>
+
+
+            </div>
+
+
             <?php
             
                 if( !empty($data['extension']) ){
@@ -582,8 +659,6 @@
 
             
             ?>
-
-
 
         </div>
         
