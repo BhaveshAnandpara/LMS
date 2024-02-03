@@ -32,7 +32,7 @@
 
 <head>
 
-    <title>Staff Dashboard</title>
+    <title>Staff</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -174,7 +174,7 @@
                             <td><?php echo $leaveTypes ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
                             <?php 
-                                if( empty($row["extension"]) ){
+                                if( empty($row["extension"]) || $row['status'] == Config::$_APPLICATION_STATUS['WITHDRAWN']  ){
                                     echo "<td class='text-end'> <i class='fas fa-link' style='color: #ccc;' ></i> </td>";
                                 }
                                 else{
@@ -201,8 +201,16 @@
                             else{
                                 echo "<td class='text-end'> <i class='fas fa-pen-to-square' style='color: #ccc;' ></i> </td>";
                             }
+
+                            if( $row['status'] == Config::$_APPLICATION_STATUS['WITHDRAWN'] ){
+
+                                echo "<td class='text-end'> <i class='fas fa-trash' style='color: #ccc;' ></i> </td>";
+                            }else{
+                                echo "<td class='text-end'> <a href='./withdrawApplication.php?id=".$row['applicationID']."&empID=".$user->employeeId." > <i class='fas fa-trash' ></i> </a> </td>";
+                            }
+
+
                             ?>
-                            <td class='text-end'> <a href="./withdrawApplication.php?id=<?php echo $row['applicationID'] ?>&empID=<?php echo $user->employeeId ?>" > <i class='fas fa-trash' ></i> </a> </td>
 
                         </tr>
                         <?php } ?>
