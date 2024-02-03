@@ -212,7 +212,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                             <!-- From Date -->
 
-                            <p id='fromDate-0-label' class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
+                            <p id='fromDate-0-label' class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center text-black-50"  > DD/MM/YYYY </p>
 
                             <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="fromDate-0" min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d' , strtotime('+1 month', time() ) ) ?>" onchange="updateFromLabel(this)" >
 
@@ -227,7 +227,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                             <!-- To Date -->
 
-                            <p id='toDate-0-label' name="toDate-label" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center"  ></p>
+                            <p id='toDate-0-label' name="toDate-label" class=" border-top-0 border-right-0 border-left-0  border border-dark col-md-2 mb-0 text-center text-black-50"  > DD/MM/YYYY</p>
 
                             <input type="date" name="toDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="toDate-0" min="<?php echo date('Y-m-d') ?> " max="<?php echo date('Y-m-d' , strtotime('+1 month', time() ) ) ?>" onchange="updateToLabel(this)">
 
@@ -324,8 +324,12 @@ $holidays = Utils::getUpcomingHolidays();
                                 <input type="text" name="sub" data-toggle="tooltip" data-placement="top" title="Subject" placeholder="Subject" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-4 col-md-3" id="sub-0">
 
 
+
                                 <!-- lec Date -->
-                                <input type="text" name="lecDate" data-toggle="tooltip" data-placement="top" title="Lecture Date" placeholder="Lecture Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-2 col-md-5" id="lecDate-0">
+
+                                <p id='lecDate-0-label' class="h-50 border-top-0 border-right-0 border-left-0  border border-dark col-md-5 mb-0 text-left text-black-50"  > Lecture Date </p>
+
+                                <input type="date" name="lecDate" data-toggle="tooltip" data-placement="top" title="Lecture Date" placeholder="Lecture Date" class='border-0' id="lecDate-0" onchange="updateFromLabel(this)" >
 
                                 <!-- Lec Start Time -->
                                 <input type="text" name="lecStartTime" data-toggle="tooltip" data-placement="top" title="Lecture Start Time" placeholder="Lecture Start Time" onfocus="(this.type='time')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-2 col-md-3" id="lecStartTime-0">
@@ -382,10 +386,15 @@ $holidays = Utils::getUpcomingHolidays();
                                 </select>
 
                                 <!-- from Date -->
-                                <input type="text" name="taskFromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-4 col-md-3" id="taskFromDate-0">
+
+                                <p id='taskFromDate-0-label' class="h-50 border-top-0 border-right-0 border-left-0  border border-dark col-md-3 mb-0 text-left text-black-50"  > From Date </p>
+
+                                <input type="date" name="taskFromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class='border-0 mb-4' id="taskFromDate-0" onchange="updateFromLabel(this)" >
 
                                 <!-- To Date -->
-                                <input type="text" name="taskToDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-4 col-md-4" id="taskToDate-0">
+                                <p id='taskToDate-0-label' class="h-50 border-top-0 border-right-0 border-left-0  border border-dark col-md-3 mb-0 text-left text-black-50"  > To Date </p>
+
+                                <input type="date" name="taskToDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class='border-0 mb-4 ' id="taskToDate-0" onchange="updateFromLabel(this)" >
 
 
                                 <!-- Task -->
@@ -838,6 +847,7 @@ $holidays = Utils::getUpcomingHolidays();
 
             leaveTypes = new Map() // array to avoid duplicate leave types ( Using Map to maintain the order ) 
             leaveTypes.set('final' , {})  //final object will have first fromDate to last toDate
+            noBalanceLeaves = [ 'Duty Leaves' , 'Advance Leave' ] //If This Leaves are chosen we should not prompt for insufficient balance
 
             var isSafeToAddNewLeaveTypeRow = false //if false meanse the currrent data is not validated hence don't allow adding another row
 
@@ -1013,7 +1023,6 @@ $holidays = Utils::getUpcomingHolidays();
             function validateLeaveData(leavedata) {
 
                 
-
                 //For every leave in leave data
                 for (let [key , value] of leavedata) {
 
@@ -1023,6 +1032,7 @@ $holidays = Utils::getUpcomingHolidays();
                     let appliedLeaveData = value
                     let validationsRequired //LeaveType data from DB
                     let balances //Employee Balance data from DB
+                    let keyName //Name of the key leaveType
 
                     //define data from db
                     for (let i = 0; i < leaveTypeDeatils.length; i = i + 1) {
@@ -1033,11 +1043,13 @@ $holidays = Utils::getUpcomingHolidays();
                         }
                     }
 
+                    
                     //define data from db
                     for (let i = 0; i < employeeBalance.length; i = i + 1) {
 
                         if (employeeBalance[i].leaveID === key) {
                             balances = employeeBalance[i];
+                            keyName = employeeBalance[i].leaveType;
                             break;
                         }
                     }
@@ -1054,6 +1066,56 @@ $holidays = Utils::getUpcomingHolidays();
                     let finalEndDate = new Date(leavedata.get('final').endDate)
                     finalEndDate.setHours(5, 30, 0, 0)
 
+                    //If fromDateType is FIRST HALF
+                    if( value.fromDateType === 'FIRST HALF' ){
+
+                        //Check if they have same date
+                        if( value.fromDate !== value.toDate ){
+
+                            return {
+                                msg: `You cannot Apply for FIRST HALF at fromDateType`,
+                                isValid: false
+                            }
+
+                        }else{
+
+                            if( value.toDateType !== 'FIRST HALF' ){
+                                return {
+                                    msg: `To Apply for FIRST HALF both dateTypes needs to be FIRST HALF `,
+                                    isValid: false
+                                }
+                            }
+
+                        }
+
+                    }
+                    
+
+                    //If any one of the dayType is second half then
+                    if( value.toDateType === 'SECOND HALF' ){
+
+                        //Check if they have same date
+                        if( value.fromDate !== value.toDate ){
+
+                            return {
+                                msg: `You cannot Apply for SECOND HALF at toDateType`,
+                                isValid: false
+                            }
+
+                        }
+
+                        //Check if they have same date
+                        if( value.fromDateType !== value.toDateType ){
+
+                            return {
+                                msg: `To Apply for SECOND HALF both dayTypes needs to be SECOND HALF`,
+                                isValid: false
+                            }
+
+                        }
+
+
+                    }
 
                     //Validate dates sequence from above rows ( from Date of row cannot be less than toDate of prev row )
                     if (leavedata.get('final').endDate != undefined && (finalEndDate.getTime() >= fromDate.getTime())) return {
@@ -1073,7 +1135,6 @@ $holidays = Utils::getUpcomingHolidays();
                         isValid: false
                     }
 
-
                     //calculate difference between days
                     let diffBtnDates = (Math.floor((toDate.getTime() - fromDate.getTime()) / (24 * 60 * 60 * 1000))) + 1
 
@@ -1084,7 +1145,8 @@ $holidays = Utils::getUpcomingHolidays();
                     }
 
                     //Check for insuffcient Balance
-                    if (parseInt(balances.balance) < diffBtnDates) return {
+
+                    if (   !noBalanceLeaves.includes( keyName ) && parseInt(balances.balance) < diffBtnDates) return {
                         msg: `Insuffcient balance , Current ${balances.leaveType}s :  ${balances.balance} `,
                         isValid: false
                     }
@@ -1094,7 +1156,6 @@ $holidays = Utils::getUpcomingHolidays();
 
                     //update final object
                     if (leavedata.get('final').startDate === undefined) {
-
                         leavedata.get('final').startDate = appliedLeaveData.fromDate
                         leavedata.get('final').startDateType = appliedLeaveData.fromDateType;
 
@@ -1199,6 +1260,8 @@ $holidays = Utils::getUpcomingHolidays();
                 
                 let calculations = "" //text for total days input
                 
+                console.log(leavedata)
+
                 //for every leave type user selected
                 for (let [key , value] of leavedata) {
                     
@@ -1206,6 +1269,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                     let holidayLeaves = 0;
 
+                    //get start date of that leave box type
                     let startDate = new Date(value.fromDate)
                     startDate.setHours(5, 30, 0, 0)
 
@@ -1225,6 +1289,7 @@ $holidays = Utils::getUpcomingHolidays();
 
                     let dumStartDate = startDate;
         
+                    
                     //Decrement total days if the startingDate ends starts some holiday
                     while (idx == 1) {
 
@@ -1263,9 +1328,8 @@ $holidays = Utils::getUpcomingHolidays();
 
                     }
 
-
                     //If dateType is half then reduce it by 0.5
-                    if (startDate !== endDate && idx === leaveTypesLen && endDateType !== 'FULL' && rightHolidays === 0 && leaveName !== 'Earned Leave') totalDays -= 0.5
+                    if ( startDate.getTime() !== endDate.getTime() && idx === leaveTypesLen-1 && endDateType !== 'FULL' && rightHolidays === 0 && leaveName !== 'Earned Leave') totalDays -= 0.5
 
                     //total holidays through application
                     holidayLeaves = leftHolidays + rightHolidays
