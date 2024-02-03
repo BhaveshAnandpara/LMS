@@ -107,7 +107,7 @@ class Staff {
 
         // SQL Query to get the leave history of login employee
 
-        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.extension, applications.totalDays , applications.reason , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID ORDER BY applications.dateTime DESC";
+        $sql = "SELECT applications.applicationID , applications.dateTime , applications.startDate , applications.endDate , applications.extension, applications.totalDays , applications.reason , applications.hodApproval , applications.principalApproval , applications.status From applications where employeeID=$employeeID ORDER BY applications.startDate DESC LIMIT 5";
 
         $conn = sql_conn();
         $result =  mysqli_query($conn, $sql);

@@ -94,6 +94,7 @@
 
                         // $time = Utils::getTimeDiff( $row['date'] );
 
+                            if( !in_array( $row['leaveType'] , Config::$_VISIBLE_LEAVES ) && $row['balance'] == 0 ) continue;
 
                             echo
 
@@ -104,11 +105,9 @@
                                 <div class='row p-2 pr-0 '>
                                     <div class='col-12  '>
                                         <div class='row pb-1 pl-2 d-flex justify-content-sm-center'>
-                                            <!-- PHP CODE HERE -->
                                             <h5>" .$row['leaveType']. "</h5>
                                         </div>
                                         <div class='row d-flex justify-content-sm-center '>
-                                            <!-- PHP CODE HERE -->
                                             <h3> " .$row['balance']. " </h3>
                                         </div>
                                     </div>
@@ -123,7 +122,7 @@
 
             <!-- Recently Applied Leaves -->
 
-            <div class=" row p-4 bg-white  rounded-lg shadow-lg d-flex justify-content-sm-center  pl-5 pr-5 pb-3 pt-4 my-5 ml-2 "
+            <div class=" row p-4 bg-white  rounded-lg shadow-lg d-flex justify-content-sm-center pb-3 pt-4 my-5 ml-2 "
                 style="transition: all all 0.5s ease; border-right:6px solid #11101D">
 
                 <div class="col-md-12 col-sm-12 py-3">
@@ -147,15 +146,14 @@
                     <thead>
                         <tr>
                             <th>LEAVE TYPE</th>
-                            <th>APPLICATION DATE</th>
                             <th>EXTENDED FROM</th>
-                            <th>FROM</th>
-                            <th>TO</th>
+                            <th style="width:10%;" >FROM</th>
+                            <th style="width:10%;" >TO</th>
                             <th>TOTAL DAYS</th>
                             <th>STATUS</th>
                             <th>VIEW</th>
                             <th>EDIT</th>
-                            <th>WITHDRAW</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -172,7 +170,6 @@
                         <tr>
 
                             <td><?php echo $leaveTypes ?></td>
-                            <td><?php echo date( 'd-m-Y' ,strtotime($row["dateTime"]) ) ?></td>
                             <?php 
                                 if( empty($row["extension"]) || $row['status'] == Config::$_APPLICATION_STATUS['WITHDRAWN']  ){
                                     echo "<td class='text-end'> <i class='fas fa-link' style='color: #ccc;' ></i> </td>";
@@ -183,7 +180,7 @@
                             ?>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["startDate"]) ) ?></td>
                             <td><?php echo date( 'd-m-Y' ,strtotime($row["endDate"]) ) ?></td>
-                            <td><?php echo $row["totalDays"] ?></td>
+                            <td><?php echo $row["totalDays"] ?> Days</td>
                             
                             <td class= <?php echo $row['status']." font-weight-bold " ?>  ><?php echo $row['status'] ?></td>
 
@@ -206,7 +203,7 @@
 
                                 echo "<td class='text-end'> <i class='fas fa-trash' style='color: #ccc;' ></i> </td>";
                             }else{
-                                echo "<td class='text-end'> <a href='./withdrawApplication.php?id=".$row['applicationID']."&empID=".$user->employeeId." > <i class='fas fa-trash' ></i> </a> </td>";
+                                echo "<td class='text-end'> <a href='./withdrawApplication.php?id=".$row['applicationID']."&empID=".$user->employeeId."' > <i class='fas fa-trash' ></i> </a> </td>";
                             }
 
 

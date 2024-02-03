@@ -160,6 +160,9 @@ table {
     border-radius: 5px;
     transition: all 0.8s linear;
     z-index: 10;
+    max-height: 85vh;
+    height: max-content;
+    overflow-y: scroll;
 }
 
 .notification-item{

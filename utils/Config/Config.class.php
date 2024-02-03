@@ -45,6 +45,9 @@
         //ComOff Types
         public static $_COMPOFF_TYPES  = array('Half Day' => "Half Day", 'Full Day' => "Full Day");
 
+        //Hidden Leaves on Dashboard
+        public static $_VISIBLE_LEAVES  = array('Earned Leave' => "Earned Leave", 'Causal Leave' => "Causal Leave" , 'Festive Leave' => "Festive Leave");
+
 
 
     }
