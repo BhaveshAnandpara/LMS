@@ -537,6 +537,10 @@
                                 if( $currentDate == date("Y-d-m" ) ){
                                     $status = 'current-date-box-calendar';
                                 }
+ 
+                                if(  $currentDate  >= date( 'Y-d-m' , strtotime($data['startDate']) )  && $currentDate <= date( 'Y-d-m' , strtotime($data['endDate']) ) ){
+                                    $status = 'apply-date-box-calendar';
+                                }
 
                                 echo " <div class='calendarDate ". $status ."' > $currentDayDisplay </div> ";
                                 
@@ -551,6 +555,7 @@
 
                         <div>
                             <div class='calendarDate leave-box-calendar ' > </div> <p>On Leave</p>
+                            <div class='calendarDate apply-date-box-calendar ' > </div> <p>Applied dates</p>
                             <div class='calendarDate current-date-box-calendar ' > </div> <p>Current Day</p>
                         </div>
 
