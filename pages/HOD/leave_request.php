@@ -104,11 +104,14 @@
 
                         <?php
                                 
+                                $curr = date('Y-m-d');
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 
                                     $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
                                     $applicantInfo = mysqli_fetch_assoc( $user->findEmployeeDetailsUsingId( $row['employeeID'] ) );
+
+                                    if( ( date( 'Y-m-d' , strtotime($row['endDate'])) <  $curr) ){ $row['status'] = 'EXPIRED'; }
                                     
                         ?>
                         <tr>
@@ -123,7 +126,7 @@
                             <td class="text-end"> <a href="../Staff/viewDetails.php?id=<?php echo $row['applicationID'] ?>" ><i class="fas fa-eye"></i></a> </td>
 
                         </tr>
-                        <?php } ?>
+                        <?php  } ?>
 
                     </tbody>
                 </table>

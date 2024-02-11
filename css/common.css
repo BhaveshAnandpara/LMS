@@ -290,7 +290,7 @@ table {
 }
 
 
-.WITHDRAWN{
+.WITHDRAWN ,  .EXPIRED{
 
     color: rgb(102, 102, 102);
     font-weight: 800;

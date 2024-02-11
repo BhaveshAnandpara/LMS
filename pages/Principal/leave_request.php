@@ -114,6 +114,8 @@
                                 
                                     $leaveTypes = $user->getAppLeaveTypes( $row['applicationID'] );
                                     $applicantInfo = mysqli_fetch_assoc( $user->findEmployeeDetailsUsingId( $row['employeeID'] ) );
+
+                                    if( ( date( 'Y-m-d' , strtotime($row['endDate'])) <  $curr) ){ $row['status'] = 'EXPIRED'; }
                                     
                         ?>
                         <tr>
