@@ -207,7 +207,7 @@
             $dfel = Config::$_APPLICATION_STATUS['DEDUCTED_FROM_EL'];
             $lwp = Config::$_APPLICATION_STATUS['LEAVE_WITHOUT_PAY'];
 
-            $sql = "SELECT startDate , endDate , totalDays from applications where employeeID=$empID and status='$approved' or  status='$sanctioned' or  status='$dfel' or  status='$lwp' and  applications.startDate <= '$endCalendar' or applications.endDate <= '$startCalendar' ORDER BY startDate  ASC";
+            $sql = "SELECT startDate , endDate , totalDays from applications where employeeID=$empID and status='$approved' or  status='$sanctioned' or  status='$dfel' or  status='$lwp' and  applications.startDate <= '$endCalendar' or applications.endDate <= '$startCalendar' GROUP BY startDate ORDER BY startDate  ASC";
     
             $conn = sql_conn();
             $result =  mysqli_query($conn, $sql);

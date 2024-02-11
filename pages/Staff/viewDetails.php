@@ -495,18 +495,16 @@
 
                 <div id="calendar-container"  >
 
-
                     <div class="form-row" >
 
                         <?php
                         
-                            $calendar = Utils::getEmployeeLeaveCalendar($user->employeeId);
+                            $calendar = Utils::getEmployeeLeaveCalendar($data['employeeID']);
                             $leaveCalendarArr = array();
                                 
                             while( $row = mysqli_fetch_assoc($calendar) ){
 
-                                for( $i = 0; $i < (int)( $row['totalDays'] ) ; $i++ ){
-                                    
+                                for( $i = 0; $i < round( $row['totalDays'] ) ; $i++ ){
                                     
                                     $date = date('Y-d-m' , strtotime("+{$i} days",  strtotime($row['startDate']) ) );
                                     $leaveCalendarArr[] = $date;
@@ -531,7 +529,7 @@
 
                                 $status = '';
                                 
-                                if( $count < count($leaveCalendarArr) &&  $currentDate == $leaveCalendarArr[$count] ){
+                                if( in_array( $currentDate , $leaveCalendarArr ) ){
                                     $status = 'leave-box-calendar';
                                     $count++;
                                 }
