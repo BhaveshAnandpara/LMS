@@ -4,9 +4,7 @@
 
     echo "<div class='employeesOnLeave' id='employeesOnLeaves' >";
 
-    $days = 7;
-
-    if( $user->role == Config::$_PRINCIPAL_ ) $days = 28;
+    $days = 28;
 
 
     for ($i = 0; $i < $days; $i++) {
