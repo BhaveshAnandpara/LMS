@@ -13,6 +13,7 @@
 
         $currentDayDisplay = date("l", strtotime("+{$i} days"));
         $currentDateDisplay = date("d-m-y", strtotime("+{$i} days"));
+        
         $currentDate = date("Y-m-d", strtotime("+{$i} days"));
         
         $approved = Config::$_APPLICATION_STATUS['APPROVED_BY_PRINCIPAL'];
@@ -20,7 +21,14 @@
         $deductedFromEL = Config::$_APPLICATION_STATUS['DEDUCTED_FROM_EL'];
         $lwp = Config::$_APPLICATION_STATUS['LEAVE_WITHOUT_PAY'];
 
-        $employeesOnLeaveTodayQuery =   "SELECT * FROM employees AS e JOIN applications AS a ON e.employeeID = a.employeeID WHERE a.status='$approved' OR a.status='$sanctioned' OR a.status='$deductedFromEL' OR a.status='$lwp'  AND '$currentDate' BETWEEN a.startDate AND a.endDate";        
+
+        $employeesOnLeaveTodayQuery =   "SELECT *
+        FROM employees AS e
+        JOIN applications AS a ON e.employeeID = a.employeeID
+        WHERE (a.status='$approved' OR a.status='$sanctioned' OR a.status='$deductedFromEL' OR a.status='$lwp')
+          AND '$currentDate' BETWEEN a.startDate AND a.endDate;
+        ";
+
         $employeesOnLeaveTodayQueryOutput = mysqli_query($conn, $employeesOnLeaveTodayQuery);
 
         echo
