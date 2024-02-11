@@ -342,7 +342,7 @@ $user = unserialize($_SESSION['user']) ;
 
                             
                             <!-- From Date -->
-                            <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="fromDate-0" min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d' , strtotime('+1 month', time() ) ) ?>">
+                            <input type="date" name="fromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class=" border-top-0 border-right-0 border-left-0  border border-dark " id="fromDate-0" onchange="updateFromLabel(this)" min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d' , strtotime('+1 month', time() ) ) ?> ">
 
                             <!-- From Date Type -->
                             <select id="fromDateType-0" name="fromDateType" class=" fromDateType  border-top-0 border-right-0 border-left-0 border border-dark col-md-2" data-toggle="tooltip" data-placement="top" title="Select From Date Type">
@@ -452,7 +452,10 @@ $user = unserialize($_SESSION['user']) ;
 
 
                                 <!-- lec Date -->
-                                <input type="text" name="lecDate" data-toggle="tooltip" data-placement="top" title="Lecture Date" placeholder="Lecture Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-2 col-md-5" id="lecDate-0">
+
+                                <p id='lecDate-0-label' class="h-50 border-top-0 border-right-0 border-left-0  border border-dark col-md-5 mb-0 text-left text-black-50"  > Lecture Date </p>
+
+                                <input type="date" name="lecDate" data-toggle="tooltip" data-placement="top" title="Lecture Date" placeholder="Lecture Date" class='border-0' id="lecDate-0" onchange="updateFromLabel(this)" >
 
                                 <!-- Lec Start Time -->
                                 <input type="text" name="lecStartTime" data-toggle="tooltip" data-placement="top" title="Lecture Start Time" placeholder="Lecture Start Time" onfocus="(this.type='time')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-2 col-md-3" id="lecStartTime-0">
@@ -508,11 +511,14 @@ $user = unserialize($_SESSION['user']) ;
 
                                 </select>
 
-                                <!-- from Date -->
-                                <input type="text" name="taskFromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-4 col-md-3" id="taskFromDate-0">
+                                <p id='taskFromDate-0-label' class="h-50 border-top-0 border-right-0 border-left-0  border border-dark col-md-3 mb-0 text-left text-black-50"  > From Date </p>
+
+                                <input type="date" name="taskFromDate" data-toggle="tooltip" data-placement="top" title="From Date" placeholder="From Date" class='border-0 mb-4' id="taskFromDate-0" onchange="updateFromLabel(this)" >
 
                                 <!-- To Date -->
-                                <input type="text" name="taskToDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" onfocus="(this.type='date')" onblur="(this.type='text')" class=" border-top-0 border-right-0 border-left-0  border border-dark mb-4 col-md-4" id="taskToDate-0">
+                                <p id='taskToDate-0-label' class="h-50 border-top-0 border-right-0 border-left-0  border border-dark col-md-3 mb-0 text-left text-black-50"  > To Date </p>
+
+                                <input type="date" name="taskToDate" data-toggle="tooltip" data-placement="top" title="To Date" placeholder="To Date" class='border-0 mb-4 ' id="taskToDate-0" onchange="updateFromLabel(this)" >
 
 
                                 <!-- Task -->
@@ -696,8 +702,6 @@ $user = unserialize($_SESSION['user']) ;
 
             populateData()
 
-
-
             function populateData(){
 
                 // ------------------ Populate Leave Type Box ------------------
@@ -756,22 +760,25 @@ $user = unserialize($_SESSION['user']) ;
                     for (let j = 0; j < childrens.length ; j++) {
 
                         switch(j) {
-                        case 0: // For Adjus tWith
+                        case 0: 
                             childrens[j].value = parseInt(appLecAdjData[i].employeeID) ;
                             break;
-                        case 1: // For Semester
+                        case 1: 
                             childrens[j].value = appLecAdjData[i].semester ;
                             break;
-                        case 2: // For StartDay Type
+                        case 2: 
                             childrens[j].value = appLecAdjData[i].subject ;
                             break;
-                        case 3: // For EndDate
-                            childrens[j].value = appLecAdjData[i].date ;
+                        case 3: 
                             break;
-                        case 4: // For EndDate Type
+                        case 4: 
+                            childrens[j].value = appLecAdjData[i].date ;
+                            updateFromLabel(childrens[j])
+                            break;
+                        case 5: 
                             childrens[j].value = appLecAdjData[i].startTime ;
                             break;
-                        case 5: // For EndDate Type
+                        case 6: 
                             childrens[j].value = appLecAdjData[i].endTime ;
                         break;
 
@@ -793,16 +800,22 @@ $user = unserialize($_SESSION['user']) ;
                     for (let j = 0; j < childrens.length ; j++) {
 
                         switch(j) {
-                        case 0: // For Adjus tWith
+                        case 0: 
                             childrens[j].value = parseInt(appTaskAdjData[i].employeeID) ;
                             break;
-                        case 1: // For Semester
+                        case 1: 
+                            break;
+                        case 2: 
                             childrens[j].value = appTaskAdjData[i].startDate ;
+                            updateFromLabel(childrens[j])
                             break;
-                        case 2: // For StartDay Type
+                        case 3: 
+                            break;
+                        case 4: 
                             childrens[j].value = appTaskAdjData[i].endDate ;
+                            updateFromLabel(childrens[j])
                             break;
-                        case 3: // For EndDate Type
+                        case 5: 
                             childrens[j].value = appTaskAdjData[i].task ;
                             break;
                         }
@@ -1854,6 +1867,7 @@ $user = unserialize($_SESSION['user']) ;
 
             function handleApply() {
 
+
                 let lecAdjs = [];
                 let taskAdjs = [];
                 let AddApp = [];
@@ -1925,24 +1939,24 @@ $user = unserialize($_SESSION['user']) ;
                                 break;
                             }
 
-                            if (container.children[j].name === 'lecDate') {
+                if (container.children[j].name === 'lecDate') {
 
 
-                                if (new Date(container.children[j].value) < new Date(leaveTypes.get('final').startDate) || new Date(container.children[j].value) > new Date(leaveTypes.get('final').endDate)) {
-                                    isValidated = false;
-                                    // alert('Lec Date in Lecture Adjustments should be between startDate and endDate of Application')
-                                    let message = "Lec Date in Lecture Adjustments should be between startDate and endDate of Application !!"
-                    document.querySelector('.modal-body').innerHTML = message;
-                document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
-                $('#myModal').modal();
+                    if (new Date(container.children[j].value) < new Date(leaveTypes.get('final').startDate) || new Date(container.children[j].value) > new Date(leaveTypes.get('final').endDate)) {
+                        isValidated = false;
+                        // alert('Lec Date in Lecture Adjustments should be between startDate and endDate of Application')
+                        let message = "Lec Date in Lecture Adjustments should be between startDate and endDate of Application !!"
+                        document.querySelector('.modal-body').innerHTML = message;
+                        document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
+                        $('#myModal').modal();
                                     break;
-                                }
+                    }
 
-                            }
+                }
 
-                            lecAdjDetails[container.children[j].name + ''] = container.children[j].value
+                lecAdjDetails[container.children[j].name + ''] = container.children[j].value
 
-                        }
+                }
 
                         if (isValidated) lecAdjs.push(lecAdjDetails);
                         else return
@@ -1950,6 +1964,7 @@ $user = unserialize($_SESSION['user']) ;
                     }
 
                 }
+
 
 
                 let totalTasks = $('.taskAdjContainer')[0].children.length
@@ -2002,6 +2017,7 @@ $user = unserialize($_SESSION['user']) ;
 
                 }
 
+
                 let totalApp = $('.approvalsContainer')[0].children.length
 
                 // validate and store Additonal Approval Details
@@ -2028,15 +2044,20 @@ $user = unserialize($_SESSION['user']) ;
 
                         let container = $('.filesContainer')[0].children[i]
 
-                        if (!files.includes(container.children[0].value)) {
 
+                        if (  container.children[0].tagName != 'A' && !files.includes(container.children[0].value)) {
+
+                            console.log(container.children[0])
                             body.append('files[]', container.children[0].files[0])
                             files.push(container.children[0].files[0])
+
                         }
 
                     }
 
                 }
+
+
 
                 let leaveTypesObj = Object.fromEntries(leaveTypes); //Convert map to js obj as we have intially wrote the whole logic using js object logic
 
