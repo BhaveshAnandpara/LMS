@@ -55,6 +55,25 @@
 
         $time = date( 'Y-m-d H:i:s' , time());
 
+        // Check if any application is colliding 
+
+        $approved = Config::$_APPLICATION_STATUS['APPROVED_BY_PRINCIPAL'];
+        $sanctioned = Config::$_APPLICATION_STATUS['SANCTIONED'];
+        $drel = Config::$_APPLICATION_STATUS['DEDUCTED_FROM_EL'];
+        $lwp = Config::$_APPLICATION_STATUS['LEAVE_WITHOUT_PAY'];
+
+        $sql = "SELECT startDate , endDate FROM `applications` WHERE STATUS='$approved' or STATUS='$sanctioned' or STATUS='$drel' or STATUS='$lwp' ;";
+
+        $applications =  mysqli_query( $conn , $sql);
+
+        while( $row = mysqli_fetch_assoc( $applications ) ){
+            
+            if( $row['startDate'] >= $startDate && $row['startDate'] <= $endDate || $row['endDate'] >= $startDate && $row['endDate'] <= $endDate ){
+                throw new Exception('This Leave Dates are Colliding with some other Application Dates');
+                return;
+            }
+
+        }
 
         // 1.Add data to appplication table
 
@@ -271,7 +290,8 @@
 
     }catch(Exception $e){
 
-        print_r( $e);
+        echo  $e->getMessage();
+        http_response_code(500);
 
     }
 

@@ -2107,7 +2107,7 @@ $user = unserialize($_SESSION['user']) ;
                     error: function(jqXHR, textStatus, errorThrown) {
 
                         console.log(textStatus, errorThrown);
-                        // alert('Error occured during Applying Leave')
+                        let message = jqXHR.responseText || "Error occurred during Applying Leave!!";
                         let message = "Error occured during Applying Leave !!"
                         document.querySelector('.modal-body').innerHTML = message;
                         document.querySelector('.modal-title').innerHTML = "<span style=\'color: red;\'>ALERT</span>";
