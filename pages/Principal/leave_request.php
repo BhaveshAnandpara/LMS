@@ -108,7 +108,8 @@
                     <tbody id="tbody">
 
                         <?php
-                                
+
+                                $curr = date( 'Y-m-d' , time() );
                                 
                                 while ($row = mysqli_fetch_assoc($data)) { 
                                 

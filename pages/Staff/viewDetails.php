@@ -634,13 +634,14 @@
                     echo 
                     "<div>
 
-                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=APPROVE&extension=$extension' > <button class='submitbtn approveBtn clickable my-0 mx-2' > Approve </button> </a>
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=APPROVE&extension=$extension' > <button class='submitbtn approveBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-check mr-2'></i> Approve Request </button> </a>
 
-                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=REJECT&extension=$extension' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Reject </button> </a>
+                        
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=DEDUCTFROMEL&extension=$extension' > <button class='submitbtn approveBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-check mr-2'></i> Deduct from EL </button> </a>
+                        
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=LWP&extension=$extension' > <button class='submitbtn approveBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-check mr-2'></i> Leave Without Pay </button> </a>
 
-                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=DEDUCTFROMEL&extension=$extension' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Deduct from EL </button> </a>
-
-                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=LWP&extension=$extension' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > Leave Without Pay </button> </a>
+                        <a href='../../pages/Principal/validateLeaveAction.php?id=$applicationId&action=REJECT&extension=$extension' > <button class='submitbtn rejectBtn clickable my-0 mx-2' > <i class='fa-regular fa-circle-xmark mr-2'></i> Reject Request </button> </a>
         
                     </div>";
 
